@@ -150,6 +150,7 @@
     <ClInclude Include="Character.h" />
     <ClInclude Include="Interpreter.h" />
     <ClInclude Include="Interface.h" />
+    <ClInclude Include="Point.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -159,6 +160,7 @@
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="Interpreter.cpp" />
     <ClCompile Include="Interface.cpp" />
+    <ClCompile Include="Point.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
