@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Interface.h"
 #include "Character.h"
+#include <fstream>
 
 Character::Character(double x, double y, COLORREF color) : color(color)
 {
@@ -112,4 +113,23 @@ void Character::Invalidate(HWND hWnd)
 	updateRect.right = position.x + 2 * SWORD;
 	updateRect.bottom = position.y + 2 * SWORD;
 	InvalidateRect(hWnd, &updateRect, true);
+}
+
+void Character::SetCode(WCHAR *filename)
+{
+	ifstream in(filename);
+	int cnt = in.get();
+	for (int i = 0; i < cnt; ++i)
+	{
+		char com = in.get();
+		Command command;
+		command.type = (Command::Type)com;
+		if (com == Command::Move)
+			command.param = 5;
+		else if (com == Command::Turn)
+			command.param = 0.1;
+		interpreter.AddCommand(command);
+	}
+	in.close();
+	interpreter.isLooped = true;
 }

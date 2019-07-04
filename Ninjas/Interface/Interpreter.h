@@ -14,6 +14,7 @@ struct Command
 struct Interpreter
 {
 	std::queue<Command> commands;
+	bool isLooped = false;
 
 	Command NextCommand();
 

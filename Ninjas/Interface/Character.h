@@ -29,6 +29,7 @@ struct Character
 
 	void Draw(HDC hdc);
 	void Invalidate(HWND hWnd);
+	void SetCode(WCHAR *filename);
 
 	void Turn(double angle);
 	void Move(double distance);

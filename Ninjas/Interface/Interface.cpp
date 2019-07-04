@@ -1,13 +1,13 @@
 ﻿#include "stdafx.h"
+#include "resource.h"
 #include "Interface.h"
 #include "Interpreter.h"
+#include <Shobjidl.h>
+#include <Shlwapi.h>
 
-HWND hWnd;
+HWND mainWnd;
 HINSTANCE hInst;
-//Character test(100, 100, RGB(0, 0, 255));
 Character *players;
-//Interpreter interpreter;
-//vector<Projectile> projs;
 RECT updateRect;
 int mapWidth, mapHeight;
 
@@ -32,7 +32,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 	wcex.cbClsExtra = 0;
 	wcex.cbWndExtra = 0;
 	wcex.hInstance = hInstance;
-	wcex.hIcon = LoadIcon(hInst, MAKEINTRESOURCE(IDI_SMALL));
+	wcex.hIcon = LoadIcon(hInst, MAKEINTRESOURCE(IDI_INTERFACE));
 	wcex.hCursor = LoadCursor(NULL, IDC_ARROW);
 	wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
 	wcex.lpszMenuName = NULL;
@@ -41,7 +41,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 
 	RegisterClassEx(&wcex);
 
-	hWnd = CreateWindow(L"MainClass",
+	mainWnd = CreateWindow(L"MainClass",
 		L"Ninjas",
 		WS_OVERLAPPEDWINDOW,
 		0, 0,
@@ -51,14 +51,14 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 		hInstance,
 		NULL);
 
-	if (hWnd == 0)
+	if (mainWnd == 0)
 	{
-		MessageBox(NULL, L"Ошибка главного окна!", NULL, MB_OK);
+		MessageBox(NULL, L"Ошибка окна с полем!", NULL, MB_OK);
 		return 1;
 	}
 
-	ShowWindow(hWnd, nCmdShow);
-	UpdateWindow(hWnd);
+	ShowWindow(mainWnd, nCmdShow);
+	UpdateWindow(mainWnd);
 
 	while (GetMessage(&msg, NULL, 0, 0))
 	{
@@ -96,6 +96,116 @@ void CALLBACK OnSwing(HWND hWnd, UINT arg1, UINT arg2, DWORD dw)
 	}
 }
 
+WCHAR *OpenFileDlg(HWND hWnd)
+{
+	const COMDLG_FILTERSPEC fileTypes[] = {
+	{
+		L"Все файлы", L"*.*" }
+	};
+
+	WCHAR *filename = NULL;
+	IFileDialog *open = NULL;
+	HRESULT res = CoCreateInstance(CLSID_FileOpenDialog, NULL, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(&open));
+	if (FAILED(res))
+	{
+		MessageBox(hWnd, L"Ошибка загрузки!", NULL, MB_OK);
+		return NULL;
+	}
+	DWORD flags;
+	res = open->GetOptions(&flags);
+	if (FAILED(res))
+	{
+		MessageBox(hWnd, L"Ошибка загрузки!", NULL, MB_OK);
+		return NULL;
+	}
+	res = open->SetOptions(flags | FOS_FORCEFILESYSTEM);
+	if (FAILED(res))
+	{
+		MessageBox(hWnd, L"Ошибка загрузки!", NULL, MB_OK);
+		return NULL;
+	}
+	res = open->SetFileTypes(ARRAYSIZE(fileTypes), fileTypes);
+	if (FAILED(res))
+	{
+		MessageBox(hWnd, L"Ошибка загрузки!", NULL, MB_OK);
+		return NULL;
+	}
+	res = open->SetFileTypeIndex(1);
+	if (FAILED(res))
+	{
+		MessageBox(hWnd, L"Ошибка загрузки!", NULL, MB_OK);
+		return NULL;
+	}
+	res = open->SetDefaultExtension(L"pmap");
+	if (FAILED(res))
+	{
+		MessageBox(hWnd, L"Ошибка загрузки!", NULL, MB_OK);
+		return NULL;
+	}
+	res = open->Show(hWnd);
+	if (FAILED(res))
+		return NULL;
+	IShellItem *psiRes;
+	res = open->GetResult(&psiRes);
+	if (FAILED(res))
+	{
+		MessageBox(hWnd, L"Ошибка загрузки!", NULL, MB_OK);
+		return NULL;
+	}
+	res = psiRes->GetDisplayName(SIGDN_FILESYSPATH, &filename);
+	if (FAILED(res))
+	{
+		MessageBox(hWnd, L"Ошибка загрузки!", NULL, MB_OK);
+		return NULL;
+	}
+	psiRes->Release();
+	open->Release();
+	return filename;
+}
+
+INT_PTR CALLBACK FileSelectProc(HWND hDlg,
+	UINT message,
+	WPARAM wParam,
+	LPARAM lParam)
+{
+	switch (message)
+	{
+	case WM_INITDIALOG:
+		
+		break;
+
+	case WM_COMMAND:
+		switch(wParam)
+		{
+		case 1:
+			EndDialog(hDlg, 0);
+			return (INT_PTR)TRUE;
+
+		case IDC_BUTTON1:
+		{
+			WCHAR *codeFile = OpenFileDlg(hDlg);
+			SetWindowText((HWND)lParam, codeFile);
+			players[0].SetCode(codeFile);
+			break;
+		}
+
+		case IDC_BUTTON2:
+			WCHAR *codeFile = OpenFileDlg(hDlg);
+			SetWindowText((HWND)lParam, codeFile);
+			players[1].SetCode(codeFile);
+			break;
+		}
+		break;
+
+	case WM_CLOSE:
+		MessageBox(hDlg, L"Выберите программы для управления и нажмите ОК.", NULL, MB_OK);
+		EndDialog(hDlg, 0);
+		return (INT_PTR)TRUE;
+		break;
+	}
+	return (INT_PTR)FALSE;
+}
+
 LRESULT CALLBACK WndProc(HWND hWnd,
 	UINT message,
 	WPARAM wParam,
@@ -114,11 +224,12 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 			Character(100, 600, RGB(0, 255, 0)),
 			Character(600, 600, RGB(255, 255, 0))
 		};
-		SetTimer(hWnd, COMMAND_TIMER, 50, NULL);
 		RECT client;
 		GetClientRect(hWnd, &client);
 		mapWidth = client.right;
 		mapHeight = client.bottom;
+		DialogBox(hInst, MAKEINTRESOURCE(IDD_FSDIALOG), hWnd, FileSelectProc);
+		SetTimer(hWnd, COMMAND_TIMER, 50, NULL);
 		break;
 	}
 
@@ -129,40 +240,41 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 		{
 			for (int i = 0; i < PLAYER_COUNT; ++i)
 			{
-				if (!players[i].isActive)
-					continue;
-				Command next = players[i].interpreter.NextCommand();
-				switch (next.type)
+				if (players[i].isActive)
 				{
-				case Command::Move:
-				{
-					double res = next.param;
-					for (int j = 0; j < PLAYER_COUNT; ++j)
+					Command next = players[i].interpreter.NextCommand();
+					switch (next.type)
 					{
-						if (i == j)
-							continue;
-						double maxMove = players[i].MaxMovement(players[j].position, res);
-						res = min(maxMove, res);
+					case Command::Move:
+					{
+						double res = next.param;
+						for (int j = 0; j < PLAYER_COUNT; ++j)
+						{
+							if (i == j || !players[j].isActive)
+								continue;
+							double maxMove = players[i].MaxMovement(players[j].position, res);
+							res = min(maxMove, res);
+						}
+						players[i].Move(res);
+						break;
 					}
-					players[i].Move(res);
-					break;
+
+					case Command::Turn:
+						players[i].Turn(next.param);
+						break;
+
+					case Command::Swing:
+						players[i].isSwinging = true;
+						SetTimer(hWnd, SWING_TIMER + i, 10, (TIMERPROC)OnSwing);
+						break;
+
+					case Command::Shoot:
+						players[i].shots.push_back(Projectile(players[i].position.x, players[i].position.y,
+							players[i].direction, players[i].color));
+						break;
+					}
+					players[i].Invalidate(hWnd);
 				}
-
-				case Command::Turn:
-					players[i].Turn(next.param);
-					break;
-
-				case Command::Swing:
-					players[i].isSwinging = true;
-					SetTimer(hWnd, SWING_TIMER + i, 10, (TIMERPROC)OnSwing);
-					break;
-
-				case Command::Shoot:
-					players[i].shots.push_back(Projectile(players[i].position.x, players[i].position.y,
-														players[i].direction, players[i].color));
-					break;
-				}
-				players[i].Invalidate(hWnd);
 				for (int j = 0; j < players[i].shots.size(); ++j)
 				{
 					Projectile &shot = players[i].shots[j];
@@ -212,24 +324,32 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 		switch (wParam)
 		{
 		case 0x41:
+			if (players[0].interpreter.isLooped)
+				break;
 			com.type = Command::Turn;
 			com.param = -0.1;
 			players[0].interpreter.AddCommand(com);
 			break;
 
 		case 0x44:
+			if (players[0].interpreter.isLooped)
+				break;
 			com.type = Command::Turn;
 			com.param = 0.1;
 			players[0].interpreter.AddCommand(com);
 			break;
 
 		case 0x57:
+			if (players[0].interpreter.isLooped)
+				break;
 			com.type = Command::Move;
 			com.param = 5;
 			players[0].interpreter.AddCommand(com);
 			break;
 
 		case 0x52:
+			if (players[0].interpreter.isLooped)
+				break;
 			if (!players[0].isSwinging)
 			{
 				com.type = Command::Swing;
@@ -238,29 +358,39 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 			break;
 
 		case 0x46:
+			if (players[0].interpreter.isLooped)
+				break;
 			com.type = Command::Shoot;
 			players[0].interpreter.AddCommand(com);
 			break;
 
 		case 0x4a:
+			if (players[1].interpreter.isLooped)
+				break;
 			com.type = Command::Turn;
 			com.param = -0.1;
 			players[1].interpreter.AddCommand(com);
 			break;
 
 		case 0x4c:
+			if (players[1].interpreter.isLooped)
+				break;
 			com.type = Command::Turn;
 			com.param = 0.1;
 			players[1].interpreter.AddCommand(com);
 			break;
 
 		case 0x49:
+			if (players[1].interpreter.isLooped)
+				break;
 			com.type = Command::Move;
 			com.param = 5;
 			players[1].interpreter.AddCommand(com);
 			break;
 
 		case 0x55:
+			if (players[1].interpreter.isLooped)
+				break;
 			if (!players[1].isSwinging)
 			{
 				com.type = Command::Swing;
@@ -269,6 +399,8 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 			break;
 
 		case 0x48:
+			if (players[1].interpreter.isLooped)
+				break;
 			com.type = Command::Shoot;
 			players[1].interpreter.AddCommand(com);
 			break;

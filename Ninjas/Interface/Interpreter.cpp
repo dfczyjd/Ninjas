@@ -13,6 +13,8 @@ Command Interpreter::NextCommand()
 		return Command();
 	Command res = commands.front();
 	commands.pop();
+	if (isLooped)
+		commands.push(res);
 	return res;
 }
 
