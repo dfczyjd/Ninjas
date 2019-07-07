@@ -1,0 +1,9 @@
+C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Ninjas\Main\Interpreter\bin\Debug\Interpreter.dll
+C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Ninjas\Main\Interpreter\bin\Debug\Interpreter.pdb
+C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Ninjas\Main\Interpreter\bin\Debug\Antlr4.Runtime.Standard.dll
+C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Ninjas\Main\Interpreter\bin\Debug\Antlr4.Runtime.Standard.xml
+C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Ninjas\Main\Interpreter\obj\Debug\Interpreter.csprojAssemblyReference.cache
+C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Ninjas\Main\Interpreter\obj\Debug\Interpreter.csproj.CoreCompileInputs.cache
+C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Ninjas\Main\Interpreter\obj\Debug\Interpreter.csproj.CopyComplete
+C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Ninjas\Main\Interpreter\obj\Debug\Interpreter.dll
+C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Ninjas\Main\Interpreter\obj\Debug\Interpreter.pdb
