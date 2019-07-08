@@ -5,13 +5,15 @@
 #include <Shobjidl.h>
 #include <Shlwapi.h>
 
-HWND mainWnd;
+HWND mainWnd, infoWnd;
 HINSTANCE hInst;
 Character *players;
 RECT updateRect;
 int mapWidth, mapHeight;
+bool abortLaunch = false;
 
 LRESULT CALLBACK	WndProc(HWND, UINT, WPARAM, LPARAM);
+LRESULT CALLBACK	InfoWndProc(HWND, UINT, WPARAM, LPARAM);
 
 int APIENTRY _tWinMain(HINSTANCE hInstance,
 	HINSTANCE hPrevInstance,
@@ -51,14 +53,39 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 		hInstance,
 		NULL);
 
+	wcex.lpszClassName = L"InfoClass";
+	wcex.lpfnWndProc = InfoWndProc;
+	wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW);
+
+	RegisterClassEx(&wcex);
+
+	infoWnd = CreateWindow(L"InfoClass",
+		L"",
+		WS_CHILD,
+		700, 0,
+		GetSystemMetrics(SM_CXSCREEN) - 700, GetSystemMetrics(SM_CYSCREEN),
+		mainWnd,
+		NULL,
+		hInstance,
+		NULL);
+
 	if (mainWnd == 0)
 	{
 		MessageBox(NULL, L"Ошибка окна с полем!", NULL, MB_OK);
 		return 1;
 	}
 
+	if (infoWnd == 0)
+	{
+		MessageBox(NULL, L"Ошибка окна с информацией!", NULL, MB_OK);
+		return 1;
+	}
+
 	ShowWindow(mainWnd, nCmdShow);
 	UpdateWindow(mainWnd);
+
+	ShowWindow(infoWnd, nCmdShow);
+	UpdateWindow(infoWnd);
 
 	while (GetMessage(&msg, NULL, 0, 0))
 	{
@@ -78,7 +105,7 @@ void CALLBACK OnSwing(HWND hWnd, UINT arg1, UINT arg2, DWORD dw)
 	Point swordEnd = players[ind].GetSwordEnd();
 	for (int i = 0; i < PLAYER_COUNT; ++i)
 	{
-		if (i == ind || !players[ind].isActive)
+		if (i == ind || !players[i].isActive)
 			continue;
 		if (players[i].position.Dist(swordEnd) < Character::R)
 		{
@@ -175,7 +202,7 @@ INT_PTR CALLBACK FileSelectProc(HWND hDlg,
 		break;
 
 	case WM_COMMAND:
-		switch(wParam)
+		switch (wParam)
 		{
 		case 1:
 			EndDialog(hDlg, 0);
@@ -184,24 +211,49 @@ INT_PTR CALLBACK FileSelectProc(HWND hDlg,
 		case IDC_BUTTON1:
 		{
 			WCHAR *codeFile = OpenFileDlg(hDlg);
+			if (codeFile == NULL)
+				break;
 			SetWindowText((HWND)lParam, codeFile);
 			players[0].SetCode(codeFile);
 			break;
 		}
 
 		case IDC_BUTTON2:
+		{
 			WCHAR *codeFile = OpenFileDlg(hDlg);
+			if (codeFile == NULL)
+				break;
 			SetWindowText((HWND)lParam, codeFile);
 			players[1].SetCode(codeFile);
 			break;
 		}
+
+		case IDC_BUTTON3:
+		{
+			WCHAR *codeFile = OpenFileDlg(hDlg);
+			if (codeFile == NULL)
+				break;
+			SetWindowText((HWND)lParam, codeFile);
+			players[2].SetCode(codeFile);
+			break;
+		}
+
+		case IDC_BUTTON4:
+		{
+			WCHAR *codeFile = OpenFileDlg(hDlg);
+			if (codeFile == NULL)
+				break;
+			SetWindowText((HWND)lParam, codeFile);
+			players[3].SetCode(codeFile);
+			break;
+		}
+		}
 		break;
 
 	case WM_CLOSE:
-		MessageBox(hDlg, L"Выберите программы для управления и нажмите ОК.", NULL, MB_OK);
 		EndDialog(hDlg, 0);
+		abortLaunch = true;
 		return (INT_PTR)TRUE;
-		break;
 	}
 	return (INT_PTR)FALSE;
 }
@@ -226,10 +278,20 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 		};
 		RECT client;
 		GetClientRect(hWnd, &client);
-		mapWidth = client.right;
-		mapHeight = client.bottom;
+		mapWidth = 700;
+		mapHeight = 700;
+		WINDOWINFO info;
+		GetWindowInfo(hWnd, &info);
+		MoveWindow(infoWnd, 700, 0, client.right - 700, client.bottom, true);
 		DialogBox(hInst, MAKEINTRESOURCE(IDD_FSDIALOG), hWnd, FileSelectProc);
+		if (abortLaunch)
+		{
+			SendMessage(hWnd, WM_CLOSE, NULL, NULL);
+			return 0;
+		}
 		SetTimer(hWnd, COMMAND_TIMER, 50, NULL);
+		InvalidateRect(hWnd, 0, true);
+		UpdateWindow(hWnd);
 		break;
 	}
 
@@ -315,6 +377,8 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 				players[i].shots[j].Draw(hdc);
 		}
 		EndPaint(hWnd, &ps);
+		InvalidateRect(infoWnd, 0, true);
+		UpdateWindow(infoWnd);
 		break;
 	}
 
@@ -412,6 +476,48 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 	case WM_DESTROY:
 		KillTimer(hWnd, COMMAND_TIMER);
 		KillTimer(hWnd, SWING_TIMER);
+		PostQuitMessage(0);
+		break;
+
+	default:
+		return DefWindowProc(hWnd, message, wParam, lParam);
+	}
+	return 0;
+}
+
+LRESULT CALLBACK InfoWndProc(HWND hWnd,
+	UINT message,
+	WPARAM wParam,
+	LPARAM lParam)
+{
+	PAINTSTRUCT ps;
+	HDC hdc;
+
+	static WCHAR text[1024];
+
+	switch (message)
+	{
+	case WM_CREATE:
+	{
+		
+		break;
+	}
+
+	case WM_PAINT:
+	{
+		hdc = BeginPaint(hWnd, &ps);
+		SetBkMode(hdc, TRANSPARENT);
+		for (int i = 0; i < PLAYER_COUNT; ++i)
+		{
+			int cnt = wsprintf(text, L"Игрок №%d: %d/100", i, players[i].health);
+			TextOut(hdc, 100, 50 * (i + 1), text, cnt);
+		}
+		EndPaint(hWnd, &ps);
+		break;
+	}
+
+	case WM_DESTROY:
+		
 		PostQuitMessage(0);
 		break;
 

@@ -15,6 +15,8 @@
 #define IDD_FSDIALOG                    129
 #define IDC_BUTTON1                     1001
 #define IDC_BUTTON2                     1003
+#define IDC_BUTTON3                     1004
+#define IDC_BUTTON4                     1005
 #define IDC_STATIC                      -1
 
 // Next default values for new objects
