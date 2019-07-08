@@ -44,92 +44,12 @@ public class NinjaVarsAdvancedListener : INinjaVarsListener
         }
     }
 
-    public void EnterIntOperand([NotNull] NinjaVarsParser.IntOperandContext context)
-    {
-        
-    }
-
-    public void ExitIntOperand([NotNull] NinjaVarsParser.IntOperandContext context)
-    {
-        
-    }
-
-    public void EnterIntTerm([NotNull] NinjaVarsParser.IntTermContext context)
-    {
-        
-    }
-
-    public void ExitIntTerm([NotNull] NinjaVarsParser.IntTermContext context)
-    {
-        
-    }
-
-    public void EnterIntExpr([NotNull] NinjaVarsParser.IntExprContext context)
-    {
-        
-    }
-
-    public void ExitIntExpr([NotNull] NinjaVarsParser.IntExprContext context)
-    {
-        
-    }
-
-    public void EnterIntExprEx([NotNull] NinjaVarsParser.IntExprExContext context)
-    {
-        
-    }
-
-    public void ExitIntExprEx([NotNull] NinjaVarsParser.IntExprExContext context)
-    {
-        
-    }
-
     public void EnterOperation([NotNull] NinjaVarsParser.OperationContext context)
     {
         
     }
 
     public void ExitOperation([NotNull] NinjaVarsParser.OperationContext context)
-    {
-        
-    }
-
-    public void EnterDoubleOperand([NotNull] NinjaVarsParser.DoubleOperandContext context)
-    {
-        
-    }
-
-    public void ExitDoubleOperand([NotNull] NinjaVarsParser.DoubleOperandContext context)
-    {
-        
-    }
-
-    public void EnterDoubleTerm([NotNull] NinjaVarsParser.DoubleTermContext context)
-    {
-        
-    }
-
-    public void ExitDoubleTerm([NotNull] NinjaVarsParser.DoubleTermContext context)
-    {
-        
-    }
-
-    public void EnterDoubleExpr([NotNull] NinjaVarsParser.DoubleExprContext context)
-    {
-        
-    }
-
-    public void ExitDoubleExpr([NotNull] NinjaVarsParser.DoubleExprContext context)
-    {
-        
-    }
-
-    public void EnterDoubleExprEx([NotNull] NinjaVarsParser.DoubleExprExContext context)
-    {
-        
-    }
-
-    public void ExitDoubleExprEx([NotNull] NinjaVarsParser.DoubleExprExContext context)
     {
         
     }
@@ -170,6 +90,46 @@ public class NinjaVarsAdvancedListener : INinjaVarsListener
     }
 
     public void ExitDeclare([NotNull] NinjaVarsParser.DeclareContext context)
+    {
+        
+    }
+
+    public void EnterAriphOperand([NotNull] NinjaVarsParser.AriphOperandContext context)
+    {
+        
+    }
+
+    public void ExitAriphOperand([NotNull] NinjaVarsParser.AriphOperandContext context)
+    {
+        
+    }
+
+    public void EnterAriphTerm([NotNull] NinjaVarsParser.AriphTermContext context)
+    {
+        
+    }
+
+    public void ExitAriphTerm([NotNull] NinjaVarsParser.AriphTermContext context)
+    {
+        
+    }
+
+    public void EnterAriphExpr([NotNull] NinjaVarsParser.AriphExprContext context)
+    {
+        
+    }
+
+    public void ExitAriphExpr([NotNull] NinjaVarsParser.AriphExprContext context)
+    {
+        
+    }
+
+    public void EnterAriphExprEx([NotNull] NinjaVarsParser.AriphExprExContext context)
+    {
+        
+    }
+
+    public void ExitAriphExprEx([NotNull] NinjaVarsParser.AriphExprExContext context)
     {
         
     }

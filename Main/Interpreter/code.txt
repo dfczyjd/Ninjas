@@ -1,4 +1,4 @@
-int c = 1
-int a = c + 1;
-c += a
-
+int a = 2
+double b = 3
+c /= a
+bool c = b < a

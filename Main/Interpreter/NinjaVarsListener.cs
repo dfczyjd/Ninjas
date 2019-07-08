@@ -54,85 +54,45 @@ public interface INinjaVarsListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitOperation([NotNull] NinjaVarsParser.OperationContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="NinjaVarsParser.intOperand"/>.
+	/// Enter a parse tree produced by <see cref="NinjaVarsParser.ariphOperand"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterIntOperand([NotNull] NinjaVarsParser.IntOperandContext context);
+	void EnterAriphOperand([NotNull] NinjaVarsParser.AriphOperandContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="NinjaVarsParser.intOperand"/>.
+	/// Exit a parse tree produced by <see cref="NinjaVarsParser.ariphOperand"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitIntOperand([NotNull] NinjaVarsParser.IntOperandContext context);
+	void ExitAriphOperand([NotNull] NinjaVarsParser.AriphOperandContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="NinjaVarsParser.intTerm"/>.
+	/// Enter a parse tree produced by <see cref="NinjaVarsParser.ariphTerm"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterIntTerm([NotNull] NinjaVarsParser.IntTermContext context);
+	void EnterAriphTerm([NotNull] NinjaVarsParser.AriphTermContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="NinjaVarsParser.intTerm"/>.
+	/// Exit a parse tree produced by <see cref="NinjaVarsParser.ariphTerm"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitIntTerm([NotNull] NinjaVarsParser.IntTermContext context);
+	void ExitAriphTerm([NotNull] NinjaVarsParser.AriphTermContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="NinjaVarsParser.intExpr"/>.
+	/// Enter a parse tree produced by <see cref="NinjaVarsParser.ariphExpr"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterIntExpr([NotNull] NinjaVarsParser.IntExprContext context);
+	void EnterAriphExpr([NotNull] NinjaVarsParser.AriphExprContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="NinjaVarsParser.intExpr"/>.
+	/// Exit a parse tree produced by <see cref="NinjaVarsParser.ariphExpr"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitIntExpr([NotNull] NinjaVarsParser.IntExprContext context);
+	void ExitAriphExpr([NotNull] NinjaVarsParser.AriphExprContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="NinjaVarsParser.intExprEx"/>.
+	/// Enter a parse tree produced by <see cref="NinjaVarsParser.ariphExprEx"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterIntExprEx([NotNull] NinjaVarsParser.IntExprExContext context);
+	void EnterAriphExprEx([NotNull] NinjaVarsParser.AriphExprExContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="NinjaVarsParser.intExprEx"/>.
+	/// Exit a parse tree produced by <see cref="NinjaVarsParser.ariphExprEx"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitIntExprEx([NotNull] NinjaVarsParser.IntExprExContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="NinjaVarsParser.doubleOperand"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterDoubleOperand([NotNull] NinjaVarsParser.DoubleOperandContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="NinjaVarsParser.doubleOperand"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitDoubleOperand([NotNull] NinjaVarsParser.DoubleOperandContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="NinjaVarsParser.doubleTerm"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterDoubleTerm([NotNull] NinjaVarsParser.DoubleTermContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="NinjaVarsParser.doubleTerm"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitDoubleTerm([NotNull] NinjaVarsParser.DoubleTermContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="NinjaVarsParser.doubleExpr"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterDoubleExpr([NotNull] NinjaVarsParser.DoubleExprContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="NinjaVarsParser.doubleExpr"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitDoubleExpr([NotNull] NinjaVarsParser.DoubleExprContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="NinjaVarsParser.doubleExprEx"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterDoubleExprEx([NotNull] NinjaVarsParser.DoubleExprExContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="NinjaVarsParser.doubleExprEx"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitDoubleExprEx([NotNull] NinjaVarsParser.DoubleExprExContext context);
+	void ExitAriphExprEx([NotNull] NinjaVarsParser.AriphExprExContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="NinjaVarsParser.boolOperand"/>.
 	/// </summary>

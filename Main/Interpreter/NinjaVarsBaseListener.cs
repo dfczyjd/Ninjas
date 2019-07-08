@@ -62,101 +62,53 @@ public partial class NinjaVarsBaseListener : INinjaVarsListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitOperation([NotNull] NinjaVarsParser.OperationContext context) { }
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="NinjaVarsParser.intOperand"/>.
+	/// Enter a parse tree produced by <see cref="NinjaVarsParser.ariphOperand"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterIntOperand([NotNull] NinjaVarsParser.IntOperandContext context) { }
+	public virtual void EnterAriphOperand([NotNull] NinjaVarsParser.AriphOperandContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="NinjaVarsParser.intOperand"/>.
+	/// Exit a parse tree produced by <see cref="NinjaVarsParser.ariphOperand"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitIntOperand([NotNull] NinjaVarsParser.IntOperandContext context) { }
+	public virtual void ExitAriphOperand([NotNull] NinjaVarsParser.AriphOperandContext context) { }
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="NinjaVarsParser.intTerm"/>.
+	/// Enter a parse tree produced by <see cref="NinjaVarsParser.ariphTerm"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterIntTerm([NotNull] NinjaVarsParser.IntTermContext context) { }
+	public virtual void EnterAriphTerm([NotNull] NinjaVarsParser.AriphTermContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="NinjaVarsParser.intTerm"/>.
+	/// Exit a parse tree produced by <see cref="NinjaVarsParser.ariphTerm"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitIntTerm([NotNull] NinjaVarsParser.IntTermContext context) { }
+	public virtual void ExitAriphTerm([NotNull] NinjaVarsParser.AriphTermContext context) { }
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="NinjaVarsParser.intExpr"/>.
+	/// Enter a parse tree produced by <see cref="NinjaVarsParser.ariphExpr"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterIntExpr([NotNull] NinjaVarsParser.IntExprContext context) { }
+	public virtual void EnterAriphExpr([NotNull] NinjaVarsParser.AriphExprContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="NinjaVarsParser.intExpr"/>.
+	/// Exit a parse tree produced by <see cref="NinjaVarsParser.ariphExpr"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitIntExpr([NotNull] NinjaVarsParser.IntExprContext context) { }
+	public virtual void ExitAriphExpr([NotNull] NinjaVarsParser.AriphExprContext context) { }
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="NinjaVarsParser.intExprEx"/>.
+	/// Enter a parse tree produced by <see cref="NinjaVarsParser.ariphExprEx"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterIntExprEx([NotNull] NinjaVarsParser.IntExprExContext context) { }
+	public virtual void EnterAriphExprEx([NotNull] NinjaVarsParser.AriphExprExContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="NinjaVarsParser.intExprEx"/>.
+	/// Exit a parse tree produced by <see cref="NinjaVarsParser.ariphExprEx"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitIntExprEx([NotNull] NinjaVarsParser.IntExprExContext context) { }
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="NinjaVarsParser.doubleOperand"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterDoubleOperand([NotNull] NinjaVarsParser.DoubleOperandContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="NinjaVarsParser.doubleOperand"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitDoubleOperand([NotNull] NinjaVarsParser.DoubleOperandContext context) { }
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="NinjaVarsParser.doubleTerm"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterDoubleTerm([NotNull] NinjaVarsParser.DoubleTermContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="NinjaVarsParser.doubleTerm"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitDoubleTerm([NotNull] NinjaVarsParser.DoubleTermContext context) { }
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="NinjaVarsParser.doubleExpr"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterDoubleExpr([NotNull] NinjaVarsParser.DoubleExprContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="NinjaVarsParser.doubleExpr"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitDoubleExpr([NotNull] NinjaVarsParser.DoubleExprContext context) { }
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="NinjaVarsParser.doubleExprEx"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterDoubleExprEx([NotNull] NinjaVarsParser.DoubleExprExContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="NinjaVarsParser.doubleExprEx"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitDoubleExprEx([NotNull] NinjaVarsParser.DoubleExprExContext context) { }
+	public virtual void ExitAriphExprEx([NotNull] NinjaVarsParser.AriphExprExContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="NinjaVarsParser.boolOperand"/>.
 	/// <para>The default implementation does nothing.</para>

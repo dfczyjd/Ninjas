@@ -24,119 +24,253 @@ options
     }
  
     public static Dictionary<string, VarData> varTable = new Dictionary<string, VarData>();
+    
+    public static void Debug(string line)
+    {
+        Console.WriteLine(line);
+    }
+    
+    public static void Error(string message)
+    {
+        ConsoleColor curr = Console.ForegroundColor;
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine(message);
+        Console.ForegroundColor = curr;
+    }
 }
 
 program : (operation OPSEP)*;
 
-operation : intExprEx | doubleExprEx | boolExprEx
+operation : ariphExprEx | boolExprEx
           | declare ;
 
-intOperand ://returns [int value]:
-             INT
-            /*{
-            $value = 1;
-            }*/
-           | ID
-             /*{
-              $value = varTable[$ID.text].value;
-             }*/
-           | LPAREN intExprEx RPAREN
-             /*{
-              $value = $intExprEx.value;
-             }*/;
-intTerm ://returns [int value]:
-          intOperand
-          /*{
-           $value = $intOperand.value;
-          }*/
-        | intTerm MUL intOperand
-          /*{
-           $value = $intTerm.value * $intOperand.value;
-          }*/
-        | intTerm DIV intOperand
-          /*{
-           $value = $intTerm.value / $intOperand.value;
-          }*/;
-intExpr ://returns [int value]:
-          intTerm
-          {
-           //$value = $intTerm.value;
-          }
-        | intExpr ADD intTerm
-          /*{
-           $value = $intTerm.value + $intOperand.value;
-          }*/
-        | intExpr SUB intTerm
-          /*{
-           $value = $intTerm.value - $intOperand.value;
-          }*/;
-intExprEx ://returns [int value]:
-            intExpr
-            /*{
-             $value = $intExpr.value;
-            }*/
-          | ID ASSIGN intExprEx
-            /*{
-             VarData data = varTable[$ID.text];
-             if (data.type != VarData.VarType.Int)
-                Console.WriteLine("Int expected, " + data.type + " given");
-             $value = data.value = $intExprEx.value;
-            }*/
-          | ID ADDASSIGN intExprEx
-            /*{
-             VarData data = varTable[$ID.text];
-             if (data.type != VarData.VarType.Int)
-                Console.WriteLine("Int expected, " + data.type + " given");
-             $value = data.value += $intExpr.value;
-            }*/
-          | ID SUBASSIGN intExprEx
-            /*{
-             VarData data = varTable[$ID.text];
-             if (data.type != VarData.VarType.Int)
-                Console.WriteLine("Int expected, " + data.type + " given");
-             $value = data.value -= $intExprEx.value;
-            }*/
-          | ID MULASSIGN intExprEx
-            /*{
-             VarData data = varTable[$ID.text];
-             if (data.type != VarData.VarType.Int)
-                Console.WriteLine("Int expected, " + data.type + " given");
-             $value = data.value *= $intExprEx.value;
-            }*/
-          | ID DIVASSIGN intExprEx
-            /*{
-             /*VarData data = varTable[$ID.text];
-             if (data.type != VarData.VarType.Int)
-                Console.WriteLine("Int expected, " + data.type + " given");
-             $value = data.value /= $intExprEx.value;
-            }*/;
+ariphOperand returns [dynamic value]:
+               INT
+               {
+                   $value = int.Parse($INT.text);
+               }
+             | DOUBLE
+               {
+                   $value = double.Parse($DOUBLE.text);
+               }
+             | ID
+               {
+                   try
+                   {
+                     $value = varTable[$ID.text].value;
+                   }
+                   catch (KeyNotFoundException)
+                   {
+                     Error("Variable " + $ID.text + " does not exist");
+                   }
+               }
+             | LPAREN ariphExprEx RPAREN
+               {
+                   $value = $ariphExprEx.value;
+               };
+ariphTerm returns [dynamic value]:
+            ariphOperand
+            {
+                $value = $ariphOperand.value;
+            }
+          | left=ariphTerm MUL right=ariphOperand
+            {
+                $value = $left.value * $right.value;
+            }
+          | left=ariphTerm DIV right=ariphOperand
+            {
+                $value = $left.value / $right.value;
+            };
+ariphExpr returns [dynamic value]:
+            ariphTerm
+            {
+                $value = $ariphTerm.value;
+            }
+          | left=ariphExpr ADD right=ariphTerm
+            {
+                $value = $left.value + $right.value;
+            }
+          | left=ariphExpr SUB right=ariphTerm
+            {
+                $value = $left.value - $right.value;
+            };
+ariphExprEx returns [dynamic value]:
+            ariphExpr
+            {
+                $value = $ariphExpr.value;
+            }
+          | ID ASSIGN ariphExprEx
+            {
+                try
+                {
+                    VarData data = varTable[$ID.text];
+                    if (data.value.GetType() == $ariphExprEx.value.GetType())
+                        data.value = $ariphExprEx.value;
+                    else if (data.type == VarData.VarType.Double)
+                        data.value = (double)$ariphExprEx.value;
+                    else
+                        Error("Can't convert \"" + $ariphExprEx.text + "\" to Int");
+                }
+                catch (KeyNotFoundException)
+                {
+                  Error("Variable " + $ID.text + " does not exist");
+                }
+            }
+          | ID ADDASSIGN ariphExprEx
+            {
+                try
+                {
+                    VarData data = varTable[$ID.text];
+                    if (data.value.GetType() == $ariphExprEx.value.GetType())
+                        data.value += $ariphExprEx.value;
+                    else if (data.type == VarData.VarType.Double)
+                        data.value += (double)$ariphExprEx.value;
+                    else
+                        Error("Can't convert \"" + $ariphExprEx.text + "\" to Int");
+                }
+                catch (KeyNotFoundException)
+                {
+                  Error("Variable " + $ID.text + " does not exist");
+                }
+            }
+          | ID SUBASSIGN ariphExprEx
+            {
+                try
+                {
+                    VarData data = varTable[$ID.text];
+                    if (data.value.GetType() == $ariphExprEx.value.GetType())
+                        data.value -= $ariphExprEx.value;
+                    else if (data.type == VarData.VarType.Double)
+                        data.value -= (double)$ariphExprEx.value;
+                    else
+                        Error("Can't convert \"" + $ariphExprEx.text + "\" to Int");
+                }
+                catch (KeyNotFoundException)
+                {
+                  Error("Variable " + $ID.text + " does not exist");
+                }
+            }
+          | ID MULASSIGN ariphExprEx
+            {
+                try
+                {
+                    VarData data = varTable[$ID.text];
+                    if (data.value.GetType() == $ariphExprEx.value.GetType())
+                        data.value *= $ariphExprEx.value;
+                    else if (data.type == VarData.VarType.Double)
+                        data.value *= (double)$ariphExprEx.value;
+                    else
+                        Error("Can't convert \"" + $ariphExprEx.text + "\" to Int");
+                }
+                catch (KeyNotFoundException)
+                {
+                  Error("Variable " + $ID.text + " does not exist");
+                }
+            }
+          | ID DIVASSIGN ariphExprEx
+            {
+                try
+                {
+                    VarData data = varTable[$ID.text];
+                    if (data.value.GetType() == $ariphExprEx.value.GetType())
+                        data.value /= $ariphExprEx.value;
+                    else if (data.type == VarData.VarType.Double)
+                        data.value /= (double)$ariphExprEx.value;
+                    else
+                        Error("Can't convert \"" + $ariphExprEx.text + "\" to Int");
+                }
+                catch (KeyNotFoundException)
+                {
+                  Error("Variable " + $ID.text + " does not exist");
+                }
+            };
 
-doubleOperand : DOUBLE | ID
-              | LPAREN doubleExprEx RPAREN ;
-doubleTerm : doubleOperand
-        | doubleTerm MUL doubleOperand
-        | doubleTerm DIV doubleOperand ;
-doubleExpr : doubleTerm
-        | doubleExpr ADD doubleTerm
-        | doubleExpr SUB doubleTerm ;
-doubleExprEx : doubleExpr
-          | ID ASSIGN doubleExprEx
-          | ID ADDASSIGN doubleExprEx
-          | ID SUBASSIGN doubleExprEx
-          | ID MULASSIGN doubleExprEx
-          | ID DIVASSIGN doubleExprEx ;
-
-boolOperand : BOOL | ID
-            | LPAREN boolExprEx RPAREN ;
-boolExpr : boolOperand
-         | boolOperand OR boolExpr
-         | boolOperand AND boolExpr
-         | boolOperand XOR boolExpr ;
-boolExprEx : boolExpr
+boolOperand returns [bool value]:
+              BOOL
+              {
+                  $value = bool.Parse($BOOL.text);
+              }
+            | ID
+              {
+                  try
+                  {
+                      $value = varTable[$ID.text].value;
+                  }
+                  catch (KeyNotFoundException)
+                  {
+                    Error("Variable " + $ID.text + " does not exist");
+                  }
+              }
+            | left=ariphExprEx LESS right=ariphExprEx
+              {
+                  $value = $left.value < $right.value;
+              }
+            | left=ariphExprEx GREATER right=ariphExprEx
+              {
+                  $value = $left.value > $right.value;
+              }
+            | left=ariphExprEx EQUAL right=ariphExprEx
+              {
+                  $value = $left.value == $right.value;
+              }
+            | left=ariphExprEx NOTEQUAL right=ariphExprEx
+              {
+                  $value = $left.value != $right.value;
+              }
+            | left=ariphExprEx LESSEQUAL right=ariphExprEx
+              {
+                  $value = $left.value <= $right.value;
+              }
+            | left=ariphExprEx GREQUAL right=ariphExprEx
+              {
+                  $value = $left.value >= $right.value;
+              }
+            /*| leftBool=boolExprEx EQUAL rightBool=boolExprEx
+              {
+                  $value = $leftBool.value == $rightBool.value;
+              }
+            | leftBool=boolExprEx NOTEQUAL rightBool=boolExprEx
+              {
+                  $value = $leftBool.value != $rightBool.value;
+              }
+            | LPAREN boolExprEx RPAREN
+              {
+                  $value = $boolExprEx.value;
+              }*/;
+boolExpr returns [bool value]:
+           boolOperand
+           {
+               $value = $boolOperand.value;
+           }
+         | left=boolOperand OR right=boolExpr
+           {
+               $value = $left.value || $right.value;
+           }
+         | left=boolOperand AND right=boolExpr
+           {
+               $value = $left.value && $right.value;
+           };
+boolExprEx returns [bool value]:
+           boolExpr
+           {
+              $value = $boolExpr.value;
+           }
          | ID ASSIGN boolExprEx
-         | ID ANDASSIGN boolExprEx
-         | ID ORASSIGN boolExprEx
-         | ID XORASSIGN boolExprEx ;
+           {
+              try
+              {
+                VarData data = varTable[$ID.text];
+              }
+              catch (KeyNotFoundException)
+              {
+                Error("Variable " + $ID.text + " does not exist");
+              }
+              if (data.type != VarData.VarType.Bool)
+              {
+                  Error("Can't convert " + data.type + " to Bool");
+              }
+              $value = data.value = $boolExprEx.value;
+           };
 
 //declaration
 declare : INTKEY ID
@@ -147,29 +281,82 @@ declare : INTKEY ID
                 value = 0
            };
            varTable.Add($ID.text, newVar);
-           Console.WriteLine("Create var " + $ID.text);
+           Debug("Create var " + $ID.text);
           }
-          (ASSIGN intExprEx)?
+          (ASSIGN ariphExprEx)?
           {
-           if ($intExprEx.text != null)
+           if ($ariphExprEx.text != null)
            {
-                varTable[$ID.text].value = $intExprEx.value;
-                Console.WriteLine("\tAssigning it value of " + $intExprEx.text);                
+                Debug("\tAssigning it value of " + $ariphExprEx.text);
+                try
+                {
+                  VarData data = varTable[$ID.text];
+                  if (data.value.GetType() == $ariphExprEx.value.GetType())
+                    data.value = $ariphExprEx.value;
+                  else
+                    Error("Can't convert \"" + $ariphExprEx.text + "\" to Int");
+                }
+                catch (KeyNotFoundException)
+                {
+                  Error("Variable " + $ID.text + " does not exist");
+                }
            }
-           }
+          }
           
         | DOUBLEKEY ID
           {
            VarData newVar = new VarData
            {
                 type = VarData.VarType.Double,
-                value = 0
+                value = 0.0
            };
            varTable.Add($ID.text, newVar);
-           Console.WriteLine("Create var " + $ID.text);
+           Debug("Create var " + $ID.text);
           }
-          (ASSIGN doubleExprEx)?
-        | BOOLKEY ID (ASSIGN boolExprEx)? ;
+          (ASSIGN ariphExprEx)?
+          {
+           if ($ariphExprEx.text != null)
+           {
+                Debug("\tAssigning it value of " + $ariphExprEx.text);
+                try
+                {
+                  VarData data = varTable[$ID.text];
+                  if (data.value.GetType() == $ariphExprEx.value.GetType())
+                    data.value = $ariphExprEx.value;
+                  else if (data.type == VarData.VarType.Double)
+                    data.value = (double)$ariphExprEx.value;
+                }
+                catch (KeyNotFoundException)
+                {
+                  Error("Variable " + $ID.text + " does not exist");
+                }
+           }
+          }
+        | BOOLKEY ID
+          {
+           VarData newVar = new VarData
+           {
+                type = VarData.VarType.Bool,
+                value = false
+           };
+           varTable.Add($ID.text, newVar);
+           Debug("Create var " + $ID.text);
+          }
+          (ASSIGN boolExprEx)?
+          {
+           if ($boolExprEx.text != null)
+           {
+                Debug("\tAssigning it value of " + $boolExprEx.text);
+                try
+                {
+                  varTable[$ID.text].value = $boolExprEx.value;
+                }
+                catch (KeyNotFoundException)
+                {
+                  Error("Variable " + $ID.text + " does not exist");
+                }
+           }
+          };
 
 OPSEP   : '\n' ;
 
@@ -188,12 +375,14 @@ ADDASSIGN   : '+=' ;
 SUBASSIGN   : '-=' ;
 MULASSIGN   : '*=' ;
 DIVASSIGN   : '/=' ;
-AND     : '&&';
-OR      : '||';
-XOR     : '^';
-ANDASSIGN   : '&&=' ;
-ORASSIGN    : '||=' ;
-XORASSIGN   : '^=' ;
+AND       : '&&' ;
+OR        : '||' ;
+LESS      : '<' ;
+GREATER   : '>' ;
+EQUAL     : '==' ;
+NOTEQUAL  : '!=' ;
+LESSEQUAL : '<=' ;
+GREQUAL   : '>=' ;
 LPAREN  : '(' ;
 RPAREN  : ')' ;
 
@@ -202,7 +391,7 @@ WS : [ \t\r]+ -> skip ;
 
 //literals
 BOOL    : ('true'|'false') ;
-DOUBLE  : [+-]?DIGIT*[.]DIGIT+ ;
+DOUBLE  : [+-]?DIGIT*[,]DIGIT+ ;
 INT     : [+-]?DIGIT+ ;
 
 ID  : LETTER (LETTER | DIGIT)* ;
