@@ -24,7 +24,7 @@ public class Command
 public static class Main
 {
     static RealInterpreter[] ints = new RealInterpreter[4];
-    static StreamWriter sw = new StreamWriter("../log.txt");
+    static StreamWriter sw = new StreamWriter("log.txt");
 
     public static Thread[] t = new Thread[4];
     public static ManualResetEvent[] mre = new ManualResetEvent[4];
@@ -40,7 +40,7 @@ public static class Main
 
     public static void Log(string value)
     {
-        sw.WriteLine(value);
+        sw.WriteLine("[" + DateTime.Now + "] " + value);
         sw.Flush();
     }
 
@@ -101,15 +101,13 @@ public static class Main
             if (ints[id].commands.Count == 0)
                 mre[id].Set();
             if (ints[id].commands.Count == 0)
-                return Serialize(new Command());
-            if (ints[id].commands.Peek().type == 1)
             {
-                Log("Operations:");
-                foreach (var elem in ints[id].commands)
-                {
-                    Log(elem.type + " " + elem.param);
-                }
+                if (id == 0)
+                    Log("interpreter #" + id + " executing " + Serialize(new Command()));
+                return Serialize(new Command());
             }
+            if (id == 0)
+                Log("interpreter #" + id + " executing " + Serialize(ints[id].commands.Peek()));
             return Serialize(ints[id].commands.Dequeue());
         }
         catch (Exception exc)

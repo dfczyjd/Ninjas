@@ -1,39 +1,64 @@
-#0 entered pause
-#0 left pause
-Func getPositionX returning 100
-0
-#0 entered pause
-#0 left pause
-Func getPositionX returning 100
-0
-#0 entered pause
-#0 left pause
-Func getPositionX returning 100
-#0 entered pause
-Operations:
-1 20
-#0 left pause
-Func getPositionX returning 110
-#0 entered pause
-Operations:
-1 20
-#0 left pause
-Func getPositionX returning 120
-#0 entered pause
-Operations:
-1 20
-#0 left pause
-Func getPositionX returning 130
-#0 entered pause
-Operations:
-1 20
-#0 left pause
-Func getPositionX returning 140
-#0 entered pause
-Operations:
-1 20
-#0 left pause
-Func getPositionX returning 150
-0
-0
-1
+[12.07.2019 13:18:01] interpreter #0 executing 0 0
+[12.07.2019 13:18:01] interpreter #0 executing 0 0
+[12.07.2019 13:18:01] interpreter #0 executing 0 0
+[12.07.2019 13:18:01] #0 entered pause
+[12.07.2019 13:18:02] interpreter #0 executing 0 0
+[12.07.2019 13:18:02] interpreter #0 executing 0 0
+[12.07.2019 13:18:02] #0 left pause
+[12.07.2019 13:18:02] Func getPositionX returning 100
+[12.07.2019 13:18:02] #0 entered pause
+[12.07.2019 13:18:02] interpreter #0 executing 0 0
+[12.07.2019 13:18:02] interpreter #0 executing 0 0
+[12.07.2019 13:18:02] Func getPositionX returning 100
+[12.07.2019 13:18:02] #0 entered pause
+[12.07.2019 13:18:02] #0 left pause
+[12.07.2019 13:18:02] #0 left pause
+[12.07.2019 13:18:02] Func getPositionX returning 100
+[12.07.2019 13:18:02] #0 entered pause
+[12.07.2019 13:18:02] interpreter #0 executing 1 20
+[12.07.2019 13:18:02] interpreter #0 executing 0 0
+[12.07.2019 13:18:02] interpreter #0 executing 0 0
+[12.07.2019 13:18:02] #0 left pause
+[12.07.2019 13:18:02] Func getPositionX returning 110
+[12.07.2019 13:18:02] #0 entered pause
+[12.07.2019 13:18:02] interpreter #0 executing 1 20
+[12.07.2019 13:18:02] interpreter #0 executing 0 0
+[12.07.2019 13:18:02] interpreter #0 executing 0 0
+[12.07.2019 13:18:02] #0 left pause
+[12.07.2019 13:18:02] Func getPositionX returning 120
+[12.07.2019 13:18:02] #0 entered pause
+[12.07.2019 13:18:02] interpreter #0 executing 1 20
+[12.07.2019 13:18:02] interpreter #0 executing 0 0
+[12.07.2019 13:18:02] interpreter #0 executing 0 0
+[12.07.2019 13:18:02] #0 left pause
+[12.07.2019 13:18:02] Func getPositionX returning 130
+[12.07.2019 13:18:02] #0 entered pause
+[12.07.2019 13:18:03] interpreter #0 executing 1 20
+[12.07.2019 13:18:03] interpreter #0 executing 0 0
+[12.07.2019 13:18:03] interpreter #0 executing 0 0
+[12.07.2019 13:18:03] #0 left pause
+[12.07.2019 13:18:03] Func getPositionX returning 140
+[12.07.2019 13:18:03] #0 entered pause
+[12.07.2019 13:18:03] interpreter #0 executing 1 20
+[12.07.2019 13:18:03] #0 left pause
+executing 0 0
+[12.07.2019 13:18:03] #0 left pause
+[12.07.2019 13:18:03] Func getPositionX returning 150
+[12.07.2019 13:18:03] interpreter #0 executing 2 1,5707963267949
+[12.07.2019 13:18:03] interpreter #0 executing 1 20
+[12.07.2019 13:18:03] interpreter #0 executing 1 20
+[12.07.2019 13:18:03] interpreter #0 executing 1 20
+[12.07.2019 13:18:03] interpreter #0 executing 1 20
+[12.07.2019 13:18:04] interpreter #0 executing 1 20
+[12.07.2019 13:18:04] interpreter #0 executing 0 0
+[12.07.2019 13:18:04] interpreter #0 executing 0 0
+[12.07.2019 13:18:04] interpreter #0 executing 0 0
+[12.07.2019 13:18:04] interpreter #0 executing 0 0
+[12.07.2019 13:18:04] interpreter #0 executing 0 0
+[12.07.2019 13:18:04] interpreter #0 executing 0 0
+[12.07.2019 13:18:04] interpreter #0 executing 0 0
+[12.07.2019 13:18:04] interpreter #0 executing 0 0
+[12.07.2019 13:18:05] interpreter #0 executing 0 0
+[12.07.2019 13:18:05] interpreter #0 executing 0 0
+[12.07.2019 13:18:05] interpreter #0 executing 0 0
+[12.07.2019 13:18:05] interpreter #0 executing 0 0
