@@ -129,7 +129,7 @@ WCHAR *OpenFileDlg(HWND hWnd)
 	{
 		L"Все файлы", L"*.*" }
 	};
-
+	int error = GetLastError();
 	WCHAR *filename = NULL;
 	IFileDialog *open = NULL;
 	HRESULT res = CoCreateInstance(CLSID_FileOpenDialog, NULL, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(&open));
@@ -163,12 +163,13 @@ WCHAR *OpenFileDlg(HWND hWnd)
 		MessageBox(hWnd, L"Ошибка загрузки!", NULL, MB_OK);
 		return NULL;
 	}
-	res = open->SetDefaultExtension(L"pmap");
+	res = open->SetDefaultExtension(L"npr");
 	if (FAILED(res))
 	{
 		MessageBox(hWnd, L"Ошибка загрузки!", NULL, MB_OK);
 		return NULL;
 	}
+	error = GetLastError();
 	res = open->Show(hWnd);
 	if (FAILED(res))
 		return NULL;
@@ -283,10 +284,9 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 		WINDOWINFO info;
 		GetWindowInfo(hWnd, &info);
 		MoveWindow(infoWnd, 700, 0, client.right - 700, client.bottom, true);
-		/* for testing without selecting code file
-		WCHAR name1[] = L"C:/LatinName/nnj.npr",
-			name2[] = L"C:/LatinName/nnj_void.npr";
-		players[0].interpreter.SetCode(name1);
+		/*WCHAR name1[] = L"C:/LatinName/empty.npr",
+			name2[] = L"C:/LatinName/Find1.npr";
+		players[0].interpreter.SetCode(name2);
 		players[1].interpreter.SetCode(name1);
 		players[2].interpreter.SetCode(name1);
 		players[3].interpreter.SetCode(name1);*/

@@ -212,6 +212,12 @@ public partial class NinjaParser : Parser {
 	        {
 	        	parser.curBlock = this;
 	        	Debug($"===Entering fun {name} with params {ParamListToString(paramList)}");
+            Debug($"{name} contains:");
+            foreach (var sm in operations)
+            {
+                Debug(sm.ToString());
+            }
+            Debug("end of main block");
 	            foreach(var sm in operations)
 	            {
 	            	if(sm.GetType().IsSubclassOf(typeof(OperationClass)))
@@ -222,9 +228,9 @@ public partial class NinjaParser : Parser {
 	            foreach (var elem in varTable)
 	            {
 	            	if (elem.Value.isAssigned)
-	                	Console.WriteLine("\t" + elem.Key + " is " + elem.Value.type + " with value " + elem.Value.value);
+	                	Debug("\t" + elem.Key + " is " + elem.Value.type + " with value " + elem.Value.value);
 	                else
-	                	Console.WriteLine("\t" + elem.Key + " is " + elem.Value.type + ", value not assigned");
+	                	Debug("\t" + elem.Key + " is " + elem.Value.type + ", value not assigned");
 	            }
 	            Debug($"---End Vars of block met {name} ----");
 	            Debug($"===Exiting fun {name}");	
@@ -240,18 +246,22 @@ public partial class NinjaParser : Parser {
 	    public Dictionary<string, MethodData> metTable = new Dictionary<string, MethodData>();
 	    int depth = 0;
 	    string currentMet = "?";
+
+        public static StreamWriter sw = new StreamWriter("execlog.txt");
 	    
 	    public static void Debug(string line)
 	    {
-	        Console.WriteLine(line);
+	        sw.WriteLine(line);
+            sw.Flush();
 	    }
 	    
 	    public static void Error(string message)
 	    {
 	        ConsoleColor curr = Console.ForegroundColor;
 	        Console.ForegroundColor = ConsoleColor.Red;
-	        Console.WriteLine(message);
-	        Console.ForegroundColor = curr;
+            sw.WriteLine(message);
+            sw.Flush();
+            Console.ForegroundColor = curr;
 	    }
 	    
 	    public static bool CheckType(Type t, VarType vt)
@@ -408,90 +418,89 @@ public partial class NinjaParser : Parser {
 			{
 				if (callType == NinjaParser.CallType.Custom)
 				{
-					
 					if (parser.metTable.ContainsKey(name) && parser.CheckParams(this, parser.metTable[name]))
 					{		
-						Console.WriteLine($"Calling custom method {name} with params {ParamListToString(paramList)}");
-	                    						parser.metTable[name].Eval();
-	                    						if (returnType != ReturnType.Void && parser.metTable[name].returnType != ReturnType.Void)
-	                    						{
-	                    							var ret = parser.metTable[name].returnValue.Eval();
-	                    							if (!CheckType(ret.GetType(), parser.metTable[name].returnType)){
-	                    								throw new Exception($"Actual return is {ret.GetType()}, expected declared return type {parser.metTable[name].returnType}");
-	                    							}
-	                    							parser.curBlock = parent;
-	                    							Debug($"===fun {name} returned {ret}");
-	                    							return ret;	
-	                    						}
-	                    						if (returnType != parser.metTable[name].returnType)
-	                    							Error("Method declaration and call have different return types");
-	                    						parser.curBlock = parent;
-	                    						return null;
+						Debug($"Calling custom method {name} with params {ParamListToString(paramList)}");
+	                    parser.metTable[name].Eval();
+	                    if (returnType != ReturnType.Void && parser.metTable[name].returnType != ReturnType.Void)
+	                    {
+	                    	var ret = parser.metTable[name].returnValue.Eval();
+	                    	if (!CheckType(ret.GetType(), parser.metTable[name].returnType)){
+	                    		throw new Exception($"Actual return is {ret.GetType()}, expected declared return type {parser.metTable[name].returnType}");
+	                    	}
+	                    	parser.curBlock = parent;
+	                    	Debug($"===fun {name} returned {ret}");
+	                    	return ret;	
+	                    }
+	                    if (returnType != parser.metTable[name].returnType)
+	                    	Error("Method declaration and call have different return types");
+	                    parser.curBlock = parent;
+	                    return null;
 					}
 				}
 				else
 				{
 					if (parser.metTable.ContainsKey(name))
-	                					{
-	                						if (parser.CheckParams(this, parser.metTable[name]))
-	                						{
-	                							parser.Sleep();
-	                							dynamic ret = 0;
-	                							int reqid = (name == "getSelfId" ? 0 : paramList[0].value);
-	                							switch (name)
-	                							{
-	                								case "getSelfId":
-	                									ret = parser.id;
-	                									break;
+	                {
+	                	if (parser.CheckParams(this, parser.metTable[name]))
+	                	{
+	                		parser.Sleep();
+	                		dynamic ret = 0;
+	                		int reqid = (name == "getSelfId" ? -1 : paramList[0].value);
+	                		switch (name)
+	                		{
+	                			case "getSelfId":
+	                				ret = parser.id;
+	                				break;
 	                
-	                								case "getHealth":
-	                									ret = parser.health[reqid];
-	                									break;
+	                			case "getHealth":
+	                				ret = parser.health[reqid];
+	                				break;
 	                
-	                								case "getPositionX":
-	                									ret = parser.xPos[reqid];
-	                									break;
+	                			case "getPositionX":
+	                				ret = parser.xPos[reqid];
+	                				break;
 	                
-	                								case "getPositionY":
-	                									ret = parser.yPos[reqid];
-	                									break;
+	                			case "getPositionY":
+	                				ret = parser.yPos[reqid];
+	                				break;
 	                
-	                								case "getDirection":
-	                									ret = parser.dirs[reqid];
-	                									break;
-	                							}
-	                							Debug($"Calling builtin method {name} with params {ParamListToString(paramList)}, ret {ret}");
-	                							Main.Log("Func " + name + " for player #" + reqid + " returning " + ret);
-	                							return parser.metTable[name].returnValue = ret;
-	                						}
-	                					}
-	                					else
-	                					{
-	                						Debug($"Calling builtin method {name} with params {ParamListToString(paramList)}");
-	                						Command nw;
-	                						switch (name)
-	                						{
-	                							case "move":
-	                								nw = new Command(1, paramList[0].value.Eval());
-	                								parser.owner.commands.Enqueue(nw);
-	                								break;
-	                							case "turn":
-	                								nw = new Command(2, paramList[0].value.Eval());
-	                								parser.owner.commands.Enqueue(nw);
-	                								break;
-	                							case "hit":
-	                								nw = new Command(3);
-	                								parser.owner.commands.Enqueue(nw);
-	                								break;
-	                							case "shoot":
-	                								nw = new Command(4);
-	                								parser.owner.commands.Enqueue(nw);
-	                								break;
-	                							default:
-	                								Error($"Unknown builtin method {name}");
-	                								break;
-	                						}
-	                					}
+	                			case "getDirection":
+	                				ret = parser.dirs[reqid];
+	                				break;
+	                		}
+	                		Debug($"Calling builtin method {name} with params {ParamListToString(paramList)}, ret {ret}");
+	                		Main.Log("Func " + name + " for player #" + reqid + " returning " + ret + " of type " + ret.GetType());
+	                		return parser.metTable[name].returnValue = ret;
+	                	}
+	                }
+	                else
+	                {
+	                	Debug($"Calling builtin method {name} with params {ParamListToString(paramList)}");
+	                	Command nw;
+	                	switch (name)
+	                	{
+	                		case "move":
+	                			nw = new Command(1, paramList[0].value.Eval());
+	                			parser.owner.commands.Enqueue(nw);
+	                			break;
+	                		case "turn":
+	                			nw = new Command(2, paramList[0].value.Eval());
+	                			parser.owner.commands.Enqueue(nw);
+	                			break;
+	                		case "hit":
+	                			nw = new Command(3);
+	                			parser.owner.commands.Enqueue(nw);
+	                			break;
+	                		case "shoot":
+	                			nw = new Command(4);
+	                			parser.owner.commands.Enqueue(nw);
+	                			break;
+	                		default:
+	                			Error($"Unknown builtin method {name}");
+	                			break;
+	                	}
+	                }
 				}
 				return null;
 			}
@@ -639,9 +648,9 @@ public partial class NinjaParser : Parser {
 				string s = "";
 				foreach(var v in exprStack)
 				{
-					s += v.value;
+					s += v.value + " ";
 				}
-				//Console.WriteLine($"evaluating {s} from block {parser.curBlock.name}");
+				Debug($"evaluating {s}from block {parser.curBlock.name}");
 				List<ExprStackObject> stack = new List<ExprStackObject>();
 				foreach (var elem in exprStack)
 				{
@@ -860,7 +869,8 @@ public partial class NinjaParser : Parser {
 	                    								else if (data.type == VarType.Double)
 	                    									data.value = (double)rightval;
 	                    								else
-	                    									Error("Can't convert \"" + rightval + "\" to " + data.type);	
+	                    									Error("Can't convert \"" + rightval + "\" to " + data.type);
+                                Debug("Assigned " + rightVal + " of type " + rightVal.GetType() + " to " + left.value + " of type " + data.type);
 	                    								stack.Add(new ExprStackObject(data.value, parser));
 	                    							}
 	                    							catch (KeyNotFoundException e)
@@ -1322,7 +1332,7 @@ public partial class NinjaParser : Parser {
 			                metTable.Add("getPositionX", getPositionX);
 			                metTable.Add("getPositionY", getPositionY);
 			                metTable.Add("getDirection", getDirection);
-							metTable["main"].Eval();
+							//metTable["main"].Eval();
 
 			}
 		}

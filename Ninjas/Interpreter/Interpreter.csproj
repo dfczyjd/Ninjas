@@ -68,9 +68,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy "x86/Interpreter.dll" ".." &amp;
-cd .. &amp;
-move "Interpreter.dll" "Debug"</PostBuildEvent>
+    <PostBuildEvent>cd "../../../Interface" &amp;
+movedll.bat</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <DllExportIdent>EEDCDF7D-3B21-42E0-A578-3F9AB6C694D5</DllExportIdent>

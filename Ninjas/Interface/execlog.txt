@@ -1,3 +1,0 @@
-foun cccall test
-===Entering fun main with params { }
-Calling builtin method shoot with params { }

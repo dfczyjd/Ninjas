@@ -49,6 +49,7 @@ public static class Main
     {
         try
         {
+            Log("Interpreter #" + id + " got file " + name);
             ints[id].Init(id, name);
         }
         catch (Exception exc)
@@ -108,7 +109,7 @@ public static class Main
         }
         catch (Exception exc)
         {
-            Log("Error in Run() of interpreter #" + id.ToString() + ":" + exc.Message);
+            Log("Error in GetCommand() of interpreter #" + id.ToString() + ":" + exc.Message);
             return Serialize(new Command());
         }
     }
@@ -135,25 +136,48 @@ public class RealInterpreter
     
     public void Init(int id, string name)
     {
-        var input = File.ReadAllText(name);
-        var ms = new MemoryStream(Encoding.UTF8.GetBytes(input));
-        var lexer = new NinjaLexer(new AntlrInputStream(ms));
-        var tokens = new CommonTokenStream(lexer);
-        parser = new NinjaParser(tokens);
-        parser.owner = this;
-        parser.id = id;
-        var tree = parser.program();
+        try
+        {
+            var input = File.ReadAllText(name);
+            var ms = new MemoryStream(Encoding.UTF8.GetBytes(input));
+            var lexer = new NinjaLexer(new AntlrInputStream(ms));
+            var tokens = new CommonTokenStream(lexer);
+            parser = new NinjaParser(tokens);
+            parser.owner = this;
+            parser.id = id;
+            var tree = parser.program();
+        }
+        catch (Exception exc)
+        {
+            Main.Log("Error in " + exc.StackTrace + ": " + exc.Message);
+        }
     }
     
     public void Run()
     {
-        if (parser != null)
-            parser.metTable["main"].Eval();
+        try
+        {
+            if (parser != null)
+            {
+                parser.metTable["main"].Eval();
+            }
+        }
+        catch (Exception exc)
+        {
+            Main.Log("Error in " + exc.StackTrace + ": " + exc.Message);
+        }
     }
 
     public void UpdateInfo(string s)
     {
-        if (parser != null)
-            Main.Deserialize(s, ref parser.health, ref parser.xPos, ref parser.yPos, ref parser.dirs);
+        try
+        {
+            if (parser != null)
+                Main.Deserialize(s, ref parser.health, ref parser.xPos, ref parser.yPos, ref parser.dirs);
+        }
+        catch (Exception exc)
+        {
+            Main.Log("Error in " + exc.StackTrace + ": " + exc.Message);
+        }
     }
 }
