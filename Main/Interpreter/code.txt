@@ -1,4 +1,9 @@
-int a = 2
-double b = 3
-c /= a
-bool c = b < a
+fun void test(int var)
+{
+	int a = var
+}
+
+fun void main()
+{
+	test(2 + 3)
+}

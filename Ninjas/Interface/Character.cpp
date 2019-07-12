@@ -3,7 +3,7 @@
 #include "Character.h"
 #include <fstream>
 
-Character::Character(double x, double y, COLORREF color) : color(color)
+Character::Character(int id, double x, double y, COLORREF color) : color(color)
 {
 	direction = 0;
 	health = 100;
@@ -11,6 +11,7 @@ Character::Character(double x, double y, COLORREF color) : color(color)
 	isSwinging = false;
 	isActive = true;
 
+	interpreter = Interpreter(id);
 	position = Point(x, y);
 	mainBrush = CreateSolidBrush(color);
 	mainPen = CreatePen(PS_SOLID, 1, color);
@@ -115,21 +116,7 @@ void Character::Invalidate(HWND hWnd)
 	InvalidateRect(hWnd, &updateRect, true);
 }
 
-void Character::SetCode(WCHAR *filename)
+void Character::SetCode(char *filename)
 {
-	ifstream in(filename);
-	int cnt = in.get();
-	for (int i = 0; i < cnt; ++i)
-	{
-		char com = in.get();
-		Command command;
-		command.type = (Command::Type)com;
-		if (com == Command::Move)
-			command.param = 5;
-		else if (com == Command::Turn)
-			command.param = 0.1;
-		interpreter.AddCommand(command);
-	}
-	in.close();
-	interpreter.isLooped = true;
+	//interpreter.SetCode(filename);
 }

@@ -1,4 +1,5 @@
 #pragma once
+#define DLL_API __declspec(dllimport)
 #include <queue>
 
 struct Command
@@ -6,20 +7,26 @@ struct Command
 	enum Type
 	{
 		Idle, Move, Turn, Swing, Shoot
-	} type = Idle;
-
+	};
+	int type = 0;
 	double param = 0;
 };
+
+typedef void(__cdecl *FuncVoid_Int)(int id);
+typedef void(__cdecl *FuncVoid_IntStr)(int id, char *name);
+typedef int(__cdecl *FuncInt_Int)(int id);
+typedef char*(__cdecl *FuncStr_Int)(int id);
 
 struct Interpreter
 {
 	std::queue<Command> commands;
-	bool isLooped = false;
+	int id;
 
 	Command NextCommand();
 
-	Interpreter();
+	Interpreter(int id = -1);
+	~Interpreter();
 
-	void AddCommand(Command command);
+	void SetCode(WCHAR *codepath);
 };
 

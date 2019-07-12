@@ -1,0 +1,8 @@
+fun void main()
+{
+	shoot()
+	shoot()
+	shoot()
+	shoot()
+	shoot()
+}

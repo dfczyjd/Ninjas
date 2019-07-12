@@ -1,0 +1,9 @@
+fun int foo(int var)
+{
+	return var + 1
+}
+
+fun void main()
+{
+	int res = foo(5)
+}

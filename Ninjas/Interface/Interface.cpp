@@ -214,7 +214,7 @@ INT_PTR CALLBACK FileSelectProc(HWND hDlg,
 			if (codeFile == NULL)
 				break;
 			SetWindowText((HWND)lParam, codeFile);
-			players[0].SetCode(codeFile);
+			players[0].interpreter.SetCode(codeFile);
 			break;
 		}
 
@@ -224,7 +224,7 @@ INT_PTR CALLBACK FileSelectProc(HWND hDlg,
 			if (codeFile == NULL)
 				break;
 			SetWindowText((HWND)lParam, codeFile);
-			players[1].SetCode(codeFile);
+			players[1].interpreter.SetCode(codeFile);
 			break;
 		}
 
@@ -234,7 +234,7 @@ INT_PTR CALLBACK FileSelectProc(HWND hDlg,
 			if (codeFile == NULL)
 				break;
 			SetWindowText((HWND)lParam, codeFile);
-			players[2].SetCode(codeFile);
+			players[2].interpreter.SetCode(codeFile);
 			break;
 		}
 
@@ -244,7 +244,7 @@ INT_PTR CALLBACK FileSelectProc(HWND hDlg,
 			if (codeFile == NULL)
 				break;
 			SetWindowText((HWND)lParam, codeFile);
-			players[3].SetCode(codeFile);
+			players[3].interpreter.SetCode(codeFile);
 			break;
 		}
 		}
@@ -271,10 +271,10 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 	case WM_CREATE:
 	{
 		players = new Character[PLAYER_COUNT]{
-			Character(100, 100, RGB(255, 0, 0)),
-			Character(600, 100, RGB(0, 0, 255)),
-			Character(100, 600, RGB(0, 255, 0)),
-			Character(600, 600, RGB(255, 255, 0))
+			Character(0, 100, 100, RGB(255, 0, 0)),
+			Character(1, 600, 100, RGB(0, 0, 255)),
+			Character(2, 100, 600, RGB(0, 255, 0)),
+			Character(3, 600, 600, RGB(255, 255, 0))
 		};
 		RECT client;
 		GetClientRect(hWnd, &client);
@@ -382,7 +382,7 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 		break;
 	}
 
-	case WM_KEYDOWN:
+	/*case WM_KEYDOWN:
 	{
 		Command com;
 		switch (wParam)
@@ -471,11 +471,12 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 		}
 		
 		break;
-	}
+	}*/
 
 	case WM_DESTROY:
 		KillTimer(hWnd, COMMAND_TIMER);
 		KillTimer(hWnd, SWING_TIMER);
+		//FreeLibrary(hLib);
 		PostQuitMessage(0);
 		break;
 

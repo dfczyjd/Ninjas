@@ -19,9 +19,6 @@
 // Ambiguous reference in cref attribute
 #pragma warning disable 419
 
-
-    
-
 using System;
 using System.IO;
 using System.Text;
@@ -39,29 +36,53 @@ public partial class NinjaVarsParser : Parser {
 	protected static DFA[] decisionToDFA;
 	protected static PredictionContextCache sharedContextCache = new PredictionContextCache();
 	public const int
-		OPSEP=1, INTKEY=2, DOUBLEKEY=3, BOOLKEY=4, ASSIGN=5, ADD=6, SUB=7, MUL=8, 
-		DIV=9, ADDASSIGN=10, SUBASSIGN=11, MULASSIGN=12, DIVASSIGN=13, AND=14, 
-		OR=15, LESS=16, GREATER=17, EQUAL=18, NOTEQUAL=19, LESSEQUAL=20, GREQUAL=21, 
-		LPAREN=22, RPAREN=23, WS=24, BOOL=25, DOUBLE=26, INT=27, ID=28;
+		T__0=1, T__1=2, T__2=3, T__3=4, SEMICOLON=5, INTKEY=6, DOUBLEKEY=7, BOOLKEY=8, 
+		WHILE=9, FOR=10, DO=11, IF=12, ELSE=13, SIN=14, COS=15, TAN=16, ASIN=17, 
+		ACOS=18, ATAN=19, ATAN2=20, ASSIGN=21, ADD=22, SUB=23, MUL=24, DIV=25, 
+		ADDASSIGN=26, SUBASSIGN=27, MULASSIGN=28, DIVASSIGN=29, AND=30, OR=31, 
+		LESS=32, GREATER=33, EQUAL=34, NOTEQUAL=35, LESSEQUAL=36, GREQUAL=37, 
+		WS=38, BOOL=39, DOUBLE=40, INT=41, RETURN_KEYWORD=42, MAIN=43, FUN_KEYWORD=44, 
+		VOID=45, COMMA=46, OBRACE=47, CBRACE=48, LPAREN=49, RPAREN=50, COMMENT=51, 
+		STRING=52, ID=53;
 	public const int
-		RULE_program = 0, RULE_operation = 1, RULE_ariphOperand = 2, RULE_ariphTerm = 3, 
-		RULE_ariphExpr = 4, RULE_ariphExprEx = 5, RULE_boolOperand = 6, RULE_boolExpr = 7, 
-		RULE_boolExprEx = 8, RULE_declare = 9;
+		RULE_program = 0, RULE_main = 1, RULE_main_signature = 2, RULE_function = 3, 
+		RULE_v_function = 4, RULE_v_fun_signature = 5, RULE_m_function = 6, RULE_m_fun_signature = 7, 
+		RULE_code = 8, RULE_main_code = 9, RULE_operation = 10, RULE_method_return = 11, 
+		RULE_params = 12, RULE_var_signature = 13, RULE_builtin_func_p = 14, RULE_builtin_func_e = 15, 
+		RULE_call = 16, RULE_parameterized_call = 17, RULE_simple_call = 18, RULE_custom_call = 19, 
+		RULE_call_params = 20, RULE_val_or_id = 21, RULE_ariphOperand = 22, RULE_ariphTerm = 23, 
+		RULE_ariphExpr = 24, RULE_ariphExprEx = 25, RULE_boolOperand = 26, RULE_boolExpr = 27, 
+		RULE_boolExprEx = 28, RULE_declare = 29, RULE_sin = 30, RULE_cos = 31, 
+		RULE_tan = 32, RULE_asin = 33, RULE_acos = 34, RULE_atan = 35, RULE_atan2 = 36, 
+		RULE_myif = 37, RULE_myif_short = 38, RULE_mywhile = 39, RULE_mydo_while = 40, 
+		RULE_myfor = 41, RULE_meaningfulType = 42;
 	public static readonly string[] ruleNames = {
-		"program", "operation", "ariphOperand", "ariphTerm", "ariphExpr", "ariphExprEx", 
-		"boolOperand", "boolExpr", "boolExprEx", "declare"
+		"program", "main", "main_signature", "function", "v_function", "v_fun_signature", 
+		"m_function", "m_fun_signature", "code", "main_code", "operation", "method_return", 
+		"params", "var_signature", "builtin_func_p", "builtin_func_e", "call", 
+		"parameterized_call", "simple_call", "custom_call", "call_params", "val_or_id", 
+		"ariphOperand", "ariphTerm", "ariphExpr", "ariphExprEx", "boolOperand", 
+		"boolExpr", "boolExprEx", "declare", "sin", "cos", "tan", "asin", "acos", 
+		"atan", "atan2", "myif", "myif_short", "mywhile", "mydo_while", "myfor", 
+		"meaningfulType"
 	};
 
 	private static readonly string[] _LiteralNames = {
-		null, "'\n'", "'int'", "'double'", "'bool'", "'='", "'+'", "'-'", "'*'", 
-		"'/'", "'+='", "'-='", "'*='", "'/='", "'&&'", "'||'", "'<'", "'>'", "'=='", 
-		"'!='", "'<='", "'>='", "'('", "')'"
+		null, "'move'", "'turn'", "'hit'", "'shoot'", "';'", "'int'", "'double'", 
+		"'bool'", "'while'", "'for'", "'do'", "'if'", "'else'", "'sin'", "'cos'", 
+		"'tan'", "'asin'", "'acos'", "'atan'", "'atan2'", "'='", "'+'", "'-'", 
+		"'*'", "'/'", "'+='", "'-='", "'*='", "'/='", "'&&'", "'||'", "'<'", "'>'", 
+		"'=='", "'!='", "'<='", "'>='", null, null, null, null, "'return'", "'main'", 
+		"'fun'", "'void'", "','", "'{'", "'}'", "'('", "')'"
 	};
 	private static readonly string[] _SymbolicNames = {
-		null, "OPSEP", "INTKEY", "DOUBLEKEY", "BOOLKEY", "ASSIGN", "ADD", "SUB", 
-		"MUL", "DIV", "ADDASSIGN", "SUBASSIGN", "MULASSIGN", "DIVASSIGN", "AND", 
-		"OR", "LESS", "GREATER", "EQUAL", "NOTEQUAL", "LESSEQUAL", "GREQUAL", 
-		"LPAREN", "RPAREN", "WS", "BOOL", "DOUBLE", "INT", "ID"
+		null, null, null, null, null, "SEMICOLON", "INTKEY", "DOUBLEKEY", "BOOLKEY", 
+		"WHILE", "FOR", "DO", "IF", "ELSE", "SIN", "COS", "TAN", "ASIN", "ACOS", 
+		"ATAN", "ATAN2", "ASSIGN", "ADD", "SUB", "MUL", "DIV", "ADDASSIGN", "SUBASSIGN", 
+		"MULASSIGN", "DIVASSIGN", "AND", "OR", "LESS", "GREATER", "EQUAL", "NOTEQUAL", 
+		"LESSEQUAL", "GREQUAL", "WS", "BOOL", "DOUBLE", "INT", "RETURN_KEYWORD", 
+		"MAIN", "FUN_KEYWORD", "VOID", "COMMA", "OBRACE", "CBRACE", "LPAREN", 
+		"RPAREN", "COMMENT", "STRING", "ID"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
 
@@ -88,13 +109,82 @@ public partial class NinjaVarsParser : Parser {
 	}
 
 
+		public enum ParamType
+		{
+			Receive, Pass
+		};
+
+		public enum CallType
+		{
+			BuiltIn, Custom
+		};
+		
+		public enum VarType
+	    {
+	    	Int, Double, Bool
+	    };
+	    
+	    public enum ReturnType
+	    {
+	    	Int, Double, Bool, Void
+	    };
+		
+		public class CallData
+		{
+			public string name;
+	            
+			public dynamic value;
+	            
+			public CallType callType;
+	    	
+			public ReturnType returnType;
+	    		
+			public ArrayList<NinjaVarsParser.ParamData> paramList = new ArrayList<NinjaVarsParser.ParamData>();	
+	    	
+	    	public override string ToString()
+	        {
+				return $"call {name} of type {callType} returns {returnType}, params : {paramList}";
+			}
+		}
+
+		public class ParamData
+		{
+			
+	        public string name;
+	        
+	        public dynamic value;
+		
+			public VarType type;	
+			
+			public ParamType paramType = ParamType.Receive;	
+		
+			public override string ToString()
+	        {
+	            return $"param {type} {name}";
+	        }
+		}
+
+	    public class MethodData
+	    {
+	        public string name;
+			public bool isMeaningful;
+	        public ReturnType returnType;
+	        public ArrayList<NinjaVarsParser.ParamData> paramList = new ArrayList<NinjaVarsParser.ParamData>();
+	        public List<CallData> callList = new ArrayList<CallData>();
+	        
+			public dynamic returnValue;
+	        
+	        public override string ToString()
+	        {
+	        	return $"fun {returnType} {name}, params : {paramList} ";
+	        }
+	    }
+	 
+	    public static Dictionary<string, MethodData> metTable = new Dictionary<string, MethodData>();
+	    
+	    
 	    public class VarData
 	    {
-	        public enum VarType
-	        {
-	            Int, Double, Bool
-	        };
-
 	        public VarType type;
 	        public dynamic value;
 	    }
@@ -113,6 +203,115 @@ public partial class NinjaVarsParser : Parser {
 	        Console.WriteLine(message);
 	        Console.ForegroundColor = curr;
 	    }
+		
+		public bool CheckParams(NinjaVarsParser.CallData call, NinjaVarsParser.MethodData method)
+	    		{
+	    			if (call.paramList.Count != method.paramList.Count)
+	    			{
+	    				Console.WriteLine($"Expected params {method.paramList.Count}, found {call.paramList.Count}");
+	    				return false;
+	    			}
+	    
+	    			for (int i = 0; i < call.paramList.Count; i++)
+	    			{
+	    				
+	    				if (call.paramList[i].type == method.paramList[i].type)
+	    				{
+	    					method.paramList[i].value = call.paramList[i].value;
+	    				}
+	    				else
+	    				{
+	    					Console.WriteLine($"Type mismatch: expected {method.paramList[i].type}, found {call.paramList[i].type} with value {call.paramList[i].value}");
+	    					return false;
+	    				}
+	    			}
+	    
+	    			return true;
+	    		}
+	    		
+	    		int depth = 0;
+	    		
+	    		public void GoThroughCalls(NinjaVarsParser.MethodData methodData)
+	            		{
+	            			string formatter = new string('\t', depth);
+	            			Console.WriteLine($"{formatter}--Entering method {methodData.name}, params {ParamListToString(methodData.paramList)}:");
+	            			foreach (var call in methodData.callList)
+	            			{
+	            				if (call.callType == NinjaVarsParser.CallType.Custom)
+	            				{
+	            					if (NinjaVarsParser.metTable.ContainsKey(call.name))
+	            					{
+	            						++depth;
+										foreach (var param in call.paramList)
+										{
+											VarData data = varTable[param.name];
+											if (data.type == param.type)
+												data.value = param.value;
+											else if (data.type == VarType.Double && param.type == VarType.Int)
+												data.value = (double)param.value;
+											else
+												Error("Can't convert \"" + param.value.ToString() + "\" to " + data.type);
+										}
+	            						GoThroughCalls(NinjaVarsParser.metTable[call.name]);
+	            					}
+	            				}
+	            				else
+	            				{
+	            					Console.WriteLine($"{formatter}Calling builtin method {call.name} with params {ParamListToString(call.paramList)}");
+	            //					Console.WriteLine(call.name);
+	            					switch (call.name)
+	            					{
+	            						case "move":
+	            //							Console.WriteLine($"move byte");
+	            							_bytes.Add(1);
+	            							break;
+	            						case "turn":
+	            //							Console.WriteLine("turn byte");
+	            							_bytes.Add(2);
+	            							break;
+	            						case "hit":
+	            //							Console.WriteLine($"hit byte");
+	            							_bytes.Add(3);
+	            							break;
+	            						case "shoot":
+	            //							Console.WriteLine($"shoot byte");
+	            							_bytes.Add(4);
+	            							break;
+	            						default:
+	            							Console.WriteLine($"no byte for this op {call.name}");
+	            							break;
+	            					}
+	            				}
+	            			}
+	            
+	            			if (methodData.isMeaningful)
+	            			{
+	            				Console.WriteLine($"{formatter}Returning {methodData.returnValue} of type {methodData.returnType}");
+	            			}
+	            			--depth;
+	            			Console.WriteLine($"{formatter}--Exiting method {methodData.name}");
+	            		}
+	            		
+		ArrayList<byte> _bytes = new ArrayList<byte>();
+		
+		string ParamListToString(ArrayList<NinjaVarsParser.ParamData> list)
+	    		{
+	    			string s = "{";
+	    			foreach (var data in list)
+	    			{
+	    				if (data.paramType == NinjaVarsParser.ParamType.Pass)
+	    				{
+	    					s += $" {data.type} {data.value},";	
+	    				}
+	    				else
+	    				{
+	    					s += $" {data.type} {data.name} = {data.value},";	
+	    				}
+	    			}
+	    
+	    			s = (s.Length > 1 ? s.Substring(0, s.Length - 1) : s) + " }";
+	    			return s;
+	    		}
 
 		public NinjaVarsParser(ITokenStream input) : this(input, Console.Out, Console.Error) { }
 
@@ -123,15 +322,14 @@ public partial class NinjaVarsParser : Parser {
 	}
 
 	public partial class ProgramContext : ParserRuleContext {
-		public OperationContext[] operation() {
-			return GetRuleContexts<OperationContext>();
+		public MainContext main() {
+			return GetRuleContext<MainContext>(0);
 		}
-		public OperationContext operation(int i) {
-			return GetRuleContext<OperationContext>(i);
+		public FunctionContext[] function() {
+			return GetRuleContexts<FunctionContext>();
 		}
-		public ITerminalNode[] OPSEP() { return GetTokens(NinjaVarsParser.OPSEP); }
-		public ITerminalNode OPSEP(int i) {
-			return GetToken(NinjaVarsParser.OPSEP, i);
+		public FunctionContext function(int i) {
+			return GetRuleContext<FunctionContext>(i);
 		}
 		public ProgramContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
@@ -154,19 +352,632 @@ public partial class NinjaVarsParser : Parser {
 		EnterRule(_localctx, 0, RULE_program);
 		int _la;
 		try {
+			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 25;
+			State = 89;
+			ErrorHandler.Sync(this);
+			_alt = Interpreter.AdaptivePredict(TokenStream,0,Context);
+			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER ) {
+				if ( _alt==1 ) {
+					{
+					{
+					State = 86; function();
+					}
+					} 
+				}
+				State = 91;
+				ErrorHandler.Sync(this);
+				_alt = Interpreter.AdaptivePredict(TokenStream,0,Context);
+			}
+			State = 92; main();
+			State = 96;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << INTKEY) | (1L << DOUBLEKEY) | (1L << BOOLKEY) | (1L << LPAREN) | (1L << BOOL) | (1L << DOUBLE) | (1L << INT) | (1L << ID))) != 0)) {
+			while (_la==FUN_KEYWORD) {
 				{
 				{
-				State = 20; operation();
-				State = 21; Match(OPSEP);
+				State = 93; function();
 				}
 				}
-				State = 27;
+				State = 98;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			}
+
+
+			GoThroughCalls(NinjaVarsParser.metTable["main"]);
+
+
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class MainContext : ParserRuleContext {
+		public Main_signatureContext main_signature() {
+			return GetRuleContext<Main_signatureContext>(0);
+		}
+		public ITerminalNode OBRACE() { return GetToken(NinjaVarsParser.OBRACE, 0); }
+		public Main_codeContext main_code() {
+			return GetRuleContext<Main_codeContext>(0);
+		}
+		public ITerminalNode CBRACE() { return GetToken(NinjaVarsParser.CBRACE, 0); }
+		public MainContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_main; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.EnterMain(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.ExitMain(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public MainContext main() {
+		MainContext _localctx = new MainContext(Context, State);
+		EnterRule(_localctx, 2, RULE_main);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 101; main_signature();
+			State = 102; Match(OBRACE);
+			State = 103; main_code();
+			State = 104; Match(CBRACE);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class Main_signatureContext : ParserRuleContext {
+		public ITerminalNode FUN_KEYWORD() { return GetToken(NinjaVarsParser.FUN_KEYWORD, 0); }
+		public ITerminalNode VOID() { return GetToken(NinjaVarsParser.VOID, 0); }
+		public ITerminalNode MAIN() { return GetToken(NinjaVarsParser.MAIN, 0); }
+		public ITerminalNode LPAREN() { return GetToken(NinjaVarsParser.LPAREN, 0); }
+		public ITerminalNode RPAREN() { return GetToken(NinjaVarsParser.RPAREN, 0); }
+		public Main_signatureContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_main_signature; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.EnterMain_signature(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.ExitMain_signature(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public Main_signatureContext main_signature() {
+		Main_signatureContext _localctx = new Main_signatureContext(Context, State);
+		EnterRule(_localctx, 4, RULE_main_signature);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 106; Match(FUN_KEYWORD);
+			State = 107; Match(VOID);
+			State = 108; Match(MAIN);
+			State = 109; Match(LPAREN);
+			State = 110; Match(RPAREN);
+
+				MethodData newMet = new MethodData
+				{
+					name = "main",
+					returnType = ReturnType.Void
+				};
+				metTable.Add("main", newMet);
+
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class FunctionContext : ParserRuleContext {
+		public V_functionContext v_function() {
+			return GetRuleContext<V_functionContext>(0);
+		}
+		public M_functionContext m_function() {
+			return GetRuleContext<M_functionContext>(0);
+		}
+		public FunctionContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_function; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.EnterFunction(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.ExitFunction(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public FunctionContext function() {
+		FunctionContext _localctx = new FunctionContext(Context, State);
+		EnterRule(_localctx, 6, RULE_function);
+		try {
+			State = 115;
+			ErrorHandler.Sync(this);
+			switch ( Interpreter.AdaptivePredict(TokenStream,2,Context) ) {
+			case 1:
+				EnterOuterAlt(_localctx, 1);
+				{
+				State = 113; v_function();
+				}
+				break;
+			case 2:
+				EnterOuterAlt(_localctx, 2);
+				{
+				State = 114; m_function();
+				}
+				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class V_functionContext : ParserRuleContext {
+		public V_fun_signatureContext v_fun_signature() {
+			return GetRuleContext<V_fun_signatureContext>(0);
+		}
+		public ITerminalNode OBRACE() { return GetToken(NinjaVarsParser.OBRACE, 0); }
+		public CodeContext code() {
+			return GetRuleContext<CodeContext>(0);
+		}
+		public ITerminalNode CBRACE() { return GetToken(NinjaVarsParser.CBRACE, 0); }
+		public V_functionContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_v_function; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.EnterV_function(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.ExitV_function(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public V_functionContext v_function() {
+		V_functionContext _localctx = new V_functionContext(Context, State);
+		EnterRule(_localctx, 8, RULE_v_function);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 117; v_fun_signature();
+			State = 118; Match(OBRACE);
+			State = 119; code();
+			State = 120; Match(CBRACE);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class V_fun_signatureContext : ParserRuleContext {
+		public IToken _ID;
+		public ITerminalNode FUN_KEYWORD() { return GetToken(NinjaVarsParser.FUN_KEYWORD, 0); }
+		public ITerminalNode VOID() { return GetToken(NinjaVarsParser.VOID, 0); }
+		public ITerminalNode ID() { return GetToken(NinjaVarsParser.ID, 0); }
+		public ITerminalNode LPAREN() { return GetToken(NinjaVarsParser.LPAREN, 0); }
+		public ParamsContext @params() {
+			return GetRuleContext<ParamsContext>(0);
+		}
+		public ITerminalNode RPAREN() { return GetToken(NinjaVarsParser.RPAREN, 0); }
+		public V_fun_signatureContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_v_fun_signature; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.EnterV_fun_signature(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.ExitV_fun_signature(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public V_fun_signatureContext v_fun_signature() {
+		V_fun_signatureContext _localctx = new V_fun_signatureContext(Context, State);
+		EnterRule(_localctx, 10, RULE_v_fun_signature);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 122; Match(FUN_KEYWORD);
+			State = 123; Match(VOID);
+			State = 124; _localctx._ID = Match(ID);
+			State = 125; Match(LPAREN);
+			State = 126; @params();
+			State = 127; Match(RPAREN);
+
+
+				string methodName = (_localctx._ID!=null?_localctx._ID.Text:null);
+				if (methodName == "main" || metTable.ContainsKey(methodName))
+					throw new NotImplementedException("!!!Method overloading is not supported yet!!!");
+
+				MethodData newMet = new MethodData
+				{
+					name = methodName,
+					returnType = ReturnType.Void
+				};
+				
+				foreach (var sig in _localctx.@params().var_signature())
+			    {
+			    	var d = new NinjaVarsParser.ParamData()
+			    	{
+			    		name = sig.ID().GetText()
+			    	};
+			    	switch (sig.meaningfulType().GetText())
+			    	{
+			    		case "int":
+			    			d.type = NinjaVarsParser.VarType.Int;
+			    			break;
+			    		case "double":
+			    			d.type = NinjaVarsParser.VarType.Double;
+			    			break;
+			    		case "bool":
+			    			d.type = NinjaVarsParser.VarType.Bool;
+			    			break;
+			    		default:
+			    			throw new NotImplementedException();
+			    	}
+			    				
+			    	newMet.paramList.Add(d);
+			    			
+			    }
+				metTable.Add(newMet.name, newMet);
+
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class M_functionContext : ParserRuleContext {
+		public Method_returnContext _method_return;
+		public M_fun_signatureContext m_fun_signature() {
+			return GetRuleContext<M_fun_signatureContext>(0);
+		}
+		public ITerminalNode OBRACE() { return GetToken(NinjaVarsParser.OBRACE, 0); }
+		public CodeContext code() {
+			return GetRuleContext<CodeContext>(0);
+		}
+		public Method_returnContext method_return() {
+			return GetRuleContext<Method_returnContext>(0);
+		}
+		public ITerminalNode CBRACE() { return GetToken(NinjaVarsParser.CBRACE, 0); }
+		public M_functionContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_m_function; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.EnterM_function(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.ExitM_function(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public M_functionContext m_function() {
+		M_functionContext _localctx = new M_functionContext(Context, State);
+		EnterRule(_localctx, 12, RULE_m_function);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 130; m_fun_signature();
+			State = 131; Match(OBRACE);
+			State = 132; code();
+			State = 133; _localctx._method_return = method_return();
+			State = 134; Match(CBRACE);
+
+
+				string methodName = _localctx.m_fun_signature().ID().GetText();
+				
+				ReturnType actualReturn;
+				
+				switch(_localctx._method_return.type)
+			    {
+			        case "int":
+			        	actualReturn = ReturnType.Int;
+			        	break;
+			        case "double":
+			            actualReturn = ReturnType.Double;
+			            break;
+			        case "bool":
+			            actualReturn = ReturnType.Bool;
+			            break;		
+			        default:
+			    		throw new NotImplementedException();     
+			    }
+
+				if (actualReturn != metTable[methodName].returnType){
+					throw new Exception($"Actual return is {actualReturn}, expected declared return type {metTable[methodName].returnType}");
+				}
+
+				metTable[methodName].returnValue = _localctx._method_return.value;
+
+
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class M_fun_signatureContext : ParserRuleContext {
+		public MeaningfulTypeContext _meaningfulType;
+		public IToken _ID;
+		public ITerminalNode FUN_KEYWORD() { return GetToken(NinjaVarsParser.FUN_KEYWORD, 0); }
+		public MeaningfulTypeContext meaningfulType() {
+			return GetRuleContext<MeaningfulTypeContext>(0);
+		}
+		public ITerminalNode ID() { return GetToken(NinjaVarsParser.ID, 0); }
+		public ITerminalNode LPAREN() { return GetToken(NinjaVarsParser.LPAREN, 0); }
+		public ParamsContext @params() {
+			return GetRuleContext<ParamsContext>(0);
+		}
+		public ITerminalNode RPAREN() { return GetToken(NinjaVarsParser.RPAREN, 0); }
+		public M_fun_signatureContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_m_fun_signature; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.EnterM_fun_signature(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.ExitM_fun_signature(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public M_fun_signatureContext m_fun_signature() {
+		M_fun_signatureContext _localctx = new M_fun_signatureContext(Context, State);
+		EnterRule(_localctx, 14, RULE_m_fun_signature);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 137; Match(FUN_KEYWORD);
+			State = 138; _localctx._meaningfulType = meaningfulType();
+			State = 139; _localctx._ID = Match(ID);
+			State = 140; Match(LPAREN);
+			State = 141; @params();
+			State = 142; Match(RPAREN);
+
+				string methodName = (_localctx._ID!=null?_localctx._ID.Text:null);
+				if (methodName == "main" || metTable.ContainsKey(methodName))
+					throw new NotImplementedException("!!!Method overloading is not supported yet!!!");
+
+				MethodData newMet = new MethodData
+				{
+					name = methodName,
+					isMeaningful = true
+				};
+				
+				switch((_localctx._meaningfulType!=null?TokenStream.GetText(_localctx._meaningfulType.Start,_localctx._meaningfulType.Stop):null))
+			    {
+			    	case "int":
+			    		newMet.returnType = ReturnType.Int;
+			    		break;
+			    	case "double":
+			            newMet.returnType = ReturnType.Double;
+			           	break;
+			        case "bool":
+			            newMet.returnType = ReturnType.Bool;
+			            break;		
+			    }
+			    
+				foreach (var sig in _localctx.@params().var_signature())
+			    {
+			    	var d = new NinjaVarsParser.ParamData()
+			    	{
+			    		name = sig.ID().GetText()
+			    	};
+			    	switch (sig.meaningfulType().GetText())
+			    	{
+			    		case "int":
+			    			d.type = NinjaVarsParser.VarType.Int;
+			    			break;
+			    		case "double":
+			    			d.type = NinjaVarsParser.VarType.Double;
+			    			break;
+			    		case "bool":
+			    			d.type = NinjaVarsParser.VarType.Bool;
+			    			break;
+			    		default:
+			    			throw new NotImplementedException();
+			    	}
+			    				
+			    	newMet.paramList.Add(d);
+			    			
+			    }
+
+				metTable.Add(newMet.name, newMet);
+
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class CodeContext : ParserRuleContext {
+		public OperationContext[] operation() {
+			return GetRuleContexts<OperationContext>();
+		}
+		public OperationContext operation(int i) {
+			return GetRuleContext<OperationContext>(i);
+		}
+		public CodeContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_code; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.EnterCode(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.ExitCode(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public CodeContext code() {
+		CodeContext _localctx = new CodeContext(Context, State);
+		EnterRule(_localctx, 16, RULE_code);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 148;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2) | (1L << T__3) | (1L << INTKEY) | (1L << DOUBLEKEY) | (1L << BOOLKEY) | (1L << WHILE) | (1L << FOR) | (1L << DO) | (1L << IF) | (1L << SIN) | (1L << COS) | (1L << TAN) | (1L << ASIN) | (1L << ACOS) | (1L << ATAN) | (1L << ATAN2) | (1L << BOOL) | (1L << DOUBLE) | (1L << INT) | (1L << LPAREN) | (1L << ID))) != 0)) {
+				{
+				{
+				State = 145; operation();
+				}
+				}
+				State = 150;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class Main_codeContext : ParserRuleContext {
+		public OperationContext[] operation() {
+			return GetRuleContexts<OperationContext>();
+		}
+		public OperationContext operation(int i) {
+			return GetRuleContext<OperationContext>(i);
+		}
+		public Main_codeContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_main_code; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.EnterMain_code(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.ExitMain_code(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public Main_codeContext main_code() {
+		Main_codeContext _localctx = new Main_codeContext(Context, State);
+		EnterRule(_localctx, 18, RULE_main_code);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 154;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2) | (1L << T__3) | (1L << INTKEY) | (1L << DOUBLEKEY) | (1L << BOOLKEY) | (1L << WHILE) | (1L << FOR) | (1L << DO) | (1L << IF) | (1L << SIN) | (1L << COS) | (1L << TAN) | (1L << ASIN) | (1L << ACOS) | (1L << ATAN) | (1L << ATAN2) | (1L << BOOL) | (1L << DOUBLE) | (1L << INT) | (1L << LPAREN) | (1L << ID))) != 0)) {
+				{
+				{
+				State = 151; operation();
+				}
+				}
+				State = 156;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -184,14 +995,35 @@ public partial class NinjaVarsParser : Parser {
 	}
 
 	public partial class OperationContext : ParserRuleContext {
+		public CallContext call() {
+			return GetRuleContext<CallContext>(0);
+		}
+		public Custom_callContext custom_call() {
+			return GetRuleContext<Custom_callContext>(0);
+		}
+		public DeclareContext declare() {
+			return GetRuleContext<DeclareContext>(0);
+		}
 		public AriphExprExContext ariphExprEx() {
 			return GetRuleContext<AriphExprExContext>(0);
 		}
 		public BoolExprExContext boolExprEx() {
 			return GetRuleContext<BoolExprExContext>(0);
 		}
-		public DeclareContext declare() {
-			return GetRuleContext<DeclareContext>(0);
+		public MyifContext myif() {
+			return GetRuleContext<MyifContext>(0);
+		}
+		public Myif_shortContext myif_short() {
+			return GetRuleContext<Myif_shortContext>(0);
+		}
+		public MywhileContext mywhile() {
+			return GetRuleContext<MywhileContext>(0);
+		}
+		public Mydo_whileContext mydo_while() {
+			return GetRuleContext<Mydo_whileContext>(0);
+		}
+		public MyforContext myfor() {
+			return GetRuleContext<MyforContext>(0);
 		}
 		public OperationContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
@@ -211,27 +1043,802 @@ public partial class NinjaVarsParser : Parser {
 	[RuleVersion(0)]
 	public OperationContext operation() {
 		OperationContext _localctx = new OperationContext(Context, State);
-		EnterRule(_localctx, 2, RULE_operation);
+		EnterRule(_localctx, 20, RULE_operation);
 		try {
-			State = 31;
+			State = 167;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,1,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,5,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 28; ariphExprEx();
+				State = 157; call();
 				}
 				break;
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 29; boolExprEx();
+				State = 158; custom_call();
 				}
 				break;
 			case 3:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 30; declare();
+				State = 159; declare();
+				}
+				break;
+			case 4:
+				EnterOuterAlt(_localctx, 4);
+				{
+				State = 160; ariphExprEx();
+				}
+				break;
+			case 5:
+				EnterOuterAlt(_localctx, 5);
+				{
+				State = 161; boolExprEx();
+				}
+				break;
+			case 6:
+				EnterOuterAlt(_localctx, 6);
+				{
+				State = 162; myif();
+				}
+				break;
+			case 7:
+				EnterOuterAlt(_localctx, 7);
+				{
+				State = 163; myif_short();
+				}
+				break;
+			case 8:
+				EnterOuterAlt(_localctx, 8);
+				{
+				State = 164; mywhile();
+				}
+				break;
+			case 9:
+				EnterOuterAlt(_localctx, 9);
+				{
+				State = 165; mydo_while();
+				}
+				break;
+			case 10:
+				EnterOuterAlt(_localctx, 10);
+				{
+				State = 166; myfor();
+				}
+				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class Method_returnContext : ParserRuleContext {
+		public string type;
+		public dynamic value;
+		public Val_or_idContext _val_or_id;
+		public ITerminalNode RETURN_KEYWORD() { return GetToken(NinjaVarsParser.RETURN_KEYWORD, 0); }
+		public Val_or_idContext val_or_id() {
+			return GetRuleContext<Val_or_idContext>(0);
+		}
+		public Method_returnContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_method_return; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.EnterMethod_return(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.ExitMethod_return(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public Method_returnContext method_return() {
+		Method_returnContext _localctx = new Method_returnContext(Context, State);
+		EnterRule(_localctx, 22, RULE_method_return);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 169; Match(RETURN_KEYWORD);
+			State = 170; _localctx._val_or_id = val_or_id();
+
+				_localctx.type =  _localctx._val_or_id.type;
+				_localctx.value =  _localctx._val_or_id.value;
+
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class ParamsContext : ParserRuleContext {
+		public Var_signatureContext[] var_signature() {
+			return GetRuleContexts<Var_signatureContext>();
+		}
+		public Var_signatureContext var_signature(int i) {
+			return GetRuleContext<Var_signatureContext>(i);
+		}
+		public ITerminalNode[] COMMA() { return GetTokens(NinjaVarsParser.COMMA); }
+		public ITerminalNode COMMA(int i) {
+			return GetToken(NinjaVarsParser.COMMA, i);
+		}
+		public ParamsContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_params; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.EnterParams(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.ExitParams(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public ParamsContext @params() {
+		ParamsContext _localctx = new ParamsContext(Context, State);
+		EnterRule(_localctx, 24, RULE_params);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 181;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << INTKEY) | (1L << DOUBLEKEY) | (1L << BOOLKEY))) != 0)) {
+				{
+				State = 173; var_signature();
+				State = 178;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+				while (_la==COMMA) {
+					{
+					{
+					State = 174; Match(COMMA);
+					State = 175; var_signature();
+					}
+					}
+					State = 180;
+					ErrorHandler.Sync(this);
+					_la = TokenStream.LA(1);
+				}
+				}
+			}
+
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class Var_signatureContext : ParserRuleContext {
+		public MeaningfulTypeContext _meaningfulType;
+		public IToken _ID;
+		public MeaningfulTypeContext meaningfulType() {
+			return GetRuleContext<MeaningfulTypeContext>(0);
+		}
+		public ITerminalNode ID() { return GetToken(NinjaVarsParser.ID, 0); }
+		public Var_signatureContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_var_signature; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.EnterVar_signature(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.ExitVar_signature(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public Var_signatureContext var_signature() {
+		Var_signatureContext _localctx = new Var_signatureContext(Context, State);
+		EnterRule(_localctx, 26, RULE_var_signature);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 183; _localctx._meaningfulType = meaningfulType();
+			State = 184; _localctx._ID = Match(ID);
+
+								VarData newVar = new VarData();
+								switch ((_localctx._meaningfulType!=null?TokenStream.GetText(_localctx._meaningfulType.Start,_localctx._meaningfulType.Stop):null))
+								{
+									case "int":
+										newVar.type = VarType.Int;
+										newVar.value = 0;
+										break;
+										
+									case "double":
+										newVar.type = VarType.Double;
+										newVar.value = 0.0;
+										break;
+										
+									case "bool":
+										newVar.type = VarType.Bool;
+										newVar.value = false;
+										break;
+								}
+								varTable[(_localctx._ID!=null?_localctx._ID.Text:null)] = newVar;
+							
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class Builtin_func_pContext : ParserRuleContext {
+		public Builtin_func_pContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_builtin_func_p; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.EnterBuiltin_func_p(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.ExitBuiltin_func_p(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public Builtin_func_pContext builtin_func_p() {
+		Builtin_func_pContext _localctx = new Builtin_func_pContext(Context, State);
+		EnterRule(_localctx, 28, RULE_builtin_func_p);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 187;
+			_la = TokenStream.LA(1);
+			if ( !(_la==T__0 || _la==T__1) ) {
+			ErrorHandler.RecoverInline(this);
+			}
+			else {
+				ErrorHandler.ReportMatch(this);
+			    Consume();
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class Builtin_func_eContext : ParserRuleContext {
+		public Builtin_func_eContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_builtin_func_e; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.EnterBuiltin_func_e(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.ExitBuiltin_func_e(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public Builtin_func_eContext builtin_func_e() {
+		Builtin_func_eContext _localctx = new Builtin_func_eContext(Context, State);
+		EnterRule(_localctx, 30, RULE_builtin_func_e);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 189;
+			_la = TokenStream.LA(1);
+			if ( !(_la==T__2 || _la==T__3) ) {
+			ErrorHandler.RecoverInline(this);
+			}
+			else {
+				ErrorHandler.ReportMatch(this);
+			    Consume();
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class CallContext : ParserRuleContext {
+		public Parameterized_callContext _parameterized_call;
+		public Simple_callContext _simple_call;
+		public Parameterized_callContext parameterized_call() {
+			return GetRuleContext<Parameterized_callContext>(0);
+		}
+		public Simple_callContext simple_call() {
+			return GetRuleContext<Simple_callContext>(0);
+		}
+		public CallContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_call; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.EnterCall(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.ExitCall(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public CallContext call() {
+		CallContext _localctx = new CallContext(Context, State);
+		EnterRule(_localctx, 32, RULE_call);
+		try {
+			State = 197;
+			ErrorHandler.Sync(this);
+			switch (TokenStream.LA(1)) {
+			case T__0:
+			case T__1:
+				EnterOuterAlt(_localctx, 1);
+				{
+				State = 191; _localctx._parameterized_call = parameterized_call();
+
+
+					CallData data = new CallData(){
+						callType = CallType.BuiltIn, 
+						name = (_localctx._parameterized_call!=null?TokenStream.GetText(_localctx._parameterized_call.Start,_localctx._parameterized_call.Stop):null).Substring(0, (_localctx._parameterized_call!=null?TokenStream.GetText(_localctx._parameterized_call.Start,_localctx._parameterized_call.Stop):null).IndexOf("(")),
+						returnType = ReturnType.Void
+					};
+					ParamData d = new ParamData()
+					{
+						type = VarType.Double, 
+						value = _localctx._parameterized_call.ariphExprEx().GetText()
+					};
+				    d.paramType = ParamType.Pass;				
+				    data.paramList.Add(d);
+					
+					string methodName = "";
+					if (_localctx.Parent.Parent is V_functionContext parentContext)
+					{
+						methodName = parentContext.v_fun_signature().ID().GetText();
+					}		
+					if (_localctx.Parent.Parent is M_functionContext parContext)
+					{
+						methodName = parContext.m_fun_signature().ID().GetText();
+					}
+					if (_localctx.Parent.Parent is MainContext)
+					{
+						methodName = "main";
+					}	
+
+					if(methodName != ""){
+						metTable[methodName].callList.Add(data);
+					}
+
+
+				}
+				break;
+			case T__2:
+			case T__3:
+				EnterOuterAlt(_localctx, 2);
+				{
+				State = 194; _localctx._simple_call = simple_call();
+
+
+					CallData data = new CallData(){
+						callType = CallType.BuiltIn, 
+						name = (_localctx._simple_call!=null?TokenStream.GetText(_localctx._simple_call.Start,_localctx._simple_call.Stop):null).Substring(0, (_localctx._simple_call!=null?TokenStream.GetText(_localctx._simple_call.Start,_localctx._simple_call.Stop):null).IndexOf("(")),
+						returnType = ReturnType.Void
+					};
+
+					string methodName = "";
+					if (_localctx.Parent.Parent is V_functionContext parentContext)
+					{
+						methodName = parentContext.v_fun_signature().ID().GetText();
+					}		
+					if (_localctx.Parent.Parent is M_functionContext parContext)
+					{
+						methodName = parContext.m_fun_signature().ID().GetText();
+					}
+					if (_localctx.Parent.Parent is MainContext)
+					{
+						methodName = "main";
+					}	
+
+					if(methodName != ""){
+						metTable[methodName].callList.Add(data);
+					}
+
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class Parameterized_callContext : ParserRuleContext {
+		public Builtin_func_pContext builtin_func_p() {
+			return GetRuleContext<Builtin_func_pContext>(0);
+		}
+		public ITerminalNode LPAREN() { return GetToken(NinjaVarsParser.LPAREN, 0); }
+		public AriphExprExContext ariphExprEx() {
+			return GetRuleContext<AriphExprExContext>(0);
+		}
+		public ITerminalNode RPAREN() { return GetToken(NinjaVarsParser.RPAREN, 0); }
+		public Parameterized_callContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_parameterized_call; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.EnterParameterized_call(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.ExitParameterized_call(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public Parameterized_callContext parameterized_call() {
+		Parameterized_callContext _localctx = new Parameterized_callContext(Context, State);
+		EnterRule(_localctx, 34, RULE_parameterized_call);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 199; builtin_func_p();
+			State = 200; Match(LPAREN);
+			State = 201; ariphExprEx();
+			State = 202; Match(RPAREN);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class Simple_callContext : ParserRuleContext {
+		public Builtin_func_eContext builtin_func_e() {
+			return GetRuleContext<Builtin_func_eContext>(0);
+		}
+		public ITerminalNode LPAREN() { return GetToken(NinjaVarsParser.LPAREN, 0); }
+		public ITerminalNode RPAREN() { return GetToken(NinjaVarsParser.RPAREN, 0); }
+		public Simple_callContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_simple_call; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.EnterSimple_call(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.ExitSimple_call(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public Simple_callContext simple_call() {
+		Simple_callContext _localctx = new Simple_callContext(Context, State);
+		EnterRule(_localctx, 36, RULE_simple_call);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 204; builtin_func_e();
+			State = 205; Match(LPAREN);
+			State = 206; Match(RPAREN);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class Custom_callContext : ParserRuleContext {
+		public IToken _ID;
+		public ITerminalNode ID() { return GetToken(NinjaVarsParser.ID, 0); }
+		public ITerminalNode LPAREN() { return GetToken(NinjaVarsParser.LPAREN, 0); }
+		public Call_paramsContext call_params() {
+			return GetRuleContext<Call_paramsContext>(0);
+		}
+		public ITerminalNode RPAREN() { return GetToken(NinjaVarsParser.RPAREN, 0); }
+		public Custom_callContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_custom_call; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.EnterCustom_call(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.ExitCustom_call(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public Custom_callContext custom_call() {
+		Custom_callContext _localctx = new Custom_callContext(Context, State);
+		EnterRule(_localctx, 38, RULE_custom_call);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 208; _localctx._ID = Match(ID);
+			State = 209; Match(LPAREN);
+			State = 210; call_params();
+			State = 211; Match(RPAREN);
+
+
+				string callName = (_localctx._ID!=null?_localctx._ID.Text:null);
+
+				CallData data = new CallData(){
+					callType = CallType.Custom, 
+					name = callName
+				};
+
+				foreach (var par in _localctx.call_params().val_or_id())
+				{
+				
+					ParamData d = new ParamData();
+					d.paramType = ParamType.Pass;
+					switch (par.type)
+			        {
+			        	case "int":
+			        		d.type = VarType.Int;		
+			        		break;
+			        	case "double":
+			        		d.type = VarType.Double;
+			        		break;
+			        	case "bool":
+			        		d.type = VarType.Bool;
+			        		break;
+			        	//case "other":
+			        	//	break;
+			        						
+			        	default:
+			        		throw new NotImplementedException();
+			        }
+			        d.value = par.value;
+					data.paramList.Add(d);    			
+				}
+				
+				string methodName = "";
+			    if (_localctx.Parent.Parent is V_functionContext parentContext)
+			    {
+			    	methodName = parentContext.v_fun_signature().ID().GetText();
+			    }		
+			    if (_localctx.Parent.Parent is M_functionContext parContext)
+			   	{
+			   		methodName = parContext.m_fun_signature().ID().GetText();
+			   	}
+			   	if (_localctx.Parent.Parent is MainContext)
+			   	{
+			    	methodName = "main";
+			    }
+				
+				Console.WriteLine($"call of {callName} in {methodName}, isKnownMet {metTable.ContainsKey(methodName)}");
+			    Console.WriteLine($"Params pass result {CheckParams(data, metTable[callName])}");
+			    
+			    if(methodName != ""){
+			    	metTable[methodName].callList.Add(data);
+			    }
+
+
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class Call_paramsContext : ParserRuleContext {
+		public Val_or_idContext[] val_or_id() {
+			return GetRuleContexts<Val_or_idContext>();
+		}
+		public Val_or_idContext val_or_id(int i) {
+			return GetRuleContext<Val_or_idContext>(i);
+		}
+		public ITerminalNode[] COMMA() { return GetTokens(NinjaVarsParser.COMMA); }
+		public ITerminalNode COMMA(int i) {
+			return GetToken(NinjaVarsParser.COMMA, i);
+		}
+		public Call_paramsContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_call_params; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.EnterCall_params(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.ExitCall_params(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public Call_paramsContext call_params() {
+		Call_paramsContext _localctx = new Call_paramsContext(Context, State);
+		EnterRule(_localctx, 40, RULE_call_params);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 222;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SIN) | (1L << COS) | (1L << TAN) | (1L << ASIN) | (1L << ACOS) | (1L << ATAN) | (1L << ATAN2) | (1L << BOOL) | (1L << DOUBLE) | (1L << INT) | (1L << LPAREN) | (1L << ID))) != 0)) {
+				{
+				State = 214; val_or_id();
+				State = 219;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+				while (_la==COMMA) {
+					{
+					{
+					State = 215; Match(COMMA);
+					State = 216; val_or_id();
+					}
+					}
+					State = 221;
+					ErrorHandler.Sync(this);
+					_la = TokenStream.LA(1);
+				}
+				}
+			}
+
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class Val_or_idContext : ParserRuleContext {
+		public string type;
+		public dynamic value;
+		public AriphExprExContext _ariphExprEx;
+		public BoolExprExContext _boolExprEx;
+		public AriphExprExContext ariphExprEx() {
+			return GetRuleContext<AriphExprExContext>(0);
+		}
+		public BoolExprExContext boolExprEx() {
+			return GetRuleContext<BoolExprExContext>(0);
+		}
+		public Val_or_idContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_val_or_id; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.EnterVal_or_id(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.ExitVal_or_id(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public Val_or_idContext val_or_id() {
+		Val_or_idContext _localctx = new Val_or_idContext(Context, State);
+		EnterRule(_localctx, 42, RULE_val_or_id);
+		try {
+			State = 230;
+			ErrorHandler.Sync(this);
+			switch ( Interpreter.AdaptivePredict(TokenStream,11,Context) ) {
+			case 1:
+				EnterOuterAlt(_localctx, 1);
+				{
+				State = 224; _localctx._ariphExprEx = ariphExprEx();
+
+								_localctx.value =  _localctx._ariphExprEx.value;
+								if (_localctx._ariphExprEx.value.GetType() == typeof(int))
+									_localctx.type =  "int";
+								else
+									_localctx.type =  "double";
+							
+				}
+				break;
+			case 2:
+				EnterOuterAlt(_localctx, 2);
+				{
+				State = 227; _localctx._boolExprEx = boolExprEx();
+
+								_localctx.value =  _localctx._boolExprEx.value;
+								_localctx.type =  "bool";
+							
 				}
 				break;
 			}
@@ -252,10 +1859,38 @@ public partial class NinjaVarsParser : Parser {
 		public IToken _INT;
 		public IToken _DOUBLE;
 		public IToken _ID;
+		public SinContext _sin;
+		public CosContext _cos;
+		public TanContext _tan;
+		public AsinContext _asin;
+		public AcosContext _acos;
+		public AtanContext _atan;
+		public Atan2Context _atan2;
 		public AriphExprExContext _ariphExprEx;
 		public ITerminalNode INT() { return GetToken(NinjaVarsParser.INT, 0); }
 		public ITerminalNode DOUBLE() { return GetToken(NinjaVarsParser.DOUBLE, 0); }
 		public ITerminalNode ID() { return GetToken(NinjaVarsParser.ID, 0); }
+		public SinContext sin() {
+			return GetRuleContext<SinContext>(0);
+		}
+		public CosContext cos() {
+			return GetRuleContext<CosContext>(0);
+		}
+		public TanContext tan() {
+			return GetRuleContext<TanContext>(0);
+		}
+		public AsinContext asin() {
+			return GetRuleContext<AsinContext>(0);
+		}
+		public AcosContext acos() {
+			return GetRuleContext<AcosContext>(0);
+		}
+		public AtanContext atan() {
+			return GetRuleContext<AtanContext>(0);
+		}
+		public Atan2Context atan2() {
+			return GetRuleContext<Atan2Context>(0);
+		}
 		public ITerminalNode LPAREN() { return GetToken(NinjaVarsParser.LPAREN, 0); }
 		public AriphExprExContext ariphExprEx() {
 			return GetRuleContext<AriphExprExContext>(0);
@@ -279,15 +1914,15 @@ public partial class NinjaVarsParser : Parser {
 	[RuleVersion(0)]
 	public AriphOperandContext ariphOperand() {
 		AriphOperandContext _localctx = new AriphOperandContext(Context, State);
-		EnterRule(_localctx, 4, RULE_ariphOperand);
+		EnterRule(_localctx, 44, RULE_ariphOperand);
 		try {
-			State = 44;
+			State = 264;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
 			case INT:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 33; _localctx._INT = Match(INT);
+				State = 232; _localctx._INT = Match(INT);
 
 				                   _localctx.value =  int.Parse((_localctx._INT!=null?_localctx._INT.Text:null));
 				               
@@ -296,7 +1931,7 @@ public partial class NinjaVarsParser : Parser {
 			case DOUBLE:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 35; _localctx._DOUBLE = Match(DOUBLE);
+				State = 234; _localctx._DOUBLE = Match(DOUBLE);
 
 				                   _localctx.value =  double.Parse((_localctx._DOUBLE!=null?_localctx._DOUBLE.Text:null));
 				               
@@ -305,7 +1940,7 @@ public partial class NinjaVarsParser : Parser {
 			case ID:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 37; _localctx._ID = Match(ID);
+				State = 236; _localctx._ID = Match(ID);
 
 				                   try
 				                   {
@@ -318,12 +1953,75 @@ public partial class NinjaVarsParser : Parser {
 				               
 				}
 				break;
-			case LPAREN:
+			case SIN:
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 39; Match(LPAREN);
-				State = 40; _localctx._ariphExprEx = ariphExprEx();
-				State = 41; Match(RPAREN);
+				State = 238; _localctx._sin = sin();
+
+								   _localctx.value =  _localctx._sin.value;
+							   
+				}
+				break;
+			case COS:
+				EnterOuterAlt(_localctx, 5);
+				{
+				State = 241; _localctx._cos = cos();
+
+								   _localctx.value =  _localctx._cos.value;
+							   
+				}
+				break;
+			case TAN:
+				EnterOuterAlt(_localctx, 6);
+				{
+				State = 244; _localctx._tan = tan();
+
+								   _localctx.value =  _localctx._tan.value;
+							   
+				}
+				break;
+			case ASIN:
+				EnterOuterAlt(_localctx, 7);
+				{
+				State = 247; _localctx._asin = asin();
+
+								   _localctx.value =  _localctx._asin.value;
+							   
+				}
+				break;
+			case ACOS:
+				EnterOuterAlt(_localctx, 8);
+				{
+				State = 250; _localctx._acos = acos();
+
+								   _localctx.value =  _localctx._acos.value;
+							   
+				}
+				break;
+			case ATAN:
+				EnterOuterAlt(_localctx, 9);
+				{
+				State = 253; _localctx._atan = atan();
+
+								   _localctx.value =  _localctx._atan.value;
+							   
+				}
+				break;
+			case ATAN2:
+				EnterOuterAlt(_localctx, 10);
+				{
+				State = 256; _localctx._atan2 = atan2();
+
+								   _localctx.value =  _localctx._atan2.value;
+							   
+				}
+				break;
+			case LPAREN:
+				EnterOuterAlt(_localctx, 11);
+				{
+				State = 259; Match(LPAREN);
+				State = 260; _localctx._ariphExprEx = ariphExprEx();
+				State = 261; Match(RPAREN);
 
 				                   _localctx.value =  _localctx._ariphExprEx.value;
 				               
@@ -382,40 +2080,40 @@ public partial class NinjaVarsParser : Parser {
 		int _parentState = State;
 		AriphTermContext _localctx = new AriphTermContext(Context, _parentState);
 		AriphTermContext _prevctx = _localctx;
-		int _startState = 6;
-		EnterRecursionRule(_localctx, 6, RULE_ariphTerm, _p);
+		int _startState = 46;
+		EnterRecursionRule(_localctx, 46, RULE_ariphTerm, _p);
 		try {
 			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
 			{
-			State = 47; _localctx._ariphOperand = ariphOperand();
+			State = 267; _localctx._ariphOperand = ariphOperand();
 
 			                _localctx.value =  _localctx._ariphOperand.value;
 			            
 			}
 			Context.Stop = TokenStream.LT(-1);
-			State = 62;
+			State = 282;
 			ErrorHandler.Sync(this);
-			_alt = Interpreter.AdaptivePredict(TokenStream,4,Context);
+			_alt = Interpreter.AdaptivePredict(TokenStream,14,Context);
 			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( ParseListeners!=null )
 						TriggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					State = 60;
+					State = 280;
 					ErrorHandler.Sync(this);
-					switch ( Interpreter.AdaptivePredict(TokenStream,3,Context) ) {
+					switch ( Interpreter.AdaptivePredict(TokenStream,13,Context) ) {
 					case 1:
 						{
 						_localctx = new AriphTermContext(_parentctx, _parentState);
 						_localctx.left = _prevctx;
 						PushNewRecursionContext(_localctx, _startState, RULE_ariphTerm);
-						State = 50;
+						State = 270;
 						if (!(Precpred(Context, 2))) throw new FailedPredicateException(this, "Precpred(Context, 2)");
-						State = 51; Match(MUL);
-						State = 52; _localctx.right = _localctx._ariphOperand = ariphOperand();
+						State = 271; Match(MUL);
+						State = 272; _localctx.right = _localctx._ariphOperand = ariphOperand();
 
 						                          _localctx.value =  _localctx.left.value * _localctx.right.value;
 						                      
@@ -426,10 +2124,10 @@ public partial class NinjaVarsParser : Parser {
 						_localctx = new AriphTermContext(_parentctx, _parentState);
 						_localctx.left = _prevctx;
 						PushNewRecursionContext(_localctx, _startState, RULE_ariphTerm);
-						State = 55;
+						State = 275;
 						if (!(Precpred(Context, 1))) throw new FailedPredicateException(this, "Precpred(Context, 1)");
-						State = 56; Match(DIV);
-						State = 57; _localctx.right = _localctx._ariphOperand = ariphOperand();
+						State = 276; Match(DIV);
+						State = 277; _localctx.right = _localctx._ariphOperand = ariphOperand();
 
 						                          _localctx.value =  _localctx.left.value / _localctx.right.value;
 						                      
@@ -438,9 +2136,9 @@ public partial class NinjaVarsParser : Parser {
 					}
 					} 
 				}
-				State = 64;
+				State = 284;
 				ErrorHandler.Sync(this);
-				_alt = Interpreter.AdaptivePredict(TokenStream,4,Context);
+				_alt = Interpreter.AdaptivePredict(TokenStream,14,Context);
 			}
 			}
 		}
@@ -493,40 +2191,40 @@ public partial class NinjaVarsParser : Parser {
 		int _parentState = State;
 		AriphExprContext _localctx = new AriphExprContext(Context, _parentState);
 		AriphExprContext _prevctx = _localctx;
-		int _startState = 8;
-		EnterRecursionRule(_localctx, 8, RULE_ariphExpr, _p);
+		int _startState = 48;
+		EnterRecursionRule(_localctx, 48, RULE_ariphExpr, _p);
 		try {
 			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
 			{
-			State = 66; _localctx._ariphTerm = ariphTerm(0);
+			State = 286; _localctx._ariphTerm = ariphTerm(0);
 
 			                _localctx.value =  _localctx._ariphTerm.value;
 			            
 			}
 			Context.Stop = TokenStream.LT(-1);
-			State = 81;
+			State = 301;
 			ErrorHandler.Sync(this);
-			_alt = Interpreter.AdaptivePredict(TokenStream,6,Context);
+			_alt = Interpreter.AdaptivePredict(TokenStream,16,Context);
 			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( ParseListeners!=null )
 						TriggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					State = 79;
+					State = 299;
 					ErrorHandler.Sync(this);
-					switch ( Interpreter.AdaptivePredict(TokenStream,5,Context) ) {
+					switch ( Interpreter.AdaptivePredict(TokenStream,15,Context) ) {
 					case 1:
 						{
 						_localctx = new AriphExprContext(_parentctx, _parentState);
 						_localctx.left = _prevctx;
 						PushNewRecursionContext(_localctx, _startState, RULE_ariphExpr);
-						State = 69;
+						State = 289;
 						if (!(Precpred(Context, 2))) throw new FailedPredicateException(this, "Precpred(Context, 2)");
-						State = 70; Match(ADD);
-						State = 71; _localctx.right = _localctx._ariphTerm = ariphTerm(0);
+						State = 290; Match(ADD);
+						State = 291; _localctx.right = _localctx._ariphTerm = ariphTerm(0);
 
 						                          _localctx.value =  _localctx.left.value + _localctx.right.value;
 						                      
@@ -537,10 +2235,10 @@ public partial class NinjaVarsParser : Parser {
 						_localctx = new AriphExprContext(_parentctx, _parentState);
 						_localctx.left = _prevctx;
 						PushNewRecursionContext(_localctx, _startState, RULE_ariphExpr);
-						State = 74;
+						State = 294;
 						if (!(Precpred(Context, 1))) throw new FailedPredicateException(this, "Precpred(Context, 1)");
-						State = 75; Match(SUB);
-						State = 76; _localctx.right = _localctx._ariphTerm = ariphTerm(0);
+						State = 295; Match(SUB);
+						State = 296; _localctx.right = _localctx._ariphTerm = ariphTerm(0);
 
 						                          _localctx.value =  _localctx.left.value - _localctx.right.value;
 						                      
@@ -549,9 +2247,9 @@ public partial class NinjaVarsParser : Parser {
 					}
 					} 
 				}
-				State = 83;
+				State = 303;
 				ErrorHandler.Sync(this);
-				_alt = Interpreter.AdaptivePredict(TokenStream,6,Context);
+				_alt = Interpreter.AdaptivePredict(TokenStream,16,Context);
 			}
 			}
 		}
@@ -601,15 +2299,15 @@ public partial class NinjaVarsParser : Parser {
 	[RuleVersion(0)]
 	public AriphExprExContext ariphExprEx() {
 		AriphExprExContext _localctx = new AriphExprExContext(Context, State);
-		EnterRule(_localctx, 10, RULE_ariphExprEx);
+		EnterRule(_localctx, 50, RULE_ariphExprEx);
 		try {
-			State = 112;
+			State = 332;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,7,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,17,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 84; _localctx._ariphExpr = ariphExpr(0);
+				State = 304; _localctx._ariphExpr = ariphExpr(0);
 
 				                _localctx.value =  _localctx._ariphExpr.value;
 				            
@@ -618,16 +2316,16 @@ public partial class NinjaVarsParser : Parser {
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 87; _localctx._ID = Match(ID);
-				State = 88; Match(ASSIGN);
-				State = 89; _localctx._ariphExprEx = ariphExprEx();
+				State = 307; _localctx._ID = Match(ID);
+				State = 308; Match(ASSIGN);
+				State = 309; _localctx._ariphExprEx = ariphExprEx();
 
 				                try
 				                {
 				                    VarData data = varTable[(_localctx._ID!=null?_localctx._ID.Text:null)];
 				                    if (data.value.GetType() == _localctx._ariphExprEx.value.GetType())
 				                        data.value = _localctx._ariphExprEx.value;
-				                    else if (data.type == VarData.VarType.Double)
+				                    else if (data.type == VarType.Double)
 				                        data.value = (double)_localctx._ariphExprEx.value;
 				                    else
 				                        Error("Can't convert \"" + (_localctx._ariphExprEx!=null?TokenStream.GetText(_localctx._ariphExprEx.Start,_localctx._ariphExprEx.Stop):null) + "\" to Int");
@@ -642,16 +2340,16 @@ public partial class NinjaVarsParser : Parser {
 			case 3:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 92; _localctx._ID = Match(ID);
-				State = 93; Match(ADDASSIGN);
-				State = 94; _localctx._ariphExprEx = ariphExprEx();
+				State = 312; _localctx._ID = Match(ID);
+				State = 313; Match(ADDASSIGN);
+				State = 314; _localctx._ariphExprEx = ariphExprEx();
 
 				                try
 				                {
 				                    VarData data = varTable[(_localctx._ID!=null?_localctx._ID.Text:null)];
 				                    if (data.value.GetType() == _localctx._ariphExprEx.value.GetType())
 				                        data.value += _localctx._ariphExprEx.value;
-				                    else if (data.type == VarData.VarType.Double)
+				                    else if (data.type == VarType.Double)
 				                        data.value += (double)_localctx._ariphExprEx.value;
 				                    else
 				                        Error("Can't convert \"" + (_localctx._ariphExprEx!=null?TokenStream.GetText(_localctx._ariphExprEx.Start,_localctx._ariphExprEx.Stop):null) + "\" to Int");
@@ -666,16 +2364,16 @@ public partial class NinjaVarsParser : Parser {
 			case 4:
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 97; _localctx._ID = Match(ID);
-				State = 98; Match(SUBASSIGN);
-				State = 99; _localctx._ariphExprEx = ariphExprEx();
+				State = 317; _localctx._ID = Match(ID);
+				State = 318; Match(SUBASSIGN);
+				State = 319; _localctx._ariphExprEx = ariphExprEx();
 
 				                try
 				                {
 				                    VarData data = varTable[(_localctx._ID!=null?_localctx._ID.Text:null)];
 				                    if (data.value.GetType() == _localctx._ariphExprEx.value.GetType())
 				                        data.value -= _localctx._ariphExprEx.value;
-				                    else if (data.type == VarData.VarType.Double)
+				                    else if (data.type == VarType.Double)
 				                        data.value -= (double)_localctx._ariphExprEx.value;
 				                    else
 				                        Error("Can't convert \"" + (_localctx._ariphExprEx!=null?TokenStream.GetText(_localctx._ariphExprEx.Start,_localctx._ariphExprEx.Stop):null) + "\" to Int");
@@ -690,16 +2388,16 @@ public partial class NinjaVarsParser : Parser {
 			case 5:
 				EnterOuterAlt(_localctx, 5);
 				{
-				State = 102; _localctx._ID = Match(ID);
-				State = 103; Match(MULASSIGN);
-				State = 104; _localctx._ariphExprEx = ariphExprEx();
+				State = 322; _localctx._ID = Match(ID);
+				State = 323; Match(MULASSIGN);
+				State = 324; _localctx._ariphExprEx = ariphExprEx();
 
 				                try
 				                {
 				                    VarData data = varTable[(_localctx._ID!=null?_localctx._ID.Text:null)];
 				                    if (data.value.GetType() == _localctx._ariphExprEx.value.GetType())
 				                        data.value *= _localctx._ariphExprEx.value;
-				                    else if (data.type == VarData.VarType.Double)
+				                    else if (data.type == VarType.Double)
 				                        data.value *= (double)_localctx._ariphExprEx.value;
 				                    else
 				                        Error("Can't convert \"" + (_localctx._ariphExprEx!=null?TokenStream.GetText(_localctx._ariphExprEx.Start,_localctx._ariphExprEx.Stop):null) + "\" to Int");
@@ -714,16 +2412,16 @@ public partial class NinjaVarsParser : Parser {
 			case 6:
 				EnterOuterAlt(_localctx, 6);
 				{
-				State = 107; _localctx._ID = Match(ID);
-				State = 108; Match(DIVASSIGN);
-				State = 109; _localctx._ariphExprEx = ariphExprEx();
+				State = 327; _localctx._ID = Match(ID);
+				State = 328; Match(DIVASSIGN);
+				State = 329; _localctx._ariphExprEx = ariphExprEx();
 
 				                try
 				                {
 				                    VarData data = varTable[(_localctx._ID!=null?_localctx._ID.Text:null)];
 				                    if (data.value.GetType() == _localctx._ariphExprEx.value.GetType())
 				                        data.value /= _localctx._ariphExprEx.value;
-				                    else if (data.type == VarData.VarType.Double)
+				                    else if (data.type == VarType.Double)
 				                        data.value /= (double)_localctx._ariphExprEx.value;
 				                    else
 				                        Error("Can't convert \"" + (_localctx._ariphExprEx!=null?TokenStream.GetText(_localctx._ariphExprEx.Start,_localctx._ariphExprEx.Stop):null) + "\" to Int");
@@ -754,6 +2452,7 @@ public partial class NinjaVarsParser : Parser {
 		public IToken _ID;
 		public AriphExprExContext left;
 		public AriphExprExContext right;
+		public BoolExprExContext _boolExprEx;
 		public ITerminalNode BOOL() { return GetToken(NinjaVarsParser.BOOL, 0); }
 		public ITerminalNode ID() { return GetToken(NinjaVarsParser.ID, 0); }
 		public ITerminalNode LESS() { return GetToken(NinjaVarsParser.LESS, 0); }
@@ -768,6 +2467,11 @@ public partial class NinjaVarsParser : Parser {
 		public ITerminalNode NOTEQUAL() { return GetToken(NinjaVarsParser.NOTEQUAL, 0); }
 		public ITerminalNode LESSEQUAL() { return GetToken(NinjaVarsParser.LESSEQUAL, 0); }
 		public ITerminalNode GREQUAL() { return GetToken(NinjaVarsParser.GREQUAL, 0); }
+		public ITerminalNode LPAREN() { return GetToken(NinjaVarsParser.LPAREN, 0); }
+		public BoolExprExContext boolExprEx() {
+			return GetRuleContext<BoolExprExContext>(0);
+		}
+		public ITerminalNode RPAREN() { return GetToken(NinjaVarsParser.RPAREN, 0); }
 		public BoolOperandContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -786,15 +2490,15 @@ public partial class NinjaVarsParser : Parser {
 	[RuleVersion(0)]
 	public BoolOperandContext boolOperand() {
 		BoolOperandContext _localctx = new BoolOperandContext(Context, State);
-		EnterRule(_localctx, 12, RULE_boolOperand);
+		EnterRule(_localctx, 52, RULE_boolOperand);
 		try {
-			State = 148;
+			State = 373;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,8,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,18,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 114; _localctx._BOOL = Match(BOOL);
+				State = 334; _localctx._BOOL = Match(BOOL);
 
 				                  _localctx.value =  bool.Parse((_localctx._BOOL!=null?_localctx._BOOL.Text:null));
 				              
@@ -803,7 +2507,7 @@ public partial class NinjaVarsParser : Parser {
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 116; _localctx._ID = Match(ID);
+				State = 336; _localctx._ID = Match(ID);
 
 				                  try
 				                  {
@@ -819,9 +2523,9 @@ public partial class NinjaVarsParser : Parser {
 			case 3:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 118; _localctx.left = ariphExprEx();
-				State = 119; Match(LESS);
-				State = 120; _localctx.right = ariphExprEx();
+				State = 338; _localctx.left = ariphExprEx();
+				State = 339; Match(LESS);
+				State = 340; _localctx.right = ariphExprEx();
 
 				                  _localctx.value =  _localctx.left.value < _localctx.right.value;
 				              
@@ -830,9 +2534,9 @@ public partial class NinjaVarsParser : Parser {
 			case 4:
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 123; _localctx.left = ariphExprEx();
-				State = 124; Match(GREATER);
-				State = 125; _localctx.right = ariphExprEx();
+				State = 343; _localctx.left = ariphExprEx();
+				State = 344; Match(GREATER);
+				State = 345; _localctx.right = ariphExprEx();
 
 				                  _localctx.value =  _localctx.left.value > _localctx.right.value;
 				              
@@ -841,9 +2545,9 @@ public partial class NinjaVarsParser : Parser {
 			case 5:
 				EnterOuterAlt(_localctx, 5);
 				{
-				State = 128; _localctx.left = ariphExprEx();
-				State = 129; Match(EQUAL);
-				State = 130; _localctx.right = ariphExprEx();
+				State = 348; _localctx.left = ariphExprEx();
+				State = 349; Match(EQUAL);
+				State = 350; _localctx.right = ariphExprEx();
 
 				                  _localctx.value =  _localctx.left.value == _localctx.right.value;
 				              
@@ -852,9 +2556,9 @@ public partial class NinjaVarsParser : Parser {
 			case 6:
 				EnterOuterAlt(_localctx, 6);
 				{
-				State = 133; _localctx.left = ariphExprEx();
-				State = 134; Match(NOTEQUAL);
-				State = 135; _localctx.right = ariphExprEx();
+				State = 353; _localctx.left = ariphExprEx();
+				State = 354; Match(NOTEQUAL);
+				State = 355; _localctx.right = ariphExprEx();
 
 				                  _localctx.value =  _localctx.left.value != _localctx.right.value;
 				              
@@ -863,9 +2567,9 @@ public partial class NinjaVarsParser : Parser {
 			case 7:
 				EnterOuterAlt(_localctx, 7);
 				{
-				State = 138; _localctx.left = ariphExprEx();
-				State = 139; Match(LESSEQUAL);
-				State = 140; _localctx.right = ariphExprEx();
+				State = 358; _localctx.left = ariphExprEx();
+				State = 359; Match(LESSEQUAL);
+				State = 360; _localctx.right = ariphExprEx();
 
 				                  _localctx.value =  _localctx.left.value <= _localctx.right.value;
 				              
@@ -874,11 +2578,22 @@ public partial class NinjaVarsParser : Parser {
 			case 8:
 				EnterOuterAlt(_localctx, 8);
 				{
-				State = 143; _localctx.left = ariphExprEx();
-				State = 144; Match(GREQUAL);
-				State = 145; _localctx.right = ariphExprEx();
+				State = 363; _localctx.left = ariphExprEx();
+				State = 364; Match(GREQUAL);
+				State = 365; _localctx.right = ariphExprEx();
 
 				                  _localctx.value =  _localctx.left.value >= _localctx.right.value;
+				              
+				}
+				break;
+			case 9:
+				EnterOuterAlt(_localctx, 9);
+				{
+				State = 368; Match(LPAREN);
+				State = 369; _localctx._boolExprEx = boolExprEx();
+				State = 370; Match(RPAREN);
+
+				                  _localctx.value =  _localctx._boolExprEx.value;
 				              
 				}
 				break;
@@ -926,15 +2641,15 @@ public partial class NinjaVarsParser : Parser {
 	[RuleVersion(0)]
 	public BoolExprContext boolExpr() {
 		BoolExprContext _localctx = new BoolExprContext(Context, State);
-		EnterRule(_localctx, 14, RULE_boolExpr);
+		EnterRule(_localctx, 54, RULE_boolExpr);
 		try {
-			State = 163;
+			State = 388;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,9,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,19,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 150; _localctx._boolOperand = boolOperand();
+				State = 375; _localctx._boolOperand = boolOperand();
 
 				               _localctx.value =  _localctx._boolOperand.value;
 				           
@@ -943,9 +2658,9 @@ public partial class NinjaVarsParser : Parser {
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 153; _localctx.left = boolOperand();
-				State = 154; Match(OR);
-				State = 155; _localctx.right = boolExpr();
+				State = 378; _localctx.left = boolOperand();
+				State = 379; Match(OR);
+				State = 380; _localctx.right = boolExpr();
 
 				               _localctx.value =  _localctx.left.value || _localctx.right.value;
 				           
@@ -954,9 +2669,9 @@ public partial class NinjaVarsParser : Parser {
 			case 3:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 158; _localctx.left = boolOperand();
-				State = 159; Match(AND);
-				State = 160; _localctx.right = boolExpr();
+				State = 383; _localctx.left = boolOperand();
+				State = 384; Match(AND);
+				State = 385; _localctx.right = boolExpr();
 
 				               _localctx.value =  _localctx.left.value && _localctx.right.value;
 				           
@@ -1006,15 +2721,15 @@ public partial class NinjaVarsParser : Parser {
 	[RuleVersion(0)]
 	public BoolExprExContext boolExprEx() {
 		BoolExprExContext _localctx = new BoolExprExContext(Context, State);
-		EnterRule(_localctx, 16, RULE_boolExprEx);
+		EnterRule(_localctx, 56, RULE_boolExprEx);
 		try {
-			State = 173;
+			State = 398;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,10,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,20,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 165; _localctx._boolExpr = boolExpr();
+				State = 390; _localctx._boolExpr = boolExpr();
 
 				              _localctx.value =  _localctx._boolExpr.value;
 				           
@@ -1023,15 +2738,15 @@ public partial class NinjaVarsParser : Parser {
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 168; _localctx._ID = Match(ID);
-				State = 169; Match(ASSIGN);
-				State = 170; _localctx._boolExprEx = boolExprEx();
+				State = 393; _localctx._ID = Match(ID);
+				State = 394; Match(ASSIGN);
+				State = 395; _localctx._boolExprEx = boolExprEx();
 
 				              try
 				              {
 				                VarData data = varTable[(_localctx._ID!=null?_localctx._ID.Text:null)];
 				                _localctx.value =  data.value = _localctx._boolExprEx.value;
-				                if (data.type != VarData.VarType.Bool)
+				                if (data.type != VarType.Bool)
 				                {
 				                    Error("Can't convert " + data.type + " to Bool");
 				                }
@@ -1089,33 +2804,33 @@ public partial class NinjaVarsParser : Parser {
 	[RuleVersion(0)]
 	public DeclareContext declare() {
 		DeclareContext _localctx = new DeclareContext(Context, State);
-		EnterRule(_localctx, 18, RULE_declare);
+		EnterRule(_localctx, 58, RULE_declare);
 		int _la;
 		try {
-			State = 199;
+			State = 424;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
 			case INTKEY:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 175; Match(INTKEY);
-				State = 176; _localctx._ID = Match(ID);
+				State = 400; Match(INTKEY);
+				State = 401; _localctx._ID = Match(ID);
 
 				           VarData newVar = new VarData
 				           {
-				                type = VarData.VarType.Int,
+				                type = VarType.Int,
 				                value = 0
 				           };
 				           varTable.Add((_localctx._ID!=null?_localctx._ID.Text:null), newVar);
 				           Debug("Create var " + (_localctx._ID!=null?_localctx._ID.Text:null));
 				          
-				State = 180;
+				State = 405;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				if (_la==ASSIGN) {
 					{
-					State = 178; Match(ASSIGN);
-					State = 179; _localctx._ariphExprEx = ariphExprEx();
+					State = 403; Match(ASSIGN);
+					State = 404; _localctx._ariphExprEx = ariphExprEx();
 					}
 				}
 
@@ -1142,24 +2857,24 @@ public partial class NinjaVarsParser : Parser {
 			case DOUBLEKEY:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 183; Match(DOUBLEKEY);
-				State = 184; _localctx._ID = Match(ID);
+				State = 408; Match(DOUBLEKEY);
+				State = 409; _localctx._ID = Match(ID);
 
 				           VarData newVar = new VarData
 				           {
-				                type = VarData.VarType.Double,
+				                type = VarType.Double,
 				                value = 0.0
 				           };
 				           varTable.Add((_localctx._ID!=null?_localctx._ID.Text:null), newVar);
 				           Debug("Create var " + (_localctx._ID!=null?_localctx._ID.Text:null));
 				          
-				State = 188;
+				State = 413;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				if (_la==ASSIGN) {
 					{
-					State = 186; Match(ASSIGN);
-					State = 187; _localctx._ariphExprEx = ariphExprEx();
+					State = 411; Match(ASSIGN);
+					State = 412; _localctx._ariphExprEx = ariphExprEx();
 					}
 				}
 
@@ -1172,7 +2887,7 @@ public partial class NinjaVarsParser : Parser {
 				                  VarData data = varTable[(_localctx._ID!=null?_localctx._ID.Text:null)];
 				                  if (data.value.GetType() == _localctx._ariphExprEx.value.GetType())
 				                    data.value = _localctx._ariphExprEx.value;
-				                  else if (data.type == VarData.VarType.Double)
+				                  else if (data.type == VarType.Double)
 				                    data.value = (double)_localctx._ariphExprEx.value;
 				                }
 				                catch (KeyNotFoundException)
@@ -1186,24 +2901,24 @@ public partial class NinjaVarsParser : Parser {
 			case BOOLKEY:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 191; Match(BOOLKEY);
-				State = 192; _localctx._ID = Match(ID);
+				State = 416; Match(BOOLKEY);
+				State = 417; _localctx._ID = Match(ID);
 
 				           VarData newVar = new VarData
 				           {
-				                type = VarData.VarType.Bool,
+				                type = VarType.Bool,
 				                value = false
 				           };
 				           varTable.Add((_localctx._ID!=null?_localctx._ID.Text:null), newVar);
 				           Debug("Create var " + (_localctx._ID!=null?_localctx._ID.Text:null));
 				          
-				State = 196;
+				State = 421;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				if (_la==ASSIGN) {
 					{
-					State = 194; Match(ASSIGN);
-					State = 195; _localctx._boolExprEx = boolExprEx();
+					State = 419; Match(ASSIGN);
+					State = 420; _localctx._boolExprEx = boolExprEx();
 					}
 				}
 
@@ -1238,10 +2953,853 @@ public partial class NinjaVarsParser : Parser {
 		return _localctx;
 	}
 
+	public partial class SinContext : ParserRuleContext {
+		public double value;
+		public AriphExprExContext _ariphExprEx;
+		public ITerminalNode SIN() { return GetToken(NinjaVarsParser.SIN, 0); }
+		public ITerminalNode LPAREN() { return GetToken(NinjaVarsParser.LPAREN, 0); }
+		public AriphExprExContext ariphExprEx() {
+			return GetRuleContext<AriphExprExContext>(0);
+		}
+		public ITerminalNode RPAREN() { return GetToken(NinjaVarsParser.RPAREN, 0); }
+		public SinContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_sin; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.EnterSin(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.ExitSin(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public SinContext sin() {
+		SinContext _localctx = new SinContext(Context, State);
+		EnterRule(_localctx, 60, RULE_sin);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 426; Match(SIN);
+			State = 427; Match(LPAREN);
+			State = 428; _localctx._ariphExprEx = ariphExprEx();
+			State = 429; Match(RPAREN);
+
+						_localctx.value =  Math.Sin(_localctx._ariphExprEx.value);
+					
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class CosContext : ParserRuleContext {
+		public double value;
+		public AriphExprExContext _ariphExprEx;
+		public ITerminalNode COS() { return GetToken(NinjaVarsParser.COS, 0); }
+		public ITerminalNode LPAREN() { return GetToken(NinjaVarsParser.LPAREN, 0); }
+		public AriphExprExContext ariphExprEx() {
+			return GetRuleContext<AriphExprExContext>(0);
+		}
+		public ITerminalNode RPAREN() { return GetToken(NinjaVarsParser.RPAREN, 0); }
+		public CosContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_cos; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.EnterCos(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.ExitCos(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public CosContext cos() {
+		CosContext _localctx = new CosContext(Context, State);
+		EnterRule(_localctx, 62, RULE_cos);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 432; Match(COS);
+			State = 433; Match(LPAREN);
+			State = 434; _localctx._ariphExprEx = ariphExprEx();
+			State = 435; Match(RPAREN);
+
+						_localctx.value =  Math.Cos(_localctx._ariphExprEx.value);
+					
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class TanContext : ParserRuleContext {
+		public double value;
+		public AriphExprExContext _ariphExprEx;
+		public ITerminalNode TAN() { return GetToken(NinjaVarsParser.TAN, 0); }
+		public ITerminalNode LPAREN() { return GetToken(NinjaVarsParser.LPAREN, 0); }
+		public AriphExprExContext ariphExprEx() {
+			return GetRuleContext<AriphExprExContext>(0);
+		}
+		public ITerminalNode RPAREN() { return GetToken(NinjaVarsParser.RPAREN, 0); }
+		public TanContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_tan; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.EnterTan(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.ExitTan(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public TanContext tan() {
+		TanContext _localctx = new TanContext(Context, State);
+		EnterRule(_localctx, 64, RULE_tan);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 438; Match(TAN);
+			State = 439; Match(LPAREN);
+			State = 440; _localctx._ariphExprEx = ariphExprEx();
+			State = 441; Match(RPAREN);
+
+						_localctx.value =  Math.Tan(_localctx._ariphExprEx.value);
+					
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class AsinContext : ParserRuleContext {
+		public double value;
+		public AriphExprExContext _ariphExprEx;
+		public ITerminalNode ASIN() { return GetToken(NinjaVarsParser.ASIN, 0); }
+		public ITerminalNode LPAREN() { return GetToken(NinjaVarsParser.LPAREN, 0); }
+		public AriphExprExContext ariphExprEx() {
+			return GetRuleContext<AriphExprExContext>(0);
+		}
+		public ITerminalNode RPAREN() { return GetToken(NinjaVarsParser.RPAREN, 0); }
+		public AsinContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_asin; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.EnterAsin(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.ExitAsin(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public AsinContext asin() {
+		AsinContext _localctx = new AsinContext(Context, State);
+		EnterRule(_localctx, 66, RULE_asin);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 444; Match(ASIN);
+			State = 445; Match(LPAREN);
+			State = 446; _localctx._ariphExprEx = ariphExprEx();
+			State = 447; Match(RPAREN);
+
+						_localctx.value =  Math.Asin(_localctx._ariphExprEx.value);
+					
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class AcosContext : ParserRuleContext {
+		public double value;
+		public AriphExprExContext _ariphExprEx;
+		public ITerminalNode ACOS() { return GetToken(NinjaVarsParser.ACOS, 0); }
+		public ITerminalNode LPAREN() { return GetToken(NinjaVarsParser.LPAREN, 0); }
+		public AriphExprExContext ariphExprEx() {
+			return GetRuleContext<AriphExprExContext>(0);
+		}
+		public ITerminalNode RPAREN() { return GetToken(NinjaVarsParser.RPAREN, 0); }
+		public AcosContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_acos; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.EnterAcos(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.ExitAcos(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public AcosContext acos() {
+		AcosContext _localctx = new AcosContext(Context, State);
+		EnterRule(_localctx, 68, RULE_acos);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 450; Match(ACOS);
+			State = 451; Match(LPAREN);
+			State = 452; _localctx._ariphExprEx = ariphExprEx();
+			State = 453; Match(RPAREN);
+
+						_localctx.value =  Math.Acos(_localctx._ariphExprEx.value);
+					
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class AtanContext : ParserRuleContext {
+		public double value;
+		public AriphExprExContext _ariphExprEx;
+		public ITerminalNode ATAN() { return GetToken(NinjaVarsParser.ATAN, 0); }
+		public ITerminalNode LPAREN() { return GetToken(NinjaVarsParser.LPAREN, 0); }
+		public AriphExprExContext ariphExprEx() {
+			return GetRuleContext<AriphExprExContext>(0);
+		}
+		public ITerminalNode RPAREN() { return GetToken(NinjaVarsParser.RPAREN, 0); }
+		public AtanContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_atan; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.EnterAtan(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.ExitAtan(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public AtanContext atan() {
+		AtanContext _localctx = new AtanContext(Context, State);
+		EnterRule(_localctx, 70, RULE_atan);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 456; Match(ATAN);
+			State = 457; Match(LPAREN);
+			State = 458; _localctx._ariphExprEx = ariphExprEx();
+			State = 459; Match(RPAREN);
+
+						_localctx.value =  Math.Atan(_localctx._ariphExprEx.value);
+					
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class Atan2Context : ParserRuleContext {
+		public double value;
+		public AriphExprExContext y;
+		public AriphExprExContext x;
+		public ITerminalNode ATAN2() { return GetToken(NinjaVarsParser.ATAN2, 0); }
+		public ITerminalNode LPAREN() { return GetToken(NinjaVarsParser.LPAREN, 0); }
+		public ITerminalNode COMMA() { return GetToken(NinjaVarsParser.COMMA, 0); }
+		public ITerminalNode RPAREN() { return GetToken(NinjaVarsParser.RPAREN, 0); }
+		public AriphExprExContext[] ariphExprEx() {
+			return GetRuleContexts<AriphExprExContext>();
+		}
+		public AriphExprExContext ariphExprEx(int i) {
+			return GetRuleContext<AriphExprExContext>(i);
+		}
+		public Atan2Context(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_atan2; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.EnterAtan2(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.ExitAtan2(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public Atan2Context atan2() {
+		Atan2Context _localctx = new Atan2Context(Context, State);
+		EnterRule(_localctx, 72, RULE_atan2);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 462; Match(ATAN2);
+			State = 463; Match(LPAREN);
+			State = 464; _localctx.y = ariphExprEx();
+			State = 465; Match(COMMA);
+			State = 466; _localctx.x = ariphExprEx();
+			State = 467; Match(RPAREN);
+
+						_localctx.value =  Math.Atan2(_localctx.y.value, _localctx.x.value);
+					
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class MyifContext : ParserRuleContext {
+		public ITerminalNode IF() { return GetToken(NinjaVarsParser.IF, 0); }
+		public ITerminalNode LPAREN() { return GetToken(NinjaVarsParser.LPAREN, 0); }
+		public BoolExprExContext boolExprEx() {
+			return GetRuleContext<BoolExprExContext>(0);
+		}
+		public ITerminalNode RPAREN() { return GetToken(NinjaVarsParser.RPAREN, 0); }
+		public ITerminalNode[] OBRACE() { return GetTokens(NinjaVarsParser.OBRACE); }
+		public ITerminalNode OBRACE(int i) {
+			return GetToken(NinjaVarsParser.OBRACE, i);
+		}
+		public ITerminalNode[] CBRACE() { return GetTokens(NinjaVarsParser.CBRACE); }
+		public ITerminalNode CBRACE(int i) {
+			return GetToken(NinjaVarsParser.CBRACE, i);
+		}
+		public ITerminalNode ELSE() { return GetToken(NinjaVarsParser.ELSE, 0); }
+		public OperationContext[] operation() {
+			return GetRuleContexts<OperationContext>();
+		}
+		public OperationContext operation(int i) {
+			return GetRuleContext<OperationContext>(i);
+		}
+		public MyifContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_myif; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.EnterMyif(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.ExitMyif(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public MyifContext myif() {
+		MyifContext _localctx = new MyifContext(Context, State);
+		EnterRule(_localctx, 74, RULE_myif);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 470; Match(IF);
+			State = 471; Match(LPAREN);
+			State = 472; boolExprEx();
+			State = 473; Match(RPAREN);
+			State = 474; Match(OBRACE);
+			State = 476;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			do {
+				{
+				{
+				State = 475; operation();
+				}
+				}
+				State = 478;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2) | (1L << T__3) | (1L << INTKEY) | (1L << DOUBLEKEY) | (1L << BOOLKEY) | (1L << WHILE) | (1L << FOR) | (1L << DO) | (1L << IF) | (1L << SIN) | (1L << COS) | (1L << TAN) | (1L << ASIN) | (1L << ACOS) | (1L << ATAN) | (1L << ATAN2) | (1L << BOOL) | (1L << DOUBLE) | (1L << INT) | (1L << LPAREN) | (1L << ID))) != 0) );
+			State = 480; Match(CBRACE);
+			State = 481; Match(ELSE);
+			State = 482; Match(OBRACE);
+			State = 484;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			do {
+				{
+				{
+				State = 483; operation();
+				}
+				}
+				State = 486;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2) | (1L << T__3) | (1L << INTKEY) | (1L << DOUBLEKEY) | (1L << BOOLKEY) | (1L << WHILE) | (1L << FOR) | (1L << DO) | (1L << IF) | (1L << SIN) | (1L << COS) | (1L << TAN) | (1L << ASIN) | (1L << ACOS) | (1L << ATAN) | (1L << ATAN2) | (1L << BOOL) | (1L << DOUBLE) | (1L << INT) | (1L << LPAREN) | (1L << ID))) != 0) );
+			State = 488; Match(CBRACE);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class Myif_shortContext : ParserRuleContext {
+		public ITerminalNode IF() { return GetToken(NinjaVarsParser.IF, 0); }
+		public ITerminalNode LPAREN() { return GetToken(NinjaVarsParser.LPAREN, 0); }
+		public BoolExprExContext boolExprEx() {
+			return GetRuleContext<BoolExprExContext>(0);
+		}
+		public ITerminalNode RPAREN() { return GetToken(NinjaVarsParser.RPAREN, 0); }
+		public ITerminalNode OBRACE() { return GetToken(NinjaVarsParser.OBRACE, 0); }
+		public ITerminalNode CBRACE() { return GetToken(NinjaVarsParser.CBRACE, 0); }
+		public OperationContext[] operation() {
+			return GetRuleContexts<OperationContext>();
+		}
+		public OperationContext operation(int i) {
+			return GetRuleContext<OperationContext>(i);
+		}
+		public Myif_shortContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_myif_short; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.EnterMyif_short(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.ExitMyif_short(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public Myif_shortContext myif_short() {
+		Myif_shortContext _localctx = new Myif_shortContext(Context, State);
+		EnterRule(_localctx, 76, RULE_myif_short);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 490; Match(IF);
+			State = 491; Match(LPAREN);
+			State = 492; boolExprEx();
+			State = 493; Match(RPAREN);
+			State = 494; Match(OBRACE);
+			State = 496;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			do {
+				{
+				{
+				State = 495; operation();
+				}
+				}
+				State = 498;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2) | (1L << T__3) | (1L << INTKEY) | (1L << DOUBLEKEY) | (1L << BOOLKEY) | (1L << WHILE) | (1L << FOR) | (1L << DO) | (1L << IF) | (1L << SIN) | (1L << COS) | (1L << TAN) | (1L << ASIN) | (1L << ACOS) | (1L << ATAN) | (1L << ATAN2) | (1L << BOOL) | (1L << DOUBLE) | (1L << INT) | (1L << LPAREN) | (1L << ID))) != 0) );
+			State = 500; Match(CBRACE);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class MywhileContext : ParserRuleContext {
+		public ITerminalNode WHILE() { return GetToken(NinjaVarsParser.WHILE, 0); }
+		public ITerminalNode LPAREN() { return GetToken(NinjaVarsParser.LPAREN, 0); }
+		public BoolExprExContext boolExprEx() {
+			return GetRuleContext<BoolExprExContext>(0);
+		}
+		public ITerminalNode RPAREN() { return GetToken(NinjaVarsParser.RPAREN, 0); }
+		public ITerminalNode OBRACE() { return GetToken(NinjaVarsParser.OBRACE, 0); }
+		public ITerminalNode CBRACE() { return GetToken(NinjaVarsParser.CBRACE, 0); }
+		public OperationContext[] operation() {
+			return GetRuleContexts<OperationContext>();
+		}
+		public OperationContext operation(int i) {
+			return GetRuleContext<OperationContext>(i);
+		}
+		public MywhileContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_mywhile; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.EnterMywhile(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.ExitMywhile(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public MywhileContext mywhile() {
+		MywhileContext _localctx = new MywhileContext(Context, State);
+		EnterRule(_localctx, 78, RULE_mywhile);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 502; Match(WHILE);
+			State = 503; Match(LPAREN);
+			State = 504; boolExprEx();
+			State = 505; Match(RPAREN);
+			State = 506; Match(OBRACE);
+			State = 508;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			do {
+				{
+				{
+				State = 507; operation();
+				}
+				}
+				State = 510;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2) | (1L << T__3) | (1L << INTKEY) | (1L << DOUBLEKEY) | (1L << BOOLKEY) | (1L << WHILE) | (1L << FOR) | (1L << DO) | (1L << IF) | (1L << SIN) | (1L << COS) | (1L << TAN) | (1L << ASIN) | (1L << ACOS) | (1L << ATAN) | (1L << ATAN2) | (1L << BOOL) | (1L << DOUBLE) | (1L << INT) | (1L << LPAREN) | (1L << ID))) != 0) );
+			State = 512; Match(CBRACE);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class Mydo_whileContext : ParserRuleContext {
+		public ITerminalNode DO() { return GetToken(NinjaVarsParser.DO, 0); }
+		public ITerminalNode OBRACE() { return GetToken(NinjaVarsParser.OBRACE, 0); }
+		public ITerminalNode CBRACE() { return GetToken(NinjaVarsParser.CBRACE, 0); }
+		public ITerminalNode WHILE() { return GetToken(NinjaVarsParser.WHILE, 0); }
+		public ITerminalNode LPAREN() { return GetToken(NinjaVarsParser.LPAREN, 0); }
+		public BoolExprExContext boolExprEx() {
+			return GetRuleContext<BoolExprExContext>(0);
+		}
+		public ITerminalNode RPAREN() { return GetToken(NinjaVarsParser.RPAREN, 0); }
+		public OperationContext[] operation() {
+			return GetRuleContexts<OperationContext>();
+		}
+		public OperationContext operation(int i) {
+			return GetRuleContext<OperationContext>(i);
+		}
+		public Mydo_whileContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_mydo_while; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.EnterMydo_while(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.ExitMydo_while(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public Mydo_whileContext mydo_while() {
+		Mydo_whileContext _localctx = new Mydo_whileContext(Context, State);
+		EnterRule(_localctx, 80, RULE_mydo_while);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 514; Match(DO);
+			State = 515; Match(OBRACE);
+			State = 517;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			do {
+				{
+				{
+				State = 516; operation();
+				}
+				}
+				State = 519;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2) | (1L << T__3) | (1L << INTKEY) | (1L << DOUBLEKEY) | (1L << BOOLKEY) | (1L << WHILE) | (1L << FOR) | (1L << DO) | (1L << IF) | (1L << SIN) | (1L << COS) | (1L << TAN) | (1L << ASIN) | (1L << ACOS) | (1L << ATAN) | (1L << ATAN2) | (1L << BOOL) | (1L << DOUBLE) | (1L << INT) | (1L << LPAREN) | (1L << ID))) != 0) );
+			State = 521; Match(CBRACE);
+			State = 522; Match(WHILE);
+			State = 523; Match(LPAREN);
+			State = 524; boolExprEx();
+			State = 525; Match(RPAREN);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class MyforContext : ParserRuleContext {
+		public ITerminalNode FOR() { return GetToken(NinjaVarsParser.FOR, 0); }
+		public ITerminalNode LPAREN() { return GetToken(NinjaVarsParser.LPAREN, 0); }
+		public ITerminalNode[] SEMICOLON() { return GetTokens(NinjaVarsParser.SEMICOLON); }
+		public ITerminalNode SEMICOLON(int i) {
+			return GetToken(NinjaVarsParser.SEMICOLON, i);
+		}
+		public BoolExprExContext boolExprEx() {
+			return GetRuleContext<BoolExprExContext>(0);
+		}
+		public ITerminalNode RPAREN() { return GetToken(NinjaVarsParser.RPAREN, 0); }
+		public ITerminalNode OBRACE() { return GetToken(NinjaVarsParser.OBRACE, 0); }
+		public ITerminalNode CBRACE() { return GetToken(NinjaVarsParser.CBRACE, 0); }
+		public OperationContext[] operation() {
+			return GetRuleContexts<OperationContext>();
+		}
+		public OperationContext operation(int i) {
+			return GetRuleContext<OperationContext>(i);
+		}
+		public MyforContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_myfor; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.EnterMyfor(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.ExitMyfor(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public MyforContext myfor() {
+		MyforContext _localctx = new MyforContext(Context, State);
+		EnterRule(_localctx, 82, RULE_myfor);
+		int _la;
+		try {
+			int _alt;
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 527; Match(FOR);
+			State = 528; Match(LPAREN);
+			State = 530;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			do {
+				{
+				{
+				State = 529;
+				_la = TokenStream.LA(1);
+				if ( _la <= 0 || (_la==SEMICOLON) ) {
+				ErrorHandler.RecoverInline(this);
+				}
+				else {
+					ErrorHandler.ReportMatch(this);
+				    Consume();
+				}
+				}
+				}
+				State = 532;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2) | (1L << T__3) | (1L << INTKEY) | (1L << DOUBLEKEY) | (1L << BOOLKEY) | (1L << WHILE) | (1L << FOR) | (1L << DO) | (1L << IF) | (1L << ELSE) | (1L << SIN) | (1L << COS) | (1L << TAN) | (1L << ASIN) | (1L << ACOS) | (1L << ATAN) | (1L << ATAN2) | (1L << ASSIGN) | (1L << ADD) | (1L << SUB) | (1L << MUL) | (1L << DIV) | (1L << ADDASSIGN) | (1L << SUBASSIGN) | (1L << MULASSIGN) | (1L << DIVASSIGN) | (1L << AND) | (1L << OR) | (1L << LESS) | (1L << GREATER) | (1L << EQUAL) | (1L << NOTEQUAL) | (1L << LESSEQUAL) | (1L << GREQUAL) | (1L << WS) | (1L << BOOL) | (1L << DOUBLE) | (1L << INT) | (1L << RETURN_KEYWORD) | (1L << MAIN) | (1L << FUN_KEYWORD) | (1L << VOID) | (1L << COMMA) | (1L << OBRACE) | (1L << CBRACE) | (1L << LPAREN) | (1L << RPAREN) | (1L << COMMENT) | (1L << STRING) | (1L << ID))) != 0) );
+			State = 534; Match(SEMICOLON);
+			State = 535; boolExprEx();
+			State = 536; Match(SEMICOLON);
+			State = 538;
+			ErrorHandler.Sync(this);
+			_alt = 1;
+			do {
+				switch (_alt) {
+				case 1:
+					{
+					{
+					State = 537;
+					_la = TokenStream.LA(1);
+					if ( _la <= 0 || (_la==SEMICOLON) ) {
+					ErrorHandler.RecoverInline(this);
+					}
+					else {
+						ErrorHandler.ReportMatch(this);
+					    Consume();
+					}
+					}
+					}
+					break;
+				default:
+					throw new NoViableAltException(this);
+				}
+				State = 540;
+				ErrorHandler.Sync(this);
+				_alt = Interpreter.AdaptivePredict(TokenStream,31,Context);
+			} while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER );
+			State = 542; Match(RPAREN);
+			State = 543; Match(OBRACE);
+			State = 545;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			do {
+				{
+				{
+				State = 544; operation();
+				}
+				}
+				State = 547;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2) | (1L << T__3) | (1L << INTKEY) | (1L << DOUBLEKEY) | (1L << BOOLKEY) | (1L << WHILE) | (1L << FOR) | (1L << DO) | (1L << IF) | (1L << SIN) | (1L << COS) | (1L << TAN) | (1L << ASIN) | (1L << ACOS) | (1L << ATAN) | (1L << ATAN2) | (1L << BOOL) | (1L << DOUBLE) | (1L << INT) | (1L << LPAREN) | (1L << ID))) != 0) );
+			State = 549; Match(CBRACE);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class MeaningfulTypeContext : ParserRuleContext {
+		public ITerminalNode INTKEY() { return GetToken(NinjaVarsParser.INTKEY, 0); }
+		public ITerminalNode DOUBLEKEY() { return GetToken(NinjaVarsParser.DOUBLEKEY, 0); }
+		public ITerminalNode BOOLKEY() { return GetToken(NinjaVarsParser.BOOLKEY, 0); }
+		public MeaningfulTypeContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_meaningfulType; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.EnterMeaningfulType(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			INinjaVarsListener typedListener = listener as INinjaVarsListener;
+			if (typedListener != null) typedListener.ExitMeaningfulType(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public MeaningfulTypeContext meaningfulType() {
+		MeaningfulTypeContext _localctx = new MeaningfulTypeContext(Context, State);
+		EnterRule(_localctx, 84, RULE_meaningfulType);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 551;
+			_la = TokenStream.LA(1);
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << INTKEY) | (1L << DOUBLEKEY) | (1L << BOOLKEY))) != 0)) ) {
+			ErrorHandler.RecoverInline(this);
+			}
+			else {
+				ErrorHandler.ReportMatch(this);
+			    Consume();
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
 	public override bool Sempred(RuleContext _localctx, int ruleIndex, int predIndex) {
 		switch (ruleIndex) {
-		case 3: return ariphTerm_sempred((AriphTermContext)_localctx, predIndex);
-		case 4: return ariphExpr_sempred((AriphExprContext)_localctx, predIndex);
+		case 23: return ariphTerm_sempred((AriphTermContext)_localctx, predIndex);
+		case 24: return ariphExpr_sempred((AriphExprContext)_localctx, predIndex);
 		}
 		return true;
 	}
@@ -1262,173 +3820,471 @@ public partial class NinjaVarsParser : Parser {
 
 	private static char[] _serializedATN = {
 		'\x3', '\x608B', '\xA72A', '\x8133', '\xB9ED', '\x417C', '\x3BE7', '\x7786', 
-		'\x5964', '\x3', '\x1E', '\xCC', '\x4', '\x2', '\t', '\x2', '\x4', '\x3', 
+		'\x5964', '\x3', '\x37', '\x22C', '\x4', '\x2', '\t', '\x2', '\x4', '\x3', 
 		'\t', '\x3', '\x4', '\x4', '\t', '\x4', '\x4', '\x5', '\t', '\x5', '\x4', 
 		'\x6', '\t', '\x6', '\x4', '\a', '\t', '\a', '\x4', '\b', '\t', '\b', 
 		'\x4', '\t', '\t', '\t', '\x4', '\n', '\t', '\n', '\x4', '\v', '\t', '\v', 
-		'\x3', '\x2', '\x3', '\x2', '\x3', '\x2', '\a', '\x2', '\x1A', '\n', '\x2', 
-		'\f', '\x2', '\xE', '\x2', '\x1D', '\v', '\x2', '\x3', '\x3', '\x3', '\x3', 
-		'\x3', '\x3', '\x5', '\x3', '\"', '\n', '\x3', '\x3', '\x4', '\x3', '\x4', 
-		'\x3', '\x4', '\x3', '\x4', '\x3', '\x4', '\x3', '\x4', '\x3', '\x4', 
-		'\x3', '\x4', '\x3', '\x4', '\x3', '\x4', '\x3', '\x4', '\x5', '\x4', 
-		'/', '\n', '\x4', '\x3', '\x5', '\x3', '\x5', '\x3', '\x5', '\x3', '\x5', 
-		'\x3', '\x5', '\x3', '\x5', '\x3', '\x5', '\x3', '\x5', '\x3', '\x5', 
-		'\x3', '\x5', '\x3', '\x5', '\x3', '\x5', '\x3', '\x5', '\x3', '\x5', 
-		'\a', '\x5', '?', '\n', '\x5', '\f', '\x5', '\xE', '\x5', '\x42', '\v', 
-		'\x5', '\x3', '\x6', '\x3', '\x6', '\x3', '\x6', '\x3', '\x6', '\x3', 
-		'\x6', '\x3', '\x6', '\x3', '\x6', '\x3', '\x6', '\x3', '\x6', '\x3', 
-		'\x6', '\x3', '\x6', '\x3', '\x6', '\x3', '\x6', '\x3', '\x6', '\a', '\x6', 
-		'R', '\n', '\x6', '\f', '\x6', '\xE', '\x6', 'U', '\v', '\x6', '\x3', 
-		'\a', '\x3', '\a', '\x3', '\a', '\x3', '\a', '\x3', '\a', '\x3', '\a', 
-		'\x3', '\a', '\x3', '\a', '\x3', '\a', '\x3', '\a', '\x3', '\a', '\x3', 
-		'\a', '\x3', '\a', '\x3', '\a', '\x3', '\a', '\x3', '\a', '\x3', '\a', 
-		'\x3', '\a', '\x3', '\a', '\x3', '\a', '\x3', '\a', '\x3', '\a', '\x3', 
-		'\a', '\x3', '\a', '\x3', '\a', '\x3', '\a', '\x3', '\a', '\x3', '\a', 
-		'\x5', '\a', 's', '\n', '\a', '\x3', '\b', '\x3', '\b', '\x3', '\b', '\x3', 
-		'\b', '\x3', '\b', '\x3', '\b', '\x3', '\b', '\x3', '\b', '\x3', '\b', 
+		'\x4', '\f', '\t', '\f', '\x4', '\r', '\t', '\r', '\x4', '\xE', '\t', 
+		'\xE', '\x4', '\xF', '\t', '\xF', '\x4', '\x10', '\t', '\x10', '\x4', 
+		'\x11', '\t', '\x11', '\x4', '\x12', '\t', '\x12', '\x4', '\x13', '\t', 
+		'\x13', '\x4', '\x14', '\t', '\x14', '\x4', '\x15', '\t', '\x15', '\x4', 
+		'\x16', '\t', '\x16', '\x4', '\x17', '\t', '\x17', '\x4', '\x18', '\t', 
+		'\x18', '\x4', '\x19', '\t', '\x19', '\x4', '\x1A', '\t', '\x1A', '\x4', 
+		'\x1B', '\t', '\x1B', '\x4', '\x1C', '\t', '\x1C', '\x4', '\x1D', '\t', 
+		'\x1D', '\x4', '\x1E', '\t', '\x1E', '\x4', '\x1F', '\t', '\x1F', '\x4', 
+		' ', '\t', ' ', '\x4', '!', '\t', '!', '\x4', '\"', '\t', '\"', '\x4', 
+		'#', '\t', '#', '\x4', '$', '\t', '$', '\x4', '%', '\t', '%', '\x4', '&', 
+		'\t', '&', '\x4', '\'', '\t', '\'', '\x4', '(', '\t', '(', '\x4', ')', 
+		'\t', ')', '\x4', '*', '\t', '*', '\x4', '+', '\t', '+', '\x4', ',', '\t', 
+		',', '\x3', '\x2', '\a', '\x2', 'Z', '\n', '\x2', '\f', '\x2', '\xE', 
+		'\x2', ']', '\v', '\x2', '\x3', '\x2', '\x3', '\x2', '\a', '\x2', '\x61', 
+		'\n', '\x2', '\f', '\x2', '\xE', '\x2', '\x64', '\v', '\x2', '\x3', '\x2', 
+		'\x3', '\x2', '\x3', '\x3', '\x3', '\x3', '\x3', '\x3', '\x3', '\x3', 
+		'\x3', '\x3', '\x3', '\x4', '\x3', '\x4', '\x3', '\x4', '\x3', '\x4', 
+		'\x3', '\x4', '\x3', '\x4', '\x3', '\x4', '\x3', '\x5', '\x3', '\x5', 
+		'\x5', '\x5', 'v', '\n', '\x5', '\x3', '\x6', '\x3', '\x6', '\x3', '\x6', 
+		'\x3', '\x6', '\x3', '\x6', '\x3', '\a', '\x3', '\a', '\x3', '\a', '\x3', 
+		'\a', '\x3', '\a', '\x3', '\a', '\x3', '\a', '\x3', '\a', '\x3', '\b', 
 		'\x3', '\b', '\x3', '\b', '\x3', '\b', '\x3', '\b', '\x3', '\b', '\x3', 
-		'\b', '\x3', '\b', '\x3', '\b', '\x3', '\b', '\x3', '\b', '\x3', '\b', 
-		'\x3', '\b', '\x3', '\b', '\x3', '\b', '\x3', '\b', '\x3', '\b', '\x3', 
-		'\b', '\x3', '\b', '\x3', '\b', '\x3', '\b', '\x3', '\b', '\x3', '\b', 
-		'\x3', '\b', '\x3', '\b', '\x3', '\b', '\x5', '\b', '\x97', '\n', '\b', 
-		'\x3', '\t', '\x3', '\t', '\x3', '\t', '\x3', '\t', '\x3', '\t', '\x3', 
-		'\t', '\x3', '\t', '\x3', '\t', '\x3', '\t', '\x3', '\t', '\x3', '\t', 
-		'\x3', '\t', '\x3', '\t', '\x5', '\t', '\xA6', '\n', '\t', '\x3', '\n', 
-		'\x3', '\n', '\x3', '\n', '\x3', '\n', '\x3', '\n', '\x3', '\n', '\x3', 
-		'\n', '\x3', '\n', '\x5', '\n', '\xB0', '\n', '\n', '\x3', '\v', '\x3', 
-		'\v', '\x3', '\v', '\x3', '\v', '\x3', '\v', '\x5', '\v', '\xB7', '\n', 
-		'\v', '\x3', '\v', '\x3', '\v', '\x3', '\v', '\x3', '\v', '\x3', '\v', 
-		'\x3', '\v', '\x5', '\v', '\xBF', '\n', '\v', '\x3', '\v', '\x3', '\v', 
-		'\x3', '\v', '\x3', '\v', '\x3', '\v', '\x3', '\v', '\x5', '\v', '\xC7', 
-		'\n', '\v', '\x3', '\v', '\x5', '\v', '\xCA', '\n', '\v', '\x3', '\v', 
-		'\x2', '\x4', '\b', '\n', '\f', '\x2', '\x4', '\x6', '\b', '\n', '\f', 
-		'\xE', '\x10', '\x12', '\x14', '\x2', '\x2', '\x2', '\xDF', '\x2', '\x1B', 
-		'\x3', '\x2', '\x2', '\x2', '\x4', '!', '\x3', '\x2', '\x2', '\x2', '\x6', 
-		'.', '\x3', '\x2', '\x2', '\x2', '\b', '\x30', '\x3', '\x2', '\x2', '\x2', 
-		'\n', '\x43', '\x3', '\x2', '\x2', '\x2', '\f', 'r', '\x3', '\x2', '\x2', 
-		'\x2', '\xE', '\x96', '\x3', '\x2', '\x2', '\x2', '\x10', '\xA5', '\x3', 
-		'\x2', '\x2', '\x2', '\x12', '\xAF', '\x3', '\x2', '\x2', '\x2', '\x14', 
-		'\xC9', '\x3', '\x2', '\x2', '\x2', '\x16', '\x17', '\x5', '\x4', '\x3', 
-		'\x2', '\x17', '\x18', '\a', '\x3', '\x2', '\x2', '\x18', '\x1A', '\x3', 
-		'\x2', '\x2', '\x2', '\x19', '\x16', '\x3', '\x2', '\x2', '\x2', '\x1A', 
-		'\x1D', '\x3', '\x2', '\x2', '\x2', '\x1B', '\x19', '\x3', '\x2', '\x2', 
-		'\x2', '\x1B', '\x1C', '\x3', '\x2', '\x2', '\x2', '\x1C', '\x3', '\x3', 
-		'\x2', '\x2', '\x2', '\x1D', '\x1B', '\x3', '\x2', '\x2', '\x2', '\x1E', 
-		'\"', '\x5', '\f', '\a', '\x2', '\x1F', '\"', '\x5', '\x12', '\n', '\x2', 
-		' ', '\"', '\x5', '\x14', '\v', '\x2', '!', '\x1E', '\x3', '\x2', '\x2', 
-		'\x2', '!', '\x1F', '\x3', '\x2', '\x2', '\x2', '!', ' ', '\x3', '\x2', 
-		'\x2', '\x2', '\"', '\x5', '\x3', '\x2', '\x2', '\x2', '#', '$', '\a', 
-		'\x1D', '\x2', '\x2', '$', '/', '\b', '\x4', '\x1', '\x2', '%', '&', '\a', 
-		'\x1C', '\x2', '\x2', '&', '/', '\b', '\x4', '\x1', '\x2', '\'', '(', 
-		'\a', '\x1E', '\x2', '\x2', '(', '/', '\b', '\x4', '\x1', '\x2', ')', 
-		'*', '\a', '\x18', '\x2', '\x2', '*', '+', '\x5', '\f', '\a', '\x2', '+', 
-		',', '\a', '\x19', '\x2', '\x2', ',', '-', '\b', '\x4', '\x1', '\x2', 
-		'-', '/', '\x3', '\x2', '\x2', '\x2', '.', '#', '\x3', '\x2', '\x2', '\x2', 
-		'.', '%', '\x3', '\x2', '\x2', '\x2', '.', '\'', '\x3', '\x2', '\x2', 
-		'\x2', '.', ')', '\x3', '\x2', '\x2', '\x2', '/', '\a', '\x3', '\x2', 
-		'\x2', '\x2', '\x30', '\x31', '\b', '\x5', '\x1', '\x2', '\x31', '\x32', 
-		'\x5', '\x6', '\x4', '\x2', '\x32', '\x33', '\b', '\x5', '\x1', '\x2', 
-		'\x33', '@', '\x3', '\x2', '\x2', '\x2', '\x34', '\x35', '\f', '\x4', 
-		'\x2', '\x2', '\x35', '\x36', '\a', '\n', '\x2', '\x2', '\x36', '\x37', 
-		'\x5', '\x6', '\x4', '\x2', '\x37', '\x38', '\b', '\x5', '\x1', '\x2', 
-		'\x38', '?', '\x3', '\x2', '\x2', '\x2', '\x39', ':', '\f', '\x3', '\x2', 
-		'\x2', ':', ';', '\a', '\v', '\x2', '\x2', ';', '<', '\x5', '\x6', '\x4', 
-		'\x2', '<', '=', '\b', '\x5', '\x1', '\x2', '=', '?', '\x3', '\x2', '\x2', 
-		'\x2', '>', '\x34', '\x3', '\x2', '\x2', '\x2', '>', '\x39', '\x3', '\x2', 
-		'\x2', '\x2', '?', '\x42', '\x3', '\x2', '\x2', '\x2', '@', '>', '\x3', 
-		'\x2', '\x2', '\x2', '@', '\x41', '\x3', '\x2', '\x2', '\x2', '\x41', 
-		'\t', '\x3', '\x2', '\x2', '\x2', '\x42', '@', '\x3', '\x2', '\x2', '\x2', 
-		'\x43', '\x44', '\b', '\x6', '\x1', '\x2', '\x44', '\x45', '\x5', '\b', 
-		'\x5', '\x2', '\x45', '\x46', '\b', '\x6', '\x1', '\x2', '\x46', 'S', 
-		'\x3', '\x2', '\x2', '\x2', 'G', 'H', '\f', '\x4', '\x2', '\x2', 'H', 
-		'I', '\a', '\b', '\x2', '\x2', 'I', 'J', '\x5', '\b', '\x5', '\x2', 'J', 
-		'K', '\b', '\x6', '\x1', '\x2', 'K', 'R', '\x3', '\x2', '\x2', '\x2', 
-		'L', 'M', '\f', '\x3', '\x2', '\x2', 'M', 'N', '\a', '\t', '\x2', '\x2', 
-		'N', 'O', '\x5', '\b', '\x5', '\x2', 'O', 'P', '\b', '\x6', '\x1', '\x2', 
-		'P', 'R', '\x3', '\x2', '\x2', '\x2', 'Q', 'G', '\x3', '\x2', '\x2', '\x2', 
-		'Q', 'L', '\x3', '\x2', '\x2', '\x2', 'R', 'U', '\x3', '\x2', '\x2', '\x2', 
-		'S', 'Q', '\x3', '\x2', '\x2', '\x2', 'S', 'T', '\x3', '\x2', '\x2', '\x2', 
-		'T', '\v', '\x3', '\x2', '\x2', '\x2', 'U', 'S', '\x3', '\x2', '\x2', 
-		'\x2', 'V', 'W', '\x5', '\n', '\x6', '\x2', 'W', 'X', '\b', '\a', '\x1', 
-		'\x2', 'X', 's', '\x3', '\x2', '\x2', '\x2', 'Y', 'Z', '\a', '\x1E', '\x2', 
-		'\x2', 'Z', '[', '\a', '\a', '\x2', '\x2', '[', '\\', '\x5', '\f', '\a', 
-		'\x2', '\\', ']', '\b', '\a', '\x1', '\x2', ']', 's', '\x3', '\x2', '\x2', 
-		'\x2', '^', '_', '\a', '\x1E', '\x2', '\x2', '_', '`', '\a', '\f', '\x2', 
-		'\x2', '`', '\x61', '\x5', '\f', '\a', '\x2', '\x61', '\x62', '\b', '\a', 
-		'\x1', '\x2', '\x62', 's', '\x3', '\x2', '\x2', '\x2', '\x63', '\x64', 
-		'\a', '\x1E', '\x2', '\x2', '\x64', '\x65', '\a', '\r', '\x2', '\x2', 
-		'\x65', '\x66', '\x5', '\f', '\a', '\x2', '\x66', 'g', '\b', '\a', '\x1', 
-		'\x2', 'g', 's', '\x3', '\x2', '\x2', '\x2', 'h', 'i', '\a', '\x1E', '\x2', 
-		'\x2', 'i', 'j', '\a', '\xE', '\x2', '\x2', 'j', 'k', '\x5', '\f', '\a', 
-		'\x2', 'k', 'l', '\b', '\a', '\x1', '\x2', 'l', 's', '\x3', '\x2', '\x2', 
-		'\x2', 'm', 'n', '\a', '\x1E', '\x2', '\x2', 'n', 'o', '\a', '\xF', '\x2', 
-		'\x2', 'o', 'p', '\x5', '\f', '\a', '\x2', 'p', 'q', '\b', '\a', '\x1', 
-		'\x2', 'q', 's', '\x3', '\x2', '\x2', '\x2', 'r', 'V', '\x3', '\x2', '\x2', 
-		'\x2', 'r', 'Y', '\x3', '\x2', '\x2', '\x2', 'r', '^', '\x3', '\x2', '\x2', 
-		'\x2', 'r', '\x63', '\x3', '\x2', '\x2', '\x2', 'r', 'h', '\x3', '\x2', 
-		'\x2', '\x2', 'r', 'm', '\x3', '\x2', '\x2', '\x2', 's', '\r', '\x3', 
-		'\x2', '\x2', '\x2', 't', 'u', '\a', '\x1B', '\x2', '\x2', 'u', '\x97', 
-		'\b', '\b', '\x1', '\x2', 'v', 'w', '\a', '\x1E', '\x2', '\x2', 'w', '\x97', 
-		'\b', '\b', '\x1', '\x2', 'x', 'y', '\x5', '\f', '\a', '\x2', 'y', 'z', 
-		'\a', '\x12', '\x2', '\x2', 'z', '{', '\x5', '\f', '\a', '\x2', '{', '|', 
-		'\b', '\b', '\x1', '\x2', '|', '\x97', '\x3', '\x2', '\x2', '\x2', '}', 
-		'~', '\x5', '\f', '\a', '\x2', '~', '\x7F', '\a', '\x13', '\x2', '\x2', 
-		'\x7F', '\x80', '\x5', '\f', '\a', '\x2', '\x80', '\x81', '\b', '\b', 
-		'\x1', '\x2', '\x81', '\x97', '\x3', '\x2', '\x2', '\x2', '\x82', '\x83', 
-		'\x5', '\f', '\a', '\x2', '\x83', '\x84', '\a', '\x14', '\x2', '\x2', 
-		'\x84', '\x85', '\x5', '\f', '\a', '\x2', '\x85', '\x86', '\b', '\b', 
-		'\x1', '\x2', '\x86', '\x97', '\x3', '\x2', '\x2', '\x2', '\x87', '\x88', 
-		'\x5', '\f', '\a', '\x2', '\x88', '\x89', '\a', '\x15', '\x2', '\x2', 
-		'\x89', '\x8A', '\x5', '\f', '\a', '\x2', '\x8A', '\x8B', '\b', '\b', 
-		'\x1', '\x2', '\x8B', '\x97', '\x3', '\x2', '\x2', '\x2', '\x8C', '\x8D', 
-		'\x5', '\f', '\a', '\x2', '\x8D', '\x8E', '\a', '\x16', '\x2', '\x2', 
-		'\x8E', '\x8F', '\x5', '\f', '\a', '\x2', '\x8F', '\x90', '\b', '\b', 
-		'\x1', '\x2', '\x90', '\x97', '\x3', '\x2', '\x2', '\x2', '\x91', '\x92', 
-		'\x5', '\f', '\a', '\x2', '\x92', '\x93', '\a', '\x17', '\x2', '\x2', 
-		'\x93', '\x94', '\x5', '\f', '\a', '\x2', '\x94', '\x95', '\b', '\b', 
-		'\x1', '\x2', '\x95', '\x97', '\x3', '\x2', '\x2', '\x2', '\x96', 't', 
-		'\x3', '\x2', '\x2', '\x2', '\x96', 'v', '\x3', '\x2', '\x2', '\x2', '\x96', 
-		'x', '\x3', '\x2', '\x2', '\x2', '\x96', '}', '\x3', '\x2', '\x2', '\x2', 
-		'\x96', '\x82', '\x3', '\x2', '\x2', '\x2', '\x96', '\x87', '\x3', '\x2', 
-		'\x2', '\x2', '\x96', '\x8C', '\x3', '\x2', '\x2', '\x2', '\x96', '\x91', 
-		'\x3', '\x2', '\x2', '\x2', '\x97', '\xF', '\x3', '\x2', '\x2', '\x2', 
-		'\x98', '\x99', '\x5', '\xE', '\b', '\x2', '\x99', '\x9A', '\b', '\t', 
-		'\x1', '\x2', '\x9A', '\xA6', '\x3', '\x2', '\x2', '\x2', '\x9B', '\x9C', 
-		'\x5', '\xE', '\b', '\x2', '\x9C', '\x9D', '\a', '\x11', '\x2', '\x2', 
-		'\x9D', '\x9E', '\x5', '\x10', '\t', '\x2', '\x9E', '\x9F', '\b', '\t', 
-		'\x1', '\x2', '\x9F', '\xA6', '\x3', '\x2', '\x2', '\x2', '\xA0', '\xA1', 
-		'\x5', '\xE', '\b', '\x2', '\xA1', '\xA2', '\a', '\x10', '\x2', '\x2', 
-		'\xA2', '\xA3', '\x5', '\x10', '\t', '\x2', '\xA3', '\xA4', '\b', '\t', 
-		'\x1', '\x2', '\xA4', '\xA6', '\x3', '\x2', '\x2', '\x2', '\xA5', '\x98', 
-		'\x3', '\x2', '\x2', '\x2', '\xA5', '\x9B', '\x3', '\x2', '\x2', '\x2', 
-		'\xA5', '\xA0', '\x3', '\x2', '\x2', '\x2', '\xA6', '\x11', '\x3', '\x2', 
-		'\x2', '\x2', '\xA7', '\xA8', '\x5', '\x10', '\t', '\x2', '\xA8', '\xA9', 
-		'\b', '\n', '\x1', '\x2', '\xA9', '\xB0', '\x3', '\x2', '\x2', '\x2', 
-		'\xAA', '\xAB', '\a', '\x1E', '\x2', '\x2', '\xAB', '\xAC', '\a', '\a', 
-		'\x2', '\x2', '\xAC', '\xAD', '\x5', '\x12', '\n', '\x2', '\xAD', '\xAE', 
-		'\b', '\n', '\x1', '\x2', '\xAE', '\xB0', '\x3', '\x2', '\x2', '\x2', 
-		'\xAF', '\xA7', '\x3', '\x2', '\x2', '\x2', '\xAF', '\xAA', '\x3', '\x2', 
-		'\x2', '\x2', '\xB0', '\x13', '\x3', '\x2', '\x2', '\x2', '\xB1', '\xB2', 
-		'\a', '\x4', '\x2', '\x2', '\xB2', '\xB3', '\a', '\x1E', '\x2', '\x2', 
-		'\xB3', '\xB6', '\b', '\v', '\x1', '\x2', '\xB4', '\xB5', '\a', '\a', 
-		'\x2', '\x2', '\xB5', '\xB7', '\x5', '\f', '\a', '\x2', '\xB6', '\xB4', 
-		'\x3', '\x2', '\x2', '\x2', '\xB6', '\xB7', '\x3', '\x2', '\x2', '\x2', 
-		'\xB7', '\xB8', '\x3', '\x2', '\x2', '\x2', '\xB8', '\xCA', '\b', '\v', 
-		'\x1', '\x2', '\xB9', '\xBA', '\a', '\x5', '\x2', '\x2', '\xBA', '\xBB', 
-		'\a', '\x1E', '\x2', '\x2', '\xBB', '\xBE', '\b', '\v', '\x1', '\x2', 
-		'\xBC', '\xBD', '\a', '\a', '\x2', '\x2', '\xBD', '\xBF', '\x5', '\f', 
-		'\a', '\x2', '\xBE', '\xBC', '\x3', '\x2', '\x2', '\x2', '\xBE', '\xBF', 
-		'\x3', '\x2', '\x2', '\x2', '\xBF', '\xC0', '\x3', '\x2', '\x2', '\x2', 
-		'\xC0', '\xCA', '\b', '\v', '\x1', '\x2', '\xC1', '\xC2', '\a', '\x6', 
-		'\x2', '\x2', '\xC2', '\xC3', '\a', '\x1E', '\x2', '\x2', '\xC3', '\xC6', 
-		'\b', '\v', '\x1', '\x2', '\xC4', '\xC5', '\a', '\a', '\x2', '\x2', '\xC5', 
-		'\xC7', '\x5', '\x12', '\n', '\x2', '\xC6', '\xC4', '\x3', '\x2', '\x2', 
-		'\x2', '\xC6', '\xC7', '\x3', '\x2', '\x2', '\x2', '\xC7', '\xC8', '\x3', 
-		'\x2', '\x2', '\x2', '\xC8', '\xCA', '\b', '\v', '\x1', '\x2', '\xC9', 
-		'\xB1', '\x3', '\x2', '\x2', '\x2', '\xC9', '\xB9', '\x3', '\x2', '\x2', 
-		'\x2', '\xC9', '\xC1', '\x3', '\x2', '\x2', '\x2', '\xCA', '\x15', '\x3', 
-		'\x2', '\x2', '\x2', '\x11', '\x1B', '!', '.', '>', '@', 'Q', 'S', 'r', 
-		'\x96', '\xA5', '\xAF', '\xB6', '\xBE', '\xC6', '\xC9',
+		'\b', '\x3', '\t', '\x3', '\t', '\x3', '\t', '\x3', '\t', '\x3', '\t', 
+		'\x3', '\t', '\x3', '\t', '\x3', '\t', '\x3', '\n', '\a', '\n', '\x95', 
+		'\n', '\n', '\f', '\n', '\xE', '\n', '\x98', '\v', '\n', '\x3', '\v', 
+		'\a', '\v', '\x9B', '\n', '\v', '\f', '\v', '\xE', '\v', '\x9E', '\v', 
+		'\v', '\x3', '\f', '\x3', '\f', '\x3', '\f', '\x3', '\f', '\x3', '\f', 
+		'\x3', '\f', '\x3', '\f', '\x3', '\f', '\x3', '\f', '\x3', '\f', '\x5', 
+		'\f', '\xAA', '\n', '\f', '\x3', '\r', '\x3', '\r', '\x3', '\r', '\x3', 
+		'\r', '\x3', '\xE', '\x3', '\xE', '\x3', '\xE', '\a', '\xE', '\xB3', '\n', 
+		'\xE', '\f', '\xE', '\xE', '\xE', '\xB6', '\v', '\xE', '\x5', '\xE', '\xB8', 
+		'\n', '\xE', '\x3', '\xF', '\x3', '\xF', '\x3', '\xF', '\x3', '\xF', '\x3', 
+		'\x10', '\x3', '\x10', '\x3', '\x11', '\x3', '\x11', '\x3', '\x12', '\x3', 
+		'\x12', '\x3', '\x12', '\x3', '\x12', '\x3', '\x12', '\x3', '\x12', '\x5', 
+		'\x12', '\xC8', '\n', '\x12', '\x3', '\x13', '\x3', '\x13', '\x3', '\x13', 
+		'\x3', '\x13', '\x3', '\x13', '\x3', '\x14', '\x3', '\x14', '\x3', '\x14', 
+		'\x3', '\x14', '\x3', '\x15', '\x3', '\x15', '\x3', '\x15', '\x3', '\x15', 
+		'\x3', '\x15', '\x3', '\x15', '\x3', '\x16', '\x3', '\x16', '\x3', '\x16', 
+		'\a', '\x16', '\xDC', '\n', '\x16', '\f', '\x16', '\xE', '\x16', '\xDF', 
+		'\v', '\x16', '\x5', '\x16', '\xE1', '\n', '\x16', '\x3', '\x17', '\x3', 
+		'\x17', '\x3', '\x17', '\x3', '\x17', '\x3', '\x17', '\x3', '\x17', '\x5', 
+		'\x17', '\xE9', '\n', '\x17', '\x3', '\x18', '\x3', '\x18', '\x3', '\x18', 
+		'\x3', '\x18', '\x3', '\x18', '\x3', '\x18', '\x3', '\x18', '\x3', '\x18', 
+		'\x3', '\x18', '\x3', '\x18', '\x3', '\x18', '\x3', '\x18', '\x3', '\x18', 
+		'\x3', '\x18', '\x3', '\x18', '\x3', '\x18', '\x3', '\x18', '\x3', '\x18', 
+		'\x3', '\x18', '\x3', '\x18', '\x3', '\x18', '\x3', '\x18', '\x3', '\x18', 
+		'\x3', '\x18', '\x3', '\x18', '\x3', '\x18', '\x3', '\x18', '\x3', '\x18', 
+		'\x3', '\x18', '\x3', '\x18', '\x3', '\x18', '\x3', '\x18', '\x5', '\x18', 
+		'\x10B', '\n', '\x18', '\x3', '\x19', '\x3', '\x19', '\x3', '\x19', '\x3', 
+		'\x19', '\x3', '\x19', '\x3', '\x19', '\x3', '\x19', '\x3', '\x19', '\x3', 
+		'\x19', '\x3', '\x19', '\x3', '\x19', '\x3', '\x19', '\x3', '\x19', '\x3', 
+		'\x19', '\a', '\x19', '\x11B', '\n', '\x19', '\f', '\x19', '\xE', '\x19', 
+		'\x11E', '\v', '\x19', '\x3', '\x1A', '\x3', '\x1A', '\x3', '\x1A', '\x3', 
+		'\x1A', '\x3', '\x1A', '\x3', '\x1A', '\x3', '\x1A', '\x3', '\x1A', '\x3', 
+		'\x1A', '\x3', '\x1A', '\x3', '\x1A', '\x3', '\x1A', '\x3', '\x1A', '\x3', 
+		'\x1A', '\a', '\x1A', '\x12E', '\n', '\x1A', '\f', '\x1A', '\xE', '\x1A', 
+		'\x131', '\v', '\x1A', '\x3', '\x1B', '\x3', '\x1B', '\x3', '\x1B', '\x3', 
+		'\x1B', '\x3', '\x1B', '\x3', '\x1B', '\x3', '\x1B', '\x3', '\x1B', '\x3', 
+		'\x1B', '\x3', '\x1B', '\x3', '\x1B', '\x3', '\x1B', '\x3', '\x1B', '\x3', 
+		'\x1B', '\x3', '\x1B', '\x3', '\x1B', '\x3', '\x1B', '\x3', '\x1B', '\x3', 
+		'\x1B', '\x3', '\x1B', '\x3', '\x1B', '\x3', '\x1B', '\x3', '\x1B', '\x3', 
+		'\x1B', '\x3', '\x1B', '\x3', '\x1B', '\x3', '\x1B', '\x3', '\x1B', '\x5', 
+		'\x1B', '\x14F', '\n', '\x1B', '\x3', '\x1C', '\x3', '\x1C', '\x3', '\x1C', 
+		'\x3', '\x1C', '\x3', '\x1C', '\x3', '\x1C', '\x3', '\x1C', '\x3', '\x1C', 
+		'\x3', '\x1C', '\x3', '\x1C', '\x3', '\x1C', '\x3', '\x1C', '\x3', '\x1C', 
+		'\x3', '\x1C', '\x3', '\x1C', '\x3', '\x1C', '\x3', '\x1C', '\x3', '\x1C', 
+		'\x3', '\x1C', '\x3', '\x1C', '\x3', '\x1C', '\x3', '\x1C', '\x3', '\x1C', 
+		'\x3', '\x1C', '\x3', '\x1C', '\x3', '\x1C', '\x3', '\x1C', '\x3', '\x1C', 
+		'\x3', '\x1C', '\x3', '\x1C', '\x3', '\x1C', '\x3', '\x1C', '\x3', '\x1C', 
+		'\x3', '\x1C', '\x3', '\x1C', '\x3', '\x1C', '\x3', '\x1C', '\x3', '\x1C', 
+		'\x3', '\x1C', '\x5', '\x1C', '\x178', '\n', '\x1C', '\x3', '\x1D', '\x3', 
+		'\x1D', '\x3', '\x1D', '\x3', '\x1D', '\x3', '\x1D', '\x3', '\x1D', '\x3', 
+		'\x1D', '\x3', '\x1D', '\x3', '\x1D', '\x3', '\x1D', '\x3', '\x1D', '\x3', 
+		'\x1D', '\x3', '\x1D', '\x5', '\x1D', '\x187', '\n', '\x1D', '\x3', '\x1E', 
+		'\x3', '\x1E', '\x3', '\x1E', '\x3', '\x1E', '\x3', '\x1E', '\x3', '\x1E', 
+		'\x3', '\x1E', '\x3', '\x1E', '\x5', '\x1E', '\x191', '\n', '\x1E', '\x3', 
+		'\x1F', '\x3', '\x1F', '\x3', '\x1F', '\x3', '\x1F', '\x3', '\x1F', '\x5', 
+		'\x1F', '\x198', '\n', '\x1F', '\x3', '\x1F', '\x3', '\x1F', '\x3', '\x1F', 
+		'\x3', '\x1F', '\x3', '\x1F', '\x3', '\x1F', '\x5', '\x1F', '\x1A0', '\n', 
+		'\x1F', '\x3', '\x1F', '\x3', '\x1F', '\x3', '\x1F', '\x3', '\x1F', '\x3', 
+		'\x1F', '\x3', '\x1F', '\x5', '\x1F', '\x1A8', '\n', '\x1F', '\x3', '\x1F', 
+		'\x5', '\x1F', '\x1AB', '\n', '\x1F', '\x3', ' ', '\x3', ' ', '\x3', ' ', 
+		'\x3', ' ', '\x3', ' ', '\x3', ' ', '\x3', '!', '\x3', '!', '\x3', '!', 
+		'\x3', '!', '\x3', '!', '\x3', '!', '\x3', '\"', '\x3', '\"', '\x3', '\"', 
+		'\x3', '\"', '\x3', '\"', '\x3', '\"', '\x3', '#', '\x3', '#', '\x3', 
+		'#', '\x3', '#', '\x3', '#', '\x3', '#', '\x3', '$', '\x3', '$', '\x3', 
+		'$', '\x3', '$', '\x3', '$', '\x3', '$', '\x3', '%', '\x3', '%', '\x3', 
+		'%', '\x3', '%', '\x3', '%', '\x3', '%', '\x3', '&', '\x3', '&', '\x3', 
+		'&', '\x3', '&', '\x3', '&', '\x3', '&', '\x3', '&', '\x3', '&', '\x3', 
+		'\'', '\x3', '\'', '\x3', '\'', '\x3', '\'', '\x3', '\'', '\x3', '\'', 
+		'\x6', '\'', '\x1DF', '\n', '\'', '\r', '\'', '\xE', '\'', '\x1E0', '\x3', 
+		'\'', '\x3', '\'', '\x3', '\'', '\x3', '\'', '\x6', '\'', '\x1E7', '\n', 
+		'\'', '\r', '\'', '\xE', '\'', '\x1E8', '\x3', '\'', '\x3', '\'', '\x3', 
+		'(', '\x3', '(', '\x3', '(', '\x3', '(', '\x3', '(', '\x3', '(', '\x6', 
+		'(', '\x1F3', '\n', '(', '\r', '(', '\xE', '(', '\x1F4', '\x3', '(', '\x3', 
+		'(', '\x3', ')', '\x3', ')', '\x3', ')', '\x3', ')', '\x3', ')', '\x3', 
+		')', '\x6', ')', '\x1FF', '\n', ')', '\r', ')', '\xE', ')', '\x200', '\x3', 
+		')', '\x3', ')', '\x3', '*', '\x3', '*', '\x3', '*', '\x6', '*', '\x208', 
+		'\n', '*', '\r', '*', '\xE', '*', '\x209', '\x3', '*', '\x3', '*', '\x3', 
+		'*', '\x3', '*', '\x3', '*', '\x3', '*', '\x3', '+', '\x3', '+', '\x3', 
+		'+', '\x6', '+', '\x215', '\n', '+', '\r', '+', '\xE', '+', '\x216', '\x3', 
+		'+', '\x3', '+', '\x3', '+', '\x3', '+', '\x6', '+', '\x21D', '\n', '+', 
+		'\r', '+', '\xE', '+', '\x21E', '\x3', '+', '\x3', '+', '\x3', '+', '\x6', 
+		'+', '\x224', '\n', '+', '\r', '+', '\xE', '+', '\x225', '\x3', '+', '\x3', 
+		'+', '\x3', ',', '\x3', ',', '\x3', ',', '\x2', '\x4', '\x30', '\x32', 
+		'-', '\x2', '\x4', '\x6', '\b', '\n', '\f', '\xE', '\x10', '\x12', '\x14', 
+		'\x16', '\x18', '\x1A', '\x1C', '\x1E', ' ', '\"', '$', '&', '(', '*', 
+		',', '.', '\x30', '\x32', '\x34', '\x36', '\x38', ':', '<', '>', '@', 
+		'\x42', '\x44', '\x46', 'H', 'J', 'L', 'N', 'P', 'R', 'T', 'V', '\x2', 
+		'\x6', '\x3', '\x2', '\x3', '\x4', '\x3', '\x2', '\x5', '\x6', '\x3', 
+		'\x2', '\a', '\a', '\x3', '\x2', '\b', '\n', '\x2', '\x23F', '\x2', '[', 
+		'\x3', '\x2', '\x2', '\x2', '\x4', 'g', '\x3', '\x2', '\x2', '\x2', '\x6', 
+		'l', '\x3', '\x2', '\x2', '\x2', '\b', 'u', '\x3', '\x2', '\x2', '\x2', 
+		'\n', 'w', '\x3', '\x2', '\x2', '\x2', '\f', '|', '\x3', '\x2', '\x2', 
+		'\x2', '\xE', '\x84', '\x3', '\x2', '\x2', '\x2', '\x10', '\x8B', '\x3', 
+		'\x2', '\x2', '\x2', '\x12', '\x96', '\x3', '\x2', '\x2', '\x2', '\x14', 
+		'\x9C', '\x3', '\x2', '\x2', '\x2', '\x16', '\xA9', '\x3', '\x2', '\x2', 
+		'\x2', '\x18', '\xAB', '\x3', '\x2', '\x2', '\x2', '\x1A', '\xB7', '\x3', 
+		'\x2', '\x2', '\x2', '\x1C', '\xB9', '\x3', '\x2', '\x2', '\x2', '\x1E', 
+		'\xBD', '\x3', '\x2', '\x2', '\x2', ' ', '\xBF', '\x3', '\x2', '\x2', 
+		'\x2', '\"', '\xC7', '\x3', '\x2', '\x2', '\x2', '$', '\xC9', '\x3', '\x2', 
+		'\x2', '\x2', '&', '\xCE', '\x3', '\x2', '\x2', '\x2', '(', '\xD2', '\x3', 
+		'\x2', '\x2', '\x2', '*', '\xE0', '\x3', '\x2', '\x2', '\x2', ',', '\xE8', 
+		'\x3', '\x2', '\x2', '\x2', '.', '\x10A', '\x3', '\x2', '\x2', '\x2', 
+		'\x30', '\x10C', '\x3', '\x2', '\x2', '\x2', '\x32', '\x11F', '\x3', '\x2', 
+		'\x2', '\x2', '\x34', '\x14E', '\x3', '\x2', '\x2', '\x2', '\x36', '\x177', 
+		'\x3', '\x2', '\x2', '\x2', '\x38', '\x186', '\x3', '\x2', '\x2', '\x2', 
+		':', '\x190', '\x3', '\x2', '\x2', '\x2', '<', '\x1AA', '\x3', '\x2', 
+		'\x2', '\x2', '>', '\x1AC', '\x3', '\x2', '\x2', '\x2', '@', '\x1B2', 
+		'\x3', '\x2', '\x2', '\x2', '\x42', '\x1B8', '\x3', '\x2', '\x2', '\x2', 
+		'\x44', '\x1BE', '\x3', '\x2', '\x2', '\x2', '\x46', '\x1C4', '\x3', '\x2', 
+		'\x2', '\x2', 'H', '\x1CA', '\x3', '\x2', '\x2', '\x2', 'J', '\x1D0', 
+		'\x3', '\x2', '\x2', '\x2', 'L', '\x1D8', '\x3', '\x2', '\x2', '\x2', 
+		'N', '\x1EC', '\x3', '\x2', '\x2', '\x2', 'P', '\x1F8', '\x3', '\x2', 
+		'\x2', '\x2', 'R', '\x204', '\x3', '\x2', '\x2', '\x2', 'T', '\x211', 
+		'\x3', '\x2', '\x2', '\x2', 'V', '\x229', '\x3', '\x2', '\x2', '\x2', 
+		'X', 'Z', '\x5', '\b', '\x5', '\x2', 'Y', 'X', '\x3', '\x2', '\x2', '\x2', 
+		'Z', ']', '\x3', '\x2', '\x2', '\x2', '[', 'Y', '\x3', '\x2', '\x2', '\x2', 
+		'[', '\\', '\x3', '\x2', '\x2', '\x2', '\\', '^', '\x3', '\x2', '\x2', 
+		'\x2', ']', '[', '\x3', '\x2', '\x2', '\x2', '^', '\x62', '\x5', '\x4', 
+		'\x3', '\x2', '_', '\x61', '\x5', '\b', '\x5', '\x2', '`', '_', '\x3', 
+		'\x2', '\x2', '\x2', '\x61', '\x64', '\x3', '\x2', '\x2', '\x2', '\x62', 
+		'`', '\x3', '\x2', '\x2', '\x2', '\x62', '\x63', '\x3', '\x2', '\x2', 
+		'\x2', '\x63', '\x65', '\x3', '\x2', '\x2', '\x2', '\x64', '\x62', '\x3', 
+		'\x2', '\x2', '\x2', '\x65', '\x66', '\b', '\x2', '\x1', '\x2', '\x66', 
+		'\x3', '\x3', '\x2', '\x2', '\x2', 'g', 'h', '\x5', '\x6', '\x4', '\x2', 
+		'h', 'i', '\a', '\x31', '\x2', '\x2', 'i', 'j', '\x5', '\x14', '\v', '\x2', 
+		'j', 'k', '\a', '\x32', '\x2', '\x2', 'k', '\x5', '\x3', '\x2', '\x2', 
+		'\x2', 'l', 'm', '\a', '.', '\x2', '\x2', 'm', 'n', '\a', '/', '\x2', 
+		'\x2', 'n', 'o', '\a', '-', '\x2', '\x2', 'o', 'p', '\a', '\x33', '\x2', 
+		'\x2', 'p', 'q', '\a', '\x34', '\x2', '\x2', 'q', 'r', '\b', '\x4', '\x1', 
+		'\x2', 'r', '\a', '\x3', '\x2', '\x2', '\x2', 's', 'v', '\x5', '\n', '\x6', 
+		'\x2', 't', 'v', '\x5', '\xE', '\b', '\x2', 'u', 's', '\x3', '\x2', '\x2', 
+		'\x2', 'u', 't', '\x3', '\x2', '\x2', '\x2', 'v', '\t', '\x3', '\x2', 
+		'\x2', '\x2', 'w', 'x', '\x5', '\f', '\a', '\x2', 'x', 'y', '\a', '\x31', 
+		'\x2', '\x2', 'y', 'z', '\x5', '\x12', '\n', '\x2', 'z', '{', '\a', '\x32', 
+		'\x2', '\x2', '{', '\v', '\x3', '\x2', '\x2', '\x2', '|', '}', '\a', '.', 
+		'\x2', '\x2', '}', '~', '\a', '/', '\x2', '\x2', '~', '\x7F', '\a', '\x37', 
+		'\x2', '\x2', '\x7F', '\x80', '\a', '\x33', '\x2', '\x2', '\x80', '\x81', 
+		'\x5', '\x1A', '\xE', '\x2', '\x81', '\x82', '\a', '\x34', '\x2', '\x2', 
+		'\x82', '\x83', '\b', '\a', '\x1', '\x2', '\x83', '\r', '\x3', '\x2', 
+		'\x2', '\x2', '\x84', '\x85', '\x5', '\x10', '\t', '\x2', '\x85', '\x86', 
+		'\a', '\x31', '\x2', '\x2', '\x86', '\x87', '\x5', '\x12', '\n', '\x2', 
+		'\x87', '\x88', '\x5', '\x18', '\r', '\x2', '\x88', '\x89', '\a', '\x32', 
+		'\x2', '\x2', '\x89', '\x8A', '\b', '\b', '\x1', '\x2', '\x8A', '\xF', 
+		'\x3', '\x2', '\x2', '\x2', '\x8B', '\x8C', '\a', '.', '\x2', '\x2', '\x8C', 
+		'\x8D', '\x5', 'V', ',', '\x2', '\x8D', '\x8E', '\a', '\x37', '\x2', '\x2', 
+		'\x8E', '\x8F', '\a', '\x33', '\x2', '\x2', '\x8F', '\x90', '\x5', '\x1A', 
+		'\xE', '\x2', '\x90', '\x91', '\a', '\x34', '\x2', '\x2', '\x91', '\x92', 
+		'\b', '\t', '\x1', '\x2', '\x92', '\x11', '\x3', '\x2', '\x2', '\x2', 
+		'\x93', '\x95', '\x5', '\x16', '\f', '\x2', '\x94', '\x93', '\x3', '\x2', 
+		'\x2', '\x2', '\x95', '\x98', '\x3', '\x2', '\x2', '\x2', '\x96', '\x94', 
+		'\x3', '\x2', '\x2', '\x2', '\x96', '\x97', '\x3', '\x2', '\x2', '\x2', 
+		'\x97', '\x13', '\x3', '\x2', '\x2', '\x2', '\x98', '\x96', '\x3', '\x2', 
+		'\x2', '\x2', '\x99', '\x9B', '\x5', '\x16', '\f', '\x2', '\x9A', '\x99', 
+		'\x3', '\x2', '\x2', '\x2', '\x9B', '\x9E', '\x3', '\x2', '\x2', '\x2', 
+		'\x9C', '\x9A', '\x3', '\x2', '\x2', '\x2', '\x9C', '\x9D', '\x3', '\x2', 
+		'\x2', '\x2', '\x9D', '\x15', '\x3', '\x2', '\x2', '\x2', '\x9E', '\x9C', 
+		'\x3', '\x2', '\x2', '\x2', '\x9F', '\xAA', '\x5', '\"', '\x12', '\x2', 
+		'\xA0', '\xAA', '\x5', '(', '\x15', '\x2', '\xA1', '\xAA', '\x5', '<', 
+		'\x1F', '\x2', '\xA2', '\xAA', '\x5', '\x34', '\x1B', '\x2', '\xA3', '\xAA', 
+		'\x5', ':', '\x1E', '\x2', '\xA4', '\xAA', '\x5', 'L', '\'', '\x2', '\xA5', 
+		'\xAA', '\x5', 'N', '(', '\x2', '\xA6', '\xAA', '\x5', 'P', ')', '\x2', 
+		'\xA7', '\xAA', '\x5', 'R', '*', '\x2', '\xA8', '\xAA', '\x5', 'T', '+', 
+		'\x2', '\xA9', '\x9F', '\x3', '\x2', '\x2', '\x2', '\xA9', '\xA0', '\x3', 
+		'\x2', '\x2', '\x2', '\xA9', '\xA1', '\x3', '\x2', '\x2', '\x2', '\xA9', 
+		'\xA2', '\x3', '\x2', '\x2', '\x2', '\xA9', '\xA3', '\x3', '\x2', '\x2', 
+		'\x2', '\xA9', '\xA4', '\x3', '\x2', '\x2', '\x2', '\xA9', '\xA5', '\x3', 
+		'\x2', '\x2', '\x2', '\xA9', '\xA6', '\x3', '\x2', '\x2', '\x2', '\xA9', 
+		'\xA7', '\x3', '\x2', '\x2', '\x2', '\xA9', '\xA8', '\x3', '\x2', '\x2', 
+		'\x2', '\xAA', '\x17', '\x3', '\x2', '\x2', '\x2', '\xAB', '\xAC', '\a', 
+		',', '\x2', '\x2', '\xAC', '\xAD', '\x5', ',', '\x17', '\x2', '\xAD', 
+		'\xAE', '\b', '\r', '\x1', '\x2', '\xAE', '\x19', '\x3', '\x2', '\x2', 
+		'\x2', '\xAF', '\xB4', '\x5', '\x1C', '\xF', '\x2', '\xB0', '\xB1', '\a', 
+		'\x30', '\x2', '\x2', '\xB1', '\xB3', '\x5', '\x1C', '\xF', '\x2', '\xB2', 
+		'\xB0', '\x3', '\x2', '\x2', '\x2', '\xB3', '\xB6', '\x3', '\x2', '\x2', 
+		'\x2', '\xB4', '\xB2', '\x3', '\x2', '\x2', '\x2', '\xB4', '\xB5', '\x3', 
+		'\x2', '\x2', '\x2', '\xB5', '\xB8', '\x3', '\x2', '\x2', '\x2', '\xB6', 
+		'\xB4', '\x3', '\x2', '\x2', '\x2', '\xB7', '\xAF', '\x3', '\x2', '\x2', 
+		'\x2', '\xB7', '\xB8', '\x3', '\x2', '\x2', '\x2', '\xB8', '\x1B', '\x3', 
+		'\x2', '\x2', '\x2', '\xB9', '\xBA', '\x5', 'V', ',', '\x2', '\xBA', '\xBB', 
+		'\a', '\x37', '\x2', '\x2', '\xBB', '\xBC', '\b', '\xF', '\x1', '\x2', 
+		'\xBC', '\x1D', '\x3', '\x2', '\x2', '\x2', '\xBD', '\xBE', '\t', '\x2', 
+		'\x2', '\x2', '\xBE', '\x1F', '\x3', '\x2', '\x2', '\x2', '\xBF', '\xC0', 
+		'\t', '\x3', '\x2', '\x2', '\xC0', '!', '\x3', '\x2', '\x2', '\x2', '\xC1', 
+		'\xC2', '\x5', '$', '\x13', '\x2', '\xC2', '\xC3', '\b', '\x12', '\x1', 
+		'\x2', '\xC3', '\xC8', '\x3', '\x2', '\x2', '\x2', '\xC4', '\xC5', '\x5', 
+		'&', '\x14', '\x2', '\xC5', '\xC6', '\b', '\x12', '\x1', '\x2', '\xC6', 
+		'\xC8', '\x3', '\x2', '\x2', '\x2', '\xC7', '\xC1', '\x3', '\x2', '\x2', 
+		'\x2', '\xC7', '\xC4', '\x3', '\x2', '\x2', '\x2', '\xC8', '#', '\x3', 
+		'\x2', '\x2', '\x2', '\xC9', '\xCA', '\x5', '\x1E', '\x10', '\x2', '\xCA', 
+		'\xCB', '\a', '\x33', '\x2', '\x2', '\xCB', '\xCC', '\x5', '\x34', '\x1B', 
+		'\x2', '\xCC', '\xCD', '\a', '\x34', '\x2', '\x2', '\xCD', '%', '\x3', 
+		'\x2', '\x2', '\x2', '\xCE', '\xCF', '\x5', ' ', '\x11', '\x2', '\xCF', 
+		'\xD0', '\a', '\x33', '\x2', '\x2', '\xD0', '\xD1', '\a', '\x34', '\x2', 
+		'\x2', '\xD1', '\'', '\x3', '\x2', '\x2', '\x2', '\xD2', '\xD3', '\a', 
+		'\x37', '\x2', '\x2', '\xD3', '\xD4', '\a', '\x33', '\x2', '\x2', '\xD4', 
+		'\xD5', '\x5', '*', '\x16', '\x2', '\xD5', '\xD6', '\a', '\x34', '\x2', 
+		'\x2', '\xD6', '\xD7', '\b', '\x15', '\x1', '\x2', '\xD7', ')', '\x3', 
+		'\x2', '\x2', '\x2', '\xD8', '\xDD', '\x5', ',', '\x17', '\x2', '\xD9', 
+		'\xDA', '\a', '\x30', '\x2', '\x2', '\xDA', '\xDC', '\x5', ',', '\x17', 
+		'\x2', '\xDB', '\xD9', '\x3', '\x2', '\x2', '\x2', '\xDC', '\xDF', '\x3', 
+		'\x2', '\x2', '\x2', '\xDD', '\xDB', '\x3', '\x2', '\x2', '\x2', '\xDD', 
+		'\xDE', '\x3', '\x2', '\x2', '\x2', '\xDE', '\xE1', '\x3', '\x2', '\x2', 
+		'\x2', '\xDF', '\xDD', '\x3', '\x2', '\x2', '\x2', '\xE0', '\xD8', '\x3', 
+		'\x2', '\x2', '\x2', '\xE0', '\xE1', '\x3', '\x2', '\x2', '\x2', '\xE1', 
+		'+', '\x3', '\x2', '\x2', '\x2', '\xE2', '\xE3', '\x5', '\x34', '\x1B', 
+		'\x2', '\xE3', '\xE4', '\b', '\x17', '\x1', '\x2', '\xE4', '\xE9', '\x3', 
+		'\x2', '\x2', '\x2', '\xE5', '\xE6', '\x5', ':', '\x1E', '\x2', '\xE6', 
+		'\xE7', '\b', '\x17', '\x1', '\x2', '\xE7', '\xE9', '\x3', '\x2', '\x2', 
+		'\x2', '\xE8', '\xE2', '\x3', '\x2', '\x2', '\x2', '\xE8', '\xE5', '\x3', 
+		'\x2', '\x2', '\x2', '\xE9', '-', '\x3', '\x2', '\x2', '\x2', '\xEA', 
+		'\xEB', '\a', '+', '\x2', '\x2', '\xEB', '\x10B', '\b', '\x18', '\x1', 
+		'\x2', '\xEC', '\xED', '\a', '*', '\x2', '\x2', '\xED', '\x10B', '\b', 
+		'\x18', '\x1', '\x2', '\xEE', '\xEF', '\a', '\x37', '\x2', '\x2', '\xEF', 
+		'\x10B', '\b', '\x18', '\x1', '\x2', '\xF0', '\xF1', '\x5', '>', ' ', 
+		'\x2', '\xF1', '\xF2', '\b', '\x18', '\x1', '\x2', '\xF2', '\x10B', '\x3', 
+		'\x2', '\x2', '\x2', '\xF3', '\xF4', '\x5', '@', '!', '\x2', '\xF4', '\xF5', 
+		'\b', '\x18', '\x1', '\x2', '\xF5', '\x10B', '\x3', '\x2', '\x2', '\x2', 
+		'\xF6', '\xF7', '\x5', '\x42', '\"', '\x2', '\xF7', '\xF8', '\b', '\x18', 
+		'\x1', '\x2', '\xF8', '\x10B', '\x3', '\x2', '\x2', '\x2', '\xF9', '\xFA', 
+		'\x5', '\x44', '#', '\x2', '\xFA', '\xFB', '\b', '\x18', '\x1', '\x2', 
+		'\xFB', '\x10B', '\x3', '\x2', '\x2', '\x2', '\xFC', '\xFD', '\x5', '\x46', 
+		'$', '\x2', '\xFD', '\xFE', '\b', '\x18', '\x1', '\x2', '\xFE', '\x10B', 
+		'\x3', '\x2', '\x2', '\x2', '\xFF', '\x100', '\x5', 'H', '%', '\x2', '\x100', 
+		'\x101', '\b', '\x18', '\x1', '\x2', '\x101', '\x10B', '\x3', '\x2', '\x2', 
+		'\x2', '\x102', '\x103', '\x5', 'J', '&', '\x2', '\x103', '\x104', '\b', 
+		'\x18', '\x1', '\x2', '\x104', '\x10B', '\x3', '\x2', '\x2', '\x2', '\x105', 
+		'\x106', '\a', '\x33', '\x2', '\x2', '\x106', '\x107', '\x5', '\x34', 
+		'\x1B', '\x2', '\x107', '\x108', '\a', '\x34', '\x2', '\x2', '\x108', 
+		'\x109', '\b', '\x18', '\x1', '\x2', '\x109', '\x10B', '\x3', '\x2', '\x2', 
+		'\x2', '\x10A', '\xEA', '\x3', '\x2', '\x2', '\x2', '\x10A', '\xEC', '\x3', 
+		'\x2', '\x2', '\x2', '\x10A', '\xEE', '\x3', '\x2', '\x2', '\x2', '\x10A', 
+		'\xF0', '\x3', '\x2', '\x2', '\x2', '\x10A', '\xF3', '\x3', '\x2', '\x2', 
+		'\x2', '\x10A', '\xF6', '\x3', '\x2', '\x2', '\x2', '\x10A', '\xF9', '\x3', 
+		'\x2', '\x2', '\x2', '\x10A', '\xFC', '\x3', '\x2', '\x2', '\x2', '\x10A', 
+		'\xFF', '\x3', '\x2', '\x2', '\x2', '\x10A', '\x102', '\x3', '\x2', '\x2', 
+		'\x2', '\x10A', '\x105', '\x3', '\x2', '\x2', '\x2', '\x10B', '/', '\x3', 
+		'\x2', '\x2', '\x2', '\x10C', '\x10D', '\b', '\x19', '\x1', '\x2', '\x10D', 
+		'\x10E', '\x5', '.', '\x18', '\x2', '\x10E', '\x10F', '\b', '\x19', '\x1', 
+		'\x2', '\x10F', '\x11C', '\x3', '\x2', '\x2', '\x2', '\x110', '\x111', 
+		'\f', '\x4', '\x2', '\x2', '\x111', '\x112', '\a', '\x1A', '\x2', '\x2', 
+		'\x112', '\x113', '\x5', '.', '\x18', '\x2', '\x113', '\x114', '\b', '\x19', 
+		'\x1', '\x2', '\x114', '\x11B', '\x3', '\x2', '\x2', '\x2', '\x115', '\x116', 
+		'\f', '\x3', '\x2', '\x2', '\x116', '\x117', '\a', '\x1B', '\x2', '\x2', 
+		'\x117', '\x118', '\x5', '.', '\x18', '\x2', '\x118', '\x119', '\b', '\x19', 
+		'\x1', '\x2', '\x119', '\x11B', '\x3', '\x2', '\x2', '\x2', '\x11A', '\x110', 
+		'\x3', '\x2', '\x2', '\x2', '\x11A', '\x115', '\x3', '\x2', '\x2', '\x2', 
+		'\x11B', '\x11E', '\x3', '\x2', '\x2', '\x2', '\x11C', '\x11A', '\x3', 
+		'\x2', '\x2', '\x2', '\x11C', '\x11D', '\x3', '\x2', '\x2', '\x2', '\x11D', 
+		'\x31', '\x3', '\x2', '\x2', '\x2', '\x11E', '\x11C', '\x3', '\x2', '\x2', 
+		'\x2', '\x11F', '\x120', '\b', '\x1A', '\x1', '\x2', '\x120', '\x121', 
+		'\x5', '\x30', '\x19', '\x2', '\x121', '\x122', '\b', '\x1A', '\x1', '\x2', 
+		'\x122', '\x12F', '\x3', '\x2', '\x2', '\x2', '\x123', '\x124', '\f', 
+		'\x4', '\x2', '\x2', '\x124', '\x125', '\a', '\x18', '\x2', '\x2', '\x125', 
+		'\x126', '\x5', '\x30', '\x19', '\x2', '\x126', '\x127', '\b', '\x1A', 
+		'\x1', '\x2', '\x127', '\x12E', '\x3', '\x2', '\x2', '\x2', '\x128', '\x129', 
+		'\f', '\x3', '\x2', '\x2', '\x129', '\x12A', '\a', '\x19', '\x2', '\x2', 
+		'\x12A', '\x12B', '\x5', '\x30', '\x19', '\x2', '\x12B', '\x12C', '\b', 
+		'\x1A', '\x1', '\x2', '\x12C', '\x12E', '\x3', '\x2', '\x2', '\x2', '\x12D', 
+		'\x123', '\x3', '\x2', '\x2', '\x2', '\x12D', '\x128', '\x3', '\x2', '\x2', 
+		'\x2', '\x12E', '\x131', '\x3', '\x2', '\x2', '\x2', '\x12F', '\x12D', 
+		'\x3', '\x2', '\x2', '\x2', '\x12F', '\x130', '\x3', '\x2', '\x2', '\x2', 
+		'\x130', '\x33', '\x3', '\x2', '\x2', '\x2', '\x131', '\x12F', '\x3', 
+		'\x2', '\x2', '\x2', '\x132', '\x133', '\x5', '\x32', '\x1A', '\x2', '\x133', 
+		'\x134', '\b', '\x1B', '\x1', '\x2', '\x134', '\x14F', '\x3', '\x2', '\x2', 
+		'\x2', '\x135', '\x136', '\a', '\x37', '\x2', '\x2', '\x136', '\x137', 
+		'\a', '\x17', '\x2', '\x2', '\x137', '\x138', '\x5', '\x34', '\x1B', '\x2', 
+		'\x138', '\x139', '\b', '\x1B', '\x1', '\x2', '\x139', '\x14F', '\x3', 
+		'\x2', '\x2', '\x2', '\x13A', '\x13B', '\a', '\x37', '\x2', '\x2', '\x13B', 
+		'\x13C', '\a', '\x1C', '\x2', '\x2', '\x13C', '\x13D', '\x5', '\x34', 
+		'\x1B', '\x2', '\x13D', '\x13E', '\b', '\x1B', '\x1', '\x2', '\x13E', 
+		'\x14F', '\x3', '\x2', '\x2', '\x2', '\x13F', '\x140', '\a', '\x37', '\x2', 
+		'\x2', '\x140', '\x141', '\a', '\x1D', '\x2', '\x2', '\x141', '\x142', 
+		'\x5', '\x34', '\x1B', '\x2', '\x142', '\x143', '\b', '\x1B', '\x1', '\x2', 
+		'\x143', '\x14F', '\x3', '\x2', '\x2', '\x2', '\x144', '\x145', '\a', 
+		'\x37', '\x2', '\x2', '\x145', '\x146', '\a', '\x1E', '\x2', '\x2', '\x146', 
+		'\x147', '\x5', '\x34', '\x1B', '\x2', '\x147', '\x148', '\b', '\x1B', 
+		'\x1', '\x2', '\x148', '\x14F', '\x3', '\x2', '\x2', '\x2', '\x149', '\x14A', 
+		'\a', '\x37', '\x2', '\x2', '\x14A', '\x14B', '\a', '\x1F', '\x2', '\x2', 
+		'\x14B', '\x14C', '\x5', '\x34', '\x1B', '\x2', '\x14C', '\x14D', '\b', 
+		'\x1B', '\x1', '\x2', '\x14D', '\x14F', '\x3', '\x2', '\x2', '\x2', '\x14E', 
+		'\x132', '\x3', '\x2', '\x2', '\x2', '\x14E', '\x135', '\x3', '\x2', '\x2', 
+		'\x2', '\x14E', '\x13A', '\x3', '\x2', '\x2', '\x2', '\x14E', '\x13F', 
+		'\x3', '\x2', '\x2', '\x2', '\x14E', '\x144', '\x3', '\x2', '\x2', '\x2', 
+		'\x14E', '\x149', '\x3', '\x2', '\x2', '\x2', '\x14F', '\x35', '\x3', 
+		'\x2', '\x2', '\x2', '\x150', '\x151', '\a', ')', '\x2', '\x2', '\x151', 
+		'\x178', '\b', '\x1C', '\x1', '\x2', '\x152', '\x153', '\a', '\x37', '\x2', 
+		'\x2', '\x153', '\x178', '\b', '\x1C', '\x1', '\x2', '\x154', '\x155', 
+		'\x5', '\x34', '\x1B', '\x2', '\x155', '\x156', '\a', '\"', '\x2', '\x2', 
+		'\x156', '\x157', '\x5', '\x34', '\x1B', '\x2', '\x157', '\x158', '\b', 
+		'\x1C', '\x1', '\x2', '\x158', '\x178', '\x3', '\x2', '\x2', '\x2', '\x159', 
+		'\x15A', '\x5', '\x34', '\x1B', '\x2', '\x15A', '\x15B', '\a', '#', '\x2', 
+		'\x2', '\x15B', '\x15C', '\x5', '\x34', '\x1B', '\x2', '\x15C', '\x15D', 
+		'\b', '\x1C', '\x1', '\x2', '\x15D', '\x178', '\x3', '\x2', '\x2', '\x2', 
+		'\x15E', '\x15F', '\x5', '\x34', '\x1B', '\x2', '\x15F', '\x160', '\a', 
+		'$', '\x2', '\x2', '\x160', '\x161', '\x5', '\x34', '\x1B', '\x2', '\x161', 
+		'\x162', '\b', '\x1C', '\x1', '\x2', '\x162', '\x178', '\x3', '\x2', '\x2', 
+		'\x2', '\x163', '\x164', '\x5', '\x34', '\x1B', '\x2', '\x164', '\x165', 
+		'\a', '%', '\x2', '\x2', '\x165', '\x166', '\x5', '\x34', '\x1B', '\x2', 
+		'\x166', '\x167', '\b', '\x1C', '\x1', '\x2', '\x167', '\x178', '\x3', 
+		'\x2', '\x2', '\x2', '\x168', '\x169', '\x5', '\x34', '\x1B', '\x2', '\x169', 
+		'\x16A', '\a', '&', '\x2', '\x2', '\x16A', '\x16B', '\x5', '\x34', '\x1B', 
+		'\x2', '\x16B', '\x16C', '\b', '\x1C', '\x1', '\x2', '\x16C', '\x178', 
+		'\x3', '\x2', '\x2', '\x2', '\x16D', '\x16E', '\x5', '\x34', '\x1B', '\x2', 
+		'\x16E', '\x16F', '\a', '\'', '\x2', '\x2', '\x16F', '\x170', '\x5', '\x34', 
+		'\x1B', '\x2', '\x170', '\x171', '\b', '\x1C', '\x1', '\x2', '\x171', 
+		'\x178', '\x3', '\x2', '\x2', '\x2', '\x172', '\x173', '\a', '\x33', '\x2', 
+		'\x2', '\x173', '\x174', '\x5', ':', '\x1E', '\x2', '\x174', '\x175', 
+		'\a', '\x34', '\x2', '\x2', '\x175', '\x176', '\b', '\x1C', '\x1', '\x2', 
+		'\x176', '\x178', '\x3', '\x2', '\x2', '\x2', '\x177', '\x150', '\x3', 
+		'\x2', '\x2', '\x2', '\x177', '\x152', '\x3', '\x2', '\x2', '\x2', '\x177', 
+		'\x154', '\x3', '\x2', '\x2', '\x2', '\x177', '\x159', '\x3', '\x2', '\x2', 
+		'\x2', '\x177', '\x15E', '\x3', '\x2', '\x2', '\x2', '\x177', '\x163', 
+		'\x3', '\x2', '\x2', '\x2', '\x177', '\x168', '\x3', '\x2', '\x2', '\x2', 
+		'\x177', '\x16D', '\x3', '\x2', '\x2', '\x2', '\x177', '\x172', '\x3', 
+		'\x2', '\x2', '\x2', '\x178', '\x37', '\x3', '\x2', '\x2', '\x2', '\x179', 
+		'\x17A', '\x5', '\x36', '\x1C', '\x2', '\x17A', '\x17B', '\b', '\x1D', 
+		'\x1', '\x2', '\x17B', '\x187', '\x3', '\x2', '\x2', '\x2', '\x17C', '\x17D', 
+		'\x5', '\x36', '\x1C', '\x2', '\x17D', '\x17E', '\a', '!', '\x2', '\x2', 
+		'\x17E', '\x17F', '\x5', '\x38', '\x1D', '\x2', '\x17F', '\x180', '\b', 
+		'\x1D', '\x1', '\x2', '\x180', '\x187', '\x3', '\x2', '\x2', '\x2', '\x181', 
+		'\x182', '\x5', '\x36', '\x1C', '\x2', '\x182', '\x183', '\a', ' ', '\x2', 
+		'\x2', '\x183', '\x184', '\x5', '\x38', '\x1D', '\x2', '\x184', '\x185', 
+		'\b', '\x1D', '\x1', '\x2', '\x185', '\x187', '\x3', '\x2', '\x2', '\x2', 
+		'\x186', '\x179', '\x3', '\x2', '\x2', '\x2', '\x186', '\x17C', '\x3', 
+		'\x2', '\x2', '\x2', '\x186', '\x181', '\x3', '\x2', '\x2', '\x2', '\x187', 
+		'\x39', '\x3', '\x2', '\x2', '\x2', '\x188', '\x189', '\x5', '\x38', '\x1D', 
+		'\x2', '\x189', '\x18A', '\b', '\x1E', '\x1', '\x2', '\x18A', '\x191', 
+		'\x3', '\x2', '\x2', '\x2', '\x18B', '\x18C', '\a', '\x37', '\x2', '\x2', 
+		'\x18C', '\x18D', '\a', '\x17', '\x2', '\x2', '\x18D', '\x18E', '\x5', 
+		':', '\x1E', '\x2', '\x18E', '\x18F', '\b', '\x1E', '\x1', '\x2', '\x18F', 
+		'\x191', '\x3', '\x2', '\x2', '\x2', '\x190', '\x188', '\x3', '\x2', '\x2', 
+		'\x2', '\x190', '\x18B', '\x3', '\x2', '\x2', '\x2', '\x191', ';', '\x3', 
+		'\x2', '\x2', '\x2', '\x192', '\x193', '\a', '\b', '\x2', '\x2', '\x193', 
+		'\x194', '\a', '\x37', '\x2', '\x2', '\x194', '\x197', '\b', '\x1F', '\x1', 
+		'\x2', '\x195', '\x196', '\a', '\x17', '\x2', '\x2', '\x196', '\x198', 
+		'\x5', '\x34', '\x1B', '\x2', '\x197', '\x195', '\x3', '\x2', '\x2', '\x2', 
+		'\x197', '\x198', '\x3', '\x2', '\x2', '\x2', '\x198', '\x199', '\x3', 
+		'\x2', '\x2', '\x2', '\x199', '\x1AB', '\b', '\x1F', '\x1', '\x2', '\x19A', 
+		'\x19B', '\a', '\t', '\x2', '\x2', '\x19B', '\x19C', '\a', '\x37', '\x2', 
+		'\x2', '\x19C', '\x19F', '\b', '\x1F', '\x1', '\x2', '\x19D', '\x19E', 
+		'\a', '\x17', '\x2', '\x2', '\x19E', '\x1A0', '\x5', '\x34', '\x1B', '\x2', 
+		'\x19F', '\x19D', '\x3', '\x2', '\x2', '\x2', '\x19F', '\x1A0', '\x3', 
+		'\x2', '\x2', '\x2', '\x1A0', '\x1A1', '\x3', '\x2', '\x2', '\x2', '\x1A1', 
+		'\x1AB', '\b', '\x1F', '\x1', '\x2', '\x1A2', '\x1A3', '\a', '\n', '\x2', 
+		'\x2', '\x1A3', '\x1A4', '\a', '\x37', '\x2', '\x2', '\x1A4', '\x1A7', 
+		'\b', '\x1F', '\x1', '\x2', '\x1A5', '\x1A6', '\a', '\x17', '\x2', '\x2', 
+		'\x1A6', '\x1A8', '\x5', ':', '\x1E', '\x2', '\x1A7', '\x1A5', '\x3', 
+		'\x2', '\x2', '\x2', '\x1A7', '\x1A8', '\x3', '\x2', '\x2', '\x2', '\x1A8', 
+		'\x1A9', '\x3', '\x2', '\x2', '\x2', '\x1A9', '\x1AB', '\b', '\x1F', '\x1', 
+		'\x2', '\x1AA', '\x192', '\x3', '\x2', '\x2', '\x2', '\x1AA', '\x19A', 
+		'\x3', '\x2', '\x2', '\x2', '\x1AA', '\x1A2', '\x3', '\x2', '\x2', '\x2', 
+		'\x1AB', '=', '\x3', '\x2', '\x2', '\x2', '\x1AC', '\x1AD', '\a', '\x10', 
+		'\x2', '\x2', '\x1AD', '\x1AE', '\a', '\x33', '\x2', '\x2', '\x1AE', '\x1AF', 
+		'\x5', '\x34', '\x1B', '\x2', '\x1AF', '\x1B0', '\a', '\x34', '\x2', '\x2', 
+		'\x1B0', '\x1B1', '\b', ' ', '\x1', '\x2', '\x1B1', '?', '\x3', '\x2', 
+		'\x2', '\x2', '\x1B2', '\x1B3', '\a', '\x11', '\x2', '\x2', '\x1B3', '\x1B4', 
+		'\a', '\x33', '\x2', '\x2', '\x1B4', '\x1B5', '\x5', '\x34', '\x1B', '\x2', 
+		'\x1B5', '\x1B6', '\a', '\x34', '\x2', '\x2', '\x1B6', '\x1B7', '\b', 
+		'!', '\x1', '\x2', '\x1B7', '\x41', '\x3', '\x2', '\x2', '\x2', '\x1B8', 
+		'\x1B9', '\a', '\x12', '\x2', '\x2', '\x1B9', '\x1BA', '\a', '\x33', '\x2', 
+		'\x2', '\x1BA', '\x1BB', '\x5', '\x34', '\x1B', '\x2', '\x1BB', '\x1BC', 
+		'\a', '\x34', '\x2', '\x2', '\x1BC', '\x1BD', '\b', '\"', '\x1', '\x2', 
+		'\x1BD', '\x43', '\x3', '\x2', '\x2', '\x2', '\x1BE', '\x1BF', '\a', '\x13', 
+		'\x2', '\x2', '\x1BF', '\x1C0', '\a', '\x33', '\x2', '\x2', '\x1C0', '\x1C1', 
+		'\x5', '\x34', '\x1B', '\x2', '\x1C1', '\x1C2', '\a', '\x34', '\x2', '\x2', 
+		'\x1C2', '\x1C3', '\b', '#', '\x1', '\x2', '\x1C3', '\x45', '\x3', '\x2', 
+		'\x2', '\x2', '\x1C4', '\x1C5', '\a', '\x14', '\x2', '\x2', '\x1C5', '\x1C6', 
+		'\a', '\x33', '\x2', '\x2', '\x1C6', '\x1C7', '\x5', '\x34', '\x1B', '\x2', 
+		'\x1C7', '\x1C8', '\a', '\x34', '\x2', '\x2', '\x1C8', '\x1C9', '\b', 
+		'$', '\x1', '\x2', '\x1C9', 'G', '\x3', '\x2', '\x2', '\x2', '\x1CA', 
+		'\x1CB', '\a', '\x15', '\x2', '\x2', '\x1CB', '\x1CC', '\a', '\x33', '\x2', 
+		'\x2', '\x1CC', '\x1CD', '\x5', '\x34', '\x1B', '\x2', '\x1CD', '\x1CE', 
+		'\a', '\x34', '\x2', '\x2', '\x1CE', '\x1CF', '\b', '%', '\x1', '\x2', 
+		'\x1CF', 'I', '\x3', '\x2', '\x2', '\x2', '\x1D0', '\x1D1', '\a', '\x16', 
+		'\x2', '\x2', '\x1D1', '\x1D2', '\a', '\x33', '\x2', '\x2', '\x1D2', '\x1D3', 
+		'\x5', '\x34', '\x1B', '\x2', '\x1D3', '\x1D4', '\a', '\x30', '\x2', '\x2', 
+		'\x1D4', '\x1D5', '\x5', '\x34', '\x1B', '\x2', '\x1D5', '\x1D6', '\a', 
+		'\x34', '\x2', '\x2', '\x1D6', '\x1D7', '\b', '&', '\x1', '\x2', '\x1D7', 
+		'K', '\x3', '\x2', '\x2', '\x2', '\x1D8', '\x1D9', '\a', '\xE', '\x2', 
+		'\x2', '\x1D9', '\x1DA', '\a', '\x33', '\x2', '\x2', '\x1DA', '\x1DB', 
+		'\x5', ':', '\x1E', '\x2', '\x1DB', '\x1DC', '\a', '\x34', '\x2', '\x2', 
+		'\x1DC', '\x1DE', '\a', '\x31', '\x2', '\x2', '\x1DD', '\x1DF', '\x5', 
+		'\x16', '\f', '\x2', '\x1DE', '\x1DD', '\x3', '\x2', '\x2', '\x2', '\x1DF', 
+		'\x1E0', '\x3', '\x2', '\x2', '\x2', '\x1E0', '\x1DE', '\x3', '\x2', '\x2', 
+		'\x2', '\x1E0', '\x1E1', '\x3', '\x2', '\x2', '\x2', '\x1E1', '\x1E2', 
+		'\x3', '\x2', '\x2', '\x2', '\x1E2', '\x1E3', '\a', '\x32', '\x2', '\x2', 
+		'\x1E3', '\x1E4', '\a', '\xF', '\x2', '\x2', '\x1E4', '\x1E6', '\a', '\x31', 
+		'\x2', '\x2', '\x1E5', '\x1E7', '\x5', '\x16', '\f', '\x2', '\x1E6', '\x1E5', 
+		'\x3', '\x2', '\x2', '\x2', '\x1E7', '\x1E8', '\x3', '\x2', '\x2', '\x2', 
+		'\x1E8', '\x1E6', '\x3', '\x2', '\x2', '\x2', '\x1E8', '\x1E9', '\x3', 
+		'\x2', '\x2', '\x2', '\x1E9', '\x1EA', '\x3', '\x2', '\x2', '\x2', '\x1EA', 
+		'\x1EB', '\a', '\x32', '\x2', '\x2', '\x1EB', 'M', '\x3', '\x2', '\x2', 
+		'\x2', '\x1EC', '\x1ED', '\a', '\xE', '\x2', '\x2', '\x1ED', '\x1EE', 
+		'\a', '\x33', '\x2', '\x2', '\x1EE', '\x1EF', '\x5', ':', '\x1E', '\x2', 
+		'\x1EF', '\x1F0', '\a', '\x34', '\x2', '\x2', '\x1F0', '\x1F2', '\a', 
+		'\x31', '\x2', '\x2', '\x1F1', '\x1F3', '\x5', '\x16', '\f', '\x2', '\x1F2', 
+		'\x1F1', '\x3', '\x2', '\x2', '\x2', '\x1F3', '\x1F4', '\x3', '\x2', '\x2', 
+		'\x2', '\x1F4', '\x1F2', '\x3', '\x2', '\x2', '\x2', '\x1F4', '\x1F5', 
+		'\x3', '\x2', '\x2', '\x2', '\x1F5', '\x1F6', '\x3', '\x2', '\x2', '\x2', 
+		'\x1F6', '\x1F7', '\a', '\x32', '\x2', '\x2', '\x1F7', 'O', '\x3', '\x2', 
+		'\x2', '\x2', '\x1F8', '\x1F9', '\a', '\v', '\x2', '\x2', '\x1F9', '\x1FA', 
+		'\a', '\x33', '\x2', '\x2', '\x1FA', '\x1FB', '\x5', ':', '\x1E', '\x2', 
+		'\x1FB', '\x1FC', '\a', '\x34', '\x2', '\x2', '\x1FC', '\x1FE', '\a', 
+		'\x31', '\x2', '\x2', '\x1FD', '\x1FF', '\x5', '\x16', '\f', '\x2', '\x1FE', 
+		'\x1FD', '\x3', '\x2', '\x2', '\x2', '\x1FF', '\x200', '\x3', '\x2', '\x2', 
+		'\x2', '\x200', '\x1FE', '\x3', '\x2', '\x2', '\x2', '\x200', '\x201', 
+		'\x3', '\x2', '\x2', '\x2', '\x201', '\x202', '\x3', '\x2', '\x2', '\x2', 
+		'\x202', '\x203', '\a', '\x32', '\x2', '\x2', '\x203', 'Q', '\x3', '\x2', 
+		'\x2', '\x2', '\x204', '\x205', '\a', '\r', '\x2', '\x2', '\x205', '\x207', 
+		'\a', '\x31', '\x2', '\x2', '\x206', '\x208', '\x5', '\x16', '\f', '\x2', 
+		'\x207', '\x206', '\x3', '\x2', '\x2', '\x2', '\x208', '\x209', '\x3', 
+		'\x2', '\x2', '\x2', '\x209', '\x207', '\x3', '\x2', '\x2', '\x2', '\x209', 
+		'\x20A', '\x3', '\x2', '\x2', '\x2', '\x20A', '\x20B', '\x3', '\x2', '\x2', 
+		'\x2', '\x20B', '\x20C', '\a', '\x32', '\x2', '\x2', '\x20C', '\x20D', 
+		'\a', '\v', '\x2', '\x2', '\x20D', '\x20E', '\a', '\x33', '\x2', '\x2', 
+		'\x20E', '\x20F', '\x5', ':', '\x1E', '\x2', '\x20F', '\x210', '\a', '\x34', 
+		'\x2', '\x2', '\x210', 'S', '\x3', '\x2', '\x2', '\x2', '\x211', '\x212', 
+		'\a', '\f', '\x2', '\x2', '\x212', '\x214', '\a', '\x33', '\x2', '\x2', 
+		'\x213', '\x215', '\n', '\x4', '\x2', '\x2', '\x214', '\x213', '\x3', 
+		'\x2', '\x2', '\x2', '\x215', '\x216', '\x3', '\x2', '\x2', '\x2', '\x216', 
+		'\x214', '\x3', '\x2', '\x2', '\x2', '\x216', '\x217', '\x3', '\x2', '\x2', 
+		'\x2', '\x217', '\x218', '\x3', '\x2', '\x2', '\x2', '\x218', '\x219', 
+		'\a', '\a', '\x2', '\x2', '\x219', '\x21A', '\x5', ':', '\x1E', '\x2', 
+		'\x21A', '\x21C', '\a', '\a', '\x2', '\x2', '\x21B', '\x21D', '\n', '\x4', 
+		'\x2', '\x2', '\x21C', '\x21B', '\x3', '\x2', '\x2', '\x2', '\x21D', '\x21E', 
+		'\x3', '\x2', '\x2', '\x2', '\x21E', '\x21C', '\x3', '\x2', '\x2', '\x2', 
+		'\x21E', '\x21F', '\x3', '\x2', '\x2', '\x2', '\x21F', '\x220', '\x3', 
+		'\x2', '\x2', '\x2', '\x220', '\x221', '\a', '\x34', '\x2', '\x2', '\x221', 
+		'\x223', '\a', '\x31', '\x2', '\x2', '\x222', '\x224', '\x5', '\x16', 
+		'\f', '\x2', '\x223', '\x222', '\x3', '\x2', '\x2', '\x2', '\x224', '\x225', 
+		'\x3', '\x2', '\x2', '\x2', '\x225', '\x223', '\x3', '\x2', '\x2', '\x2', 
+		'\x225', '\x226', '\x3', '\x2', '\x2', '\x2', '\x226', '\x227', '\x3', 
+		'\x2', '\x2', '\x2', '\x227', '\x228', '\a', '\x32', '\x2', '\x2', '\x228', 
+		'U', '\x3', '\x2', '\x2', '\x2', '\x229', '\x22A', '\t', '\x5', '\x2', 
+		'\x2', '\x22A', 'W', '\x3', '\x2', '\x2', '\x2', '#', '[', '\x62', 'u', 
+		'\x96', '\x9C', '\xA9', '\xB4', '\xB7', '\xC7', '\xDD', '\xE0', '\xE8', 
+		'\x10A', '\x11A', '\x11C', '\x12D', '\x12F', '\x14E', '\x177', '\x186', 
+		'\x190', '\x197', '\x19F', '\x1A7', '\x1AA', '\x1E0', '\x1E8', '\x1F4', 
+		'\x200', '\x209', '\x216', '\x21E', '\x225',
 	};
 
 	public static readonly ATN _ATN =

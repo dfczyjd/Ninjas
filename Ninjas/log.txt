@@ -1,0 +1,46 @@
+Note from #0: reading from C:\LatinName\nnj.npr
+Note from #?: read
+fun void main()
+{
+	move(20)
+	move(18)
+	move(16)
+	move(14)
+	move(12)
+	move(10)
+	move(8)
+	move(6)
+	move(4)
+	move(2)
+}
+Note from #0: reading from C:\LatinName\nnj.npr
+Note from #?: read
+fun void main()
+{
+	move(20)
+	move(18)
+	move(16)
+	move(14)
+	move(12)
+	move(10)
+	move(8)
+	move(6)
+	move(4)
+	move(2)
+}
+Note from #0: reading from C:\LatinName\nnj.npr
+Note from #?: read
+fun void main()
+{
+	move(20)
+	move(18)
+	move(16)
+	move(14)
+	move(12)
+	move(10)
+	turn(asin(1));
+	move(8)
+	move(6)
+	move(4)
+	move(2)
+}

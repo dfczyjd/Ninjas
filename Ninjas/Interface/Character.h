@@ -22,14 +22,14 @@ struct Character
 	int health;
 	vector<Projectile> shots;
 
-	Character(double x = 0, double y = 0, COLORREF color = RGB(0, 0, 0));
+	Character(int id = 0, double x = 0, double y = 0, COLORREF color = RGB(0, 0, 0));
 	~Character();
 
 	Character operator=(const Character &other);
 
 	void Draw(HDC hdc);
 	void Invalidate(HWND hWnd);
-	void SetCode(WCHAR *filename);
+	void SetCode(char *filename);
 
 	void Turn(double angle);
 	void Move(double distance);

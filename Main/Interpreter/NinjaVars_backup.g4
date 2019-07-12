@@ -225,7 +225,7 @@ boolOperand returns [bool value]:
               {
                   $value = $left.value >= $right.value;
               }
-            /*| leftBool=boolExprEx EQUAL rightBool=boolExprEx
+            | leftBool=boolExprEx EQUAL rightBool=boolExprEx
               {
                   $value = $leftBool.value == $rightBool.value;
               }
@@ -236,7 +236,7 @@ boolOperand returns [bool value]:
             | LPAREN boolExprEx RPAREN
               {
                   $value = $boolExprEx.value;
-              }*/;
+              };
 boolExpr returns [bool value]:
            boolOperand
            {
@@ -260,16 +260,16 @@ boolExprEx returns [bool value]:
               try
               {
                 VarData data = varTable[$ID.text];
+                $value = data.value = $boolExprEx.value;
+                if (data.type != VarData.VarType.Bool)
+                {
+                    Error("Can't convert " + data.type + " to Bool");
+                }
               }
               catch (KeyNotFoundException)
               {
                 Error("Variable " + $ID.text + " does not exist");
               }
-              if (data.type != VarData.VarType.Bool)
-              {
-                  Error("Can't convert " + data.type + " to Bool");
-              }
-              $value = data.value = $boolExprEx.value;
            };
 
 //declaration

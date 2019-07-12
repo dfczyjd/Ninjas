@@ -1,0 +1,29 @@
+D:\Coding\C#\Interpreter\Interpreter\bin\Debug\Interpreter.pdb
+D:\Coding\C#\Interpreter\Interpreter\bin\Debug\Antlr4.Runtime.Standard.dll
+D:\Coding\C#\Interpreter\Interpreter\obj\Debug\Interpreter.csprojAssemblyReference.cache
+D:\Coding\C#\Interpreter\Interpreter\obj\Debug\Interpreter.csproj.CoreCompileInputs.cache
+D:\Coding\C#\Interpreter\Interpreter\obj\Debug\Interpreter.csproj.CopyComplete
+D:\Coding\C#\Interpreter\Interpreter\obj\Debug\Interpreter.pdb
+D:\Coding\C#\Interpreter\Interpreter\bin\Debug\Interpreter.exe
+D:\Coding\C#\Interpreter\Interpreter\obj\Debug\Interpreter.exe
+C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Interpreter\Interpreter\obj\Debug\Interpreter.csprojAssemblyReference.cache
+C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Interpreter\Interpreter\obj\Debug\Interpreter.csproj.CoreCompileInputs.cache
+C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Interpreter\Interpreter\obj\Debug\Interpreter.exe
+C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Interpreter\Interpreter\obj\Debug\Interpreter.pdb
+C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Interpreter\Interpreter\bin\Debug\Interpreter.exe.config
+C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Interpreter\Interpreter\bin\Debug\Interpreter.exe
+C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Interpreter\Interpreter\bin\Debug\Interpreter.pdb
+C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Interpreter\Interpreter\bin\Debug\Antlr4.Runtime.Standard.dll
+C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Interpreter\Interpreter\obj\Debug\Interpreter.csproj.CopyComplete
+D:\Coding\C#\Interpreter\Interpreter\bin\Debug\Interpreter.exe.config
+C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Ninjas\Ninjas\Interpreter\bin\Debug\Interpreter.dll
+C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Ninjas\Ninjas\Interpreter\bin\Debug\Interpreter.pdb
+C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Ninjas\Ninjas\Interpreter\bin\Debug\Antlr4.Runtime.Standard.dll
+C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Ninjas\Ninjas\Interpreter\bin\Debug\Conari.dll
+C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Ninjas\Ninjas\Interpreter\bin\Debug\Antlr4.Runtime.Standard.xml
+C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Ninjas\Ninjas\Interpreter\bin\Debug\Conari.pdb
+C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Ninjas\Ninjas\Interpreter\bin\Debug\Conari.xml
+C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Ninjas\Ninjas\Interpreter\obj\Debug\Interpreter.csproj.CoreCompileInputs.cache
+C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Ninjas\Ninjas\Interpreter\obj\Debug\Interpreter.csproj.CopyComplete
+C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Ninjas\Ninjas\Interpreter\obj\Debug\Interpreter.dll
+C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Ninjas\Ninjas\Interpreter\obj\Debug\Interpreter.pdb

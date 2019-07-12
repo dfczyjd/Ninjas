@@ -1,4 +1,2 @@
-﻿  Interface.cpp
-c:\users\василий\documents\дз вышка\1 практика\ninjas\ninjas\interface\interface.cpp(340): warning C4018: <: несоответствие типов со знаком и без знака
-c:\users\василий\documents\дз вышка\1 практика\ninjas\ninjas\interface\interface.cpp(376): warning C4018: <: несоответствие типов со знаком и без знака
+﻿  Interpreter.cpp
   Interface.vcxproj -> C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Ninjas\Ninjas\Debug\Interface.exe
