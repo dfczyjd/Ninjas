@@ -19,6 +19,9 @@
 // Ambiguous reference in cref attribute
 #pragma warning disable 419
 
+
+	using Interpreter;
+
 using System;
 using System.IO;
 using System.Text;
@@ -89,24 +92,6 @@ public partial class NinjaParser : Parser {
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
 
-
-	  public RealInterpreter owner;
-    public int id;
-    public int[] health = new int[4];
-    public double[] xPos = new double[4];
-    public double[] yPos = new double[4];
-    public double[] dirs = new double[4];
-
-    public void Sleep()
-    {
-        int tmp = 0;
-        Main.Log("#" + id + " entered pause");
-        Main.mre[id].Reset();
-        Main.mre[id].WaitOne();
-        Main.Log("#" + id + " left pause");
-    }
-
-
 	[NotNull]
 	public override IVocabulary Vocabulary
 	{
@@ -128,6 +113,24 @@ public partial class NinjaParser : Parser {
 			decisionToDFA[i] = new DFA(_ATN.GetDecisionState(i), i);
 		}
 	}
+
+
+
+		public RealInterpreter owner;
+	    public int id;
+	    public int[] health = new int[4];
+	    public double[] xPos = new double[4];
+	    public double[] yPos = new double[4];
+	    public double[] dirs = new double[4];
+
+	    public void Sleep()
+	    {
+	        int tmp = 0;
+	        Main.Log("#" + id + " entered pause");
+	        Main.mre[id].Reset();
+	        Main.mre[id].WaitOne();
+	        Main.Log("#" + id + " left pause");
+	    }
 
 
 		public enum ParamType
@@ -219,9 +222,9 @@ public partial class NinjaParser : Parser {
 	            foreach (var elem in varTable)
 	            {
 	            	if (elem.Value.isAssigned)
-	                	Debug("\t" + elem.Key + " is " + elem.Value.type + " with value " + elem.Value.value);
+	                	Console.WriteLine("\t" + elem.Key + " is " + elem.Value.type + " with value " + elem.Value.value);
 	                else
-	                	Debug("\t" + elem.Key + " is " + elem.Value.type + ", value not assigned");
+	                	Console.WriteLine("\t" + elem.Key + " is " + elem.Value.type + ", value not assigned");
 	            }
 	            Debug($"---End Vars of block met {name} ----");
 	            Debug($"===Exiting fun {name}");	
@@ -238,20 +241,16 @@ public partial class NinjaParser : Parser {
 	    int depth = 0;
 	    string currentMet = "?";
 	    
-	    static StreamWriter sw = new StreamWriter("evallog.txt");
-	    
 	    public static void Debug(string line)
 	    {
-		    sw.WriteLine(line);
-		    sw.Flush();
+	        Console.WriteLine(line);
 	    }
 	    
 	    public static void Error(string message)
 	    {
 	        ConsoleColor curr = Console.ForegroundColor;
 	        Console.ForegroundColor = ConsoleColor.Red;
-	        sw.WriteLine(message);
-	        sw.Flush();
+	        Console.WriteLine(message);
 	        Console.ForegroundColor = curr;
 	    }
 	    
@@ -412,7 +411,7 @@ public partial class NinjaParser : Parser {
 					
 					if (parser.metTable.ContainsKey(name) && parser.CheckParams(this, parser.metTable[name]))
 					{		
-						Debug($"Calling custom method {name} with params {ParamListToString(paramList)}");
+						Console.WriteLine($"Calling custom method {name} with params {ParamListToString(paramList)}");
 	                    						parser.metTable[name].Eval();
 	                    						if (returnType != ReturnType.Void && parser.metTable[name].returnType != ReturnType.Void)
 	                    						{
@@ -433,66 +432,66 @@ public partial class NinjaParser : Parser {
 				else
 				{
 					if (parser.metTable.ContainsKey(name))
-					{
-						if (parser.CheckParams(this, parser.metTable[name]))
-						{
-							parser.Sleep();
-							dynamic ret = 0;
-							int reqid = (name == "getSelfId" ? 0 : paramList[0].value);
-							switch (name)
-							{
-								case "getSelfId":
-									ret = parser.id;
-									break;
-
-								case "getHealth":
-									ret = parser.health[reqid];
-									break;
-
-								case "getPositionX":
-									ret = parser.xPos[reqid];
-									break;
-
-								case "getPositionY":
-									ret = parser.yPos[reqid];
-									break;
-
-								case "getDirection":
-									ret = parser.dirs[reqid];
-									break;
-							}
-							Debug($"Calling builtin method {name} with params {ParamListToString(paramList)}, ret {ret}");
-							Main.Log("Func " + name + " for player #" + reqid + " returning " + ret);
-							return parser.metTable[name].returnValue = ret;
-						}
-					}
-					else
-					{
-						Debug($"Calling builtin method {name} with params {ParamListToString(paramList)}");
-						Command nw;
-						switch (name)
-						{
-							case "move":
-								nw = new Command(1, paramList[0].value.Eval());
-								parser.owner.commands.Enqueue(nw);
-								break;
-							case "turn":
-								nw = new Command(2, paramList[0].value.Eval());
-								parser.owner.commands.Enqueue(nw);
-								break;
-							case "hit":
-								nw = new Command(3);
-								parser.owner.commands.Enqueue(nw);
-								break;
-							case "shoot":
-								nw = new Command(4);
-								parser.owner.commands.Enqueue(nw);
-								break;
-							default:
-								Error($"Unknown builtin method {name}");
-								break;
-						}
-					}					
+	                					{
+	                						if (parser.CheckParams(this, parser.metTable[name]))
+	                						{
+	                							parser.Sleep();
+	                							dynamic ret = 0;
+	                							int reqid = (name == "getSelfId" ? 0 : paramList[0].value);
+	                							switch (name)
+	                							{
+	                								case "getSelfId":
+	                									ret = parser.id;
+	                									break;
+	                
+	                								case "getHealth":
+	                									ret = parser.health[reqid];
+	                									break;
+	                
+	                								case "getPositionX":
+	                									ret = parser.xPos[reqid];
+	                									break;
+	                
+	                								case "getPositionY":
+	                									ret = parser.yPos[reqid];
+	                									break;
+	                
+	                								case "getDirection":
+	                									ret = parser.dirs[reqid];
+	                									break;
+	                							}
+	                							Debug($"Calling builtin method {name} with params {ParamListToString(paramList)}, ret {ret}");
+	                							Main.Log("Func " + name + " for player #" + reqid + " returning " + ret);
+	                							return parser.metTable[name].returnValue = ret;
+	                						}
+	                					}
+	                					else
+	                					{
+	                						Debug($"Calling builtin method {name} with params {ParamListToString(paramList)}");
+	                						Command nw;
+	                						switch (name)
+	                						{
+	                							case "move":
+	                								nw = new Command(1, paramList[0].value.Eval());
+	                								parser.owner.commands.Enqueue(nw);
+	                								break;
+	                							case "turn":
+	                								nw = new Command(2, paramList[0].value.Eval());
+	                								parser.owner.commands.Enqueue(nw);
+	                								break;
+	                							case "hit":
+	                								nw = new Command(3);
+	                								parser.owner.commands.Enqueue(nw);
+	                								break;
+	                							case "shoot":
+	                								nw = new Command(4);
+	                								parser.owner.commands.Enqueue(nw);
+	                								break;
+	                							default:
+	                								Error($"Unknown builtin method {name}");
+	                								break;
+	                						}
+	                					}
 				}
 				return null;
 			}
@@ -642,7 +641,7 @@ public partial class NinjaParser : Parser {
 				{
 					s += v.value;
 				}
-				//Debug($"evaluating {s} from block {parser.curBlock.name}");
+				//Console.WriteLine($"evaluating {s} from block {parser.curBlock.name}");
 				List<ExprStackObject> stack = new List<ExprStackObject>();
 				foreach (var elem in exprStack)
 				{
@@ -1095,7 +1094,7 @@ public partial class NinjaParser : Parser {
 					cycleBlock.Eval();
 	            }
 	            Debug("---Exiting whilecycle");
-	            parser.curBlock = parser.curBlock.Parent;
+	            parser.curBlock = cycleBlock.Parent;
 	    		return null;
 	        }
 	        
@@ -1157,10 +1156,12 @@ public partial class NinjaParser : Parser {
 	    public class Condition:Cycles 
 	    {
 	    	public Block elseIfBlock;
+	    	private bool full;
 	        
-	        	        public Condition(NinjaParser parser) : base(parser)
+	        	        public Condition(NinjaParser parser, bool f) : base(parser)
 	        	        {
 	        		        elseIfBlock = new Block(parser);
+	        		        full = f;
 	        	        }
 	        	        
 	        public override dynamic Eval()
@@ -1170,7 +1171,7 @@ public partial class NinjaParser : Parser {
 	            	parser.curBlock = cycleBlock;
 	            	cycleBlock.Eval();
 	            }
-	            else
+	            else if (full)
 	            {
 	            	parser.curBlock = elseIfBlock;
 					elseIfBlock.Eval();
@@ -1321,7 +1322,7 @@ public partial class NinjaParser : Parser {
 			                metTable.Add("getPositionX", getPositionX);
 			                metTable.Add("getPositionY", getPositionY);
 			                metTable.Add("getDirection", getDirection);
-							//metTable["main"].Eval();
+							metTable["main"].Eval();
 
 			}
 		}
@@ -2967,7 +2968,7 @@ public partial class NinjaParser : Parser {
 			State = 251; Match(RPAREN);
 			State = 252; Match(OBRACE);
 
-			     	Condition ifer = new Condition(this)
+			     	Condition ifer = new Condition(this, true)
 					{
 						cond=_localctx._boolExprEx.res,
 						parser = this
@@ -3074,7 +3075,7 @@ public partial class NinjaParser : Parser {
 			State = 276; Match(RPAREN);
 			State = 277; Match(OBRACE);
 
-			    		Condition ifer = new Condition(this)
+			    		Condition ifer = new Condition(this, false)
 			         	{
 			         		cond=_localctx._boolExprEx.res,
 							parser = this

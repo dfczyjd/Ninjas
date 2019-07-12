@@ -4,8 +4,31 @@ options {
 	language=CSharp ;
 }
 
+@parser::header
+{
+	//using Interpreter;
+}
+
 @parser::members 
 {
+
+	public RealInterpreter owner;
+    public int id;
+    public int[] health = new int[4];
+    public double[] xPos = new double[4];
+    public double[] yPos = new double[4];
+    public double[] dirs = new double[4];
+
+    public void Sleep()
+    {
+        int tmp = 0;
+        Main.Log("#" + id + " entered pause");
+        Main.mre[id].Reset();
+        Main.mre[id].WaitOne();
+        Main.Log("#" + id + " left pause");
+    }
+
+
 	public enum ParamType
 	{
 		Receive, Pass
@@ -47,32 +70,57 @@ options {
     {
         public string name;
         public VarType type;
-        public dynamic value;
         
+        
+        public dynamic value
+        {
+        	get 
+        	{
+        		if (isAssigned)
+        			return rval;
+        		throw new Exception($"Cannot get value, Variable \"{name}\" is not initialized!");	
+        	}
+        	
+        	set
+        	{
+        		isAssigned = true;
+        		rval = value;
+        	}
+        }
+        
+        private dynamic rval;
+        public bool isAssigned {get; private set;}
     }
 
     public class MethodData : Block
     {
-        public string name;
 		public bool isMeaningful;
-        public ReturnType returnType;
+        public ReturnType returnType = ReturnType.Void;
         public ArrayList<NinjaParser.ParamData> paramList = new ArrayList<NinjaParser.ParamData>();
         
 		public dynamic returnValue;
 		
+		public MethodData(NinjaParser parser) : base(parser)
+        	        {
+        	        }
+		
 		public override void Eval()
         {
-        	curBlock = this;
+        	parser.curBlock = this;
         	Debug($"===Entering fun {name} with params {ParamListToString(paramList)}");
             foreach(var sm in operations)
             {
-            	sm.Eval();
+            	if(sm.GetType().IsSubclassOf(typeof(OperationClass)))
+            		sm.Eval();
             }
             
             Debug($"---Vars of block met {name} ----");	
             foreach (var elem in varTable)
             {
-                Console.WriteLine("\t" + elem.Key + " is " + elem.Value.type + " with value " + elem.Value.value);
+            	if (elem.Value.isAssigned)
+                	Console.WriteLine("\t" + elem.Key + " is " + elem.Value.type + " with value " + elem.Value.value);
+                else
+                	Console.WriteLine("\t" + elem.Key + " is " + elem.Value.type + ", value not assigned");
             }
             Debug($"---End Vars of block met {name} ----");
             Debug($"===Exiting fun {name}");	
@@ -85,10 +133,9 @@ options {
         }
     }
  
- 	public static Dictionary<string, VarData> varTable = new Dictionary<string, VarData>();
-    public static Dictionary<string, MethodData> metTable = new Dictionary<string, MethodData>();
+    public Dictionary<string, MethodData> metTable = new Dictionary<string, MethodData>();
     int depth = 0;
-    static string currentMet = "?";
+    string currentMet = "?";
     
     public static void Debug(string line)
     {
@@ -113,29 +160,57 @@ options {
             return true;
         return false;        	
     }
+    
+    public static bool CheckType(Type t, ReturnType vt)
+        {
+        	if(t.ToString().ToLower().Contains("bool") && vt.ToString().ToLower().Contains("bool"))
+        		return true;
+        	if(t.ToString().ToLower().Contains("int") && vt.ToString().ToLower().Contains("int"))
+                return true;
+            if(t.ToString().ToLower().Contains("double") && vt.ToString().ToLower().Contains("double"))
+                return true;
+            return false;        	
+        }
 	
-	public static bool CheckParams(NinjaParser.CallData call, NinjaParser.MethodData method)
+	public bool CheckParams(NinjaParser.CallData call, NinjaParser.MethodData method)
     {
-    	Console.WriteLine($"Checking params of {call.name}");
     	if (call.paramList.Count != method.paramList.Count)
     	{
-    		Console.WriteLine($"Expected params {method.paramList.Count}, found {call.paramList.Count}");
+    		Error($"Expected params {method.paramList.Count}, found {call.paramList.Count}");
     		return false;
     	}
     
     	for (int i = 0; i < call.paramList.Count; i++)
     	{
-    		var r = call.paramList[i].value;//.Eval();		
+    		var r = call.paramList[call.paramList.Count - i - 1].value;//.Eval();		
     		//if (call.paramList[i].type == method.paramList[i].type)
+    		if (r is string varId)
+    			if(curBlock.varTable.ContainsKey(varId))
+    				r = FindVar(varId).value;
+    			else
+    			{
+    				Error($"Type mismatch ({i+1}/{call.paramList.Count}): expected {method.paramList[i].type}, found {r.GetType()} with value {call.paramList[call.paramList.Count - i - 1].value}");
+                    return false;
+    			}
+    				
     		if (CheckType(r.GetType(), method.paramList[i].type))
     		{
     			method.paramList[i].value = r;
+				if (!method.varTable.ContainsKey(method.paramList[i].name))
+               	{
+                	VarData varData = new VarData()
+                	{
+                		name = method.paramList[i].name,
+						type = method.paramList[i].type
+               		};
+               		method.varTable.Add(varData.name, varData);
+               	}
+                	                
     			method.varTable[method.paramList[i].name].value = r;
-    			Console.WriteLine($"Param \"{method.paramList[i].name}\" of type {method.paramList[i].type} with val {call.paramList[i].value}");
     		}
     		else
     		{
-    			Console.WriteLine($"Type mismatch: expected {method.paramList[i].type}, found {call.paramList[i].type} with value {call.paramList[i].value}");
+    			Error($"Type mismatch ({i+1}/{call.paramList.Count}): expected {method.paramList[i].type}, found {r.GetType()} with value {call.paramList[call.paramList.Count - i - 1].value}");
     			return false;
     		}
     	}
@@ -143,20 +218,28 @@ options {
     	return true;
     }
             		
-	static ArrayList<byte> _bytes = new ArrayList<byte>();
+	ArrayList<byte> _bytes = new ArrayList<byte>();
 	
 	static string ParamListToString(ArrayList<NinjaParser.ParamData> list)
     {
     	string s = "{";
     	foreach (var data in list)
     	{
-    		if (data.paramType == NinjaParser.ParamType.Pass)
-    		{
-    			s += $" {data.type} {data.value},";	
-    		}
+    	
+    		if(data.value.GetType() == typeof(ExprClass))
+    			s += $" {data.type} {data.value.Eval()},";
     		else
     		{
-    			s += $" {data.type} {data.name} = {data.value},";	
+    	
+    			if (data.paramType == NinjaParser.ParamType.Pass)
+    			{
+	    			s += $" {data.type} {data.value},";	
+    			}
+	    		else
+    			{
+    				s += $" {data.type} {data.name} = {data.value},";	
+    			}
+    		
     		}
     	}
     
@@ -166,6 +249,16 @@ options {
 	
 	public class Block
 	{
+	
+		public string name;
+	
+		public NinjaParser parser;
+		
+		public Block(NinjaParser parser)
+		{
+			this.parser = parser;
+		}
+		
 		public List<OperationClass> operations = new List<OperationClass>();
 		public Dictionary<string, VarData> varTable = new Dictionary<string, VarData>();
 		
@@ -187,6 +280,7 @@ options {
 		{
 			int lastInd = operations.Count - 1;
 			var res = new ExprClass(operations[lastInd]);
+			res.parser = parser;
 			operations[lastInd] = res;
 			return res;
 		}
@@ -200,7 +294,7 @@ options {
 			
 		public CallType callType;
 		
-		public ReturnType returnType;
+		public ReturnType returnType = ReturnType.Void;
 		
 		public Block parent;
 			
@@ -210,51 +304,111 @@ options {
 		{
 			if (callType == NinjaParser.CallType.Custom)
 			{
-				if (NinjaParser.metTable.ContainsKey(name) && CheckParams(this, NinjaParser.metTable[name]))
-				{
-					
-					NinjaParser.metTable[name].Eval();
-					var ret = NinjaParser.metTable[name].returnValue.Eval();
-					curBlock = parent;
-					return ret;
-					
+				
+				if (parser.metTable.ContainsKey(name) && parser.CheckParams(this, parser.metTable[name]))
+				{		
+					Console.WriteLine($"Calling custom method {name} with params {ParamListToString(paramList)}");
+                    						parser.metTable[name].Eval();
+                    						if (returnType != ReturnType.Void && parser.metTable[name].returnType != ReturnType.Void)
+                    						{
+                    							var ret = parser.metTable[name].returnValue.Eval();
+                    							if (!CheckType(ret.GetType(), parser.metTable[name].returnType)){
+                    								throw new Exception($"Actual return is {ret.GetType()}, expected declared return type {parser.metTable[name].returnType}");
+                    							}
+                    							parser.curBlock = parent;
+                    							Debug($"===fun {name} returned {ret}");
+                    							return ret;	
+                    						}
+                    						if (returnType != parser.metTable[name].returnType)
+                    							Error("Method declaration and call have different return types");
+                    						parser.curBlock = parent;
+                    						return null;
 				}
 			}
 			else
 			{
-				Console.WriteLine($"Calling builtin method {name} with params {ParamListToString(paramList)}");
-				//					Console.WriteLine(call.name);
-				switch (name)
-				{
-					case "move":
-				//							Console.WriteLine($"move byte");
-						_bytes.Add(1);
-						break;
-					case "turn":
-				//							Console.WriteLine("turn byte");
-						_bytes.Add(2);
-						break;
-					case "hit":
-				//							Console.WriteLine($"hit byte");
-						_bytes.Add(3);
-						break;
-					case "shoot":
-				//							Console.WriteLine($"shoot byte");
-						_bytes.Add(4);
-						break;
-					default:
-						Console.WriteLine($"no byte for this op {name}");
-						break;
-				}
+				if (parser.metTable.ContainsKey(name))
+                					{
+                						if (parser.CheckParams(this, parser.metTable[name]))
+                						{
+                							parser.Sleep();
+                							dynamic ret = 0;
+                							int reqid = (name == "getSelfId" ? 0 : paramList[0].value);
+                							switch (name)
+                							{
+                								case "getSelfId":
+                									ret = parser.id;
+                									break;
+                
+                								case "getHealth":
+                									ret = parser.health[reqid];
+                									break;
+                
+                								case "getPositionX":
+                									ret = parser.xPos[reqid];
+                									break;
+                
+                								case "getPositionY":
+                									ret = parser.yPos[reqid];
+                									break;
+                
+                								case "getDirection":
+                									ret = parser.dirs[reqid];
+                									break;
+                							}
+                							Debug($"Calling builtin method {name} with params {ParamListToString(paramList)}, ret {ret}");
+                							Main.Log("Func " + name + " for player #" + reqid + " returning " + ret);
+                							return parser.metTable[name].returnValue = ret;
+                						}
+                					}
+                					else
+                					{
+                						Debug($"Calling builtin method {name} with params {ParamListToString(paramList)}");
+                						Command nw;
+                						switch (name)
+                						{
+                							case "move":
+                								nw = new Command(1, paramList[0].value.Eval());
+                								parser.owner.commands.Enqueue(nw);
+                								break;
+                							case "turn":
+                								nw = new Command(2, paramList[0].value.Eval());
+                								parser.owner.commands.Enqueue(nw);
+                								break;
+                							case "hit":
+                								nw = new Command(3);
+                								parser.owner.commands.Enqueue(nw);
+                								break;
+                							case "shoot":
+                								nw = new Command(4);
+                								parser.owner.commands.Enqueue(nw);
+                								break;
+                							default:
+                								Error($"Unknown builtin method {name}");
+                								break;
+                						}
+                					}
 			}
 			return null;
 		}
 	}
 	
-	public static Block curBlock = new Block();
+	private Block rBlock;
+	
+	public Block curBlock
+	{
+		get{
+			return rBlock;
+		}
+		set{
+			rBlock = value;
+		}
+	}
 	
 	public class OperationClass
 	{
+		public NinjaParser parser;
+		
 		public OperationClass()
 		{
 			
@@ -264,6 +418,11 @@ options {
 		{
 			
 		}
+		
+		public OperationClass(NinjaParser p)
+        			{
+        				parser = p;
+        			}
 		
 		public virtual dynamic Eval()
 		{
@@ -278,38 +437,61 @@ options {
 
 	public class ExprStackObject
 	{
+		public NinjaParser parser;
 		public ObjType type;
 		public dynamic value;
 		
-		public ExprStackObject(): this(0) { }
+		public ExprStackObject(): this(0, null) { }
 		
-		public ExprStackObject(double value)
+		public ExprStackObject(double value, NinjaParser parser)
 		{
 			type = ObjType.Number;
 			this.value = value;
+			this.parser = parser;
 		}
 
-		public ExprStackObject(int value)
+		public ExprStackObject(int value, NinjaParser parser)
 		{
 			type = ObjType.Number;
 			this.value = value;
+			this.parser = parser;
 		}
 		
-		public ExprStackObject(bool value)
+		public ExprStackObject(bool value, NinjaParser parser)
 		{
 			type = ObjType.Number;
 			this.value = value;
+			this.parser = parser;
 		}
 		
 		public dynamic Calc()
 		{
-			if (type == ObjType.Number)
-				return value;
-			if (type == ObjType.Var)
-				return curBlock.varTable[value].value;
-			Error("\"" + value + "\" is an operation");
-			return null;
+            				if (type == ObjType.Number)
+            					return value;
+            				if (type == ObjType.Var)
+            				{
+            					return parser.FindVar(value).value;
+            				}
+            
+            				Error("\"" + value + "\" is an operation");
+            				return null;
 		}
+		
+		public new Type GetType()
+		{
+			VarType type = parser.FindVar(value).type;
+        	switch (type)
+        	{
+        		case VarType.Int:
+	        		return typeof(int);	
+        		case VarType.Double:
+        			return typeof(double);		
+        		case VarType.Bool:
+        			return typeof(bool);
+			}
+			Error("Variable " + value + " has an unknown type");
+        	return null;
+        }
 	}
 	
 	public class ExprClass : OperationClass
@@ -319,7 +501,7 @@ options {
 		public ExprClass(OperationClass parent) : base(parent)
 		{
 			exprStack = new List<ExprStackObject>();
-			//curBlock.operations.Add(this);
+			//parser.curBlock.operations.Add(this);
 		}
 		
 		public void Push(ExprStackObject value)
@@ -334,6 +516,18 @@ options {
 			return res;
 		}
 		
+		public bool isCompatible(dynamic value1, dynamic value2, bool isLeftVar = false)
+		{
+			if (value1.GetType() == value1.GetType())
+				return true;
+			else if (value1.GetType() == typeof(double) && value2.GetType() == typeof(int))
+				return true;
+			else if (!isLeftVar && value1.GetType == typeof(int) && value2.GetType() == typeof(double))
+				return true;
+			return false;
+		}		
+		
+		public ReturnType expectedReturnType;
 		public dynamic value;
 		
 		public override dynamic Eval()
@@ -343,7 +537,7 @@ options {
 			{
 				s += v.value;
 			}
-			Debug($"Evaluating {s}");
+			//Console.WriteLine($"evaluating {s} from block {parser.curBlock.name}");
 			List<ExprStackObject> stack = new List<ExprStackObject>();
 			foreach (var elem in exprStack)
 			{
@@ -358,291 +552,602 @@ options {
 						val.Calc();
 						pars[i].value = val.value;
 					}
-					var result = elem.value.Eval();
-					stack.Add(new ExprStackObject(result));
+					dynamic result;
+					if (elem.value == null)
+					{
+						result = -1;
+					}
+					else
+					{
+						if (elem.value.GetType() == typeof(int))
+							result = elem.value;
+						else if (elem.value.GetType() == typeof(double))
+							result = elem.value;
+						else if (elem.value.GetType() == typeof(bool))
+							result = elem.value;
+						else 
+							result = elem.value.Eval();
+					}
+					stack.Add(new ExprStackObject(result, parser));
 				}
 				else
 				{
 					ExprStackObject left, right;
-					switch (elem.value)
-					{
-						case "&&":
-							right = Pop(stack);
-							left = Pop(stack);
-							stack.Add(new ExprStackObject(left.Calc() && right.Calc()));
-							break;
-						
-						case "||":
-							right = Pop(stack);
-							left = Pop(stack);
-							stack.Add(new ExprStackObject(left.Calc() || right.Calc()));
-							break;
-						
-						case "!":
-							right = Pop(stack);
-							stack.Add(new ExprStackObject(!right.Calc()));
-							break;
-							
-						case "<":
-							right = Pop(stack);
-							left = Pop(stack);
-							stack.Add(new ExprStackObject(left.Calc() < right.Calc()));
-							break;
-						
-						case ">":
-							right = Pop(stack);
-							left = Pop(stack);
-							stack.Add(new ExprStackObject(left.Calc() > right.Calc()));
-							break;
-						
-						case "==":
-							right = Pop(stack);
-							left = Pop(stack);
-							stack.Add(new ExprStackObject(left.Calc() == right.Calc()));
-							break;
-						
-						case "!=":
-							right = Pop(stack);
-							left = Pop(stack);
-							stack.Add(new ExprStackObject(left.Calc() != right.Calc()));
-							break;
-						
-						case "<=":
-							right = Pop(stack);
-							left = Pop(stack);
-							stack.Add(new ExprStackObject(left.Calc() <= right.Calc()));
-							break;
-						
-						case ">=":
-							right = Pop(stack);
-							left = Pop(stack);
-							stack.Add(new ExprStackObject(left.Calc() >= right.Calc()));
-							break;
-					
-						case "+":
-							right = Pop(stack);
-							left = Pop(stack);
-							stack.Add(new ExprStackObject(left.Calc() + right.Calc()));
-							break;
-						
-						case "-":
-							right = Pop(stack);
-							left = Pop(stack);
-							stack.Add(new ExprStackObject(left.Calc() - right.Calc()));
-							break;
-						
-						case "*":
-							right = Pop(stack);
-							left = Pop(stack);
-							stack.Add(new ExprStackObject(left.Calc() * right.Calc()));
-							break;
-						
-						case "/":
-							right = Pop(stack);
-							left = Pop(stack);
-							stack.Add(new ExprStackObject(left.Calc() / right.Calc()));
-							break;
-						
-						case "++pre":
-							right = Pop(stack);
-							++curBlock.varTable[right.value].value;
-							stack.Add(new ExprStackObject(right.Calc()));
-							break;
-							
-						case "++post":
-							right = Pop(stack);
-							stack.Add(new ExprStackObject(right.Calc()));
-							++curBlock.varTable[right.value].value;
-							break;
-							
-						case "--pre":
-							right = Pop(stack);
-							--curBlock.varTable[right.value].value;
-							stack.Add(new ExprStackObject(right.Calc()));
-							break;
-							
-						case "--post":
-							right = Pop(stack);
-							stack.Add(new ExprStackObject(right.Calc()));
-							--curBlock.varTable[right.value].value;
-							break;
-							
-						case "=":
-							right = Pop(stack);
-							left = Pop(stack);
-							try
-							{
-								dynamic rightval = right.Calc();
-								VarData data = curBlock.varTable[left.value];
-								if (data.value.GetType() == rightval.GetType())
-									data.value = rightval;
-								else if (data.type == VarType.Double)
-									data.value = (double)rightval;
-								else
-									Error("Can't convert \"" + rightval + "\" to " + data.type);
-								Debug($"var \"{left.value}\" of type {curBlock.varTable[left.value].type} = {data.value}");	
-								stack.Add(new ExprStackObject(data.value));
-							}
-							catch (KeyNotFoundException)
-							{
-								Error("Variable " + left.value + " does not exist in current context1");
-							}
-							break;
-						
-						case "+=":
-							right = Pop(stack);
-							left = Pop(stack);
-							try
-							{
-								dynamic rightval = right.Calc();
-								VarData data = curBlock.varTable[left.value];
-								if (data.value.GetType() == rightval.GetType())
-									data.value += rightval;
-								else if (data.type == VarType.Double)
-									data.value += (double)rightval;
-								else
-									Error("Can't convert \"" + rightval + "\" to " + data.type);
-								stack.Add(new ExprStackObject(data.value));
-							}
-							catch (KeyNotFoundException)
-							{
-								Error("Variable " + left.value + " does not exist in current context2");
-							}
-							break;
-						
-						case "-=":
-							right = Pop(stack);
-							left = Pop(stack);
-							try
-							{
-								dynamic rightval = right.Calc();
-								VarData data = curBlock.varTable[left.value];
-								if (data.value.GetType() == rightval.GetType())
-									data.value -= rightval;
-								else if (data.type == VarType.Double)
-									data.value -= (double)rightval;
-								else
-									Error("Can't convert \"" + rightval + "\" to " + data.type);
-								stack.Add(new ExprStackObject(data.value));
-							}
-							catch (KeyNotFoundException)
-							{
-								Error("Variable " + left.value + " does not exist in current context3");
-							}
-							break;
-						
-						case "*=":
-							right = Pop(stack);
-							left = Pop(stack);
-							try
-							{
-								dynamic rightval = right.Calc();
-								VarData data = curBlock.varTable[left.value];
-								if (data.value.GetType() == rightval.GetType())
-									data.value *= rightval;
-								else if (data.type == VarType.Double)
-									data.value *= (double)rightval;
-								else
-									Error("Can't convert \"" + rightval + "\" to " + data.type);
-								stack.Add(new ExprStackObject(data.value));
-							}
-							catch (KeyNotFoundException)
-							{
-								Error("Variable " + left.value + " does not exist in current context4");
-							}
-							break;
-						
-						case "/=":
-							right = Pop(stack);
-							left = Pop(stack);
-							try
-							{
-								dynamic rightval = right.Calc();
-								VarData data = curBlock.varTable[left.value];
-								if (data.value.GetType() == rightval.GetType())
-									data.value /= rightval;
-								else if (data.type == VarType.Double)
-									data.value /= (double)rightval;
-								else
-									Error("Can't convert \"" + rightval + "\" to " + data.type);
-								stack.Add(new ExprStackObject(data.value));
-							}
-							catch (KeyNotFoundException)
-							{
-								Error("Variable " + left.value + " does not exist in current context5");
-							}
-							break;
-							
-						case "sin":
-							right = Pop(stack);
-							stack.Add(new ExprStackObject(Math.Sin(right.Calc())));
-							break;
-						
-						case "cos":
-							right = Pop(stack);
-							stack.Add(new ExprStackObject(Math.Cos(right.Calc())));
-							break;
-						
-						case "tan":
-							right = Pop(stack);
-							stack.Add(new ExprStackObject(Math.Tan(right.Calc())));
-							break;
-						
-						case "asin":
-							right = Pop(stack);
-							stack.Add(new ExprStackObject(Math.Asin(right.Calc())));
-							break;
-						
-						case "acos":
-							right = Pop(stack);
-							stack.Add(new ExprStackObject(Math.Acos(right.Calc())));
-							break;
-						
-						case "atan":
-							right = Pop(stack);
-							stack.Add(new ExprStackObject(Math.Atan(right.Calc())));
-							break;
-						
-						case "atan2":
-							right = Pop(stack);
-							left = Pop(stack);
-							stack.Add(new ExprStackObject(Math.Atan2(left.Calc(), right.Calc())));
-							break;
-					}
+					dynamic leftVal, rightVal;
+                    					switch (elem.value)
+                    					{
+                    						case "&&":
+                    							right = Pop(stack);
+                    							left = Pop(stack);
+                    							leftVal = left.Calc();
+                    							rightVal = right.Calc();
+                    							if (!isCompatible(leftVal, rightVal))
+                    								Error("Incompatible types of values " + leftVal + " and " + rightVal);
+                    							stack.Add(new ExprStackObject(leftVal && rightVal, parser));
+                    							break;
+                    						
+                    						case "||":
+                    							right = Pop(stack);
+                    							left = Pop(stack);
+                    							leftVal = left.Calc();
+                    							rightVal = right.Calc();
+                    							if (!isCompatible(leftVal, rightVal))
+                    								Error("Incompatible types of values " + leftVal + " and " + rightVal);
+                    							stack.Add(new ExprStackObject(leftVal || rightVal, parser));
+                    							break;
+                    						
+                    						case "!":
+                    							right = Pop(stack);
+                    							rightVal = right.Calc();
+                    							if (rightVal.GetType() != typeof(bool))
+                    								Error("Bool is required instead of " + rightVal);
+                    							stack.Add(new ExprStackObject(!rightVal, parser));
+                    							break;
+                    							
+                    						case "<":
+                    							right = Pop(stack);
+                    							left = Pop(stack);
+                    							leftVal = left.Calc();
+                    							rightVal = right.Calc();
+                    							if (!isCompatible(leftVal, rightVal))
+                    								Error("Incompatible types of values " + leftVal + " and " + rightVal);
+                    							stack.Add(new ExprStackObject(leftVal < rightVal, parser));
+                    							break;
+                    						
+                    						case ">":
+                    							right = Pop(stack);
+                    							left = Pop(stack);
+                    							leftVal = left.Calc();
+                    							rightVal = right.Calc();
+                    							if (!isCompatible(leftVal, rightVal))
+                    								Error("Incompatible types of values " + leftVal + " and " + rightVal);
+                    							stack.Add(new ExprStackObject(leftVal > rightVal, parser));
+                    							break;
+                    						
+                    						case "==":
+                    							right = Pop(stack);
+                    							left = Pop(stack);
+                    							leftVal = left.Calc();
+                    							rightVal = right.Calc();
+                    							if (!isCompatible(leftVal, rightVal))
+                    								Error("Incompatible types of values " + leftVal + " and " + rightVal);
+                    							stack.Add(new ExprStackObject(leftVal == rightVal, parser));
+                    							break;
+                    						
+                    						case "!=":
+                    							right = Pop(stack);
+                    							left = Pop(stack);
+                    							leftVal = left.Calc();
+                    							rightVal = right.Calc();
+                    							if (!isCompatible(leftVal, rightVal))
+                    								Error("Incompatible types of values " + leftVal + " and " + rightVal);
+                    							stack.Add(new ExprStackObject(leftVal != rightVal, parser));
+                    							break;
+                    						
+                    						case "<=":
+                    							right = Pop(stack);
+                    							left = Pop(stack);
+                    							leftVal = left.Calc();
+                    							rightVal = right.Calc();
+                    							if (!isCompatible(leftVal, rightVal))
+                    								Error("Incompatible types of values " + leftVal + " and " + rightVal);
+                    							stack.Add(new ExprStackObject(leftVal <= rightVal, parser));
+                    							break;
+                    						
+                    						case ">=":
+                    							right = Pop(stack);
+                    							left = Pop(stack);
+                    							leftVal = left.Calc();
+                    							rightVal = right.Calc();
+                    							if (!isCompatible(leftVal, rightVal))
+                    								Error("Incompatible types of values " + leftVal + " and " + rightVal);
+                    							stack.Add(new ExprStackObject(leftVal >= rightVal, parser));
+                    							break;
+                    					
+                    						case "+":
+                    							right = Pop(stack);
+                    							left = Pop(stack);
+                    							leftVal = left.Calc();
+                    							rightVal = right.Calc();
+                    							if (!isCompatible(leftVal, rightVal))
+                    								Error("Incompatible types of values " + leftVal + " and " + rightVal);
+                    							stack.Add(new ExprStackObject(leftVal + rightVal, parser));
+                    							break;
+                    						
+                    						case "-":
+                    							right = Pop(stack);
+                    							left = Pop(stack);
+                    							leftVal = left.Calc();
+                    							rightVal = right.Calc();
+                    							if (!isCompatible(leftVal, rightVal))
+                    								Error("Incompatible types of values " + leftVal + " and " + rightVal);
+                    							stack.Add(new ExprStackObject(leftVal - rightVal, parser));
+                    							break;
+                    						
+                    						case "*":
+                    							right = Pop(stack);
+                    							left = Pop(stack);
+                    							leftVal = left.Calc();
+                    							rightVal = right.Calc();
+                    							if (!isCompatible(leftVal, rightVal))
+                    								Error("Incompatible types of values " + leftVal + " and " + rightVal);
+                    							stack.Add(new ExprStackObject(leftVal * rightVal, parser));
+                    							break;
+                    						
+                    						case "/":
+                    							right = Pop(stack);
+                    							left = Pop(stack);
+                    							leftVal = left.Calc();
+                    							rightVal = right.Calc();
+                    							if (!isCompatible(leftVal, rightVal))
+                    								Error("Incompatible types of values " + leftVal + " and " + rightVal);
+                    							stack.Add(new ExprStackObject(leftVal / rightVal, parser));
+                    							break;
+                    						
+                    						case "++pre":
+                    							right = Pop(stack);
+                    							rightVal = right.Calc();
+                    							if (!isCompatible(0, rightVal))
+                    								Error(rightVal + " can't be incremented");
+                    							++parser.FindVar(right.value).value;
+                    							stack.Add(new ExprStackObject(rightVal, parser));
+                    							break;
+                    							
+                    						case "++post":
+                    							right = Pop(stack);
+                    							rightVal = right.Calc();
+                    							if (!isCompatible(0, rightVal))
+                    								Error(rightVal + " can't be incremented");
+                    							stack.Add(new ExprStackObject(rightVal, parser));
+                    							++parser.FindVar(right.value).value;
+                    							break;
+                    							
+                    						case "--pre":
+                    							right = Pop(stack);
+                    							rightVal = right.Calc();
+                    							if (!isCompatible(0, rightVal))
+                    								Error(rightVal + " can't be decremented");
+                    							--parser.FindVar(right.value).value;
+                    							stack.Add(new ExprStackObject(rightVal, parser));
+                    							break;
+                    							
+                    						case "--post":
+                    							right = Pop(stack);
+                    							rightVal = right.Calc();
+                    							if (!isCompatible(0, rightVal))
+                    								Error(rightVal + " can't be decremented");
+                    							stack.Add(new ExprStackObject(rightVal, parser));
+                    							--parser.FindVar(right.value).value;
+                    							break;
+                    							
+                    						case "=":
+                    							right = Pop(stack);
+                    							left = Pop(stack);
+                    							try
+                    							{
+                    								rightVal = right.Calc();
+                    								if (!isCompatible(left, rightVal, true))
+                    									Error("Can't assign " + rightVal + " to " + left.value);
+                    								dynamic rightval = rightVal;
+                    								string su = (string) left.value;
+                    								VarData data = parser.FindVar(su);
+                    								if (CheckType(rightval.GetType(), data.type))
+                    									data.value = rightval;
+                    								else if (data.type == VarType.Double)
+                    									data.value = (double)rightval;
+                    								else
+                    									Error("Can't convert \"" + rightval + "\" to " + data.type);	
+                    								stack.Add(new ExprStackObject(data.value, parser));
+                    							}
+                    							catch (KeyNotFoundException e)
+                    							{					
+                    								Error("Variable " + left.value + " does not exist in current context1\n" + e.StackTrace);
+                    							}
+                    							break;
+                    						
+                    						case "+=":
+                    							right = Pop(stack);
+                    							left = Pop(stack);
+                    							try
+                    							{
+                    								rightVal = right.Calc();
+                    								if (!isCompatible(left, rightVal, true))
+                    									Error("Can't assign " + rightVal + " to " + left.value);
+                    								dynamic rightval = rightVal;
+                    								VarData data = parser.FindVar(left.value);
+                    								if (data.value.GetType() == rightval.GetType())
+                    									data.value += rightval;
+                    								else if (data.type == VarType.Double)
+                    									data.value += (double)rightval;
+                    								else
+                    									Error("Can't convert \"" + rightval + "\" to " + data.type);
+                    								stack.Add(new ExprStackObject(data.value, parser));
+                    							}
+                    							catch (KeyNotFoundException)
+                    							{
+                    								Error("Variable " + left.value + " does not exist in current context2");
+                    							}
+                    							break;
+                    						
+                    						case "-=":
+                    							right = Pop(stack);
+                    							left = Pop(stack);
+                    							try
+                    							{
+                    								rightVal = right.Calc();
+                    								if (!isCompatible(left, rightVal, true))
+                    									Error("Can't assign " + rightVal + " to " + left.value);
+                    								dynamic rightval = rightVal;
+                    								VarData data = parser.FindVar(left.value);
+                    								if (data.value.GetType() == rightval.GetType())
+                    									data.value -= rightval;
+                    								else if (data.type == VarType.Double)
+                    									data.value -= (double)rightval;
+                    								else
+                    									Error("Can't convert \"" + rightval + "\" to " + data.type);
+                    								stack.Add(new ExprStackObject(data.value, parser));
+                    							}
+                    							catch (KeyNotFoundException)
+                    							{
+                    								Error("Variable " + left.value + " does not exist in current context3");
+                    							}
+                    							break;
+                    						
+                    						case "*=":
+                    							right = Pop(stack);
+                    							left = Pop(stack);
+                    							try
+                    							{
+                    								rightVal = right.Calc();
+                    								if (!isCompatible(left, rightVal, true))
+                    									Error("Can't assign " + rightVal + " to " + left.value);
+                    								dynamic rightval = rightVal;
+                    								VarData data = parser.FindVar(left.value);
+                    								if (data.value.GetType() == rightval.GetType())
+                    									data.value *= rightval;
+                    								else if (data.type == VarType.Double)
+                    									data.value *= (double)rightval;
+                    								else
+                    									Error("Can't convert \"" + rightval + "\" to " + data.type);
+                    								stack.Add(new ExprStackObject(data.value, parser));
+                    							}
+                    							catch (KeyNotFoundException)
+                    							{
+                    								Error("Variable " + left.value + " does not exist in current context4");
+                    							}
+                    							break;
+                    						
+                    						case "/=":
+                    							right = Pop(stack);
+                    							left = Pop(stack);
+                    							try
+                    							{
+                    								rightVal = right.Calc();
+                    								if (!isCompatible(left, rightVal, true))
+                    									Error("Can't assign " + rightVal + " to " + left.value);
+                    								dynamic rightval = rightVal;
+                    								VarData data = parser.FindVar(left.value);
+                    								if (data.value.GetType() == rightval.GetType())
+                    									data.value /= rightval;
+                    								else if (data.type == VarType.Double)
+                    									data.value /= (double)rightval;
+                    								else
+                    									Error("Can't convert \"" + rightval + "\" to " + data.type);
+                    								stack.Add(new ExprStackObject(data.value, parser));
+                    							}
+                    							catch (KeyNotFoundException)
+                    							{
+                    								Error("Variable " + left.value + " does not exist in current context5");
+                    							}
+                    							break;
+                    							
+                    						case "sin":
+                    							right = Pop(stack);
+                    							rightVal = right.Calc();
+                    							if (!isCompatible(0.0, rightVal))
+                    								Error("Can't convert " + rightVal + " to double");
+                    							stack.Add(new ExprStackObject(Math.Sin(rightVal), parser));
+                    							break;
+                    						
+                    						case "cos":
+                    							right = Pop(stack);
+                    							rightVal = right.Calc();
+                    							if (!isCompatible(0.0, rightVal))
+                    								Error("Can't convert " + rightVal + " to double");
+                    							stack.Add(new ExprStackObject(Math.Cos(rightVal), parser));
+                    							break;
+                    						
+                    						case "tan":
+                    							right = Pop(stack);
+                    							rightVal = right.Calc();
+                    							if (!isCompatible(0.0, rightVal))
+                    								Error("Can't convert " + rightVal + " to double");
+                    							stack.Add(new ExprStackObject(Math.Tan(rightVal), parser));
+                    							break;
+                    						
+                    						case "asin":
+                    							right = Pop(stack);
+                    							rightVal = right.Calc();
+                    							if (!isCompatible(0.0, rightVal))
+                    								Error("Can't convert " + rightVal + " to double");
+                    							stack.Add(new ExprStackObject(Math.Asin(rightVal), parser));
+                    							break;
+                    						
+                    						case "acos":
+                    							right = Pop(stack);
+                    							rightVal = right.Calc();
+                    							if (!isCompatible(0.0, rightVal))
+                    								Error("Can't convert " + rightVal + " to double");
+                    							stack.Add(new ExprStackObject(Math.Acos(rightVal), parser));
+                    							break;
+                    						
+                    						case "atan":
+                    							right = Pop(stack);
+                    							rightVal = right.Calc();
+                    							if (!isCompatible(0.0, rightVal))
+                    								Error("Can't convert " + rightVal + " to double");
+                    							stack.Add(new ExprStackObject(Math.Atan(rightVal), parser));
+                    							break;
+                    						
+                    						case "atan2":
+                    							right = Pop(stack);
+                    							left = Pop(stack);
+                    							rightVal = right.Calc();
+                    							leftVal = left.Calc();
+                    							if (!isCompatible(0.0, rightVal))
+                    								Error("Can't convert " + rightVal + " to double");
+                    							if (!isCompatible(0.0, leftVal))
+                    								Error("Can't convert " + leftVal + " to double");
+                    							stack.Add(new ExprStackObject(Math.Atan2(leftVal, rightVal), parser));
+                    							break;
+                    					}
 					
 				}
 			}
 			if (stack.Count > 0)
             {
             	var res = stack[0];
-            	res.Calc();
-            	if (res.value is string ss && curBlock.varTable.ContainsKey(ss))
+            	try
+                	                {
+                		                res.Calc();
+                	                }
+                	                catch (Exception e)
+                	                {
+                		                return null;
+                	                }
+            	if (res.value is string ss && parser.FindVar(ss) != null)
 				{
-            		Debug($"Result is {curBlock.varTable[ss].value}");
-            		value = curBlock.varTable[ss].value;
-            		return curBlock.varTable[ss].value;
+            		value = parser.FindVar(ss).value;
+            		return parser.FindVar(ss).value;
             	}
-            	Debug($"Result is {res.value}");
             	value = res.value;
             	return res.value;	
             }
-            Error("Nothing in stack left");
             return null;
 		}
 	}
+	
+	public VarData FindVar(string name)
+	{
+		Block par = curBlock;
+		while (!par.varTable.ContainsKey(name))
+		{
+			par = par.Parent;
+			if (par == null)
+			{
+				break;
+			}
+		}                                
+		if (par == null)
+		{
+			Error($"Variable {name} doesn\'t exist in current context!");
+		}
+		return par?.varTable[name];
+	} 
+	
+	public class Cycles: OperationClass
+    {
+        public Block cycleBlock;
+        
+        	        public Cycles(NinjaParser parser)
+        	        {
+        		        cycleBlock = new Block(parser);
+        	        }
+        	        
+		public ExprClass cond;
+	}
+    
+	public class While:Cycles
+	{
+		public override dynamic Eval()
+        {
+        	parser.curBlock = cycleBlock;
+        	Debug("---Entering whilecycle");
+        	int i = 0;
+        	while(cond.Eval())
+			{
+				Debug($"-=-While loop {i++}");
+				cycleBlock.Eval();
+            }
+            Debug("---Exiting whilecycle");
+            parser.curBlock = cycleBlock.Parent;
+    		return null;
+        }
+        
+        public While(NinjaParser parser) : base(parser)
+        			{
+        			}
+    }
+    
+    public class Do_while:Cycles
+    {
+		public override dynamic Eval()
+        {
+			do
+			{
+				parser.curBlock = cycleBlock;
+				cycleBlock.Eval();
+			}
+			while(cond.Eval());
+			parser.curBlock = parser.curBlock.Parent;
+			return null;
+		}
+		
+		public Do_while(NinjaParser parser) : base(parser)
+        			{
+        			}
+	}
+    
+    public class For:Cycles
+    {
+		public ExprClass first;
+    	public ExprClass last;
+    	
+    	public Block oneTimeBlock;
+    	
+        public override dynamic Eval()
+        {
+        	parser.curBlock = oneTimeBlock;
+        	first.Eval();
+        	int t = 0;
+        	parser.curBlock = cycleBlock;
+            while(cond.Eval())
+            {
+            	Debug($"==For iter {t++}");
+            	cycleBlock.Eval();
+            	last.Eval(); 
+            }
+            parser.curBlock = oneTimeBlock.Parent;
+    		return null;
+        }
+        
+        public For(NinjaParser parser) : base(parser)
+        	        {
+        	        	oneTimeBlock = new Block(parser);
+        	        	oneTimeBlock.name = "otbl";
+        	        	cycleBlock.name = "cbl";
+        	        }
+    }    
+    
+    public class Condition:Cycles 
+    {
+    	public Block elseIfBlock;
+    	private bool full;
+        
+        	        public Condition(NinjaParser parser, bool f) : base(parser)
+        	        {
+        		        elseIfBlock = new Block(parser);
+        		        full = f;
+        	        }
+        	        
+        public override dynamic Eval()
+        {
+        	if(cond.Eval())
+            {
+            	parser.curBlock = cycleBlock;
+            	cycleBlock.Eval();
+            }
+            else if (full)
+            {
+            	parser.curBlock = elseIfBlock;
+				elseIfBlock.Eval();
+            }
+            parser.curBlock = cycleBlock.Parent;
+    		return null;
+        }
+   	}
 }
 
 program : function* main function* {
-
-/*if (NinjaParser.metTable.ContainsKey("main"))
+				curBlock.parser = this;
+/*if (parser.metTable.ContainsKey("main"))
                 	{
                 		++depth;
-                		//GoThroughCalls(NinjaParser.metTable[call.name]);
-                		foreach(var sm in NinjaParser.metTable["main"].operations)
+                		//GoThroughCalls(parser.metTable[call.name]);
+                		foreach(var sm in parser.metTable["main"].operations)
                 		{
                 			sm.Eval();
                 		}
                 	}*/
+                MethodData getSelfId = new MethodData(this){
+                	name = "getSelfId",
+                    returnType = ReturnType.Int,
+					parser = this
+                };	
+                MethodData getHealth = new MethodData(this){
+                    name = "getHealth",
+                    returnType = ReturnType.Int,
+					parser = this
+                };
+                ParamData ghp = new ParamData();
+                ghp.name = "id";
+				ghp.paramType = ParamType.Receive;
+				ghp.type = VarType.Int;
+				getHealth.paramList.Add(ghp);
+                MethodData getPositionX = new MethodData(this){
+					name = "getPositionX",
+					returnType = ReturnType.Double,
+					parser = this
+				};
+				ParamData gpxp = new ParamData();
+				gpxp.name = "id";
+                gpxp.paramType = ParamType.Receive;
+                gpxp.type = VarType.Int;
+               	getPositionX.paramList.Add(gpxp);
+                MethodData getPositionY = new MethodData(this){
+                    name = "getPositionY",
+					returnType = ReturnType.Double,
+					parser = this
+				};
+				ParamData gpyp = new ParamData();
+				gpyp.name = "id";
+				gpyp.paramType = ParamType.Receive;
+				gpyp.type = VarType.Int;
+                getPositionY.paramList.Add(gpyp);
+				MethodData getDirection = new MethodData(this){
+					name = "getDirection",
+					returnType = ReturnType.Double,
+					parser = this
+				};
+                ParamData gdp = new ParamData();
+                gdp.name = "id";
+				gdp.paramType = ParamType.Receive;
+				gdp.type = VarType.Int;
+				getDirection.paramList.Add(gdp);
+				
+				
+				getSelfId.returnValue = 0;
+				getHealth.returnValue = 10;
+				getPositionX.returnValue = 0.0;
+				getPositionY.returnValue = 0.0;
+                getDirection.returnValue = 90.0;
+                
+                               	
+                metTable.Add("getSelfId", getSelfId);
+                metTable.Add("getHealth", getHealth);
+                metTable.Add("getPositionX", getPositionX);
+                metTable.Add("getPositionY", getPositionY);
+                metTable.Add("getDirection", getDirection);
 				metTable["main"].Eval();
 };
 
@@ -652,10 +1157,11 @@ main : main_signature OBRACE main_code CBRACE
 };
 
 main_signature : FUN_KEYWORD VOID MAIN LPAREN RPAREN {
-	MethodData newMet = new MethodData
+	MethodData newMet = new MethodData(this)
 	{
 		name = "main",
-		returnType = ReturnType.Void
+		returnType = ReturnType.Void,
+		parser = this
 	};
 	metTable.Add("main", newMet);
 	currentMet = "main";
@@ -673,10 +1179,11 @@ v_fun_signature returns [string funName]: FUN_KEYWORD VOID ID
 	if (methodName == "main" || metTable.ContainsKey(methodName))
 		throw new NotImplementedException("!!!Method overloading is not supported yet!!!");
 
-	MethodData newMet = new MethodData
+	MethodData newMet = new MethodData(this)
 	{
 		name = methodName,
-		returnType = ReturnType.Void
+		returnType = ReturnType.Void,
+		parser = this
 	};
 	
 	metTable.Add(newMet.name, newMet);
@@ -702,14 +1209,14 @@ m_function : m_fun_signature OBRACE code method_return[curBlock.createOperationC
             actualReturn = ReturnType.Bool;
             break;		
         default:
-    		throw new NotImplementedException();     
+    		throw new Exception($"Actual return is {$method_return.type}, expected declared return type {metTable[methodName].returnType}");    
     }
 	
 	
 
 	if (actualReturn != metTable[methodName].returnType){
 		throw new Exception($"Actual return is {actualReturn}, expected declared return type {metTable[methodName].returnType}");
-	}*/
+	} */
 	
 	if ($method_return.value == null)
 	{
@@ -727,10 +1234,11 @@ m_fun_signature returns [string funName]: FUN_KEYWORD meaningfulType ID {
 	if (methodName == "main" || metTable.ContainsKey(methodName))
 		throw new NotImplementedException("!!!Method overloading is not supported yet!!!");
 
-	MethodData newMet = new MethodData
+	MethodData newMet = new MethodData(this)
 	{
 		name = methodName,
-		isMeaningful = true
+		isMeaningful = true,
+		parser = this
 	};
 	
 	switch($meaningfulType.text)
@@ -756,10 +1264,9 @@ code : (operation[curBlock.createOperationClass()])*;
 main_code : (operation[curBlock.createOperationClass()])*;
 
 operation[OperationClass oper] : call[curBlock.ToExpr()] | custom_call[curBlock.ToExpr()] | declare[curBlock.ToExpr()] | ariphExprEx[curBlock.ToExpr()] | boolExprEx[curBlock.ToExpr()]
-			| myif|myif_short|mywhile|mydo_while|myfor;
+			| myif[curBlock.ToExpr()]|myif_short[curBlock.ToExpr()]|mywhile[curBlock.ToExpr()]|mydo_while[curBlock.ToExpr()]|myfor[curBlock.ToExpr()];
 
 method_return[OperationClass oper] returns [string type, dynamic value]: RETURN_KEYWORD val_or_id[curBlock.ToExpr()] {
-	Debug($"val_or_id3 is {$val_or_id.text}");
 	$type = $val_or_id.type;
 	$value = $val_or_id.value;
 };
@@ -774,17 +1281,17 @@ var_signature[string funName]: meaningfulType ID
 					{
 						case "int":
 							newVar.type = VarType.Int;
-							newVar.value = 0;
+							
 							break;
 							
 						case "double":
 							newVar.type = VarType.Double;
-							newVar.value = 0.0;
+							
 							break;
 							
 						case "bool":
 							newVar.type = VarType.Bool;
-							newVar.value = false;
+							
 							break;
 					}
 					ParamData pData = new ParamData();
@@ -794,36 +1301,59 @@ var_signature[string funName]: meaningfulType ID
 					metTable[funName].varTable[$ID.text] = newVar;
 				};
 
+builtin_func_state returns [ReturnType returnType] : 	'getSelfId' {$returnType = ReturnType.Int;}|
+														'getPositionX' {$returnType = ReturnType.Double;}|
+														'getPositionY' {$returnType = ReturnType.Double;}|
+														'getDirection' {$returnType = ReturnType.Double;}|
+														'getHealth' {$returnType = ReturnType.Int;};
+
 builtin_func_p : 'move'|'turn' ;
 
 builtin_func_e : 'hit'|'shoot' ;  
 
-call[OperationClass oper] : parameterized_call {
+call[ExprClass oper] returns [CallData callData] : parameterized_call[$oper] {
 
 	CallData data = new CallData(){
 		callType = CallType.BuiltIn, 
 		name = $parameterized_call.text.Substring(0, $parameterized_call.text.IndexOf("(")),
-		returnType = ReturnType.Void,
-		parent = curBlock
+		returnType = $parameterized_call.type,
+		parent = curBlock,
+		parser = this
 	};
-	
-	ParamData d = new ParamData()
-	{
-		type = VarType.Double, 
-		value = _localctx._parameterized_call.ariphExprEx().GetText()
-	};
-	
-	//if($parameterized_call.res.isEvaluated)
-	//	d.value = $parameterized_call.res.value;
-	//else	
-		d.value = $parameterized_call.res;
-    d.paramType = ParamType.Pass;				
-    data.paramList.Add(d);
 	
 	string methodName = currentMet;
 	if(methodName != "?"){
-		metTable[methodName].operations.Add(data);
+		curBlock.operations.Add(data);
 	}
+	
+	foreach (var par in _localctx._parameterized_call.call_params().val_or_id())
+    	{
+    		
+    		ParamData d = new ParamData();
+    		d.paramType = ParamType.Pass;
+    		switch (par.type)
+            {
+            	case "int":
+            		d.type = VarType.Int;		
+            		break;
+            	case "double":
+            		d.type = VarType.Double;
+            		break;
+            	case "bool":
+            		d.type = VarType.Bool;
+            		break;
+            	//case "other":
+            	//	break;
+            						
+            	default:
+            		//Error($"Unknown type {par.type}");
+            		//throw new NotImplementedException();
+            		break;
+            }
+            d.value = par.value;
+    		data.paramList.Insert(0, d);		
+    	}
+		$callData = data;
 
 } | simple_call {
 
@@ -831,18 +1361,22 @@ call[OperationClass oper] : parameterized_call {
 		callType = CallType.BuiltIn, 
 		name = $simple_call.text.Substring(0, $simple_call.text.IndexOf("(")),
 		returnType = ReturnType.Void,
-        parent = curBlock
+        parent = curBlock,
+		parser = this
 	};
-
+	$callData = data;
 	string methodName = currentMet;
 	if(methodName != "?"){
-		metTable[methodName].operations.Add(data);
+		curBlock.operations.Add(data);
 	}
 };
 
-parameterized_call returns [ExprClass res]: builtin_func_p LPAREN ariphExprEx[new ExprClass(curBlock.createOperationClass())] RPAREN {
-
-	$res = $ariphExprEx.res;
+parameterized_call[ExprClass oper] returns [ExprClass res, ReturnType type]: builtin_func_p LPAREN call_params[$oper] RPAREN {
+	$type = ReturnType.Void;
+	$res = $oper;
+} | builtin_func_state LPAREN call_params[$oper] RPAREN {
+    $type = $builtin_func_state.returnType;
+    $res = $oper;
 };
 
 simple_call : builtin_func_e LPAREN RPAREN;
@@ -854,12 +1388,16 @@ custom_call[ExprClass oper] returns [string funName, CallData callData]: ID LPAR
 	CallData data = new CallData(){
 		callType = CallType.Custom, 
 		name = callName,
-        parent = curBlock
+        parent = curBlock,
+		parser = this
 	};
+	
+	if (metTable.ContainsKey(callName))
+		data.returnType = metTable[callName].returnType;
 
 	foreach (var par in _localctx.call_params().val_or_id())
 	{
-	
+		
 		ParamData d = new ParamData();
 		d.paramType = ParamType.Pass;
 		switch (par.type)
@@ -877,23 +1415,20 @@ custom_call[ExprClass oper] returns [string funName, CallData callData]: ID LPAR
         	//	break;
         						
         	default:
-        		Error($"Unknown type {par.type}");
+        		//Error($"Unknown type {par.type}");
         		//throw new NotImplementedException();
         		break;
         }
         d.value = par.value;
-		data.paramList.Add(d);    			
+		data.paramList.Insert(0, d);    			
 	}
 	
 	string methodName = currentMet;
-    /*if(methodName != "?" && CheckParams(data, metTable[callName])){
-    	metTable[methodName].operations.Add(data);
-    }*/
+    curBlock.operations.Add(data);
 	$callData = data;
-
 };
 
-call_params[ExprClass oper] : (val_or_id[$oper] {Debug($"val_or_id1 is {$val_or_id.text}");} (COMMA val_or_id[$oper] {Debug($"val_or_id2 is {$val_or_id.text}");})*)?;
+call_params[ExprClass oper] : (val_or_id[$oper] (COMMA val_or_id[$oper])*)?;
 
 val_or_id[ExprClass oper] returns [string type, dynamic value]: 
 			ariphExprEx[$oper]
@@ -910,21 +1445,161 @@ val_or_id[ExprClass oper] returns [string type, dynamic value]:
 					$type = "double";
 				else if ($value.GetType() == typeof(bool))
                     $type = "bool";
-                Debug($"param value1 is {$value} of type {$type}");    
+                else if ($value.GetType() == typeof(ExprClass))
+                	$type = $value.GetType().ToString();
 			}
 		  | boolExprEx[$oper]
 			{
 				$value = $boolExprEx.res;
-                Debug($"param value2 is {$value}");
 				$type = "bool";
 			};
 
+//cyclemetka
+myif[ExprClass oper]: IF LPAREN boolExprEx[$oper] RPAREN 
+     OBRACE 
+     {
+     	Condition ifer = new Condition(this, true)
+		{
+			cond=$boolExprEx.res,
+			parser = this
+		};
+		curBlock.operations.Add(ifer);
+		ifer.cycleBlock.Parent = curBlock;
+		curBlock = ifer.cycleBlock;
+     }
+    (operation[curBlock.createOperationClass()])* 
+    CBRACE
+     ELSE 
+      OBRACE
+      {
+      	ifer.elseIfBlock.Parent = curBlock.Parent;
+      	curBlock = ifer.elseIfBlock;
+      } 
+    (operation[curBlock.createOperationClass()])*
+    CBRACE
+    {
+        curBlock = curBlock.Parent;
+     }
+   ;
+myif_short[ExprClass oper]: IF LPAREN boolExprEx[$oper] RPAREN 
+    OBRACE 
+    {
+    		Condition ifer = new Condition(this, false)
+         	{
+         		cond=$boolExprEx.res,
+				parser = this
+         	};
+         	curBlock.operations.Add(ifer);
+         	ifer.cycleBlock.Parent = curBlock;
+         	curBlock = ifer.cycleBlock;
+    }
+    (operation[curBlock.createOperationClass()])* 
+    CBRACE
+    {
+        curBlock = curBlock.Parent;
+    }
+   ;
+mywhile[ExprClass oper]: WHILE LPAREN boolExprEx[$oper] RPAREN 
+     OBRACE 
+     {
+     	While whiler = new While(this)
+     	{
+     		cond=$boolExprEx.res,
+			parser = this
+     	};
+     	curBlock.operations.Add(whiler);
+     	whiler.cycleBlock.Parent = curBlock;
+     	curBlock = whiler.cycleBlock;
+     }
+     (operation[curBlock.createOperationClass()])*
+     CBRACE 
+     {
+        curBlock = curBlock.Parent;
+      }
+       ;
+mydo_while[ExprClass oper]: DO 
+          OBRACE 
+          {
+          		Do_while doer = new Do_while(this);
+				doer.parser = this;
+               	curBlock.operations.Add(doer);
+               	doer.cycleBlock.Parent = curBlock;
+               	curBlock = doer.cycleBlock;
+          }
+            (operation[curBlock.createOperationClass()])* 
+          CBRACE
+          WHILE LPAREN boolExprEx[$oper] RPAREN 
+          {
+            	doer.cond=$boolExprEx.res;
+            	curBlock = curBlock.Parent;
+           }
+          ;
+myfor[ExprClass oper]: {
+
+	
+}  FOR LPAREN {
+
+		For forer = new For(this);
+		forer.parser = this;
+		
+		forer.oneTimeBlock.Parent = curBlock;
+		forer.cycleBlock.Parent = forer.oneTimeBlock;
+            	curBlock = forer.oneTimeBlock;
+		
+		curBlock.createOperationClass();
+		ExprClass fExpr = curBlock.ToExpr();    	
+						
+} (declare[fExpr]
+{
+	fExpr = $declare.res;
+}
+
+
+|ariphExprEx[fExpr]
+{
+	fExpr = $ariphExprEx.res;
+})
+
+
+
+
+                 SEMICOLON
+                  
+                  {
+                  		
+                      	ExprClass cExpr = new ExprClass(new OperationClass(this));
+                      	cExpr.parser = this;
+                  
+                  }
+                  
+                  boolExprEx[cExpr] 
+                 SEMICOLON {
+                 
+					ExprClass lExpr = new ExprClass(new OperationClass(this));
+                 lExpr.parser = this;
+                 }l=ariphExprEx[lExpr] RPAREN
+        OBRACE
+        {
+                                      forer.cond = $boolExprEx.res;
+                                      forer.first = fExpr;
+                                      forer.last = $l.res;
+         				curBlock = forer.cycleBlock;			 
+        				
+                       	
+        }
+        (operation[curBlock.createOperationClass()])*
+        CBRACE
+        { 
+        	curBlock = curBlock.Parent.Parent;
+        	curBlock.operations.Add(forer);    
+        }
+     ;
 
 //Code related to variables
 ariphOperand[ExprClass oper]:
                INT
                {
-                   $oper.Push(new ExprStackObject(int.Parse($INT.text)));
+                   $oper.Push(new ExprStackObject(int.Parse($INT.text), this));
                }
              | DOUBLE
                {
@@ -937,19 +1612,29 @@ ariphOperand[ExprClass oper]:
                    	{
                    		value = double.Parse($DOUBLE.text.Replace('.', ','));
                    	}
-					$oper.Push(new ExprStackObject(value));
+					$oper.Push(new ExprStackObject(value, this));
                }
              | custom_call[$oper]
              	{
              		$oper.Push(new ExprStackObject()
 					{
 						type = ObjType.Function,
-						value = $custom_call.callData
+						value = $custom_call.callData,
+						parser = this
 					});
              	}
+             | call[$oper]
+             	{
+                    $oper.Push(new ExprStackObject()
+             		{
+             			type = ObjType.Function,
+             			value = $call.callData,
+						parser = this
+             		});
+                }	
              | ariphID[$oper]
                {
-                   Console.WriteLine($"founy idd {$ariphID.text} val undefined");
+
                }
 			 | trig[$oper] | trig2[$oper]
 			 | incdec=(INC|DEC) ariphID[$oper]
@@ -957,23 +1642,24 @@ ariphOperand[ExprClass oper]:
 					$oper.Push(new ExprStackObject()
 					{
 						type = ObjType.Operation,
-						value = $incdec.text + "pre"
+						value = $incdec.text + "pre",
+						parser = this
 					});
 			   }
 			 | ariphID[$oper] incdec=(INC|DEC)
 			   {
+			   
 					$oper.Push(new ExprStackObject()
 					{
 						type = ObjType.Operation,
-						value = $incdec.text + "post"
+						value = $incdec.text + "post",
+						parser = this
 					});
 			   }
              | LPAREN ariphExprEx[$oper] RPAREN;
 ariphTerm[ExprClass oper]:
             ariphOperand[$oper]
-            {
-                Debug("\t terarpy1 operand\"" + $ariphOperand.text + "\"");
-            }
+            
            (muldiv=(MUL|DIV) ariphOperand[$oper])*
             {
 				if ($muldiv.text != null)
@@ -981,15 +1667,15 @@ ariphTerm[ExprClass oper]:
 					$oper.Push(new ExprStackObject()
 					 {
 						type = ObjType.Operation,
-						value = $muldiv.text
+						value = $muldiv.text,
+						parser = this
 					 });
-					Debug("\t terarpy2 operand\"" + $ariphOperand.text + "\"");
 				}
             };
 ariphExpr[ExprClass oper]:
             ariphTerm[$oper]
             {
-                Debug("\t rarpy1 term\"" + $ariphTerm.text + "\"");
+                
             }
 			(addsub=(ADD|SUB) ariphTerm[$oper])*
             {
@@ -998,15 +1684,15 @@ ariphExpr[ExprClass oper]:
 					$oper.Push(new ExprStackObject()
 					 {
 						type = ObjType.Operation,
-						value = $addsub.text
+						value = $addsub.text,
+						parser = this
 					 });
-					 Debug("\t rarpy2 term\"" + $ariphTerm.text + "\"");
+					 
 				}
             };
 ariphExprEx[ExprClass oper] returns [ExprClass res]:
             ariphExpr[$oper]
             {
-                Debug("\t arpy1 expr\"" + $ariphExpr.text + "\"");
                 $res = $oper;
             }
           | ariphID[$oper] assigns=(ASSIGN|ADDASSIGN|SUBASSIGN|MULASSIGN|DIVASSIGN) ariphExprEx[$oper]
@@ -1014,57 +1700,57 @@ ariphExprEx[ExprClass oper] returns [ExprClass res]:
                 $oper.Push(new ExprStackObject()
 					 {
 						type = ObjType.Operation,
-						value = $assigns.text
+						value = $assigns.text,
+						parser = this
 					 });
 				$res = $oper;
-				Debug("\t arpy2 expr\"" + $ariphExprEx.text + "\"");
             };
 
 boolOperand[ExprClass oper]:
               BOOL
               {
-				  Debug("Const " + $BOOL.text);
-                  $oper.Push(new ExprStackObject(bool.Parse($BOOL.text)));
+                  $oper.Push(new ExprStackObject(bool.Parse($BOOL.text), this));
               }
+            | custom_call[$oper]
+                          	{
+                          		$oper.Push(new ExprStackObject()
+             					{
+             						type = ObjType.Function,
+             						value = $custom_call.callData,
+									parser = this
+             					});
+                          	} 
             | ariphID[$oper]
 			  {
-				Debug("Var " + $ariphID.text);
 			  }
             | ariphExprEx[$oper] comp=(LESS|GREATER|EQUAL|NOTEQUAL|LESSEQUAL|GREQUAL) ariphExprEx[$oper]
               {
 				$oper.Push(new ExprStackObject()
 				{
 					type = ObjType.Operation,
-					value = $comp.text
+					value = $comp.text,
+						parser = this
 				}); 
 			  }
 			| NOT boolOperand[$oper]
 			{
-				Debug("\tNOT " + $boolOperand.text);
 				$oper.Push(new ExprStackObject()
 				{
 					type = ObjType.Operation,
-					value = $NOT.text
+					value = $NOT.text,
+						parser = this
 				});
 			}
-            /*| boolExprEx[$oper] EQUAL boolExprEx[$oper]
-              {
-                  
-              }
-            | boolExprEx[$oper] NOTEQUAL boolExprEx[$oper]
-              {
-                  
-              }*/
             | LPAREN boolExprEx[$oper] RPAREN;
 boolExpr[ExprClass oper]:
            boolOperand[$oper]
          | left=boolOperand[$oper] andor=(AND|OR) right=boolExpr[$oper]
            {
-				Debug("\t" + $left.text + " AND/OR " + $right.text);
 				$oper.Push(new ExprStackObject()
 				{
 					type = ObjType.Operation,
-					value = $andor.text
+					value = $andor.text,
+						parser = this
 				});
            };
 boolExprEx[ExprClass oper] returns [ExprClass res]:
@@ -1074,82 +1760,82 @@ boolExprEx[ExprClass oper] returns [ExprClass res]:
 		   }
          | left=ariphID[$oper] ASSIGN right=boolExprEx[$oper]
            {
-				Debug("\t" + $left.text + " ASSIGN " + $right.text);
 				$oper.Push(new ExprStackObject()
 				{
 					type = ObjType.Operation,
-					value = "="
+					value = "=",
+						parser = this
 				});
 				$res = $oper;
            };
 
 //declaration
-declare[ExprClass oper]: INTKEY ariphID[$oper]
+declare[ExprClass oper] returns [ExprClass res]: INTKEY ariphID[$oper]
           {
            VarData newVar = new VarData
            {
-                type = VarType.Int,
-                value = 0
+           		name = $ariphID.text,
+                type = VarType.Int
            };
            curBlock.varTable.Add($ariphID.text, newVar);
-           Debug("Create var " + $ariphID.text);
           }
           (ASSIGN ariphExprEx[$oper])?
           {
            if ($ariphExprEx.text != null)
            {
-				Debug("\tAssigning it value of " + $ariphExprEx.text);
 				$oper.Push(new ExprStackObject()
 					 {
 						type = ObjType.Operation,
-						value = "="
+						value = "=",
+						parser = this
 					 });
            }
+           $res = $oper;
           }
           
         | DOUBLEKEY ariphID[$oper]
           {
            VarData newVar = new VarData
-           {
-                type = VarType.Double,
-                value = 0.0
+           {	
+           		name = $ariphID.text,
+                type = VarType.Double
            };
            curBlock.varTable.Add($ariphID.text, newVar);
-           Debug("Create var " + $ariphID.text);
           }
           (ASSIGN ariphExprEx[$oper])?
           {
            if ($ariphExprEx.text != null)
            {
-                Debug("\tAssigning it value of " + $ariphExprEx.text);
                 $oper.Push(new ExprStackObject()
 					 {
 						type = ObjType.Operation,
-						value = "="
+						value = "=",
+						parser = this
 					 });
            }
+           $res = $oper;
           }
         | BOOLKEY ariphID[$oper]
           {
            VarData newVar = new VarData
            {
-                type = VarType.Bool,
-                value = false
+           		name = $ariphID.text,
+                type = VarType.Bool
            };
            curBlock.varTable.Add($ariphID.text, newVar);
-           Debug("Create var " + $ariphID.text);
           }
           (ASSIGN boolExprEx[$oper])?
           {
            if ($boolExprEx.text != null)
            {
-                Debug("\tAssigning3 it value of " + $boolExprEx.text);
                 $oper.Push(new ExprStackObject()
 				{
 					type = ObjType.Operation,
-					value = "="
+					value = "=",
+						parser = this
 				});
            }
+           $res = $oper;
           };
 
 ariphID[ExprClass oper] : ID
@@ -1157,17 +1843,9 @@ ariphID[ExprClass oper] : ID
 			$oper.Push(new ExprStackObject()
 					 {
 						type = ObjType.Var,
-						value = $ID.text
+						value = $ID.text,
+						parser = this
 					 });
-			Debug($"arrriph id {$ID.text}");
-			
-			//$oper.Push(new ExprStackObject()
-            //					 {
-            //						type = ObjType.Var,
-            //						value = $ID.text
-            //					 });
-            //			Debug($"boooooool id {$ID.text}");
-			
 		};
 
 //trigonometry
@@ -1177,7 +1855,8 @@ trig[ExprClass oper]:
 			$oper.Push(new ExprStackObject()
 					 {
 						type = ObjType.Operation,
-						value = $trfun.text
+						value = $trfun.text,
+						parser = this
 					 });
 		};
 trig2[ExprClass oper]:
@@ -1186,42 +1865,14 @@ trig2[ExprClass oper]:
 			$oper.Push(new ExprStackObject()
 					 {
 						type = ObjType.Operation,
-						value = "atan2"
+						value = "atan2",
+						parser = this
 					 });
 		};
 		
 
 //code related to cycles
-myif: IF LPAREN boolExprEx[null] RPAREN // вместо INT  нужен BOOL
-     OBRACE 
-    (operation[null])+
-    CBRACE
-     ELSE 
-      OBRACE  
-    (operation[null])+
-    CBRACE
-   ;
-myif_short: IF LPAREN boolExprEx[null]  RPAREN // вместо INT  нужен BOOL
-    OBRACE
-    (operation[null])+
-    CBRACE
-   ;
-mywhile: WHILE LPAREN boolExprEx[null] RPAREN // вместо INT  нужен BOOL
-     OBRACE
-     (operation[null])+
-     CBRACE 
-       ;
-mydo_while: DO 
-          OBRACE
-            (operation[null])+
-          CBRACE
-          WHILE LPAREN boolExprEx[null] RPAREN // вместо INT  нужен BOOL
-          ;
-myfor:  FOR LPAREN ~SEMICOLON+ SEMICOLON boolExprEx[null] SEMICOLON ~SEMICOLON+ RPAREN // ~SEMICOLON+ заменяется на INT BOOL оператор
-        OBRACE
-        (operation[null])+
-        CBRACE
-     ;
+
 
 
 //Lexer rules
@@ -1272,7 +1923,7 @@ WS : [ \t\r\n]+ -> skip ;
 
 //literals
 BOOL    : ('true'|'false') ;
-DOUBLE  : [+-]?DIGIT*[,.]DIGIT+ ;
+DOUBLE  : [+-]?DIGIT*[.]DIGIT+ ;
 INT     : [+-]?DIGIT+ ;
 
 RETURN_KEYWORD : 'return';
