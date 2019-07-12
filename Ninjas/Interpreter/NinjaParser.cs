@@ -160,6 +160,18 @@ public partial class NinjaParser : Parser {
 	        
 	    }
 
+    //My code starts here
+    public int id;
+
+    public void Sleep()
+    {
+        int tmp = 0;
+        Main.Log("#" + id + " entered pause");
+        Main.mre[id].Reset();
+        Main.mre[id].WaitOne();
+        Main.Log("#" + id + " left pause");
+    }
+
 	    public class MethodData : Block
 	    {public string name;
 			public bool isMeaningful;
@@ -172,10 +184,19 @@ public partial class NinjaParser : Parser {
 	        {
 	        	parser.curBlock = this;
 	        	Debug($"===Entering fun {name} with params {ParamListToString(paramList)}");
+            int iter = 0;
 	            foreach(var sm in operations)
 	            {
-	            	if(sm.GetType().IsSubclassOf(typeof(OperationClass)))
-	            		sm.Eval();
+                if (sm.GetType().IsSubclassOf(typeof(OperationClass)))
+                {
+                    sm.Eval();
+                    Main.Log(parser.owner.commands.Count.ToString());
+                    if (parser.owner.commands.Count > 3)
+                    {
+                        parser.paused = true;
+                        parser.Sleep();
+                    }
+                }
 	            }
 	            
 	            Debug($"---Vars of block met {name} ----");	

@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using Antlr4.Runtime;
 using Antlr4.Runtime.Misc;
 using Antlr4.Runtime.Tree;
@@ -25,17 +26,22 @@ public static class Main
     static RealInterpreter[] ints = new RealInterpreter[4];
     static StreamWriter sw = new StreamWriter("../log.txt");
 
+    public static Thread[] t = new Thread[4];
+    public static ManualResetEvent[] mre = new ManualResetEvent[4];
+
     static Main()
     {
         for (int i = 0; i < 4; ++i)
         {
             ints[i] = new RealInterpreter();
+            mre[i] = new ManualResetEvent(true);
         }
     }
 
     public static void Log(string value)
     {
         sw.WriteLine(value);
+        sw.Flush();
     }
 
     [DllExport]
@@ -43,7 +49,7 @@ public static class Main
     {
         try
         {
-            ints[id].Init(name);
+            ints[id].Init(id, name);
         }
         catch (Exception exc)
         {
@@ -56,10 +62,9 @@ public static class Main
     {
         try
         {
-            ints[id].Run();
-            Log("Note from #: commands are\n");
-            foreach (var elem in ints[id].commands)
-                Log(Serialize(elem));
+            t[id] = new Thread(ints[id].Run);
+            mre[id].Set();
+            t[id].Start();
         }
         catch (Exception exc)
         {
@@ -77,6 +82,8 @@ public static class Main
     {
         try
         {
+            if (ints[id].commands.Count == 1)
+                mre[id].Set();
             if (ints[id].commands.Count == 0)
                 return Serialize(new Command());
             return Serialize(ints[id].commands.Dequeue());
@@ -94,7 +101,7 @@ public class RealInterpreter
     NinjaParser parser;
     public Queue<Command> commands = new Queue<Command>();
     
-    public void Init(string name)
+    public void Init(int id, string name)
     {
         var input = File.ReadAllText(name);
         var ms = new MemoryStream(Encoding.UTF8.GetBytes(input));
@@ -102,6 +109,7 @@ public class RealInterpreter
         var tokens = new CommonTokenStream(lexer);
         parser = new NinjaParser(tokens);
         parser.owner = this;
+        parser.id = id;
         var tree = parser.program();
     }
     
