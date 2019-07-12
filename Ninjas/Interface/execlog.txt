@@ -2,9 +2,6 @@
 ===Entering fun main with params { }
 ===Entering fun main with params { }
 ===Entering fun main with params { }
-===Entering fun main with params { }
-===Entering fun main with params { }
-===Entering fun main with params { }
 Calling builtin method getPositionX with params { Int 1 }, ret 600
 Calling builtin method getPositionX with params { Int 1 }, ret 600
 Calling builtin method getPositionX with params { Int 1 }, ret 600
@@ -25,6 +22,7 @@ Calling builtin method getPositionX with params { Int 0 }, ret 100
 Calling builtin method getPositionX with params { Int 0 }, ret 100
 ---Entering whilecycle
 ---Entering whilecycle
+---Entering whilecycle
 Calling builtin method getPositionX with params { Int 1 }, ret 600
 Calling builtin method getPositionX with params { Int 1 }, ret 600
 Calling builtin method getPositionX with params { Int 1 }, ret 600
@@ -33,11 +31,9 @@ Calling builtin method getPositionX with params { Int 0 }, ret 100
 Calling builtin method getPositionX with params { Int 0 }, ret 100
 Calling builtin method getPositionX with params { Int 0 }, ret 100
 -=-While loop 0
+-=-While loop 0
+-=-While loop 0
 Calling builtin method getPositionX with params { Int 0 }, ret 100
--=-While loop 0
--=-While loop 0
--=-While loop 0
--=-While loop 0
 -=-While loop 0
 Calling builtin method move with params { Int 20 }
 Calling builtin method move with params { Int 20 }
@@ -52,10 +48,9 @@ Calling builtin method getPositionX with params { Int 0 }, ret 107,071068
 Calling builtin method move with params { Int 20 }
 Calling builtin method getPositionX with params { Int 0 }, ret 107,071068
 -=-While loop 1
-Calling builtin method move with params { Int 20 }
 Calling builtin method getPositionX with params { Int 0 }, ret 107,071068
--=-While loop 1
 Calling builtin method move with params { Int 20 }
+-=-While loop 1
 Calling builtin method move with params { Int 20 }
 Calling builtin method getPositionX with params { Int 0 }, ret 107,071068
 -=-While loop 1
@@ -70,8 +65,7 @@ Calling builtin method move with params { Int 20 }
 Calling builtin method getPositionX with params { Int 0 }, ret 114,142136
 -=-While loop 2
 Calling builtin method move with params { Int 20 }
-Calling builtin method move with params { Int 20 }
-Calling builtin method getPositionX with params { Int 0 }, ret 0
+Calling builtin method getPositionX with params { Int 0 }, ret 114,142136
 -=-While loop 2
 Calling builtin method move with params { Int 20 }
 Calling builtin method getPositionX with params { Int 0 }, ret 114,142136
@@ -81,6 +75,7 @@ Calling builtin method getPositionX with params { Int 1 }, ret 578,786797
 Calling builtin method getPositionX with params { Int 1 }, ret 578,786797
 Calling builtin method getPositionX with params { Int 1 }, ret 578,786797
 Calling builtin method getPositionX with params { Int 1 }, ret 578,786797
+Calling builtin method getPositionX with params { Int 1 }, ret 578,786797
 Calling builtin method getPositionX with params { Int 0 }, ret 121,213203
 -=-While loop 3
 Calling builtin method move with params { Int 20 }
@@ -89,9 +84,9 @@ Calling builtin method getPositionX with params { Int 0 }, ret 121,213203
 Calling builtin method move with params { Int 20 }
 Calling builtin method getPositionX with params { Int 0 }, ret 121,213203
 -=-While loop 3
-Calling builtin method getPositionX with params { Int 0 }, ret 121,213203
-Calling builtin method getPositionX with params { Int 0 }, ret 121,213203
 Calling builtin method move with params { Int 20 }
+Calling builtin method move with params { Int 20 }
+Calling builtin method getPositionX with params { Int 0 }, ret 121,213203
 -=-While loop 3
 Calling builtin method move with params { Int 20 }
 Calling builtin method getPositionX with params { Int 1 }, ret 571,715729
@@ -106,6 +101,7 @@ Calling builtin method getPositionX with params { Int 0 }, ret 128,284271
 Calling builtin method move with params { Int 20 }
 Calling builtin method getPositionX with params { Int 0 }, ret 128,284271
 -=-While loop 4
+Calling builtin method move with params { Int 20 }
 Calling builtin method move with params { Int 20 }
 Calling builtin method getPositionX with params { Int 0 }, ret 128,284271
 -=-While loop 4
@@ -121,9 +117,9 @@ Calling builtin method getPositionX with params { Int 0 }, ret 135,355339
 -=-While loop 5
 Calling builtin method move with params { Int 20 }
 Calling builtin method getPositionX with params { Int 0 }, ret 135,355339
+Calling builtin method getPositionX with params { Int 0 }, ret 135,355339
+Calling builtin method getPositionX with params { Int 0 }, ret 135,355339
 -=-While loop 5
-Calling builtin method getPositionX with params { Int 0 }, ret 135,355339
-Calling builtin method getPositionX with params { Int 0 }, ret 135,355339
 Calling builtin method move with params { Int 20 }
 -=-While loop 5
 Calling builtin method move with params { Int 20 }
@@ -136,38 +132,30 @@ Calling builtin method getPositionX with params { Int 0 }, ret 142,426407
 Calling builtin method move with params { Int 20 }
 Calling builtin method getPositionX with params { Int 0 }, ret 142,426407
 -=-While loop 6
-Calling builtin method getPositionX with params { Int 0 }, ret 142,426407
-Calling builtin method getPositionX with params { Int 0 }, ret 142,426407
 Calling builtin method move with params { Int 20 }
 Calling builtin method getPositionX with params { Int 0 }, ret 142,426407
 -=-While loop 6
 Calling builtin method move with params { Int 20 }
+Calling builtin method getPositionX with params { Int 0 }, ret 142,426407
 -=-While loop 6
 Calling builtin method move with params { Int 20 }
 Calling builtin method getPositionX with params { Int 1 }, ret 550,502525
 Calling builtin method getPositionX with params { Int 1 }, ret 550,502525
 Calling builtin method getPositionX with params { Int 1 }, ret 550,502525
-Calling builtin method getPositionX with params { Int 1 }, ret 0
+Calling builtin method getPositionX with params { Int 1 }, ret 550,502525
 Calling builtin method getPositionX with params { Int 0 }, ret 149,497475
 -=-While loop 7
 Calling builtin method move with params { Int 20 }
 Calling builtin method getPositionX with params { Int 0 }, ret 149,497475
--=-While loop 7
-Calling builtin method move with params { Int 20 }
 Calling builtin method getPositionX with params { Int 0 }, ret 149,497475
 -=-While loop 7
-Calling builtin method move with params { Int 20 }
+-=-While loop 7
+Calling builtin method getPositionX with params { Int 0 }, ret 149,49Calling builtin method getPositionX with params { Int 0 }, ret 149,497475
 Calling builtin method getPositionX with params { Int 0 }, ret 149,497475
----Exiting whilecycle
-Calling builtin method turn with params { Int 1,5707963267949 }
 Calling builtin method move with params { Int 20 }
+-=-While loop 7
 Calling builtin method move with params { Int 20 }
-Calling builtin method move with params { Int 20 }
-Calling builtin method move with params { Int 20 }
-Calling builtin method move with params { Int 20 }
----Vars of block met main ----
----End Vars of block met main ----
-===Exiting fun main
+Calling builtin method getPositionX with params { Int 1 }, ret 543,431458
 Calling builtin method getPositionX with params { Int 1 }, ret 543,431458
 Calling builtin method getPositionX with params { Int 1 }, ret 543,431458
 Calling builtin method getPositionX with params { Int 1 }, ret 543,431458
@@ -179,7 +167,12 @@ Calling builtin method getPositionX with params { Int 0 }, ret 156,568542
 Calling builtin method move with params { Int 20 }
 Calling builtin method getPositionX with params { Int 0 }, ret 156,568542
 -=-While loop 8
+Calling builtin method getPositionX with params { Int 0 }, ret 156,568542
+Calling builtin method getPositionX with params { Int 0 }, ret 156,568542
 Calling builtin method move with params { Int 20 }
+-=-While loop 8
+Calling builtin method move with params { Int 20 }
+Calling builtin method getPositionX with params { Int 1 }, ret 536,36039
 Calling builtin method getPositionX with params { Int 1 }, ret 536,36039
 Calling builtin method getPositionX with params { Int 1 }, ret 536,36039
 Calling builtin method getPositionX with params { Int 1 }, ret 536,36039
@@ -190,8 +183,13 @@ Calling builtin method getPositionX with params { Int 0 }, ret 163,63961
 -=-While loop 9
 Calling builtin method move with params { Int 20 }
 Calling builtin method getPositionX with params { Int 0 }, ret 163,63961
+Calling builtin method getPositionX with params { Int 0 }, ret 163,63961
+-=-While loop 9
 -=-While loop 9
 Calling builtin method move with params { Int 20 }
+Calling builtin method move with params { Int 20 }
+Calling builtin method move with params { Int 20 }
+Calling builtin method getPositionX with params { Int 1 }, ret 529,289322
 Calling builtin method getPositionX with params { Int 1 }, ret 529,289322
 Calling builtin method getPositionX with params { Int 1 }, ret 529,289322
 Calling builtin method getPositionX with params { Int 1 }, ret 529,289322
@@ -199,13 +197,16 @@ Calling builtin method getPositionX with params { Int 0 }, ret 170,710678
 -=-While loop 10
 Calling builtin method move with params { Int 20 }
 Calling builtin method getPositionX with params { Int 0 }, ret 170,710678
+-=-While loop 10
+Calling builtin method move with params { Int 20 }
 Calling builtin method getPositionX with params { Int 0 }, ret 170,710678
 Calling builtin method getPositionX with params { Int 0 }, ret 170,710678
 -=-While loop 10
 -=-While loop 10
--=-While loop 10
 Calling builtin method move with params { Int 20 }
 Calling builtin method move with params { Int 20 }
+Calling builtin method move with params { Int 20 }
+Calling builtin method getPositionX with params { Int 1 }, ret 522,218254
 Calling builtin method getPositionX with params { Int 1 }, ret 522,218254
 Calling builtin method getPositionX with params { Int 1 }, ret 522,218254
 Calling builtin method getPositionX with params { Int 1 }, ret 522,218254
@@ -215,6 +216,9 @@ Calling builtin method move with params { Int 20 }
 Calling builtin method getPositionX with params { Int 0 }, ret 177,781746
 -=-While loop 11
 Calling builtin method move with params { Int 20 }
+Calling builtin method getPositionX with params { Int 0 }, ret 177,781746
+-=-While loop 11
+Calling builtin method getPositionX with params { Int 0 }, ret 177,781746
 Calling builtin method move with params { Int 20 }
 Calling builtin method getPositionX with params { Int 0 }, ret 177,781746
 -=-While loop 11
@@ -222,15 +226,22 @@ Calling builtin method move with params { Int 20 }
 Calling builtin method getPositionX with params { Int 1 }, ret 515,147186
 Calling builtin method getPositionX with params { Int 1 }, ret 515,147186
 Calling builtin method getPositionX with params { Int 1 }, ret 515,147186
+Calling builtin method getPositionX with params { Int 1 }, ret 515,147186
 Calling builtin method getPositionX with params { Int 0 }, ret 184,852814
 -=-While loop 12
 Calling builtin method move with params { Int 20 }
 Calling builtin method getPositionX with params { Int 0 }, ret 184,852814
--=-While loop 12
-Calling builtin method move with params { Int 20 }
+Calling builtin method getPositionX with params { Int 0 }, ret 184,852814
 Calling builtin method getPositionX with params { Int 0 }, ret 184,852814
 -=-While loop 12
 Calling builtin method move with params { Int 20 }
+Calling builtin method move with params { Int 20 }
+-=-While loop 12
+Calling builtin method getPositionX with params { Int 0 }, ret 184,852814
+Calling builtin method move with params { Int 20 }
+-=-While loop 12
+Calling builtin method move with params { Int 20 }
+Calling builtin method getPositionX with params { Int 1 }, ret 508,076118
 Calling builtin method getPositionX with params { Int 1 }, ret 508,076118
 Calling builtin method getPositionX with params { Int 1 }, ret 508,076118
 Calling builtin method getPositionX with params { Int 1 }, ret 508,076118
@@ -238,16 +249,27 @@ Calling builtin method getPositionX with params { Int 0 }, ret 191,923882
 -=-While loop 13
 Calling builtin method move with params { Int 20 }
 Calling builtin method getPositionX with params { Int 0 }, ret 191,923882
--=-While loop 13
-Calling builtin method move with params { Int 20 }
 Calling builtin method getPositionX with params { Int 0 }, ret 191,923882
 -=-While loop 13
+-=-While loop 13
 Calling builtin method move with params { Int 20 }
+Calling builtin method move with params { Int 20 }
+Calling builtin method getPositionX with params { Int 0 }, ret 191,923882
+Calling builtin method move with params { Int 20 }
+Calling builtin method getPositionX with params { Int 0 }, ret 191,923882
+Calling builtin method move with params { Int 20 }
+-=-While loop 13
+Calling builtin method move with params { Int 20 }
+Calling builtin method getPositionX with params { Int 1 }, ret 501,005051
 Calling builtin method getPositionX with params { Int 1 }, ret 501,005051
 Calling builtin method getPositionX with params { Int 1 }, ret 501,005051
 Calling builtin method getPositionX with params { Int 1 }, ret 501,005051
 Calling builtin method getPositionX with params { Int 0 }, ret 198,994949
 -=-While loop 14
+Calling builtin method move with params { Int 20 }
+Calling builtin method getPositionX with params { Int 0 }, ret 198,994949
+-=-While loop 14
+Calling builtin method move with params { Int 20 }
 Calling builtin method move with params { Int 20 }
 Calling builtin method getPositionX with params { Int 0 }, ret 198,994949
 -=-While loop 14
@@ -257,44 +279,47 @@ Calling builtin method getPositionX with params { Int 0 }, ret 198,994949
 Calling builtin method move with params { Int 20 }
 Calling builtin method getPositionX with params { Int 1 }, ret 493,933983
 Calling builtin method getPositionX with params { Int 1 }, ret 493,933983
-Calling builtin method getPositionX with params { Int 1 }, ret 0
+Calling builtin method getPositionX with params { Int 1 }, ret 493,933983
+Calling builtin method getPositionX with params { Int 1 }, ret 493,933983
+Calling builtin method getPositionX with params { Int 0 }, ret 206,066017
+---Exiting whilecycle
+Calling builtin method getPositionX with params { Int 0 }, ret 206,066017
+---Exiting whilecycle
+Calling builtin method getPositionX with params { Int 0 }, ret 206,066017
+---Exiting whilecycle
 Calling builtin method getPositionX with params { Int 0 }, ret 206,066017
 ---Exiting whilecycle
 Calling builtin method turn with params { Int 1,5707963267949 }
+Calling builtin method turn with params { Int 1,5707963267949 }
+Calling builtin method turn with params { Int 1,5707963267949 }
 Calling builtin method move with params { Int 20 }
 Calling builtin method move with params { Int 20 }
-Calling builtin method getPositionX with params { Int 0 }, ret 206,066017
 Calling builtin method move with params { Int 20 }
 Calling builtin method move with params { Int 20 }
-Calling builtin method move with params { Int 20 }
----Exiting whilecycle
 Calling builtin method move with params { Int 20 }
 ---Vars of block met main ----
 ---End Vars of block met main ----
 ===Exiting fun main
-===Exiting fun main
-Calling builtin method getPositionX with params { Int 0 }, ret 206,066017
-9 }
-===Exiting fun main
-Calling builtin method getPositionX with params { Int 0 }, ret 206,066017
-Calling builtin method move with params { Int 20 }
----Exiting whilecycle
-move with params { Int 20 }
-Calling builtin method Calling builtin method move with params { Int 20 }
-Calling builtin method turn with params { Int 1,5707963267949 }
-Calling builtin method turn with params { Int 1,5707963267949 }
 Calling builtin method move with params { Int 20 }
 Calling builtin method move with params { Int 20 }
 Calling builtin method move with params { Int 20 }
----Vars of block met main ----
- params { Int 20 }
+Calling builtin method move with params { Int 20 }
 Calling builtin method move with params { Int 20 }
 ---Vars of block met main ----
 ---End Vars of block met main ----
 ===Exiting fun main
-met main ----
 Calling builtin method move with params { Int 20 }
+Calling builtin method move with params { Int 20 }
+Calling builtin method move with params { Int 20 }
+Calling builtin method move with params { Int 20 }
+Calling builtin method move with params { Int 20 }
+---Vars of block met main ----
+---End Vars of block met main ----
 ===Exiting fun main
+Calling builtin method turn with params { Int 1,5707963267949 }
+Calling builtin method move with params { Int 20 }
+Calling builtin method move with params { Int 20 }
+Calling builtin method move with params { Int 20 }
 Calling builtin method move with params { Int 20 }
 Calling builtin method move with params { Int 20 }
 ---Vars of block met main ----

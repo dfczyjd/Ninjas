@@ -77,12 +77,8 @@ public static class Main
         return String.Format("{0} {1}", com.type, com.param);
     }
 
-    public static void Deserialize(string s, out int[] health, out double[] xPos, out double[] yPos, out double[] dirs)
+    public static void Deserialize(string s, ref int[] health, ref double[] xPos, ref double[] yPos, ref double[] dirs)
     {
-        health = new int[4];
-        xPos = new double[4];
-        yPos = new double[4];
-        dirs = new double[4];
         string[] vals = s.Replace('.', ',').Split(' ');
         for (int i = 0; i < 4; ++i)
         {
@@ -156,6 +152,6 @@ public class RealInterpreter
 
     public void UpdateInfo(string s)
     {
-        Main.Deserialize(s, out parser.health, out parser.xPos, out parser.yPos, out parser.dirs);
+        Main.Deserialize(s, ref parser.health, ref parser.xPos, ref parser.yPos, ref parser.dirs);
     }
 }
