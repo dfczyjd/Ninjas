@@ -147,11 +147,13 @@ public class RealInterpreter
     
     public void Run()
     {
-        parser.metTable["main"].Eval();
+        if (parser != null)
+            parser.metTable["main"].Eval();
     }
 
     public void UpdateInfo(string s)
     {
-        Main.Deserialize(s, ref parser.health, ref parser.xPos, ref parser.yPos, ref parser.dirs);
+        if (parser != null)
+            Main.Deserialize(s, ref parser.health, ref parser.xPos, ref parser.yPos, ref parser.dirs);
     }
 }
