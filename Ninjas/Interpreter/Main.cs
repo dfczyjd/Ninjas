@@ -77,21 +77,59 @@ public static class Main
         return String.Format("{0} {1}", com.type, com.param);
     }
 
+    public static void Deserialize(string s, out int[] health, out double[] xPos, out double[] yPos, out double[] dirs)
+    {
+        health = new int[4];
+        xPos = new double[4];
+        yPos = new double[4];
+        dirs = new double[4];
+        string[] vals = s.Replace('.', ',').Split(' ');
+        for (int i = 0; i < 4; ++i)
+        {
+            health[i] = int.Parse(vals[i * 4]);
+            xPos[i] = double.Parse(vals[i * 4 + 1]);
+            yPos[i] = double.Parse(vals[i * 4 + 2]);
+            dirs[i] = double.Parse(vals[i * 4 + 3]);
+        }
+    }
+
     [DllExport]
     public static string GetCommand(int id)
     {
         try
         {
-            if (ints[id].commands.Count == 1)
+            if (ints[id].commands.Count == 0)
                 mre[id].Set();
             if (ints[id].commands.Count == 0)
                 return Serialize(new Command());
+            if (ints[id].commands.Peek().type == 1)
+            {
+                Log("Operations:");
+                foreach (var elem in ints[id].commands)
+                {
+                    Log(elem.type + " " + elem.param);
+                }
+            }
             return Serialize(ints[id].commands.Dequeue());
         }
         catch (Exception exc)
         {
             Log("Error in Run() of interpreter #" + id.ToString() + ":" + exc.Message);
             return Serialize(new Command());
+        }
+    }
+
+    [DllExport]
+    public static void UpdateInfo(int id, string data)
+    {
+        try
+        {
+            for (int i = 0; i < 4; ++i)
+                ints[i].UpdateInfo(data);
+        }
+        catch (Exception exc)
+        {
+            Log("Error in UpdateInfo() of interpreter #" + id.ToString() + ":" + exc.Message);
         }
     }
 }
@@ -116,5 +154,10 @@ public class RealInterpreter
     public void Run()
     {
         parser.metTable["main"].Eval();
+    }
+
+    public void UpdateInfo(string s)
+    {
+        Main.Deserialize(s, out parser.health, out parser.xPos, out parser.yPos, out parser.dirs);
     }
 }

@@ -30,5 +30,7 @@ struct Interpreter
 	~Interpreter();
 
 	void SetCode(WCHAR *codepath);
+	void SendUpdate();
+	void RunMeth(int id);
 };
 

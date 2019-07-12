@@ -110,10 +110,12 @@ public partial class NinjaParser : Parser {
 			decisionToDFA[i] = new DFA(_ATN.GetDecisionState(i), i);
 		}
 	}
+
+    //My code starts here
     public RealInterpreter owner;
 
     public bool paused = false;
-    //public 
+    
 
 		public enum ParamType
 		{
@@ -159,9 +161,12 @@ public partial class NinjaParser : Parser {
 	        public dynamic value;
 	        
 	    }
-
-    //My code starts here
+    
     public int id;
+    public int[] health = new int[4];
+    public double[] xPos = new double[4];
+    public double[] yPos = new double[4];
+    public double[] dirs = new double[4];
 
     public void Sleep()
     {
@@ -190,7 +195,6 @@ public partial class NinjaParser : Parser {
                 if (sm.GetType().IsSubclassOf(typeof(OperationClass)))
                 {
                     sm.Eval();
-                    Main.Log(parser.owner.commands.Count.ToString());
                     if (parser.owner.commands.Count > 3)
                     {
                         parser.paused = true;
@@ -403,7 +407,33 @@ public partial class NinjaParser : Parser {
 						if(parser.CheckParams(this, parser.metTable[name]))
 						{
 							Console.WriteLine($"Calling builtin method {name} with params {ParamListToString(paramList)}, ret {parser.metTable[name].returnValue}");
-							return parser.metTable[name].returnValue;
+                        parser.Sleep();
+                        dynamic ret = 0;
+                        int reqid = (name == "getSelfId"? 0 : paramList[0].value);
+                        switch (name)
+                        {
+                            case "getSelfId":
+                                ret = parser.id;
+                                break;
+
+                            case "getHealth":
+                                ret = parser.health[reqid];
+                                break;
+
+                            case "getPositionX":
+                                ret = parser.xPos[reqid];
+                                break;
+
+                            case "getPositionY":
+                                ret = parser.yPos[reqid];
+                                break;
+
+                            case "getDirection":
+                                ret = parser.dirs[reqid];
+                                break;
+                        }
+                        Main.Log("Func " + name + " returning " + ret);
+                        return parser.metTable[name].returnValue = ret;
 						}	
 					} 
 					else

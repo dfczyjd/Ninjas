@@ -283,13 +283,22 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 		WINDOWINFO info;
 		GetWindowInfo(hWnd, &info);
 		MoveWindow(infoWnd, 700, 0, client.right - 700, client.bottom, true);
-		DialogBox(hInst, MAKEINTRESOURCE(IDD_FSDIALOG), hWnd, FileSelectProc);
+		WCHAR name1[] = L"C:/LatinName/nnj.npr",
+			name2[] = L"C:/LatinName/nnj_void.npr";
+		players[0].interpreter.SetCode(name1);
+		players[1].interpreter.SetCode(name2);
+		players[2].interpreter.SetCode(name2);
+		players[3].interpreter.SetCode(name2);
+		//DialogBox(hInst, MAKEINTRESOURCE(IDD_FSDIALOG), hWnd, FileSelectProc);
 		if (abortLaunch)
 		{
 			SendMessage(hWnd, WM_CLOSE, NULL, NULL);
 			return 0;
 		}
 		SetTimer(hWnd, COMMAND_TIMER, 100, NULL);
+		players[0].interpreter.SendUpdate();
+		for (int i = 0; i < PLAYER_COUNT; ++i)
+			players[i].interpreter.RunMeth(i);
 		InvalidateRect(hWnd, 0, true);
 		UpdateWindow(hWnd);
 		break;
@@ -359,6 +368,7 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 					}
 					shot.Invalidate(hWnd);
 				}
+				players[i].interpreter.SendUpdate();
 			}
 			break;
 		}
