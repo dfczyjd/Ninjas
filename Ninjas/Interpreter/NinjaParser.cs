@@ -431,7 +431,6 @@ public partial class NinjaParser : Parser {
                 {
                     if (parser.CheckParams(this, parser.metTable[name]))
                     {
-                        Debug($"Calling builtin method {name} with params {ParamListToString(paramList)}, ret {parser.metTable[name].returnValue}");
                         parser.Sleep();
                         dynamic ret = 0;
                         int reqid = (name == "getSelfId" ? 0 : paramList[0].value);
@@ -457,7 +456,8 @@ public partial class NinjaParser : Parser {
                                 ret = parser.dirs[reqid];
                                 break;
                         }
-                        Main.Log("Func " + name + " returning " + ret);
+                        Debug($"Calling builtin method {name} with params {ParamListToString(paramList)}, ret {ret}");
+                        Main.Log("Func " + name + " for player #" + reqid + " returning " + ret);
                         return parser.metTable[name].returnValue = ret;
                     }
                 }

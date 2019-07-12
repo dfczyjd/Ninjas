@@ -22,7 +22,7 @@ struct Character
 	int health;
 	vector<Projectile> shots;
 
-	Character(int id = 0, double x = 0, double y = 0, COLORREF color = RGB(0, 0, 0));
+	Character(int id = 0, double x = 0, double y = 0, COLORREF color = RGB(0, 0, 0), double dir = 0);
 	~Character();
 
 	Character operator=(const Character &other);

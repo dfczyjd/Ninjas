@@ -3,9 +3,9 @@
 #include "Character.h"
 #include <fstream>
 
-Character::Character(int id, double x, double y, COLORREF color) : color(color)
+Character::Character(int id, double x, double y, COLORREF color, double dir) : color(color)
 {
-	direction = 0;
+	direction = dir;
 	health = 100;
 	swordShift = M_PI_4;
 	isSwinging = false;

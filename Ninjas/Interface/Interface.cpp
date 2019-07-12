@@ -271,10 +271,10 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 	case WM_CREATE:
 	{
 		players = new Character[PLAYER_COUNT]{
-			Character(0, 100, 100, RGB(255, 0, 0)),
-			Character(1, 600, 100, RGB(0, 0, 255)),
-			Character(2, 100, 600, RGB(0, 255, 0)),
-			Character(3, 600, 600, RGB(255, 255, 0))
+			Character(0, 100, 100, RGB(255, 0, 0), M_PI_4),
+			Character(1, 600, 100, RGB(0, 0, 255), 3 * M_PI_4),
+			Character(2, 100, 600, RGB(0, 255, 0), 7 * M_PI_4),
+			Character(3, 600, 600, RGB(255, 255, 0), 5 * M_PI_4)
 		};
 		RECT client;
 		GetClientRect(hWnd, &client);
@@ -287,9 +287,9 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 		WCHAR name1[] = L"C:/LatinName/nnj.npr",
 			name2[] = L"C:/LatinName/nnj_void.npr";
 		players[0].interpreter.SetCode(name1);
-		players[1].interpreter.SetCode(name2);
-		players[2].interpreter.SetCode(name2);
-		players[3].interpreter.SetCode(name2);*/
+		players[1].interpreter.SetCode(name1);
+		players[2].interpreter.SetCode(name1);
+		players[3].interpreter.SetCode(name1);*/
 		DialogBox(hInst, MAKEINTRESOURCE(IDD_FSDIALOG), hWnd, FileSelectProc);
 		if (abortLaunch)
 		{
