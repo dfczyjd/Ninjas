@@ -1,6 +1,8 @@
 #pragma once
 #define DLL_API __declspec(dllimport)
 #include <queue>
+#define _USE_MATH_DEFINES
+#include <cmath>
 
 struct Command
 {

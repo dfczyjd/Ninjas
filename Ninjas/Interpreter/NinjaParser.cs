@@ -112,6 +112,9 @@ public partial class NinjaParser : Parser {
 	}
     public RealInterpreter owner;
 
+    public bool paused = false;
+    //public 
+
 		public enum ParamType
 		{
 			Receive, Pass
@@ -385,20 +388,25 @@ public partial class NinjaParser : Parser {
 					else
 					{			
 						Console.WriteLine($"Calling builtin method {name} with params {ParamListToString(paramList)}");
+                    Command nw;
 						switch (name)
 						{
 							case "move":
-								parser.owner.commands.Enqueue(new Command(1, paramList[0].value.Eval()));
+                            nw = new Command(1, paramList[0].value.Eval());
+                                parser.owner.commands.Enqueue(nw);
 								break;
 							case "turn":
-                                parser.owner.commands.Enqueue(new Command(2, paramList[0].value.Eval()));
-                                break;
+                            nw = new Command(2, paramList[0].value.Eval());
+                            parser.owner.commands.Enqueue(nw);
+                            break;
 							case "hit":
-                                parser.owner.commands.Enqueue(new Command(3));
-                                break;
+                            nw = new Command(3);
+                            parser.owner.commands.Enqueue(nw);
+                            break;
 							case "shoot":
-                                parser.owner.commands.Enqueue(new Command(4));
-                                break;
+                            nw = new Command(4);
+                            parser.owner.commands.Enqueue(nw);
+                            break;
 							default:
 								Error($"Unknown builtin method {name}");
 								break;

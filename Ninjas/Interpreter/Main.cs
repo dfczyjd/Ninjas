@@ -23,6 +23,7 @@ public class Command
 public static class Main
 {
     static RealInterpreter[] ints = new RealInterpreter[4];
+    static StreamWriter sw = new StreamWriter("../log.txt");
 
     static Main()
     {
@@ -32,23 +33,21 @@ public static class Main
         }
     }
 
+    public static void Log(string value)
+    {
+        sw.WriteLine(value);
+    }
+
     [DllExport]
     public static void Init(int id, string name)
     {
         try
         {
-            using (StreamWriter sw = new StreamWriter("../log.txt", true))
-            {
-                sw.WriteLine("Note from #" + id + ": reading from " + name);
-            }
             ints[id].Init(name);
         }
         catch (Exception exc)
         {
-            using (StreamWriter sw = new StreamWriter("../log.txt", true))
-            {
-                sw.WriteLine("Error in Init() of interpreter #" + id.ToString() + ":" + exc.Message);
-            }
+            Log("Error in Init() of interpreter #" + id.ToString() + ":" + exc.Message);
         }
     }
 
@@ -58,13 +57,13 @@ public static class Main
         try
         {
             ints[id].Run();
+            Log("Note from #: commands are\n");
+            foreach (var elem in ints[id].commands)
+                Log(Serialize(elem));
         }
         catch (Exception exc)
         {
-            using (StreamWriter sw = new StreamWriter("../log.txt", true))
-            {
-                sw.WriteLine("Error in Run() of interpreter #" + id.ToString() + ":" + exc.Message);
-            }
+            Log("Error in Run() of interpreter #" + id.ToString() + ":" + exc.Message);
         }
     }
 
@@ -84,10 +83,7 @@ public static class Main
         }
         catch (Exception exc)
         {
-            using (StreamWriter sw = new StreamWriter("../log.txt", true))
-            {
-                sw.WriteLine("Error in Run() of interpreter #" + id.ToString() + ":" + exc.Message);
-            }
+            Log("Error in Run() of interpreter #" + id.ToString() + ":" + exc.Message);
             return Serialize(new Command());
         }
     }
@@ -101,10 +97,6 @@ public class RealInterpreter
     public void Init(string name)
     {
         var input = File.ReadAllText(name);
-        using (StreamWriter sw = new StreamWriter("../log.txt", true))
-        {
-            sw.WriteLine("Note from #?: read\n" + input);
-        }
         var ms = new MemoryStream(Encoding.UTF8.GetBytes(input));
         var lexer = new NinjaLexer(new AntlrInputStream(ms));
         var tokens = new CommonTokenStream(lexer);

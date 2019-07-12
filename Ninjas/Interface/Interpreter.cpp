@@ -26,6 +26,14 @@ Interpreter::~Interpreter()
 Command Deserialize(char *s)
 {
 	Command res;
+	for (int i = 0; s[i] != '\0'; ++i)
+	{
+		if (s[i] == ',')
+		{
+			s[i] = '.';
+			break;
+		}
+	}
 	sscanf_s(s, "%d %lf", &res.type, &res.param);
 	return res;
 }
@@ -34,6 +42,20 @@ Command Interpreter::NextCommand()
 {
 	char *nxtStr = Next(id);
 	Command nxt = Deserialize(nxtStr);
+	if (nxt.type == 1)
+	{
+		if (nxt.param > 10)
+			nxt.param = 10;
+		else if (nxt.param < -5)
+			nxt.param = -5;
+	}
+	else if (nxt.type == 2)
+	{
+		if (nxt.param > 1.58)
+			nxt.param = 1.58;
+		else if (nxt.param < -1.58)
+			nxt.param = -1.58;
+	}
 	return nxt;
 }
 

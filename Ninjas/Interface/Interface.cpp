@@ -289,7 +289,7 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 			SendMessage(hWnd, WM_CLOSE, NULL, NULL);
 			return 0;
 		}
-		SetTimer(hWnd, COMMAND_TIMER, 50, NULL);
+		SetTimer(hWnd, COMMAND_TIMER, 100, NULL);
 		InvalidateRect(hWnd, 0, true);
 		UpdateWindow(hWnd);
 		break;

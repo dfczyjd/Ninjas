@@ -27,3 +27,4 @@ C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Ninjas\Ninj
 C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Ninjas\Ninjas\Interpreter\obj\Debug\Interpreter.csproj.CopyComplete
 C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Ninjas\Ninjas\Interpreter\obj\Debug\Interpreter.dll
 C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Ninjas\Ninjas\Interpreter\obj\Debug\Interpreter.pdb
+C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Ninjas\Ninjas\Interpreter\obj\Debug\Interpreter.csprojAssemblyReference.cache
