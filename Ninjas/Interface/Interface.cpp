@@ -331,7 +331,7 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 		MoveWindow(infoWnd, 700, 0, client.right - 700, client.bottom, true);
 		MoveWindow(chatWnd, 0, 400, client.right, client.bottom - 400, true);
 		WCHAR name1[] = L"C:/LatinName/empty.npr",
-			name2[] = L"C:/LatinName/Find1.npr";
+			name2[] = L"D:/Coding/C#/Interpreter/Interpreter/nnj.npr";
 		players[0].interpreter.SetCode(name2);
 		players[1].interpreter.SetCode(name2);
 		players[2].interpreter.SetCode(name2);

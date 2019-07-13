@@ -166,22 +166,28 @@ options {
     
     public static bool CheckType(Type t, VarType vt)
     {
-    	if(t.ToString().ToLower().Contains("bool") && vt.ToString().ToLower().Contains("bool"))
-    		return true;
-    	if(t.ToString().ToLower().Contains("int") && vt.ToString().ToLower().Contains("int"))
+    	string actualTypeName = t.ToString().ToLower();
+        string expectedTypeName = vt.ToString().ToLower();
+        
+    	if(actualTypeName.Contains("bool") && expectedTypeName.Contains("bool"))
+        	return true;
+        if(actualTypeName.Contains("int") && (expectedTypeName.Contains("int") || expectedTypeName.Contains("double")))
             return true;
-        if(t.ToString().ToLower().Contains("double") && vt.ToString().ToLower().Contains("double"))
+        if(actualTypeName.Contains("double") && expectedTypeName.Contains("double"))
             return true;
         return false;        	
     }
     
     public static bool CheckType(Type t, ReturnType vt)
         {
-        	if(t.ToString().ToLower().Contains("bool") && vt.ToString().ToLower().Contains("bool"))
+        	string actualTypeName = t.ToString().ToLower();
+        	string expectedTypeName = vt.ToString().ToLower();
+        
+        	if(actualTypeName.Contains("bool") && expectedTypeName.Contains("bool"))
         		return true;
-        	if(t.ToString().ToLower().Contains("int") && vt.ToString().ToLower().Contains("int"))
+        	if(actualTypeName.Contains("int") && (expectedTypeName.Contains("int") || expectedTypeName.Contains("double")))
                 return true;
-            if(t.ToString().ToLower().Contains("double") && vt.ToString().ToLower().Contains("double"))
+            if(actualTypeName.Contains("double") && expectedTypeName.Contains("double"))
                 return true;
             return false;        	
         }
@@ -203,7 +209,7 @@ options {
     				r = FindVar(varId).value;
     			else
     			{
-    				Error($"Type mismatch ({i+1}/{call.paramList.Count}): expected {method.paramList[i].type}, found {r.GetType()} with value {call.paramList[call.paramList.Count - i - 1].value}");
+    				Error($"Type mismatch ({i+1}/{call.paramList.Count}) in {call.name}: expected {method.paramList[i].type}, found {r.GetType()} with value {call.paramList[call.paramList.Count - i - 1].value}");
                     return false;
     			}
     		}
@@ -240,7 +246,7 @@ options {
     		}
     		else
     		{
-    			Error($"Type mismatch ({i+1}/{call.paramList.Count}): expected {method.paramList[i].type}, found {r.GetType()} with value {call.paramList[call.paramList.Count - i - 1].value}");
+    			Error($"Type mismatch ({i+1}/{call.paramList.Count}) in {call.name}: expected {method.paramList[i].type}, found {r.GetType()} with value {call.paramList[call.paramList.Count - i - 1].value}");
     			return false;
     		}
     	}
@@ -445,6 +451,7 @@ options {
 			return rBlock;
 		}
 		set{
+			Debug($"new block {value.name}");
 			rBlock = value;
 		}
 	}
@@ -1188,14 +1195,18 @@ options {
         public override dynamic Eval()
         {
         	parser.curBlock = oneTimeBlock;
-        	first.Eval();
+        	first?.Eval();
         	int t = 0;
         	parser.curBlock = cycleBlock;
             while(cond.Eval())
             {
+            	parser.curBlock = cycleBlock;
             	Debug($"==For iter {t++}");
             	cycleBlock.Eval();
-            	last.Eval(); 
+            	Debug($"==For iter2 {t}");
+            	parser.curBlock = cycleBlock;
+            	last?.Eval();
+            	parser.curBlock = cycleBlock; 
             }
             parser.curBlock = oneTimeBlock.Parent;
     		return null;
@@ -1426,7 +1437,7 @@ code : (operation[curBlock.createOperationClass()])*;
 main_code : (operation[curBlock.createOperationClass()])*;
 
 operation[OperationClass oper] : call[curBlock.ToExpr(), true] | custom_call[curBlock.ToExpr(), true] | declare[curBlock.ToExpr()] | ariphExprEx[curBlock.ToExpr()] | boolExprEx[curBlock.ToExpr()]
-			| myif[curBlock.ToExpr()]|myif_short[curBlock.ToExpr()]|mywhile[curBlock.ToExpr()]|mydo_while[curBlock.ToExpr()]|myfor[curBlock.ToExpr()];
+			| myif[null]|myif_short[null]|mywhile[null]|mydo_while[null]|myfor[null];
 
 method_return[OperationClass oper] returns [string type, dynamic value]: RETURN_KEYWORD val_or_id[curBlock.ToExpr()] {
 	$type = $val_or_id.type;
@@ -1618,17 +1629,24 @@ val_or_id[ExprClass oper] returns [string type, dynamic value]:
 			};
 
 //cyclemetka
-myif[ExprClass oper]: IF LPAREN boolExprEx[$oper] RPAREN 
+myif[ExprClass oper]:
+{
+	ExprClass bExpr = new ExprClass(new OperationClass(this));
+	bExpr.parser = this;
+	
+	Condition ifer = new Condition(this, false)
+	{
+		
+		parser = this
+	};
+	curBlock.operations.Add(ifer);
+	ifer.cycleBlock.Parent = curBlock;
+	curBlock = ifer.cycleBlock;
+
+} IF LPAREN boolExprEx[bExpr] RPAREN 
      OBRACE 
      {
-     	Condition ifer = new Condition(this, true)
-		{
-			cond=$boolExprEx.res,
-			parser = this
-		};
-		curBlock.operations.Add(ifer);
-		ifer.cycleBlock.Parent = curBlock;
-		curBlock = ifer.cycleBlock;
+     	ifer.cond=$boolExprEx.res;
      }
     (operation[curBlock.createOperationClass()])* 
     CBRACE
@@ -1644,17 +1662,26 @@ myif[ExprClass oper]: IF LPAREN boolExprEx[$oper] RPAREN
         curBlock = curBlock.Parent;
      }
    ;
-myif_short[ExprClass oper]: IF LPAREN boolExprEx[$oper] RPAREN 
+myif_short[ExprClass oper]: {
+
+	ExprClass bExpr = new ExprClass(new OperationClass(this));
+	bExpr.parser = this;
+	
+	Condition ifer = new Condition(this, false)
+	{
+		
+		parser = this
+	};
+	curBlock.operations.Add(ifer);
+	ifer.cycleBlock.Parent = curBlock;
+	curBlock = ifer.cycleBlock;
+
+} IF LPAREN boolExprEx[bExpr] RPAREN 
     OBRACE 
     {
-    		Condition ifer = new Condition(this, false)
-         	{
-         		cond=$boolExprEx.res,
-				parser = this
-         	};
-         	curBlock.operations.Add(ifer);
-         	ifer.cycleBlock.Parent = curBlock;
-         	curBlock = ifer.cycleBlock;
+    		ifer.cond=$boolExprEx.res;
+         	
+         	
     }
     (operation[curBlock.createOperationClass()])* 
     CBRACE
@@ -1662,17 +1689,23 @@ myif_short[ExprClass oper]: IF LPAREN boolExprEx[$oper] RPAREN
         curBlock = curBlock.Parent;
     }
    ;
-mywhile[ExprClass oper]: WHILE LPAREN boolExprEx[$oper] RPAREN 
-     OBRACE 
-     {
-     	While whiler = new While(this)
+mywhile[ExprClass oper]: {
+ExprClass bExpr = new ExprClass(new OperationClass(this));
+bExpr.parser = this;
+
+While whiler = new While(this)
      	{
-     		cond=$boolExprEx.res,
+     		
 			parser = this
      	};
      	curBlock.operations.Add(whiler);
      	whiler.cycleBlock.Parent = curBlock;
      	curBlock = whiler.cycleBlock;
+
+} WHILE LPAREN boolExprEx[bExpr] RPAREN 
+     OBRACE 
+     {
+     	whiler.cond=$boolExprEx.res;
      }
      (operation[curBlock.createOperationClass()])*
      CBRACE 
@@ -1683,6 +1716,8 @@ mywhile[ExprClass oper]: WHILE LPAREN boolExprEx[$oper] RPAREN
 mydo_while[ExprClass oper]: DO 
           OBRACE 
           {
+          		ExprClass bExpr = new ExprClass(new OperationClass(this));
+                bExpr.parser = this;
           		Do_while doer = new Do_while(this);
 				doer.parser = this;
                	curBlock.operations.Add(doer);
@@ -1691,7 +1726,7 @@ mydo_while[ExprClass oper]: DO
           }
             (operation[curBlock.createOperationClass()])* 
           CBRACE
-          WHILE LPAREN boolExprEx[$oper] RPAREN 
+          WHILE LPAREN boolExprEx[bExpr] RPAREN 
           {
             	doer.cond=$boolExprEx.res;
             	curBlock = curBlock.Parent;
@@ -1709,8 +1744,8 @@ myfor[ExprClass oper]: {
 		forer.cycleBlock.Parent = forer.oneTimeBlock;
             	curBlock = forer.oneTimeBlock;
 		
-		curBlock.createOperationClass();
-		ExprClass fExpr = curBlock.ToExpr();    	
+		ExprClass fExpr = new ExprClass(new OperationClass(this));
+        fExpr.parser = this;    	
 						
 } (declare[fExpr]
 {
@@ -1721,7 +1756,7 @@ myfor[ExprClass oper]: {
 |ariphExprEx[fExpr]
 {
 	fExpr = $ariphExprEx.res;
-})
+})?
 
 
 
@@ -1735,25 +1770,29 @@ myfor[ExprClass oper]: {
                   
                   }
                   
-                  boolExprEx[cExpr] 
+                  boolExprEx[cExpr]?
                  SEMICOLON {
                  
 					ExprClass lExpr = new ExprClass(new OperationClass(this));
                  lExpr.parser = this;
-                 }l=ariphExprEx[lExpr] RPAREN
+                 }l=ariphExprEx[lExpr]? RPAREN
         OBRACE
         {
-                                      forer.cond = $boolExprEx.res;
-                                      forer.first = fExpr;
-                                      forer.last = $l.res;
-         				curBlock = forer.cycleBlock;			 
-        				
-                       	
+
+				try {
+					forer.cond = $boolExprEx.res;
+				} catch {
+					 cExpr.Push(new ExprStackObject(true, this));
+					 forer.cond = cExpr;
+				}
+			  	forer.first = fExpr;
+			  	forer.last = (_localctx.l == null) ? null : $l.res;
+				curBlock = forer.cycleBlock;       	
         }
         (operation[curBlock.createOperationClass()])*
         CBRACE
         { 
-        	curBlock = curBlock.Parent.Parent;
+        	curBlock = forer.oneTimeBlock.Parent;
         	curBlock.operations.Add(forer);    
         }
      ;
