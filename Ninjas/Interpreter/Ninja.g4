@@ -1364,7 +1364,7 @@ code : (operation[curBlock.createOperationClass()])*;
 
 main_code : (operation[curBlock.createOperationClass()])*;
 
-operation[OperationClass oper] : call[curBlock.ToExpr()] | custom_call[curBlock.ToExpr(), true] | declare[curBlock.ToExpr()] | ariphExprEx[curBlock.ToExpr()] | boolExprEx[curBlock.ToExpr()]
+operation[OperationClass oper] : call[curBlock.ToExpr(), true] | custom_call[curBlock.ToExpr(), true] | declare[curBlock.ToExpr()] | ariphExprEx[curBlock.ToExpr()] | boolExprEx[curBlock.ToExpr()]
 			| myif[curBlock.ToExpr()]|myif_short[curBlock.ToExpr()]|mywhile[curBlock.ToExpr()]|mydo_while[curBlock.ToExpr()]|myfor[curBlock.ToExpr()];
 
 method_return[OperationClass oper] returns [string type, dynamic value]: RETURN_KEYWORD val_or_id[curBlock.ToExpr()] {
@@ -1412,7 +1412,7 @@ builtin_func_p : 'move'|'turn' ;
 
 builtin_func_e : 'hit'|'shoot' ;  
 
-call[ExprClass oper] returns [CallData callData] : parameterized_call[$oper] {
+call[ExprClass oper, bool independent] returns [CallData callData] : parameterized_call[$oper] {
 
 	CallData data = new CallData(){
 		callType = CallType.BuiltIn, 
@@ -1423,7 +1423,7 @@ call[ExprClass oper] returns [CallData callData] : parameterized_call[$oper] {
 	};
 	
 	string methodName = currentMet;
-	if(methodName != "?"){
+	if(methodName != "?" && independent){
 		curBlock.operations.Add(data);
 	}
 	
@@ -1467,7 +1467,7 @@ call[ExprClass oper] returns [CallData callData] : parameterized_call[$oper] {
 	};
 	$callData = data;
 	string methodName = currentMet;
-	if(methodName != "?"){
+	if(methodName != "?" && independent){
 		curBlock.operations.Add(data);
 	}
 };
@@ -1725,7 +1725,7 @@ ariphOperand[ExprClass oper]:
 						parser = this
 					});
              	}
-             | call[$oper]
+             | call[$oper, false]
              	{
                     $oper.Push(new ExprStackObject()
              		{

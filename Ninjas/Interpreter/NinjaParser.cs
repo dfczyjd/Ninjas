@@ -2066,7 +2066,7 @@ public partial class NinjaParser : Parser {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 152; call(curBlock.ToExpr());
+				State = 152; call(curBlock.ToExpr(), true);
 				}
 				break;
 			case 2:
@@ -2503,6 +2503,7 @@ public partial class NinjaParser : Parser {
 
 	public partial class CallContext : ParserRuleContext {
 		public ExprClass oper;
+		public bool independent;
 		public CallData callData;
 		public Parameterized_callContext _parameterized_call;
 		public Simple_callContext _simple_call;
@@ -2513,10 +2514,11 @@ public partial class NinjaParser : Parser {
 			return GetRuleContext<Simple_callContext>(0);
 		}
 		public CallContext(ParserRuleContext parent, int invokingState) : base(parent, invokingState) { }
-		public CallContext(ParserRuleContext parent, int invokingState, ExprClass oper)
+		public CallContext(ParserRuleContext parent, int invokingState, ExprClass oper, bool independent)
 			: base(parent, invokingState)
 		{
 			this.oper = oper;
+			this.independent = independent;
 		}
 		public override int RuleIndex { get { return RULE_call; } }
 		public override void EnterRule(IParseTreeListener listener) {
@@ -2530,8 +2532,8 @@ public partial class NinjaParser : Parser {
 	}
 
 	[RuleVersion(0)]
-	public CallContext call(ExprClass oper) {
-		CallContext _localctx = new CallContext(Context, State, oper);
+	public CallContext call(ExprClass oper, bool independent) {
+		CallContext _localctx = new CallContext(Context, State, oper, independent);
 		EnterRule(_localctx, 34, RULE_call);
 		try {
 			State = 204;
@@ -2558,7 +2560,7 @@ public partial class NinjaParser : Parser {
 					};
 					
 					string methodName = currentMet;
-					if(methodName != "?"){
+					if(methodName != "?" && independent){
 						curBlock.operations.Add(data);
 					}
 					
@@ -2610,7 +2612,7 @@ public partial class NinjaParser : Parser {
 					};
 					_localctx.callData =  data;
 					string methodName = currentMet;
-					if(methodName != "?"){
+					if(methodName != "?" && independent){
 						curBlock.operations.Add(data);
 					}
 
@@ -3672,7 +3674,7 @@ public partial class NinjaParser : Parser {
 			case 4:
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 356; _localctx._call = call(_localctx.oper);
+				State = 356; _localctx._call = call(_localctx.oper, false);
 
 				                    _localctx.oper.Push(new ExprStackObject()
 				             		{
