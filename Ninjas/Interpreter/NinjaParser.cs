@@ -314,9 +314,18 @@ public partial class NinjaParser : Parser {
 	    		}
 	    		if (r is ExprClass)
 				{
-					//second call
-	            	call.paramList[call.paramList.Count - i - 1].value = r.Eval();
-	            	r = call.paramList[call.paramList.Count - i - 1].value;
+					if (r.value != null)
+					{
+						r = r.value;
+						call.paramList[call.paramList.Count - i - 1].value = r;
+	                }
+	                else
+					{
+						//second call
+						Error("Evaluating param (fuck, second evaluation)");
+						call.paramList[call.paramList.Count - i - 1].value = r.Eval();
+						r = call.paramList[call.paramList.Count - i - 1].value;	
+					}
 	            }
 	    				
 	    		if (CheckType(r.GetType(), method.paramList[i].type))

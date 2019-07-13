@@ -284,13 +284,13 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 		WINDOWINFO info;
 		GetWindowInfo(hWnd, &info);
 		MoveWindow(infoWnd, 700, 0, client.right - 700, client.bottom, true);
-		/*WCHAR name1[] = L"C:/LatinName/empty.npr",
-			name2[] = L"C:/LatinName/Find1.npr";
+		WCHAR name1[] = L"D:/Coding/C#/Interpreter/Interpreter/nnj.npr",
+			name2[] = L"D:/Coding/C#/Interpreter/Interpreter/nnj.npr";
 		players[0].interpreter.SetCode(name2);
 		players[1].interpreter.SetCode(name1);
 		players[2].interpreter.SetCode(name1);
-		players[3].interpreter.SetCode(name1);*/
-		DialogBox(hInst, MAKEINTRESOURCE(IDD_FSDIALOG), hWnd, FileSelectProc);
+		players[3].interpreter.SetCode(name1);
+		//DialogBox(hInst, MAKEINTRESOURCE(IDD_FSDIALOG), hWnd, FileSelectProc);
 		if (abortLaunch)
 		{
 			SendMessage(hWnd, WM_CLOSE, NULL, NULL);
