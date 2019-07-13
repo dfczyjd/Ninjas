@@ -6,7 +6,9 @@ options {
 
 @parser::header
 {
-	//using Interpreter;
+	#if NOGUI
+    	using Interpreter;
+    #endif
 }
 
 @parser::members 
@@ -108,6 +110,12 @@ options {
         {
         	parser.curBlock = this;
         	Debug($"===Entering fun {name} with params {ParamListToString(paramList)}");
+			Debug($"Method {name} contains:");
+            foreach (var sm in operations)
+            {
+                Debug(sm.ToString());
+            }
+            Debug($"End of method {name} block");
             foreach(var sm in operations)
             {
             	if(sm.GetType().IsSubclassOf(typeof(OperationClass)))
@@ -118,9 +126,9 @@ options {
             foreach (var elem in varTable)
             {
             	if (elem.Value.isAssigned)
-                	Console.WriteLine("\t" + elem.Key + " is " + elem.Value.type + " with value " + elem.Value.value);
+                	Debug("\t" + elem.Key + " is " + elem.Value.type + " with value " + elem.Value.value);
                 else
-                	Console.WriteLine("\t" + elem.Key + " is " + elem.Value.type + ", value not assigned");
+                	Debug("\t" + elem.Key + " is " + elem.Value.type + ", value not assigned");
             }
             Debug($"---End Vars of block met {name} ----");
             Debug($"===Exiting fun {name}");	
@@ -137,18 +145,24 @@ options {
     int depth = 0;
     string currentMet = "?";
     
-    public static void Debug(string line)
-    {
-        Console.WriteLine(line);
-    }
-    
-    public static void Error(string message)
-    {
-        ConsoleColor curr = Console.ForegroundColor;
-        Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine(message);
-        Console.ForegroundColor = curr;
-    }
+    static StreamWriter fstream = new StreamWriter("execlog.log");
+   	    
+   	public static void Debug(string line)
+   	{
+   		Console.WriteLine(line);
+   		fstream.WriteLine(line);
+   	    fstream.Flush();
+   	}
+   	    
+   	public static void Error(string message)
+   	{
+   	    ConsoleColor curr = Console.ForegroundColor;
+   	    Console.ForegroundColor = ConsoleColor.Red;
+   	    Console.WriteLine(message);
+   	    fstream.WriteLine("ERROR: " + message);
+   	    fstream.Flush();
+   	    Console.ForegroundColor = curr;
+   	}
     
     public static bool CheckType(Type t, VarType vt)
     {
@@ -307,7 +321,7 @@ options {
 				
 				if (parser.metTable.ContainsKey(name) && parser.CheckParams(this, parser.metTable[name]))
 				{		
-					Console.WriteLine($"Calling custom method {name} with params {ParamListToString(paramList)}");
+					Debug($"Calling custom method {name} with params {ParamListToString(paramList)}");
                     						parser.metTable[name].Eval();
                     						if (returnType != ReturnType.Void && parser.metTable[name].returnType != ReturnType.Void)
                     						{
@@ -333,7 +347,7 @@ options {
                 						{
                 							parser.Sleep();
                 							dynamic ret = 0;
-                							int reqid = (name == "getSelfId" ? 0 : paramList[0].value);
+                							int reqid = (name == "getSelfId" ? -1 : paramList[0].value);
                 							switch (name)
                 							{
                 								case "getSelfId":
@@ -356,7 +370,7 @@ options {
                 									ret = parser.dirs[reqid];
                 									break;
                 							}
-                							Debug($"Calling builtin method {name} with params {ParamListToString(paramList)}, ret {ret}");
+                							Debug($"Calling builtin method {name} with params {ParamListToString(paramList)}, ret {ret} + of type " + ret.GetType());
                 							Main.Log("Func " + name + " for player #" + reqid + " returning " + ret);
                 							return parser.metTable[name].returnValue = ret;
                 						}
@@ -369,24 +383,23 @@ options {
                 						{
                 							case "move":
                 								nw = new Command(1, paramList[0].value.Eval());
-                								parser.owner.commands.Enqueue(nw);
                 								break;
                 							case "turn":
                 								nw = new Command(2, paramList[0].value.Eval());
-                								parser.owner.commands.Enqueue(nw);
                 								break;
                 							case "hit":
                 								nw = new Command(3);
-                								parser.owner.commands.Enqueue(nw);
                 								break;
                 							case "shoot":
                 								nw = new Command(4);
-                								parser.owner.commands.Enqueue(nw);
                 								break;
                 							default:
                 								Error($"Unknown builtin method {name}");
-                								break;
+                								return null;
                 						}
+                						#if !NOGUI
+										parser.owner.commands.Enqueue(nw);
+                                        #endif
                 					}
 			}
 			return null;
@@ -535,9 +548,9 @@ options {
 			string s = "";
 			foreach(var v in exprStack)
 			{
-				s += v.value;
+				s += v.value + " ";
 			}
-			//Console.WriteLine($"evaluating {s} from block {parser.curBlock.name}");
+			Debug($"Evaluating {s} from block {parser.curBlock.name}");
 			List<ExprStackObject> stack = new List<ExprStackObject>();
 			foreach (var elem in exprStack)
 			{
@@ -757,6 +770,7 @@ options {
                     									data.value = (double)rightval;
                     								else
                     									Error("Can't convert \"" + rightval + "\" to " + data.type);	
+													Debug("Assigned " + rightVal + " of type " + rightVal.GetType() + " to " + left.value + " of type " + data.type);
                     								stack.Add(new ExprStackObject(data.value, parser));
                     							}
                     							catch (KeyNotFoundException e)
@@ -1148,7 +1162,9 @@ program : function* main function* {
                 metTable.Add("getPositionX", getPositionX);
                 metTable.Add("getPositionY", getPositionY);
                 metTable.Add("getDirection", getDirection);
-				metTable["main"].Eval();
+                #if NOGUI
+					metTable["main"].Eval();
+				#endif
 };
 
 main : main_signature OBRACE main_code CBRACE
@@ -1263,7 +1279,7 @@ code : (operation[curBlock.createOperationClass()])*;
 
 main_code : (operation[curBlock.createOperationClass()])*;
 
-operation[OperationClass oper] : call[curBlock.ToExpr()] | custom_call[curBlock.ToExpr()] | declare[curBlock.ToExpr()] | ariphExprEx[curBlock.ToExpr()] | boolExprEx[curBlock.ToExpr()]
+operation[OperationClass oper] : call[curBlock.ToExpr()] | custom_call[curBlock.ToExpr(), true] | declare[curBlock.ToExpr()] | ariphExprEx[curBlock.ToExpr()] | boolExprEx[curBlock.ToExpr()]
 			| myif[curBlock.ToExpr()]|myif_short[curBlock.ToExpr()]|mywhile[curBlock.ToExpr()]|mydo_while[curBlock.ToExpr()]|myfor[curBlock.ToExpr()];
 
 method_return[OperationClass oper] returns [string type, dynamic value]: RETURN_KEYWORD val_or_id[curBlock.ToExpr()] {
@@ -1381,7 +1397,7 @@ parameterized_call[ExprClass oper] returns [ExprClass res, ReturnType type]: bui
 
 simple_call : builtin_func_e LPAREN RPAREN;
 
-custom_call[ExprClass oper] returns [string funName, CallData callData]: ID LPAREN call_params[$oper] RPAREN {
+custom_call[ExprClass oper, bool independent] returns [string funName, CallData callData]: ID LPAREN call_params[$oper] RPAREN {
 
 	string callName = $ID.text;
 	$funName = callName;
@@ -1424,7 +1440,8 @@ custom_call[ExprClass oper] returns [string funName, CallData callData]: ID LPAR
 	}
 	
 	string methodName = currentMet;
-    curBlock.operations.Add(data);
+	if (independent)
+    	curBlock.operations.Add(data);
 	$callData = data;
 };
 
@@ -1614,7 +1631,7 @@ ariphOperand[ExprClass oper]:
                    	}
 					$oper.Push(new ExprStackObject(value, this));
                }
-             | custom_call[$oper]
+             | custom_call[$oper, false]
              	{
              		$oper.Push(new ExprStackObject()
 					{
@@ -1711,7 +1728,7 @@ boolOperand[ExprClass oper]:
               {
                   $oper.Push(new ExprStackObject(bool.Parse($BOOL.text), this));
               }
-            | custom_call[$oper]
+            | custom_call[$oper, false]
                           	{
                           		$oper.Push(new ExprStackObject()
              					{

@@ -1,17 +1,27 @@
-[12.07.2019 22:27:20] Interpreter #0 got file C:\LatinName\nnj.npr
-[12.07.2019 22:27:20] Reading program:
-[12.07.2019 22:27:20] fun void main()
-{
-	while (getPositionX(1) - getPositionX(0) > 300)
-	{
-		move(20)
-	}
-	turn(asin(1))
-	move(20)
-	move(20)
-	move(20)
-	move(20)
-	move(20)
-}
-[12.07.2019 22:27:20] Parsed tokens, generating tree
-[12.07.2019 22:27:20] Generated tree, exiting
+[13.07.2019 12:13:24] Interpreter #0 got file D:\Coding\C#\Interpreter\Interpreter\nnj.npr
+[13.07.2019 12:13:25] interpreter #0 executing 0 0
+[13.07.2019 12:13:25] interpreter #0 executing 0 0
+[13.07.2019 12:13:25] interpreter #0 executing 4 0
+[13.07.2019 12:13:25] interpreter #0 executing 3 0
+[13.07.2019 12:13:25] interpreter #0 executing 0 0
+[13.07.2019 12:13:25] interpreter #0 executing 0 0
+[13.07.2019 12:13:25] interpreter #0 executing 0 0
+[13.07.2019 12:13:26] interpreter #0 executing 0 0
+[13.07.2019 12:13:26] interpreter #0 executing 0 0
+[13.07.2019 12:13:26] interpreter #0 executing 0 0
+[13.07.2019 12:13:26] interpreter #0 executing 0 0
+[13.07.2019 12:13:26] interpreter #0 executing 0 0
+[13.07.2019 12:13:26] interpreter #0 executing 0 0
+[13.07.2019 12:13:26] interpreter #0 executing 0 0
+[13.07.2019 12:13:26] interpreter #0 executing 0 0
+[13.07.2019 12:13:26] interpreter #0 executing 0 0
+[13.07.2019 12:13:26] interpreter #0 executing 0 0
+[13.07.2019 12:13:27] interpreter #0 executing 0 0
+[13.07.2019 12:13:27] interpreter #0 executing 0 0
+[13.07.2019 12:13:27] interpreter #0 executing 0 0
+[13.07.2019 12:13:27] interpreter #0 executing 0 0
+[13.07.2019 12:13:27] interpreter #0 executing 0 0
+[13.07.2019 12:13:27] interpreter #0 executing 0 0
+[13.07.2019 12:13:27] interpreter #0 executing 0 0
+[13.07.2019 12:13:27] interpreter #0 executing 0 0
+[13.07.2019 12:13:27] interpreter #0 executing 0 0

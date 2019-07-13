@@ -20,7 +20,9 @@
 #pragma warning disable 419
 
 
-	using Interpreter;
+	#if NOGUI
+    	using Interpreter;
+    #endif
 
 using System;
 using System.IO;
@@ -212,12 +214,12 @@ public partial class NinjaParser : Parser {
 	        {
 	        	parser.curBlock = this;
 	        	Debug($"===Entering fun {name} with params {ParamListToString(paramList)}");
-            Debug($"{name} contains:");
-            foreach (var sm in operations)
-            {
-                Debug(sm.ToString());
-            }
-            Debug("end of main block");
+				Debug($"Method {name} contains:");
+	            foreach (var sm in operations)
+	            {
+	                Debug(sm.ToString());
+	            }
+	            Debug($"End of method {name} block");
 	            foreach(var sm in operations)
 	            {
 	            	if(sm.GetType().IsSubclassOf(typeof(OperationClass)))
@@ -246,23 +248,25 @@ public partial class NinjaParser : Parser {
 	    public Dictionary<string, MethodData> metTable = new Dictionary<string, MethodData>();
 	    int depth = 0;
 	    string currentMet = "?";
-
-        public static StreamWriter sw = new StreamWriter("execlog.txt");
 	    
-	    public static void Debug(string line)
-	    {
-	        sw.WriteLine(line);
-            sw.Flush();
-	    }
-	    
-	    public static void Error(string message)
-	    {
-	        ConsoleColor curr = Console.ForegroundColor;
-	        Console.ForegroundColor = ConsoleColor.Red;
-            sw.WriteLine(message);
-            sw.Flush();
-            Console.ForegroundColor = curr;
-	    }
+	    static StreamWriter fstream = new StreamWriter("execlog.log");
+	   	    
+	   	public static void Debug(string line)
+	   	{
+	   		Console.WriteLine(line);
+	   		fstream.WriteLine(line);
+	   	    fstream.Flush();
+	   	}
+	   	    
+	   	public static void Error(string message)
+	   	{
+	   	    ConsoleColor curr = Console.ForegroundColor;
+	   	    Console.ForegroundColor = ConsoleColor.Red;
+	   	    Console.WriteLine(message);
+	   	    fstream.WriteLine("ERROR: " + message);
+	   	    fstream.Flush();
+	   	    Console.ForegroundColor = curr;
+	   	}
 	    
 	    public static bool CheckType(Type t, VarType vt)
 	    {
@@ -418,89 +422,89 @@ public partial class NinjaParser : Parser {
 			{
 				if (callType == NinjaParser.CallType.Custom)
 				{
+					
 					if (parser.metTable.ContainsKey(name) && parser.CheckParams(this, parser.metTable[name]))
 					{		
 						Debug($"Calling custom method {name} with params {ParamListToString(paramList)}");
-	                    parser.metTable[name].Eval();
-	                    if (returnType != ReturnType.Void && parser.metTable[name].returnType != ReturnType.Void)
-	                    {
-	                    	var ret = parser.metTable[name].returnValue.Eval();
-	                    	if (!CheckType(ret.GetType(), parser.metTable[name].returnType)){
-	                    		throw new Exception($"Actual return is {ret.GetType()}, expected declared return type {parser.metTable[name].returnType}");
-	                    	}
-	                    	parser.curBlock = parent;
-	                    	Debug($"===fun {name} returned {ret}");
-	                    	return ret;	
-	                    }
-	                    if (returnType != parser.metTable[name].returnType)
-	                    	Error("Method declaration and call have different return types");
-	                    parser.curBlock = parent;
-	                    return null;
+	                    						parser.metTable[name].Eval();
+	                    						if (returnType != ReturnType.Void && parser.metTable[name].returnType != ReturnType.Void)
+	                    						{
+	                    							var ret = parser.metTable[name].returnValue.Eval();
+	                    							if (!CheckType(ret.GetType(), parser.metTable[name].returnType)){
+	                    								throw new Exception($"Actual return is {ret.GetType()}, expected declared return type {parser.metTable[name].returnType}");
+	                    							}
+	                    							parser.curBlock = parent;
+	                    							Debug($"===fun {name} returned {ret}");
+	                    							return ret;	
+	                    						}
+	                    						if (returnType != parser.metTable[name].returnType)
+	                    							Error("Method declaration and call have different return types");
+	                    						parser.curBlock = parent;
+	                    						return null;
 					}
 				}
 				else
 				{
 					if (parser.metTable.ContainsKey(name))
-	                {
-	                	if (parser.CheckParams(this, parser.metTable[name]))
-	                	{
-	                		parser.Sleep();
-	                		dynamic ret = 0;
-	                		int reqid = (name == "getSelfId" ? -1 : paramList[0].value);
-	                		switch (name)
-	                		{
-	                			case "getSelfId":
-	                				ret = parser.id;
-	                				break;
+	                					{
+	                						if (parser.CheckParams(this, parser.metTable[name]))
+	                						{
+	                							parser.Sleep();
+	                							dynamic ret = 0;
+	                							int reqid = (name == "getSelfId" ? -1 : paramList[0].value);
+	                							switch (name)
+	                							{
+	                								case "getSelfId":
+	                									ret = parser.id;
+	                									break;
 	                
-	                			case "getHealth":
-	                				ret = parser.health[reqid];
-	                				break;
+	                								case "getHealth":
+	                									ret = parser.health[reqid];
+	                									break;
 	                
-	                			case "getPositionX":
-	                				ret = parser.xPos[reqid];
-	                				break;
+	                								case "getPositionX":
+	                									ret = parser.xPos[reqid];
+	                									break;
 	                
-	                			case "getPositionY":
-	                				ret = parser.yPos[reqid];
-	                				break;
+	                								case "getPositionY":
+	                									ret = parser.yPos[reqid];
+	                									break;
 	                
-	                			case "getDirection":
-	                				ret = parser.dirs[reqid];
-	                				break;
-	                		}
-	                		Debug($"Calling builtin method {name} with params {ParamListToString(paramList)}, ret {ret}");
-	                		Main.Log("Func " + name + " for player #" + reqid + " returning " + ret + " of type " + ret.GetType());
-	                		return parser.metTable[name].returnValue = ret;
-	                	}
-	                }
-	                else
-	                {
-	                	Debug($"Calling builtin method {name} with params {ParamListToString(paramList)}");
-	                	Command nw;
-	                	switch (name)
-	                	{
-	                		case "move":
-	                			nw = new Command(1, paramList[0].value.Eval());
-	                			parser.owner.commands.Enqueue(nw);
-	                			break;
-	                		case "turn":
-	                			nw = new Command(2, paramList[0].value.Eval());
-	                			parser.owner.commands.Enqueue(nw);
-	                			break;
-	                		case "hit":
-	                			nw = new Command(3);
-	                			parser.owner.commands.Enqueue(nw);
-	                			break;
-	                		case "shoot":
-	                			nw = new Command(4);
-	                			parser.owner.commands.Enqueue(nw);
-	                			break;
-	                		default:
-	                			Error($"Unknown builtin method {name}");
-	                			break;
-	                	}
-	                }
+	                								case "getDirection":
+	                									ret = parser.dirs[reqid];
+	                									break;
+	                							}
+	                							Debug($"Calling builtin method {name} with params {ParamListToString(paramList)}, ret {ret} + of type " + ret.GetType());
+	                							Main.Log("Func " + name + " for player #" + reqid + " returning " + ret);
+	                							return parser.metTable[name].returnValue = ret;
+	                						}
+	                					}
+	                					else
+	                					{
+	                						Debug($"Calling builtin method {name} with params {ParamListToString(paramList)}");
+	                						Command nw;
+	                						switch (name)
+	                						{
+	                							case "move":
+	                								nw = new Command(1, paramList[0].value.Eval());
+	                								break;
+	                							case "turn":
+	                								nw = new Command(2, paramList[0].value.Eval());
+	                								break;
+	                							case "hit":
+	                								nw = new Command(3);
+	                								break;
+	                							case "shoot":
+	                								nw = new Command(4);
+	                								break;
+	                							default:
+	                								Error($"Unknown builtin method {name}");
+	                								return null;
+	                						}
+	                						#if !NOGUI
+											parser.owner.commands.Enqueue(nw);
+	                                        #endif
+	                					}
 				}
 				return null;
 			}
@@ -650,7 +654,7 @@ public partial class NinjaParser : Parser {
 				{
 					s += v.value + " ";
 				}
-				Debug($"evaluating {s}from block {parser.curBlock.name}");
+				Debug($"Evaluating {s} from block {parser.curBlock.name}");
 				List<ExprStackObject> stack = new List<ExprStackObject>();
 				foreach (var elem in exprStack)
 				{
@@ -869,8 +873,8 @@ public partial class NinjaParser : Parser {
 	                    								else if (data.type == VarType.Double)
 	                    									data.value = (double)rightval;
 	                    								else
-	                    									Error("Can't convert \"" + rightval + "\" to " + data.type);
-                                Debug("Assigned " + rightVal + " of type " + rightVal.GetType() + " to " + left.value + " of type " + data.type);
+	                    									Error("Can't convert \"" + rightval + "\" to " + data.type);	
+														Debug("Assigned " + rightVal + " of type " + rightVal.GetType() + " to " + left.value + " of type " + data.type);
 	                    								stack.Add(new ExprStackObject(data.value, parser));
 	                    							}
 	                    							catch (KeyNotFoundException e)
@@ -1186,7 +1190,7 @@ public partial class NinjaParser : Parser {
 	            	parser.curBlock = elseIfBlock;
 					elseIfBlock.Eval();
 	            }
-	            parser.curBlock = parser.curBlock.Parent;
+	            parser.curBlock = cycleBlock.Parent;
 	    		return null;
 	        }
 	   	}
@@ -1332,7 +1336,9 @@ public partial class NinjaParser : Parser {
 			                metTable.Add("getPositionX", getPositionX);
 			                metTable.Add("getPositionY", getPositionY);
 			                metTable.Add("getDirection", getDirection);
-							//metTable["main"].Eval();
+			                #if NOGUI
+								metTable["main"].Eval();
+							#endif
 
 			}
 		}
@@ -1980,7 +1986,7 @@ public partial class NinjaParser : Parser {
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 153; custom_call(curBlock.ToExpr());
+				State = 153; custom_call(curBlock.ToExpr(), true);
 				}
 				break;
 			case 3:
@@ -2672,6 +2678,7 @@ public partial class NinjaParser : Parser {
 
 	public partial class Custom_callContext : ParserRuleContext {
 		public ExprClass oper;
+		public bool independent;
 		public string funName;
 		public CallData callData;
 		public IToken _ID;
@@ -2682,10 +2689,11 @@ public partial class NinjaParser : Parser {
 		}
 		public ITerminalNode RPAREN() { return GetToken(NinjaParser.RPAREN, 0); }
 		public Custom_callContext(ParserRuleContext parent, int invokingState) : base(parent, invokingState) { }
-		public Custom_callContext(ParserRuleContext parent, int invokingState, ExprClass oper)
+		public Custom_callContext(ParserRuleContext parent, int invokingState, ExprClass oper, bool independent)
 			: base(parent, invokingState)
 		{
 			this.oper = oper;
+			this.independent = independent;
 		}
 		public override int RuleIndex { get { return RULE_custom_call; } }
 		public override void EnterRule(IParseTreeListener listener) {
@@ -2699,8 +2707,8 @@ public partial class NinjaParser : Parser {
 	}
 
 	[RuleVersion(0)]
-	public Custom_callContext custom_call(ExprClass oper) {
-		Custom_callContext _localctx = new Custom_callContext(Context, State, oper);
+	public Custom_callContext custom_call(ExprClass oper, bool independent) {
+		Custom_callContext _localctx = new Custom_callContext(Context, State, oper, independent);
 		EnterRule(_localctx, 40, RULE_custom_call);
 		try {
 			EnterOuterAlt(_localctx, 1);
@@ -2752,7 +2760,8 @@ public partial class NinjaParser : Parser {
 				}
 				
 				string methodName = currentMet;
-			    curBlock.operations.Add(data);
+				if (independent)
+			    	curBlock.operations.Add(data);
 				_localctx.callData =  data;
 
 			}
@@ -3563,7 +3572,7 @@ public partial class NinjaParser : Parser {
 			case 3:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 353; _localctx._custom_call = custom_call(_localctx.oper);
+				State = 353; _localctx._custom_call = custom_call(_localctx.oper, false);
 
 				             		_localctx.oper.Push(new ExprStackObject()
 									{
@@ -4027,7 +4036,7 @@ public partial class NinjaParser : Parser {
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 411; _localctx._custom_call = custom_call(_localctx.oper);
+				State = 411; _localctx._custom_call = custom_call(_localctx.oper, false);
 
 				                          		_localctx.oper.Push(new ExprStackObject()
 				             					{
