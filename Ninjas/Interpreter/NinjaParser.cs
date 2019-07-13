@@ -303,7 +303,7 @@ public partial class NinjaParser : Parser {
 	    		var r = call.paramList[call.paramList.Count - i - 1].value;//.Eval();		
 	    		//if (call.paramList[i].type == method.paramList[i].type)
 	    		if (r is string varId)
-	    			if(curBlock.varTable.ContainsKey(varId))
+	    			if (FindVar(varId) != null)
 	    				r = FindVar(varId).value;
 	    			else
 	    			{
@@ -314,7 +314,7 @@ public partial class NinjaParser : Parser {
 	    		if (CheckType(r.GetType(), method.paramList[i].type))
 	    		{
 	    			method.paramList[i].value = r;
-					if (!method.varTable.ContainsKey(method.paramList[i].name))
+					if (FindVar(method.paramList[i].name) == null)
 	               	{
 	                	VarData varData = new VarData()
 	                	{
@@ -449,10 +449,25 @@ public partial class NinjaParser : Parser {
 	                					{
 	                						if (parser.CheckParams(this, parser.metTable[name]))
 	                						{
-	                							parser.Sleep();
+	#if !NOGUI
+		                						parser.Sleep();
+	#endif
 	                							dynamic ret = 0;
-	                							int reqid = (name == "getSelfId" ? -1 : paramList[0].value);
-	                							switch (name)
+	                                            Debug($"BUiltin func {name}, param ");
+	                                            int reqid = -1;
+	                                            if (name != "getSelfId")
+	                                            {
+		                                            dynamic param = paramList[0].value;
+		                                            if (param.GetType() == typeof(string))
+		                                            {
+			                                            reqid = parser.FindVar(param).value;
+		                                            }
+		                                            else
+		                                            {
+			                                            reqid = param;
+		                                            }
+	                                            }
+	                                            switch (name)
 	                							{
 	                								case "getSelfId":
 	                									ret = parser.id;
