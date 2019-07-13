@@ -582,7 +582,8 @@ public partial class NinjaParser : Parser {
 			
 			public virtual dynamic Eval()
 			{
-				throw new NotImplementedException("OperationClass class is abstract");
+				Error("OperationClass class is abstract");
+                return null;
 			}
 		}
 	    
@@ -1253,6 +1254,7 @@ public partial class NinjaParser : Parser {
 		{
 			public override dynamic Eval()
 	        {
+                
 	        	parser.curBlock = cycleBlock;
 	        	Debug("---Entering whilecycle");
 	        	int i = 0;
@@ -1275,6 +1277,9 @@ public partial class NinjaParser : Parser {
 	    {
 			public override dynamic Eval()
 	        {
+            Debug("Do_while operations:");
+            foreach (var elem in cycleBlock.operations)
+                Debug(elem.ToString());
 				do
 				{
 					parser.curBlock = cycleBlock;

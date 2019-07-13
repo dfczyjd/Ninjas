@@ -477,7 +477,8 @@ options {
 		
 		public virtual dynamic Eval()
 		{
-			throw new NotImplementedException("OperationClass class is abstract");
+			Error("OperationClass class is abstract");
+			return null;
 		}
 	}
     
