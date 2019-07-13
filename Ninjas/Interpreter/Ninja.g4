@@ -198,7 +198,7 @@ options {
     	{
     		var r = call.paramList[call.paramList.Count - i - 1].value;//.Eval();		
     		//if (call.paramList[i].type == method.paramList[i].type)
-    		if (r is string varId)
+    		if (r is string varId){
     			if (FindVar(varId) != null)
     				r = FindVar(varId).value;
     			else
@@ -206,21 +206,28 @@ options {
     				Error($"Type mismatch ({i+1}/{call.paramList.Count}): expected {method.paramList[i].type}, found {r.GetType()} with value {call.paramList[call.paramList.Count - i - 1].value}");
                     return false;
     			}
+    		}
+    		if (r is ExprClass)
+			{
+				//second call
+            	call.paramList[call.paramList.Count - i - 1].value = r.Eval();
+            	r = call.paramList[call.paramList.Count - i - 1].value;
+            }
     				
     		if (CheckType(r.GetType(), method.paramList[i].type))
     		{
     			method.paramList[i].value = r;
-				if (FindVar(method.paramList[i].name) == null)
-               	{
-                	VarData varData = new VarData()
-                	{
-                		name = method.paramList[i].name,
+				if (FindVar(method.paramList[i].name, method) == null)
+	            {
+	                VarData varData = new VarData()
+	                {
+	                	name = method.paramList[i].name,
 						type = method.paramList[i].type
-               		};
-               		method.varTable.Add(varData.name, varData);
-               	}
-                	                
-    			method.varTable[method.paramList[i].name].value = r;
+	               	};
+	                Debug($"Addung to {method.name}");
+	           		method.varTable.Add(varData.name, varData);
+	           	}
+	    		FindVar(method.paramList[i].name, method).value = r;
     		}
     		else
     		{
@@ -1049,8 +1056,9 @@ options {
 	public VarData FindVar(string name)
 	{
 		Block par = curBlock;
-		while (!par.varTable.ContainsKey(name))
+		while (!par.varTable.ContainsKey(name) && !isParam(par, name))
 		{
+			Debug($"sSearching {name} in {par.name}");
 			par = par.Parent;
 			if (par == null)
 			{
@@ -1060,6 +1068,50 @@ options {
 		if (par == null)
 		{
 			Error($"Variable {name} doesn\'t exist in current context!");
+		}
+		return par?.varTable[name];
+	}
+
+	public static bool isParam(Block data, string name)
+	{
+		if (data is MethodData method)
+		{
+			foreach (var paramData in method.paramList)
+			{
+				if (paramData.name == name)
+				{
+					if (!method.varTable.ContainsKey(name))
+					{
+						VarData varData = new VarData()
+						{
+							name = paramData.name,
+							type =  paramData.type,
+							value = paramData.value
+						};
+						method.varTable.Add(name, varData);
+					}
+					return true;
+				}
+			}	
+		}
+		return false;
+	}
+
+	public VarData FindVar(string name, Block block)
+	{
+		Block par = block;
+		while (!par.varTable.ContainsKey(name) && !isParam(par, name))
+		{
+			Debug($"Searching {name} in {par.name}");
+			par = par.Parent;
+			if (par == null)
+			{
+				break;
+			}
+		}                                
+		if (par == null)
+		{
+			Error($"Variable {name} doesn\'t exist in block {block.name} context!");
 		}
 		return par?.varTable[name];
 	} 

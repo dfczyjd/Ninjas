@@ -20,6 +20,11 @@
 #pragma warning disable 419
 
 
+	#if NOGUI
+    	using Interpreter;
+    #endif
+
+
 using Antlr4.Runtime.Misc;
 using IErrorNode = Antlr4.Runtime.Tree.IErrorNode;
 using ITerminalNode = Antlr4.Runtime.Tree.ITerminalNode;

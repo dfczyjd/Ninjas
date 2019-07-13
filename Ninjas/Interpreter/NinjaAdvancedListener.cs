@@ -453,7 +453,7 @@ namespace Interpreter
         {
             
         }
-
+        
         public void EnterMyif([NotNull] NinjaParser.MyifContext context)
         {
             
