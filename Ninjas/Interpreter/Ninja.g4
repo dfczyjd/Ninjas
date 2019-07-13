@@ -346,10 +346,23 @@ options {
                 						if (parser.CheckParams(this, parser.metTable[name]))
                 						{
 #if !NOGUI
-		                					parser.Sleep();
+	                						parser.Sleep();
 #endif
                 							dynamic ret = 0;
-                							int reqid = (name == "getSelfId" ? -1 : paramList[0].value);
+											Debug($"BUiltin func {name}, param ");
+	                                        int reqid = -1;
+	                                        if (name != "getSelfId")
+	                                        {
+		                                    	dynamic param = paramList[0].value;
+		                                        if (param.GetType() == typeof(string))
+		                                        {
+			                                    	reqid = parser.FindVar(param).value;
+		                                        }
+		                                        else
+		                                        {
+			                                        reqid = param;
+		                                        }
+	                                        }
                 							switch (name)
                 							{
                 								case "getSelfId":
@@ -719,6 +732,26 @@ options {
                     							stack.Add(new ExprStackObject(leftVal / rightVal, parser));
                     							break;
                     						
+											case "%":
+                    							right = Pop(stack);
+                    							left = Pop(stack);
+                    							leftVal = left.Calc();
+                    							rightVal = right.Calc();
+                    							if (!isCompatible(leftVal, rightVal))
+                    								Error("Incompatible types of values " + leftVal + " and " + rightVal);
+                    							stack.Add(new ExprStackObject(leftVal % rightVal, parser));
+                    							break;
+                    							
+											case "**":
+                    							right = Pop(stack);
+                    							left = Pop(stack);
+                    							leftVal = left.Calc();
+                    							rightVal = right.Calc();
+                    							if (!isCompatible(leftVal, rightVal))
+                    								Error("Incompatible types of values " + leftVal + " and " + rightVal);
+                    							stack.Add(new ExprStackObject(Math.Pow(leftVal, rightVal), parser));
+                    							break;	
+                    						
                     						case "++pre":
                     							right = Pop(stack);
                     							rightVal = right.Calc();
@@ -876,6 +909,55 @@ options {
                     								Error("Variable " + left.value + " does not exist in current context5");
                     							}
                     							break;
+                    						
+											case "%=":
+                    							right = Pop(stack);
+                    							left = Pop(stack);
+                    							try
+                    							{
+                    								rightVal = right.Calc();
+                    								if (!isCompatible(left, rightVal, true))
+                    									Error("Can't assign " + rightVal + " to " + left.value);
+                    								dynamic rightval = rightVal;
+                    								VarData data = parser.FindVar(left.value);
+                    								if (data.value.GetType() == rightval.GetType())
+                    									data.value %= rightval;
+                    								else if (data.type == VarType.Double)
+                    									data.value %= (double)rightval;
+                    								else
+                    									Error("Can't convert \"" + rightval + "\" to " + data.type);
+                    								stack.Add(new ExprStackObject(data.value, parser));
+                    							}
+                    							catch (KeyNotFoundException)
+                    							{
+                    								Error("Variable " + left.value + " does not exist in current context5");
+                    							}
+                    							break;
+
+											case "**=":
+                    							right = Pop(stack);
+                    							left = Pop(stack);
+                    							try
+                    							{
+                    								rightVal = right.Calc();
+                    								if (!isCompatible(left, rightVal, true))
+                    									Error("Can't assign " + rightVal + " to " + left.value);
+                    								dynamic rightval = rightVal;
+                    								VarData data = parser.FindVar(left.value);
+                    								if (data.value.GetType() == rightval.GetType())
+                    									data.value = Math.Pow(data.value, rightval);
+                    								else if (data.type == VarType.Double)
+                    									data.value = Math.Pow(data.value, rightval);
+                    								else
+                    									Error("Can't convert \"" + rightval + "\" to " + data.type);
+                    								stack.Add(new ExprStackObject(data.value, parser));
+                    							}
+                    							catch (KeyNotFoundException)
+                    							{
+                    								Error("Variable " + left.value + " does not exist in current context5");
+                    							}
+                    							break;
+
                     							
                     						case "sin":
                     							right = Pop(stack);
@@ -936,6 +1018,7 @@ options {
                     								Error("Can't convert " + leftVal + " to double");
                     							stack.Add(new ExprStackObject(Math.Atan2(leftVal, rightVal), parser));
                     							break;
+                    							
                     					}
 					
 				}
@@ -1679,7 +1762,7 @@ ariphOperand[ExprClass oper]:
 ariphTerm[ExprClass oper]:
             ariphOperand[$oper]
             
-           (muldiv=(MUL|DIV) ariphOperand[$oper])*
+           (muldiv=(POW|MUL|DIV|MOD) ariphOperand[$oper])*
             {
 				if ($muldiv.text != null)
 				{
@@ -1714,7 +1797,7 @@ ariphExprEx[ExprClass oper] returns [ExprClass res]:
             {
                 $res = $oper;
             }
-          | ariphID[$oper] assigns=(ASSIGN|ADDASSIGN|SUBASSIGN|MULASSIGN|DIVASSIGN) ariphExprEx[$oper]
+          | ariphID[$oper] assigns=(ASSIGN|ADDASSIGN|SUBASSIGN|POWASSIGN|MULASSIGN|DIVASSIGN|MODASSIGN) ariphExprEx[$oper]
             {
                 $oper.Push(new ExprStackObject()
 					 {
@@ -1868,16 +1951,17 @@ ariphID[ExprClass oper] : ID
 		};
 
 //trigonometry
+
 trig[ExprClass oper]:
 		trfun=(SIN|COS|TAN|ASIN|ACOS|ATAN) LPAREN ariphExprEx[$oper] RPAREN
-		{
-			$oper.Push(new ExprStackObject()
-					 {
-						type = ObjType.Operation,
-						value = $trfun.text,
-						parser = this
-					 });
-		};
+              		{
+              			$oper.Push(new ExprStackObject()
+              					 {
+              						type = ObjType.Operation,
+              						value = $trfun.text,
+              						parser = this
+              					 });
+              		};
 trig2[ExprClass oper]:
 		ATAN2 LPAREN ariphExprEx[$oper] COMMA ariphExprEx[$oper] RPAREN
 		{
@@ -1920,6 +2004,8 @@ ADD     : '+' ;
 SUB     : '-' ;
 MUL     : '*' ;
 DIV     : '/' ;
+MOD     : '%' ;
+POW     : '**' ;
 INC		: '++' ;
 DEC		: '--' ;
 ASSIGN		: '=' ;
@@ -1927,6 +2013,8 @@ ADDASSIGN   : '+=' ;
 SUBASSIGN   : '-=' ;
 MULASSIGN   : '*=' ;
 DIVASSIGN   : '/=' ;
+MODASSIGN   : '%=' ;
+POWASSIGN   : '**=' ;
 AND       : '&&' ;
 OR        : '||' ;
 NOT		  : '!' ;
