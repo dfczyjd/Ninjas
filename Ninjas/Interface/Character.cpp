@@ -1,9 +1,10 @@
 #include "stdafx.h"
 #include "Interface.h"
+#include "Interpreter.h"
 #include "Character.h"
 #include <fstream>
 
-Character::Character(int id, double x, double y, COLORREF color, double dir) : color(color)
+Character::Character(WCHAR *name, int id, double x, double y, COLORREF color, double dir) : color(color), name(name)
 {
 	direction = dir;
 	health = 100;
@@ -85,7 +86,12 @@ void Character::TakeDamage(int damage)
 {
 	health -= damage;
 	if (health <= 0)
+	{
 		isActive = false;
+		WCHAR text[1024];
+		wsprintf(text, L"%s был убит", name);
+		PrintMessage(text);
+	}
 }
 
 Point Character::GetSwordEnd()
@@ -114,9 +120,4 @@ void Character::Invalidate(HWND hWnd)
 	updateRect.right = position.x + 2 * SWORD;
 	updateRect.bottom = position.y + 2 * SWORD;
 	InvalidateRect(hWnd, &updateRect, true);
-}
-
-void Character::SetCode(char *filename)
-{
-	//interpreter.SetCode(filename);
 }

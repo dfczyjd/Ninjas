@@ -18,6 +18,7 @@ typedef void(__cdecl *FuncVoid_Int)(int id);
 typedef void(__cdecl *FuncVoid_IntStr)(int id, char *name);
 typedef int(__cdecl *FuncInt_Int)(int id);
 typedef char*(__cdecl *FuncStr_Int)(int id);
+typedef char*(__cdecl *FuncStr_Void)();
 
 struct Interpreter
 {
@@ -32,5 +33,7 @@ struct Interpreter
 	void SetCode(WCHAR *codepath);
 	void SendUpdate();
 	void RunMeth(int id);
+	void SetNames();
+	void UpdateMessages();
 };
 

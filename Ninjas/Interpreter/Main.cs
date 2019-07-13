@@ -21,6 +21,18 @@ public class Command
     }
 }
 
+public class Message
+{
+    public int senderID;
+    public string text;
+
+    public Message(string text = "", int ID = -1)
+    {
+        this.text = text;
+        senderID = ID;
+    }
+}
+
 public static class Main
 {
     static RealInterpreter[] ints = new RealInterpreter[4];
@@ -42,6 +54,13 @@ public static class Main
     {
         sw.WriteLine("[" + DateTime.Now + "] " + value);
         sw.Flush();
+    }
+
+    public static string FormMessage(string text, string name = "")
+    {
+        if (name == "")
+            return "[System]: " + text;
+        return "[" + name + "]: " + text;
     }
 
     [DllExport]
@@ -127,12 +146,43 @@ public static class Main
             Log("Error in UpdateInfo() of interpreter #" + id.ToString() + ":" + exc.Message);
         }
     }
+
+    [DllExport]
+    public static void SetName(int id, string name)
+    {
+        try
+        {
+            ints[id].ninjaName = name;
+        }
+        catch (Exception exc)
+        {
+            Log("Error in SetName() of interpreter #" + id.ToString() + ":" + exc.Message);
+        }
+    }
+
+    [DllExport]
+    public static string GetLastMessage()
+    {
+        try
+        {
+            if (RealInterpreter.messages.Count == 0)
+                return "";
+            return RealInterpreter.messages.Dequeue();
+        }
+        catch (Exception exc)
+        {
+            Log("Error in GetLastMessage():" + exc.Message);
+            return "";
+        }
+    }
 }
 
 public class RealInterpreter
 {
     NinjaParser parser;
     public Queue<Command> commands = new Queue<Command>();
+    public static Queue<string> messages = new Queue<string>();
+    public string ninjaName;
     
     public void Init(int id, string name)
     {
@@ -150,6 +200,7 @@ public class RealInterpreter
         catch (Exception exc)
         {
             Main.Log("Error in " + exc.StackTrace + ": " + exc.Message);
+            messages.Enqueue(Main.FormMessage(ninjaName + "'s program aborted due to error"));
         }
     }
     
@@ -160,11 +211,13 @@ public class RealInterpreter
             if (parser != null)
             {
                 parser.metTable["main"].Eval();
+                messages.Enqueue(Main.FormMessage(ninjaName + "'s program finished"));
             }
         }
         catch (Exception exc)
         {
             Main.Log("Error in " + exc.StackTrace + ": " + exc.Message);
+            messages.Enqueue(Main.FormMessage(ninjaName + "'s program aborted due to error"));
         }
     }
 
@@ -178,6 +231,20 @@ public class RealInterpreter
         catch (Exception exc)
         {
             Main.Log("Error in " + exc.StackTrace + ": " + exc.Message);
+            messages.Enqueue(Main.FormMessage(ninjaName + "'s program aborted due to error"));
+        }
+    }
+
+    public void PostMessage(string message)
+    {
+        try
+        {
+            messages.Enqueue(Main.FormMessage(message, ninjaName));
+        }
+        catch (Exception exc)
+        {
+            Main.Log("Error in " + exc.StackTrace + ": " + exc.Message);
+            messages.Enqueue(Main.FormMessage(ninjaName + "'s program aborted due to error"));
         }
     }
 }

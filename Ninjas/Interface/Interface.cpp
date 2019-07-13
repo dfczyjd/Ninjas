@@ -4,16 +4,31 @@
 #include "Interpreter.h"
 #include <Shobjidl.h>
 #include <Shlwapi.h>
+#include <vector>
 
-HWND mainWnd, infoWnd;
+HWND mainWnd, infoWnd, chatWnd;
 HINSTANCE hInst;
 Character *players;
 RECT updateRect;
 int mapWidth, mapHeight;
 bool abortLaunch = false;
+vector<WCHAR *> chatMess;
 
 LRESULT CALLBACK	WndProc(HWND, UINT, WPARAM, LPARAM);
 LRESULT CALLBACK	InfoWndProc(HWND, UINT, WPARAM, LPARAM);
+LRESULT CALLBACK	ChatWndProc(HWND, UINT, WPARAM, LPARAM);
+
+void PrintMessage(const WCHAR *message, bool fromInterface)
+{
+	static WCHAR text[1024];
+	int len;
+	if (fromInterface)
+		len = wsprintf(text, L"[System]: %s", message);
+	else
+		len = wsprintf(text, L"%s", message);
+	chatMess.push_back(new WCHAR[139]);
+	wcscpy(chatMess.back(), text);
+}
 
 int APIENTRY _tWinMain(HINSTANCE hInstance,
 	HINSTANCE hPrevInstance,
@@ -69,6 +84,22 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 		hInstance,
 		NULL);
 
+	wcex.lpszClassName = L"ChatClass";
+	wcex.lpfnWndProc = ChatWndProc;
+	wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW - 1);
+
+	RegisterClassEx(&wcex);
+	
+	chatWnd = CreateWindow(L"ChatClass",
+		L"",
+		WS_CHILD,
+		0, 400,
+		GetSystemMetrics(SM_CXSCREEN) - 700, GetSystemMetrics(SM_CYSCREEN) - 400,
+		infoWnd,
+		NULL,
+		hInstance,
+		NULL);
+
 	if (mainWnd == 0)
 	{
 		MessageBox(NULL, L"Ошибка окна с полем!", NULL, MB_OK);
@@ -81,11 +112,20 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 		return 1;
 	}
 
+	if (chatWnd == 0)
+	{
+		MessageBox(NULL, L"Ошибка окна чата!", NULL, MB_OK);
+		return 1;
+	}
+
 	ShowWindow(mainWnd, nCmdShow);
 	UpdateWindow(mainWnd);
 
 	ShowWindow(infoWnd, nCmdShow);
 	UpdateWindow(infoWnd);
+
+	ShowWindow(chatWnd, nCmdShow);
+	UpdateWindow(chatWnd);
 
 	while (GetMessage(&msg, NULL, 0, 0))
 	{
@@ -266,17 +306,22 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 {
 	PAINTSTRUCT ps;
 	HDC hdc;
+	static WCHAR name1[] = L"Красный",
+				name2[] = L"Синий",
+				name3[] = L"Зелёный",
+				name4[] = L"Жёлтый";
 
 	switch (message)
 	{
 	case WM_CREATE:
 	{
 		players = new Character[PLAYER_COUNT]{
-			Character(0, 100, 100, RGB(255, 0, 0), M_PI_4),
-			Character(1, 600, 100, RGB(0, 0, 255), 3 * M_PI_4),
-			Character(2, 100, 600, RGB(0, 255, 0), 7 * M_PI_4),
-			Character(3, 600, 600, RGB(255, 255, 0), 5 * M_PI_4)
+			Character(name1, 0, 100, 100, RGB(255, 0, 0), M_PI_4),
+			Character(name2, 1, 600, 100, RGB(0, 0, 255), 3 * M_PI_4),
+			Character(name3, 2, 100, 600, RGB(0, 255, 0), 7 * M_PI_4),
+			Character(name4, 3, 600, 600, RGB(255, 255, 0), 5 * M_PI_4)
 		};
+		players[0].interpreter.SetNames();
 		RECT client;
 		GetClientRect(hWnd, &client);
 		mapWidth = 700;
@@ -284,12 +329,13 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 		WINDOWINFO info;
 		GetWindowInfo(hWnd, &info);
 		MoveWindow(infoWnd, 700, 0, client.right - 700, client.bottom, true);
-		WCHAR name1[] = L"D:/Coding/C#/Interpreter/Interpreter/nnj.npr",
-			name2[] = L"D:/Coding/C#/Interpreter/Interpreter/nnj.npr";
+		MoveWindow(chatWnd, 0, 400, client.right, client.bottom - 400, true);
+		WCHAR name1[] = L"C:/LatinName/empty.npr",
+			name2[] = L"C:/LatinName/Find1.npr";
 		players[0].interpreter.SetCode(name2);
-		players[1].interpreter.SetCode(name1);
-		players[2].interpreter.SetCode(name1);
-		players[3].interpreter.SetCode(name1);
+		players[1].interpreter.SetCode(name2);
+		players[2].interpreter.SetCode(name2);
+		players[3].interpreter.SetCode(name2);
 		//DialogBox(hInst, MAKEINTRESOURCE(IDD_FSDIALOG), hWnd, FileSelectProc);
 		if (abortLaunch)
 		{
@@ -374,6 +420,7 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 			break;
 		}
 		}
+		players[0].interpreter.UpdateMessages();
 		UpdateWindow(hWnd);
 		break;
 
@@ -393,101 +440,11 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 		break;
 	}
 
-	/*case WM_KEYDOWN:
-	{
-		Command com;
-		switch (wParam)
-		{
-		case 0x41:
-			if (players[0].interpreter.isLooped)
-				break;
-			com.type = Command::Turn;
-			com.param = -0.1;
-			players[0].interpreter.AddCommand(com);
-			break;
-
-		case 0x44:
-			if (players[0].interpreter.isLooped)
-				break;
-			com.type = Command::Turn;
-			com.param = 0.1;
-			players[0].interpreter.AddCommand(com);
-			break;
-
-		case 0x57:
-			if (players[0].interpreter.isLooped)
-				break;
-			com.type = Command::Move;
-			com.param = 5;
-			players[0].interpreter.AddCommand(com);
-			break;
-
-		case 0x52:
-			if (players[0].interpreter.isLooped)
-				break;
-			if (!players[0].isSwinging)
-			{
-				com.type = Command::Swing;
-				players[0].interpreter.AddCommand(com);
-			}
-			break;
-
-		case 0x46:
-			if (players[0].interpreter.isLooped)
-				break;
-			com.type = Command::Shoot;
-			players[0].interpreter.AddCommand(com);
-			break;
-
-		case 0x4a:
-			if (players[1].interpreter.isLooped)
-				break;
-			com.type = Command::Turn;
-			com.param = -0.1;
-			players[1].interpreter.AddCommand(com);
-			break;
-
-		case 0x4c:
-			if (players[1].interpreter.isLooped)
-				break;
-			com.type = Command::Turn;
-			com.param = 0.1;
-			players[1].interpreter.AddCommand(com);
-			break;
-
-		case 0x49:
-			if (players[1].interpreter.isLooped)
-				break;
-			com.type = Command::Move;
-			com.param = 5;
-			players[1].interpreter.AddCommand(com);
-			break;
-
-		case 0x55:
-			if (players[1].interpreter.isLooped)
-				break;
-			if (!players[1].isSwinging)
-			{
-				com.type = Command::Swing;
-				players[1].interpreter.AddCommand(com);
-			}
-			break;
-
-		case 0x48:
-			if (players[1].interpreter.isLooped)
-				break;
-			com.type = Command::Shoot;
-			players[1].interpreter.AddCommand(com);
-			break;
-		}
-		
-		break;
-	}*/
-
 	case WM_DESTROY:
 		KillTimer(hWnd, COMMAND_TIMER);
 		KillTimer(hWnd, SWING_TIMER);
-		//FreeLibrary(hLib);
+		for (auto ptr : chatMess)
+			delete ptr;
 		PostQuitMessage(0);
 		break;
 
@@ -521,7 +478,7 @@ LRESULT CALLBACK InfoWndProc(HWND hWnd,
 		SetBkMode(hdc, TRANSPARENT);
 		for (int i = 0; i < PLAYER_COUNT; ++i)
 		{
-			int cnt = wsprintf(text, L"Игрок №%d: %d/100", i, players[i].health);
+			int cnt = wsprintf(text, L"%s: %d/100", players[i].name, players[i].health);
 			TextOut(hdc, 100, 50 * (i + 1), text, cnt);
 		}
 		EndPaint(hWnd, &ps);
@@ -530,6 +487,52 @@ LRESULT CALLBACK InfoWndProc(HWND hWnd,
 
 	case WM_DESTROY:
 		
+		PostQuitMessage(0);
+		break;
+
+	default:
+		return DefWindowProc(hWnd, message, wParam, lParam);
+	}
+	return 0;
+}
+
+LRESULT CALLBACK ChatWndProc(HWND hWnd,
+	UINT message,
+	WPARAM wParam,
+	LPARAM lParam)
+{
+	PAINTSTRUCT ps;
+	HDC hdc;
+
+	static WCHAR text[1024];
+	static int chatLength;
+
+	switch (message)
+	{
+	case WM_CREATE:
+	{
+		RECT client;
+		GetClientRect(hWnd, &client);
+		chatLength = (client.bottom - 100) / 20;
+		break;
+	}
+
+	case WM_PAINT:
+	{
+		hdc = BeginPaint(hWnd, &ps);
+		SetBkMode(hdc, TRANSPARENT);
+		int lastMess = min(chatLength, chatMess.size());
+		for (int i = 0; i < lastMess; ++i)
+		{
+			int len = wsprintf(text, L"%s", chatMess[lastMess - i - 1]);
+			TextOut(hdc, 20, (i + 1) * 20, text, len);
+		}
+		EndPaint(hWnd, &ps);
+		break;
+	}
+
+	case WM_DESTROY:
+
 		PostQuitMessage(0);
 		break;
 

@@ -6,7 +6,8 @@
 HMODULE hLib;
 FuncVoid_Int Run;
 FuncStr_Int Next;
-FuncVoid_IntStr Init, Update;
+FuncVoid_IntStr Init, Update, SetName;
+FuncStr_Void GetMess;
 
 Interpreter::Interpreter(int id): id(id)
 {
@@ -17,6 +18,8 @@ Interpreter::Interpreter(int id): id(id)
 		Run = (FuncVoid_Int)GetProcAddress(hLib, "Run");
 		Next = (FuncStr_Int)GetProcAddress(hLib, "GetCommand");
 		Update = (FuncVoid_IntStr)GetProcAddress(hLib, "UpdateInfo");
+		SetName = (FuncVoid_IntStr)GetProcAddress(hLib, "SetName");
+		GetMess = (FuncStr_Void)GetProcAddress(hLib, "GetLastMessage");
 	}
 }
 
@@ -91,4 +94,31 @@ void Interpreter::SendUpdate()
 void Interpreter::RunMeth(int id)
 {
 	Run(id);
+}
+
+void Interpreter::SetNames()
+{
+	char name1[] = "Red",
+		name2[] = "Blue",
+		name3[] = "Green",
+		name4[] = "Yellow";
+	SetName(0, name1);
+	SetName(1, name2);
+	SetName(2, name3);
+	SetName(3, name4);
+}
+
+void Interpreter::UpdateMessages()
+{
+	while (true)
+	{
+		char *mess = GetMess();
+		int length = strlen(mess);
+		if (length == 0)
+			break;
+		WCHAR res[1024];
+		for (int i = 0; i <= length; ++i)
+			res[i] = mess[i];
+		PrintMessage(res, false);
+	}
 }

@@ -12,5 +12,7 @@
 
 #define PLAYER_COUNT 4
 
+void PrintMessage(const WCHAR *message, bool fromInterface = true);
+
 extern int mapWidth, mapHeight;
 extern Character* players;

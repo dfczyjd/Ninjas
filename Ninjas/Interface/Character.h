@@ -21,15 +21,15 @@ struct Character
 	Interpreter interpreter;
 	int health;
 	vector<Projectile> shots;
+	WCHAR *name;
 
-	Character(int id = 0, double x = 0, double y = 0, COLORREF color = RGB(0, 0, 0), double dir = 0);
+	Character(WCHAR *name, int id = 0, double x = 0, double y = 0, COLORREF color = RGB(0, 0, 0), double dir = 0);
 	~Character();
 
 	Character operator=(const Character &other);
 
 	void Draw(HDC hdc);
 	void Invalidate(HWND hWnd);
-	void SetCode(char *filename);
 
 	void Turn(double angle);
 	void Move(double distance);

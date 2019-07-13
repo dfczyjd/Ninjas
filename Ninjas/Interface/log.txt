@@ -1,1 +1,320 @@
-[13.07.2019 0:30:52] Interpreter #0 got file C:\LatinName\Find1.npr
+[13.07.2019 21:54:53] Interpreter #0 got file C:/LatinName/Find1.npr
+[13.07.2019 21:54:54] Interpreter #1 got file C:/LatinName/Find1.npr
+[13.07.2019 21:54:54] Interpreter #2 got file C:/LatinName/Find1.npr
+[13.07.2019 21:54:54] Interpreter #3 got file C:/LatinName/Find1.npr
+[13.07.2019 21:54:54] interpreter #0 executing 0 0
+[13.07.2019 21:54:54] interpreter #0 executing 0 0
+[13.07.2019 21:54:54] #3 entered pause
+[13.07.2019 21:54:54] #1 entered pause
+[13.07.2019 21:54:54] #0 entered pause
+[13.07.2019 21:54:54] #2 entered pause
+[13.07.2019 21:54:54] interpreter #0 executing 0 0
+[13.07.2019 21:54:54] interpreter #0 executing 0 0
+[13.07.2019 21:54:54] #0 left pause
+[13.07.2019 21:54:54] #1 left pause
+[13.07.2019 21:54:54] #2 left pause
+[13.07.2019 21:54:54] #3 left pause
+[13.07.2019 21:54:54] Func getSelfId for player #-1 returning 1
+[13.07.2019 21:54:54] #1 entered pause
+[13.07.2019 21:54:54] Func getSelfId for player #-1 returning 2
+[13.07.2019 21:54:54] #2 entered pause
+[13.07.2019 21:54:54] Func getSelfId for player #-1 returning 0
+[13.07.2019 21:54:54] #0 entered pause
+[13.07.2019 21:54:54] Func getSelfId for player #-1 returning 3
+[13.07.2019 21:54:54] #3 entered pause
+[13.07.2019 21:54:54] #0 left pause
+[13.07.2019 21:54:54] #0 left pause
+[13.07.2019 21:54:54] #1 left pause
+[13.07.2019 21:54:54] #2 left pause
+[13.07.2019 21:54:54] #3 left pause
+[13.07.2019 21:54:54] Func getPositionX for player #1 returning 600
+[13.07.2019 21:54:54] Func getPositionX for player #2 returning 100
+[13.07.2019 21:54:54] Func getPositionX for player #3 returning 600
+[13.07.2019 21:54:54] Func getPositionX for player #0 returning 100
+[13.07.2019 21:54:54] #1 entered pause
+[13.07.2019 21:54:54] #0 entered pause
+[13.07.2019 21:54:54] #2 entered pause
+[13.07.2019 21:54:54] #3 entered pause
+[13.07.2019 21:54:54] interpreter #0 executing 0 0
+[13.07.2019 21:54:54] #0 left pause
+[13.07.2019 21:54:54] interpreter #0 executing 0 0
+[13.07.2019 21:54:54] #0 left pause
+[13.07.2019 21:54:54] Func getPositionY for player #0 returning 100
+[13.07.2019 21:54:54] #1 left pause
+[13.07.2019 21:54:54] #2 left pause
+[13.07.2019 21:54:54] #2 left pause
+[13.07.2019 21:54:54] Func getPositionY for player #1 returning 100
+[13.07.2019 21:54:54] Func getPositionY for player #2 returning 600
+[13.07.2019 21:54:54] #3 left pause
+[13.07.2019 21:54:54] Func getPositionY for player #3 returning 600
+[13.07.2019 21:54:54] #1 entered pause
+[13.07.2019 21:54:54] #2 entered pause
+[13.07.2019 21:54:54] #3 entered pause
+[13.07.2019 21:54:54] #0 entered pause
+[13.07.2019 21:54:54] #0 left pause
+[13.07.2019 21:54:54] #0 left pause
+[13.07.2019 21:54:54] Func getPositionX for player #1 returning 600
+[13.07.2019 21:54:54] #1 left pause
+[13.07.2019 21:54:54] #2 left pause
+[13.07.2019 21:54:54] #3 left pause
+[13.07.2019 21:54:54] #3 left pause
+[13.07.2019 21:54:54] Func getPositionX for player #0 returning 100
+[13.07.2019 21:54:54] #0 entered pause
+[13.07.2019 21:54:54] Func getPositionX for player #0 returning 100
+[13.07.2019 21:54:54] Func getPositionX for player #0 returning 100
+[13.07.2019 21:54:54] #1 entered pause
+[13.07.2019 21:54:54] #2 entered pause
+[13.07.2019 21:54:54] #3 entered pause
+[13.07.2019 21:54:54] interpreter #0 executing 0 0
+[13.07.2019 21:54:54] interpreter #0 executing 0 0
+[13.07.2019 21:54:54] #0 left pause
+[13.07.2019 21:54:54] Func getPositionY for player #1 returning 100
+[13.07.2019 21:54:54] #1 left pause
+[13.07.2019 21:54:54] #2 left pause
+[13.07.2019 21:54:54] Func getPositionY for player #0 returning 100
+[13.07.2019 21:54:54] #3 left pause
+[13.07.2019 21:54:54] Func getPositionY for player #0 returning 100
+[13.07.2019 21:54:54] #0 entered pause
+[13.07.2019 21:54:54] Func getPositionY for player #0 returning 100
+[13.07.2019 21:54:54] #1 entered pause
+[13.07.2019 21:54:54] #2 entered pause
+[13.07.2019 21:54:54] #3 entered pause
+[13.07.2019 21:54:55] interpreter #0 executing 0 0
+0 returning 100
+:54] #0 left pause
+[13.07.2019 21:54:55] interpreter #0 executing 0 0
+0 returning 100
+:54] #0 left pause
+[13.07.2019 21:54:55] #1 left pause
+[13.07.2019 21:54:55] #2 left pause
+[13.07.2019 21:54:55] Func getDirection for player #0 returning 0,785398
+[13.07.2019 21:54:55] Func getDirection for player #0 returning 0,785398
+[13.07.2019 21:54:55] Func getDirection for player #1 returning 2,356194
+[13.07.2019 21:54:55] #3 left pause
+[13.07.2019 21:54:55] #3 left pause
+[13.07.2019 21:54:55] Func getDirection for player #2 returning 5,497787
+[13.07.2019 21:54:55] Func getDirection for player #3 returning 3,926991
+[13.07.2019 21:54:55] #3 entered pause
+[13.07.2019 21:54:55] #3 entered pause
+[13.07.2019 21:54:55] #2 entered pause
+[13.07.2019 21:54:55] #0 entered pause
+[13.07.2019 21:54:55] #1 entered pause
+[13.07.2019 21:54:55] interpreter #0 executing 2 -0,785398
+[13.07.2019 21:54:55] interpreter #0 executing 0 0
+[13.07.2019 21:54:55] #0 left pause
+[13.07.2019 21:54:55] interpreter #0 executing 0 0
+[13.07.2019 21:54:55] #0 left pause
+[13.07.2019 21:54:55] Func getDirection for player #0 returning 0
+[13.07.2019 21:54:55] #1 left pause
+[13.07.2019 21:54:55] #2 left pause
+[13.07.2019 21:54:55] #3 left pause
+[13.07.2019 21:54:55] Func getDirection for player #3 returning 2,346991
+[13.07.2019 21:54:55] Func getDirection for player #1 returning 3,141593
+[13.07.2019 21:54:55] Func getDirection for player #2 returning 3,917787
+[13.07.2019 21:54:55] #3 entered pause
+[13.07.2019 21:54:55] #2 entered pause
+[13.07.2019 21:54:55] #0 entered pause
+[13.07.2019 21:54:55] #1 entered pause
+[13.07.2019 21:54:55] interpreter #0 executing 4 0
+[13.07.2019 21:54:55] interpreter #0 executing 4 0
+[13.07.2019 21:54:55] #2 left pause
+[13.07.2019 21:54:55] #3 left pause
+[13.07.2019 21:54:55] Func getDirection for player #2 returning 2,337787
+[13.07.2019 21:54:55] Func getDirection for player #3 returning 0,766991
+[13.07.2019 21:54:55] #3 entered pause
+[13.07.2019 21:54:55] #2 entered pause
+[13.07.2019 21:54:55] interpreter #0 executing 4 0
+[13.07.2019 21:54:55] interpreter #0 executing 4 0
+[13.07.2019 21:54:55] #2 left pause
+[13.07.2019 21:54:55] #3 left pause
+[13.07.2019 21:54:55] Func getDirection for player #2 returning 0,757787
+[13.07.2019 21:54:55] Func getDirection for player #3 returning -0,813009
+[13.07.2019 21:54:55] #2 entered pause
+[13.07.2019 21:54:55] #3 entered pause
+[13.07.2019 21:54:55] interpreter #0 executing 4 0
+[13.07.2019 21:54:55] interpreter #0 executing 4 0
+[13.07.2019 21:54:55] #2 left pause
+[13.07.2019 21:54:55] #3 left pause
+[13.07.2019 21:54:55] Func getDirection for player #2 returning -0,822213
+[13.07.2019 21:54:55] Func getDirection for player #3 returning -2,356195
+[13.07.2019 21:54:55] #2 entered pause
+[13.07.2019 21:54:55] #3 entered pause
+[13.07.2019 21:54:56] interpreter #0 executing 4 0
+[13.07.2019 21:54:56] interpreter #0 executing 4 0
+[13.07.2019 21:54:56] #2 left pause
+[13.07.2019 21:54:56] Func getDirection for player #2 returning -1,570796
+[13.07.2019 21:54:56] #2 entered pause
+[13.07.2019 21:54:56] interpreter #0 executing 4 0
+[13.07.2019 21:54:56] interpreter #0 executing 4 0
+[13.07.2019 21:54:56] interpreter #0 executing 0 0
+[13.07.2019 21:54:56] #0 left pause
+[13.07.2019 21:54:56] Func getPositionX for player #2 returning 100
+[13.07.2019 21:54:56] #0 entered pause
+[13.07.2019 21:54:56] #1 left pause
+[13.07.2019 21:54:56] Func getPositionX for player #2 returning 100
+[13.07.2019 21:54:56] #1 entered pause
+[13.07.2019 21:54:56] interpreter #0 executing 0 0
+[13.07.2019 21:54:56] interpreter #0 executing 0 0
+[13.07.2019 21:54:56] #0 left pause
+[13.07.2019 21:54:56] Func getPositionY for player #2 returning 600
+[13.07.2019 21:54:56] #0 entered pause
+[13.07.2019 21:54:56] #1 left pause
+[13.07.2019 21:54:56] Func getPositionY for player #2 returning 600
+[13.07.2019 21:54:56] #1 entered pause
+[13.07.2019 21:54:56] interpreter #0 executing 0 0
+[13.07.2019 21:54:56] #0 left pause
+[13.07.2019 21:54:56] interpreter #0 executing 0 0
+[13.07.2019 21:54:56] #0 left pause
+[13.07.2019 21:54:56] Func getDirection for player #0 returning 0
+[13.07.2019 21:54:56] #0 entered pause
+[13.07.2019 21:54:56] #1 left pause
+[13.07.2019 21:54:56] Func getDirection for player #1 returning 3,141593
+[13.07.2019 21:54:56] #1 entered pause
+[13.07.2019 21:54:56] interpreter #0 executing 2 1,5707963267949
+[13.07.2019 21:54:56] interpreter #0 executing 0 0
+[13.07.2019 21:54:56] #0 left pause
+[13.07.2019 21:54:56] Func getDirection for player #0 returning 1,570796
+[13.07.2019 21:54:56] #1 left pause
+[13.07.2019 21:54:56] Func getDirection for player #1 returning 2,356195
+[13.07.2019 21:54:56] #0 entered pause
+[13.07.2019 21:54:56] #1 entered pause
+[13.07.2019 21:54:57] interpreter #0 executing 4 0
+[13.07.2019 21:54:57] interpreter #0 executing 4 0
+[13.07.2019 21:54:57] #3 left pause
+[13.07.2019 21:54:57] Func getPositionX for player #1 returning 600
+[13.07.2019 21:54:57] #3 entered pause
+[13.07.2019 21:54:57] interpreter #0 executing 4 0
+[13.07.2019 21:54:57] #3 left pause
+[13.07.2019 21:54:57] Func getPositionY for player #1 returning 100
+[13.07.2019 21:54:57] #3 entered pause
+[13.07.2019 21:54:57] interpreter #0 executing 4 0
+[13.07.2019 21:54:57] #2 left pause
+[13.07.2019 21:54:57] Func getPositionX for player #1 returning 600
+[13.07.2019 21:54:57] #2 entered pause
+[13.07.2019 21:54:57] #3 left pause
+[13.07.2019 21:54:57] Func getDirection for player #3 returning -2,356195
+[13.07.2019 21:54:57] #3 entered pause
+[13.07.2019 21:54:57] interpreter #0 executing 4 0
+[13.07.2019 21:54:57] #2 left pause
+[13.07.2019 21:54:57] Func getPositionY for player #1 returning 100
+[13.07.2019 21:54:57] #2 entered pause
+[13.07.2019 21:54:57] interpreter #0 executing 4 0
+[13.07.2019 21:54:57] #2 left pause
+[13.07.2019 21:54:57] Func getDirection for player #2 returning -1,570796
+[13.07.2019 21:54:57] #3 left pause
+[13.07.2019 21:54:57] Func getDirection for player #3 returning -1,570796
+[13.07.2019 21:54:57] #2 entered pause
+[13.07.2019 21:54:57] #3 entered pause
+[13.07.2019 21:54:57] interpreter #0 executing 4 0
+[13.07.2019 21:54:57] interpreter #0 executing 4 0
+[13.07.2019 21:54:57] #2 left pause
+[13.07.2019 21:54:57] Func getDirection for player #2 returning -0,785398
+[13.07.2019 21:54:57] #2 entered pause
+[13.07.2019 21:54:57] interpreter #0 executing 4 0
+[13.07.2019 21:54:58] interpreter #0 executing 4 0
+[13.07.2019 21:54:58] #0 left pause
+[13.07.2019 21:54:58] #0 left pause
+[13.07.2019 21:54:58] Func getPositionX for player #3 returning 600
+[13.07.2019 21:54:58] #0 entered pause
+[13.07.2019 21:54:58] #1 left pause
+[13.07.2019 21:54:58] Func getPositionX for player #3 returning 600
+[13.07.2019 21:54:58] #1 entered pause
+[13.07.2019 21:54:58] interpreter #0 executing 0 0
+[13.07.2019 21:54:58] #0 left pause
+[13.07.2019 21:54:58] Func getPositionY for player #3 returning 600
+[13.07.2019 21:54:58] #0 entered pause
+[13.07.2019 21:54:58] #1 left pause
+[13.07.2019 21:54:58] Func getPositionY for player #3 returning 600
+[13.07.2019 21:54:58] #1 entered pause
+[13.07.2019 21:54:58] interpreter #0 executing 0 0
+[13.07.2019 21:54:58] interpreter #0 executing 0 0
+[13.07.2019 21:54:58] #0 left pause
+[13.07.2019 21:54:58] Func getDirection for player #0 returning 1,570796
+[13.07.2019 21:54:58] #0 entered pause
+[13.07.2019 21:54:58] #1 left pause
+[13.07.2019 21:54:58] Func getDirection for player #1 returning 2,356195
+[13.07.2019 21:54:58] #1 entered pause
+[13.07.2019 21:54:58] interpreter #0 executing 2 -0,785397836602552
+[13.07.2019 21:54:58] interpreter #0 executing 0 0
+[13.07.2019 21:54:58] interpreter #0 executing 0 0
+[13.07.2019 21:54:58] #0 left pause
+[13.07.2019 21:54:58] Func getDirection for player #0 returning 0,785399
+[13.07.2019 21:54:58] #1 left pause
+[13.07.2019 21:54:58] Func getDirection for player #1 returning 1,570796
+[13.07.2019 21:54:58] interpreter #0 executing 4 0
+[13.07.2019 21:54:58] interpreter #0 executing 4 0
+[13.07.2019 21:54:58] #3 left pause
+[13.07.2019 21:54:58] Func getPositionX for player #2 returning 100
+[13.07.2019 21:54:58] #3 entered pause
+[13.07.2019 21:54:58] interpreter #0 executing 4 0
+[13.07.2019 21:54:58] #3 left pause
+[13.07.2019 21:54:58] Func getPositionY for player #2 returning 600
+[13.07.2019 21:54:58] #3 entered pause
+[13.07.2019 21:54:59] interpreter #0 executing 4 0
+[13.07.2019 21:54:59] #2 left pause
+[13.07.2019 21:54:59] Func getPositionX for player #3 returning 600
+[13.07.2019 21:54:59] #2 entered pause
+[13.07.2019 21:54:59] #3 left pause
+[13.07.2019 21:54:59] Func getDirection for player #3 returning -1,570796
+[13.07.2019 21:54:59] #3 entered pause
+[13.07.2019 21:54:59] interpreter #0 executing 4 0
+[13.07.2019 21:54:59] #2 left pause
+[13.07.2019 21:54:59] Func getPositionY for player #3 returning 600
+[13.07.2019 21:54:59] #2 entered pause
+[13.07.2019 21:54:59] interpreter #0 executing 4 0
+[13.07.2019 21:54:59] #2 left pause
+[13.07.2019 21:54:59] Func getDirection for player #2 returning -0,785398
+[13.07.2019 21:54:59] #3 left pause
+[13.07.2019 21:54:59] Func getDirection for player #3 returning 0,009204
+[13.07.2019 21:54:59] #2 entered pause
+[13.07.2019 21:54:59] #3 entered pause
+[13.07.2019 21:54:59] interpreter #0 executing 4 0
+[13.07.2019 21:54:59] interpreter #0 executing 4 0
+[13.07.2019 21:54:59] #2 left pause
+[13.07.2019 21:54:59] Func getDirection for player #2 returning 0
+[13.07.2019 21:54:59] #3 left pause
+[13.07.2019 21:54:59] Func getDirection for player #3 returning 1,589204
+[13.07.2019 21:54:59] #3 entered pause
+[13.07.2019 21:54:59] interpreter #0 executing 4 0
+[13.07.2019 21:54:59] interpreter #0 executing 4 0
+[13.07.2019 21:54:59] #3 left pause
+[13.07.2019 21:54:59] Func getDirection for player #3 returning 3,141593
+[13.07.2019 21:54:59] interpreter #0 executing 0 0
+[13.07.2019 21:54:59] interpreter #0 executing 0 0
+[13.07.2019 21:54:59] interpreter #0 executing 0 0
+[13.07.2019 21:55:00] interpreter #0 executing 0 0
+[13.07.2019 21:55:00] interpreter #0 executing 0 0
+[13.07.2019 21:55:00] interpreter #0 executing 0 0
+[13.07.2019 21:55:00] interpreter #0 executing 0 0
+[13.07.2019 21:55:00] interpreter #0 executing 0 0
+[13.07.2019 21:55:00] interpreter #0 executing 0 0
+[13.07.2019 21:55:00] interpreter #0 executing 0 0
+[13.07.2019 21:55:00] interpreter #0 executing 0 0
+[13.07.2019 21:55:00] interpreter #0 executing 0 0
+[13.07.2019 21:55:01] interpreter #0 executing 0 0
+[13.07.2019 21:55:01] interpreter #0 executing 0 0
+[13.07.2019 21:55:01] interpreter #0 executing 0 0
+[13.07.2019 21:55:01] interpreter #0 executing 0 0
+[13.07.2019 21:55:01] interpreter #0 executing 0 0
+[13.07.2019 21:55:01] interpreter #0 executing 0 0
+[13.07.2019 21:55:01] interpreter #0 executing 0 0
+[13.07.2019 21:55:01] interpreter #0 executing 0 0
+[13.07.2019 21:55:01] interpreter #0 executing 0 0
+[13.07.2019 21:55:02] interpreter #0 executing 0 0
+[13.07.2019 21:55:02] interpreter #0 executing 0 0
+[13.07.2019 21:55:02] interpreter #0 executing 0 0
+[13.07.2019 21:55:02] interpreter #0 executing 0 0
+[13.07.2019 21:55:02] interpreter #0 executing 0 0
+[13.07.2019 21:55:02] interpreter #0 executing 0 0
+[13.07.2019 21:55:02] interpreter #0 executing 0 0
+[13.07.2019 21:55:02] interpreter #0 executing 0 0
+[13.07.2019 21:55:02] interpreter #0 executing 0 0
+[13.07.2019 21:55:03] interpreter #0 executing 0 0
+[13.07.2019 21:55:03] interpreter #0 executing 0 0
+[13.07.2019 21:55:03] interpreter #0 executing 0 0
+[13.07.2019 21:55:03] interpreter #0 executing 0 0
+[13.07.2019 21:55:03] interpreter #0 executing 0 0
+[13.07.2019 21:55:03] interpreter #0 executing 0 0
+[13.07.2019 21:55:03] interpreter #0 executing 0 0
+[13.07.2019 21:55:03] interpreter #0 executing 0 0
+[13.07.2019 21:55:03] interpreter #0 executing 0 0

@@ -1,0 +1,3889 @@
+===Entering fun main with params { }
+Method main contains:
+NinjaParser+ExprClass
+th params { }
+===Entering fun main with params { }
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+For
+lass
+===Entering fun main with params { }
+Method main contains:
+NinjaParser+ExprCEnd of method main blocNinjaParser+ExprClass
+NinjaParser+ExprClass
+k
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+For
+lass
+===Entering fun main with params { }
+Method main contains:
+NinjaParser+For
+End of method main block
+End of method main blocNinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+For
+End of method main block
+End of method maiEnd of method main block
+Evaluating id NinjaParser+CallData =  from block main
+Evaluating id NinjaParser+CallData =  from block main
+Evaluating id NinjaParser+CallData =  from block main
+Evaluating id NinjaParser+CallData =  from block main
+BUiltin func getSelfId, param 
+BUiltin func getSelfId, param 
+BUiltin func getSelfId, param 
+BUiltin func getSelfId, param 
+Calling builtin method getSelfId with params { }, ret 1 + of type System.Int32
+Assigned 1 of type System.Int32 to id of type Int
+Evaluating myx id NinjaParser+CallData =  from block main
+Calling builtin method getSelfId with params { }, ret 2 + of type System.Int32
+Assigned 2 of type System.Int32 to id of type Int
+Evaluating myx id NinjaParser+CallData =  from block main
+Calling builtin method getSelfId with params { }, ret 0 + of type System.Int32
+Assigned 0 of type System.Int32 to id of type Int
+Evaluating myx id NinjaParser+CallData =  from block main
+Calling builtin method getSelfId with params { }, ret 3 + of type System.Int32
+Assigned 3 of type System.Int32 to id of type Int
+Evaluating myx id NinjaParser+CallData =  from block main
+BUiltin func getPositionX, param 
+BUiltin func getPositionX, param 
+BUiltin func getPositionX, param 
+BUiltin func getPositionX, param 
+Calling builtin method getPositionX with params { Int id }, ret 600 + of type System.Double
+Calling builtin method getPositionX with params { Int id }, ret 600 + of type System.Double
+Calling builtin method getPositionX with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionX with params { Int id }, ret 100 + of type System.Double
+Assigned 600 of type System.Double to myx of type Double
+Assigned 100 of type System.Double to myx of type Double
+Assigned 100 of type System.Double to myx of type Double
+Assigned 600 of type System.Double to myx of type Double
+Evaluating myy id NinjaParser+CallData =  from block main
+Evaluating myy id NinjaParser+CallData =  from block main
+Evaluating myy id NinjaParser+CallData =  from block main
+Evaluating myy id NinjaParser+CallData =  from block main
+BUiltin func getPositionY, param 
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Assigned 100 of type System.Double to myy of type Double
+BUiltin func getPositionY, param 
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+BUiltin func getPositionY, param 
+Calling builtin method getPositionY with params { Int id }, ret 600 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 600 + of type System.Double
+Assigned 100 of type System.Double to myy of type Double
+Assigned 600 of type System.Double to myy of type Double
+Evaluating EPS 1E-06 =  from block main
+Assigned 1E-06 of type System.Double to EPS of type Double
+Evaluating  from block main
+Evaluating EPS 1E-06 =  from block main
+Assigned 1E-06 of type System.Double to EPS of type Double
+Evaluating EPS 1E-06 =  from block main
+BUiltin func getPositionY, param 
+Assigned 1E-06 of type System.Double to EPS of type Double
+Calling builtin method getPositionY with params { Int id }, ret 600 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 600 + of type System.Double
+Evaluating  from block main
+Calling builtin method getPositionY with params { Int id }, ret 600 + Assigned 600 of type System.Double to myy of type Double
+Evaluating EPS 1E-06 =  from block main
+Assigned 1E-06 of type System.Double to EPS of type Double
+Evaluating  from block main
+Evaluating j 0 =  from block otbl
+Assigned 0 of type System.Int32 to j of type Int
+Evaluating j 4 <  from block cbl
+sSearching j in cbl
+Evaluating j 0 =  from block otbl
+Assigned 0 of type System.Int32 to j of type Int
+Evaluating j 4 <  from block cbl
+sSearching j in cbl
+Evaluating j 0 =  from block otbl
+Assigned 0 of type System.Int32 to j of type Int
+Evaluating j 4 <  from block cbl
+sSearching j in cbl
+Evaluating j 0 =  from block otbl
+Assigned 0 of type System.Int32 to j of type Int
+Evaluating j 4 <  from block cbl
+sSearching j in cbl
+==For iter 0
+==For iter 0
+Evaluating j id !=  from block cbl
+==For iter 0
+Evaluating j id !=  from block cblsSearching id in cbl
+Evaluating j isSearching j in cbl
+
+sSearching id in otbl
+valuating j id !=  from block cbl
+sSearching j in cbl
+sSearching id in cbl
+
+sSearching id in cblsSearching id in cbl
+sSearching id in otblsSearching id in otbl
+sSearching id in otbl
+==For iter 0
+Evaluating j id !=  from block cbl
+sSearching j in cbl
+sSearching id in cbl
+sSearching id in otbl
+Evaluating j id !=  from block cbl
+sSearching j in cbl
+sSearching id in cbl
+sSearching id in otbl
+Evaluating j id !=  from block cbl
+sSearching j in cbl
+sSearching id in cbl
+valuating j id !=  from block cbl
+sSearching j in cbl
+
+sSearching id in otblsSearching id in cbl
+
+sSearching id in cbl
+sSearching id in otbl
+Evaluating x j NinjaParser+CallData =  from block 
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+Evaluating x j NinjaParser+CallData =  from block 
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+Evaluating x j NinjaParser+CallData =  from block 
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+Evaluating j id !=  from block cbl
+sSearching j in cbl
+sSearching id in cbl
+sSearching id in otbl
+Evaluating j ++pre  from block cbl
+sSearching j in cbl
+sSearching j in cbl
+Evaluating j 4 <  from block cbl
+sSearching j in cbl
+==For iter 1
+Evaluating j id !=  from block cbl
+sSearching j in cbl
+sSearching id in cbl
+sSearching id in otbl
+Evaluating j id !=  from block cbl
+sSearching j in cbl
+sSearching id in cbl
+sSearching id in otbl
+Evaluating x j NinjaParser+CallData =  from block 
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+BUiltin func getPositionX, param 
+sSearching j in 
+sSearching j in cbl
+Calling builtin method getPositionX with params { Int j }, ret 600 + of type System.Double
+Assigned 600 of type System.Double to x of type Double
+BUiltin func getPositionX, param 
+sSearching j in 
+sitionX, param 
+Evaluating y j NinjaParser+CallData =  from block 
+sSearching j in 
+sSearching j in cbsSearching j in cbl
+BUiltin func getPositBUiltin func getPositionX, param 
+sSearching j in 
+thod getPositionX with params { Int j }, ret 100 + of type System.Double
+sSearching j in 
+thod getPositionX with params { Int j }, ret 100 + of type System.Double
+Calling builtin method getPositionX with params { Int j }, ret 100 + of type System.Double
+sSearching j in 
+BUiltin func getPositionX, param 
+sSearching j in 
+sitionX, param 
+sSearching j in cbl
+sSearching j in 
+Assigned 100 of tysSearching j in cbsSearching j in cbl
+System.Double to x of type Double
+sSearching j in cbl
+System.Double to x of type Double
+sSearching j in cbl
+Evaluating y j NinjaPEvaluating y j NinjaPCalling builtin method getPositionX with params { Int j }, ret 100 + of type System.Double
+Calling builtin method getPositionX with params { Int j }, ret 100 + of type System.Double
+ params { Int j }, ret 100 + of type System.Double
+Calling builtin method getPositionX with params { InsSearching j in 
+sSearching j in cbl
+sSearching j in 
+Assigned 100 of type System.Double to x of type Double
+sSearching j in 
+Evaluating y j NinjaParser+CallData =  from block 
+sSearching j in cbl
+EEvaluating y j NinjaParser+CallData =  from block 
+sSearching j in cbl
+sSearching j in 
+jaParser+CallData =  from block 
+sSearching j in 
+jaParser+CallData =  from block 
+sSearching j in cbl
+Evaluating y j NinjaParser+CallData =  from block 
+sSearching j in 
+sSearching j in cbsSearching j in cbsSearching j in cbl
+sSearching j in cbl
+sSearching j in 
+l
+sSearching j in 
+sSearching j in cbsSearching j in cbl
+sSearching j in 
+l
+sSearching j in 
+sSearching j in cbsSearching j in cbl
+sSearching j in cbl
+BUiltin func getPositionY, param 
+sSearching j in 
+sSearching j in cbl
+Calling builtin method getPositionY with params { Int j }, ret 100 + of type System.Double
+Assigned 100 of type System.Double to y of type Double
+Evaluating myAng id NinjaParser+CallData =  from block 
+sSearching id in 
+ NinjaParser+CallData =  from block 
+BUiltin func getPositionY, param 
+sSearching j in 
+
+sSearching id in csSearching j in cbl
+
+sSearching id in otblsSearching id in otbl
+Calling builtin method getPositionY with params { Int j }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int j }, ret 100 + of type System.Double
+BUiltin func getPositionY, param 
+sSearching j in 
+thod getPositionY with params { Int j }, ret 100 + of type System.Double
+BUiltin func getPositionY, param 
+sSearching id in 
+sSearching id in csSearching j in cbl
+
+sSearching id in otbl
+iltin func getPositionY, param 
+ to y of type Double
+sSearching id in otblEvaluating myAng id NinjaParser+CallData =  from block 
+sSearching id in 
+hod getPositionY with params { Int j }, ret 100 + of type System.Double
+sSearching id in 
+hod getPositionY with params { Int j sSearching j in 
+
+hod Assigned 100 of typsSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+bl
+stem.Double to y of type Double
+sSearching id in 
+sSearching id in cbl
+
+stem.Double to y of type Double
+sSearching id in csSearching j in cbl
+injaParser+CallData =  from block 
+sSearching id in 
+
+isSearching id in otsSearching id in cblsSearching id in cbsSearching id in cbl
+CsSearching id in cbl
+sSearching id in otblsSearching id in otbl
+alling builtin method getPositionY with params { Int j }, ret 100 + of type System.Double
+sSearching id in otbl
+sSearching id in 
+bl
+sSearching id in 
+sSearching id in cbsSearching id in cbl
+Assigned 100 of type System.Double to y of type Double
+sSearching id in cbl
+sSearching id in otbl
+jaParser+CallData =  from block 
+sSearching id in 
+blsSearching id in otbl
+sSearching id in otsSearching id in cbl
+
+sSearching id in 
+l
+sSearching id in otsSearching id in cbl
+
+sSearching id in 
+l
+sSearching id in otsSearching id in otbl
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+BUiltin func getDirection, param 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+BUiltin func getDirection, param 
+sSearching id in 
+ection, param 
+Calling builtin method getDirection with params { Int id }, ret 0,785398 + of type System.Double
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+BUiltin func getDirection, param 
+Calling builtin method getDirection with params { Int id }, ret 2,356194 + of type System.Double
+Calling builtin method getDirection with params { Int id }, ret 2,356194 + of type System.Double
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+Calling builtin method getDirection with params { Int id }, ret 5,497787 + of type System.Double
+Calling builtin method getDirection with params { Int id }, ret 5,497787 + of type System.Double
+Assigned 0,785398 of type System.Double to myAng of type Double
+Assigned 2,356194 of type System.Double to myAng of type Double
+BUiltin func getDirection, param 
+Evaluating reqAng y myy - x myx - atan2 =  from block 
+ouble
+Assigned 0,785398 of type System.Double to myAng of type Double
+BUiltin func getDirection, param 
+Assigned 5,497787 of type System.Double to myAng of typesSearching myy in 
+ type System.Double to myAng of type Double
+sSearching myy in 
+ type System.Double to myAng of type Double
+sSearching id in 
+sSearching id in cbl
+y - x myx - atan2 =  from block 
+sSearching myy in 
+sSearching myy in cbl
+ - x myx - atan2 =  from block 
+ Double
+sSearching id in 
+lock 
+sSearching myy in 
+lsSearching id in otbsSearching myy in cbl
+sSearching myy in otsSearching myy in cbl
+sSearching myy in cbl
+Calling builtin method getDirection with params { Int id }, ret 3,926991 + of type System.Double
+Calling builtin method sSearching myy in otbl
+sSearching myy in otbl
+etDirection with params { Int id }, ret 3,926991 + of type System.Double
+sSearching myy in otbl
+Assigned 3,926991 of type System.Double to myAng of type Double
+Evaluating reqAng y myy - x myx - atan2 =  from block 
+sSearching myy in 
+sSearching myy in cbl
+sSearching myy in otbl
+sSearching myy in otbl
+sSearching myx in 
+sSearching myx in cbl
+sSearching myx in otbl
+sSearching myx in 
+sSearching myx in cbl
+sSearching myx in otbl
+sSearching myx in 
+sSearching myx in cbl
+sSearching myx in otbl
+sSearching myx in 
+sSearching myx in cbl
+sSearching myx in otbl
+Assigned -1,5707963267949 of type System.Double to reqAng of type Double
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Calling custom method abs with params { Int 7,0685833267949 }
+===Entering fun abs with params { Double val = 7,0685833267949 }
+Method abs contains:
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+Evaluating res val =  from block abs
+Assigned 7,0685833267949 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+Assigned -2,35619449019234 of type System.Double to reqAng of type Double
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Calling custom method abs with params { Int 6,28318549019235 }
+===Entering fun abs with params { Double val = 6,28318549019235 }
+Method abs contains:
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+Evaluating res val =  from block abs
+Assigned 6,28318549019235 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+Evaluating res 0 <  from block abs
+Evaluating res  from block abs
+---Vars of block met abs ----
+Evaluating res 0 <  from block abs
+Evaluating res  from block abs
+---Vars of block met abs ----
+Assigned 3,14159265358979 of type System.Double to reqAng of type Double
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Calling custom method abs with params { Int -0,785398653589793 }
+===Entering fun abs with params { Double val = -0,785398653589793 }
+Method abs contains:
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+Evaluating res val =  from block abs
+Assigned -0,785398653589793 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+Evaluating res 0 <  from block abs
+Evaluating res 0 res - =  from block 
+sSearching res in 
+	val is Double with value 7,0685833267949
+	res is Double with value 7,0685833267949
+---End Vars of block met abs ----
+===Exiting fun abs
+Evaluating res  from block abs
+sSearching res in 
+sSearching res in 
+sSearching res in 
+Assigned 0,785398653589793 of type System.Double to res of type Double
+Evaluating res  from block abs
+---Vars of block met abs ----
+	val is Double with value -0,785398653589793
+	res is Double with value 0,785398653589793
+---End Vars of block met abs ----
+===Exiting fun abs
+Evaluating res  from block abs
+	val is Double with value 6,28318549019235
+	res is Double with value 6,28318549019235
+---End Vars of block met abs ----
+===Exiting fun abs
+Evaluating res  from block abs
+Assigned 0 of type System.Double to reqAng of type Double
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Calling custom method abs with params { Int 0,785398 }
+===Entering fun abs with params { Double val = 0,785398 }
+Method abs contains:
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+Evaluating res val =  from block abs
+===fun abs returned 7,0685833267949
+sSearching EPS in 
+7,0685833267949
+Assigned 0,785398 of type System.Double to res of type Double
+sSearching EPS in 
+Evaluating res 0 <  from block abs
+Evaluating res 0 <  from block abs
+sSearching EPS in cbl
+sSearching EPS in otbl
+sSearching EPS in otbl
+Evaluating res 0 <  from block abs
+Evaluating res  from block abs
+---Vars of block met abs ----
+	val is Double with value 0,785398
+	res is Double with value 0,785398
+---End Vars of block met abs ----
+===Exiting fun abs
+Evaluating res  from block abs
+===fun abs returned 0,785398
+sSearching EPS in 
+sSearching EPS in cbl
+sSearching EPS in otbl
+===fun abs returned 6,28318549019235
+sSearching EPS in 
+sSearching EPS in cbl
+sSearching EPS in otbl
+---Entering whilecycle
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+sSearching myAng in 
+sSearching reqAng in 
+---Entering whilecycle
+Calling custom method abs with params { Int 7,0685833267949 }
+===Entering fun abs with params { Double val = 7,0685833267949 }
+Method abs contains:
+NinjaParser+ExprClass
+h params { Double val = 7,0685833267949 }
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+sSearching myAng in 
+
+NinjaParser+ExprClasssSearching reqAng in 
+NinjaParser+Condition
+---Entering whilecycle
+NinjaParser+Condition
+Evaluating myAng reqAngNinjaParser+ExprClass
+ - NinjaParser+CallData EPS >  from block 
+Calling custom method abs with params { Int 6,28318549019235 }
+===Entering fun abs witEnd of method abs block
+params { Double val = 6,28318549019235 }
+arching myAng in 
+sSearching reqAng in 
+
+params { Double val = 6,28318549019235 }
+Method abs contains:
+
+
+Method abs contains:
+
+Evaluating res val =  from block abs
+Evaluating res val =  NinjaParser+ExprClass
+bs with params { Int 0,785398 }
+Assigned 7,068583326794NinjaParser+ExprClass
+9 of type System.Double to res of type Double
+NinjaParser+ExprClass
+9 of type System.Double to res of type Double
+===Entering fun abs with params { Double val = 0,785398 }
+Method abs contains:
+oNinjaParser+Condition
+m block abs
+NinjaParser+ConditionNinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+Evaluating res 0 <  from block abs
+NinjaParser+ExprClass
+Evaluating res  from block abs
+Evaluating res  from blEnd of method abs block
+End of method abs block
+NinjaParser+Condition
+NinjaParser+ExprClass
+rom block abs
+NinjaParser+ExprClass
+End of method abs block
+Assigned 6,28318549019235 of type System.Double to res of type Double
+Assigned 6,28318549019235 of type System.Double to res of type Double
+Evaluating res val =  from block abs
+Evaluating res 0 <  from block abs
+Evaluating res 0 <  from block abs
+Assigned 0,785398 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+ble to res of type Double
+Evaluating res  from block abs
+---Vars of block met abs ----
+abs
+---Vars of block met abs ----
+Evaluating res 0 <  from block abs
+	val is Double with value 6,28318549019235
+	res is Double with value 6,28318549019235
+Evaluating res  from block abs
+---Vars of block met abs ----
+18549019235
+---End Vars of block met abs --	val is Double with value 0,785398===Exiting fun abs
+Evaluating res  from block abs
+98
+	res is Double with value 0,7853	res is Double with value 0,785398
+---End Vars of block met abs ----
+===Exiting fun abs
+ met abs ----
+===fun abs returned 6,28318549019235
+sSearching EPS in 
+Evaluating res  fromsSearching EPS in cbl
+---Vars osSearching EPS in cbl
+sSearching EPS in otbl
+5398
+ of block met abs ----
+	val is Double with value 7,06sSearching EPS in 
+valusSearching EPS in 
+value 7,0685833267949
+sSearching EPS in 
+sSearching EPS in cbl
+ue 7,0685833267949
+---End Vars of block mesSearching EPS in otbl
+ abs ----
+===Exiting fun abs
+bl
+===Exiting fun abs
+Evaluating res  from block abs
+===fun abs returned 7,0685833267949
+sSearching EPS in 
+sSearching EPS in cbl
+sSearching EPS in otbl
+-=-While loop 0
+Evaluating reqAng myAng -  from block 
+-=-While loop 0
+Evaluating reqAng myAng -  from block 
+-=-While loop 0
+Evaluating reqAng myAng -  from block 
+Evaluating reqAng myAng -  from block 
+Calling builtin method turn with params { Int -6,28318549019235 }
+Evaluating reqAng myAng -  from block 
+Calling builtin method turn with params { Int -7,0685833267949 }
+Evaluating reqAng myAng -  from block 
+Calling builtin method turn with params { Int -0,785398 }
+Evaluating reqAng myAng -  from block 
+Evaluating reqAng myAng -  from block 
+Evaluating reqAng myAng -  from block 
+Evaluating myAng id NinjaParser+CallData =  from block 
+sSearching id in 
+ NinjaParser+CallData =  from block 
+Evaluating myAng id NinjaParser+CallData =  from block 
+sSearching id in 
+sSearching id in cbsSearching id in cbl
+sSearching id in otbl
+==fun abs returned 0,785398653589793
+sSearching EPS in 
+lsSearching id in otbl
+sSearching id in otbsSearching EPS in csSearching id in cbl
+
+Evaluating myAng id NinjaParser+CallData =  from block 
+sSearching id in 
+l
+
+sSearching id in 
+l
+
+sSearching EPS in osSearching id in cbsSearching id in cbl
+sSearching id in otblsSearching id in otblsSearching id in otbl
+
+---Entering whilecyclesSearching id in 
+clesSearching id in 
+clesSearching id in 
+cle
+sSearching id in 
+sSearching id in cbl
+g - NinjaParser+CallData EPS >  from block 
+sSearching myAng insSearching id in cbsSearching id in cbl
+sSearching id in otblsSearching reqAng in sSearching id in otblsSearching id in otbl
+sSearching id in 
+bl
+sSearching id in 
+bl
+sSearching id in 
+bl
+Calling custom methsSearching id in cbl
+abs with params { Int -0,785398653589793 }
+===Entering fun abs wisSearching id in otbl
+h params { Double val = -0,785398653589793 }
+Method abs contains:
+
+Method abs contains:
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+Evaluating res val =  from block abs
+Assigned -0,785398653589793 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+Evaluating res 0 <  from block abs
+Evaluating res 0 res - =  from block 
+sSearching res in 
+sSearching res in 
+sSearching res in 
+sSearching res in 
+Assigned 0,785398653589793 of type System.Double to res of type Double
+Evaluating res  from block abs
+---Vars of block met abs ----
+	val is Double with value -0,785398653589793
+	res is Double with value 0,785398653589793
+---End Vars of block met abs ----
+===Exiting fun abs
+Evaluating res  from block abs
+===fun abs returned 0,785398653589793
+sSearching EPS in 
+sSearching EPS in cbl
+sSearching EPS in otbl
+-=-While loop 0
+Evaluating reqAng myAng -  from block 
+Evaluating reqAng myAng -  from block 
+Calling builtin method turn with params { Int 0,785398653589793 }
+Evaluating reqAng myAng -  from block 
+Evaluating myAng id NinjaParser+CallData =  from block 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+BUiltin func getDirection, param 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+Calling builtin method getDirection with params { Int id }, ret 0 + of type System.Double
+Assigned 0 of type System.Double to myAng of type Double
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Calling custom method abs with params { Int 0 }
+===Entering fun abs with params { Double val = 0 }
+Method abs contains:
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+Evaluating res val =  from block abs
+BUiltin func getDirection, param 
+sSearching id in 
+Assigned 0 of type System.Double to ressSearching id in 
+sSearching id in cbl
+igned 0 of type System.Double to res of type DoublesSearching id in 
+l
+igned 0 of type System.Double to res of type Double
+sSearching id in 
+sSearching id in cbl
+om block abs
+sSearching id in cbl
+sSearching id in otblsSearching id in otbl
+sSearching id in otbl
+Calling builtin method getDirection with params { Int id }, ret 2,346991 + of type System.Double
+Calling builtin metsSearching id in cbl
+ getDirection with params { Int id }, ret 3,141593 + of type System.Double
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in otbl
+Assigned 2,346991 of type System.Double to myAng of type Double
+Assigned 3,141593 of type System.Double to myAng of type Double
+Assigned 3,141593 of type System.Double to myAng of type Double
+Calling builtin method getDirection with params { Int id }, ret 3,917787 + of type System.Double
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+lling builtin method getDirection with params { Int id }, ret 3,917787 + of type System.Double
+Evaluating res  from block abs
+arams { Int 4,70318549019234 }
+===Entering fun abs with params ---Vars of block met abs ----
+ { Double val = 4,70318549019234 }
+Assigned 3,917787 of type System.Double to myAng of type Double
+
+Method abs contains:
+Calling c	val is Double with value 0
+ custom method abs with params { IntEvaluating myAng reqAnNinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+ - NinjaParser+CallData EPS >  from block 
+NinjaParser+Condition
+ - NinjaParser+CallData EPS >  from block 
+,46410206741865E-07 }
+NinjaParser+Condition
+ - Nin===Entering fun abs with params { Double val = 3,46410206741865E-07 }
+Method abs contains:
+th params { Double val = 3,46410206741865E-07 }
+Calling custom method abs with params { Int 5,4885833267949 }
+	res is Double with value 0
+---End Vars of block meNinjaParser+ExprClassNinjaParser+ExprClass
+t abs ----
+ouble val = 3,46410206741865E-07 }
+Calling custom method abs with params { Int 5,4885833267949 }
+===Entering fun abs with params { D===Exiting fun abs
+witEnd of method abs blockNinjaParser+ExprClass
+
+params { Double val = 5,4885833267949 }
+Method abs contains:Evaluating res  from blocEvaluating res val =  fNinjaParser+ConditionNinjaParser+ExprClass
+rom blockNinjaParser+ExprClass
+rom block abs
+===fun abs returned 0
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+sSearching EPS in 
+s
+End of method abs block
+signed 4,70318549019234 of type System.Double to res of type Double
+End of method abs blockNinjaParser+Condition
+m block abs
+NinjaParser+Condition
+m Evaluating res 0 <  sSearching EPS in cbl
+NinjaParser+ExprClass
+m block abs
+NinjaParser+ExprClass
+m block abs
+Evaluating res val =  from block abs
+Evaluating res  from block abs
+---Vars of block met abEnd of method abs blocksSearching EPS in otbl
+
+Assigned 3,46410206741865E-07 of type System.Double to res of type Double
+Evaluating res 0 <  from Evaluating res val =  from bloc	val is Double with valu---Exiting whilecycle
+ue 4,70318549---Exiting whilecycle
+ue 4,7031854901Evaluating res 0 <  from block abs
+Evaluating res  from blEvaluating  from block 
+k abs
+Assigned 5,4885833267949 of type System.Double to res of type Double
+Evaluating res 0 <  from block a---Vars of block met abs ----
+abs
+gned 5,4	res is Double with valueEvaluating i 0 =  from block otbl
+9Evaluating i 0 =  from block otEvaluating res 0 <  from block abs
+	val is Double with value 3,4641020	val is Double with value 3,46410206741865E----End Vars of block met abs ----
+6741865E-07
+---End Vars of block met abs ----
+Assigned 0 of type System.Int32 to i of type Int
+	res is Double with value 3,46410206741865E-07
+Evaluating i 10 <  from block cbl
+---End Vars of block met abs ----
+i of type ---Vars of block met abs ----
+bl
+===Exiting fun abs
+ abs ----
+bl
+sSearching i in cbl
+abs ----
+bl
+---End Vars of block met abs ----
+===Exiting fun abs
+
+abs ----
+	val is Double with Evaluating res  from Evaluating res  from==For iter 0
+Evaluating  from block cbl
+bs
+Evaluating  from block cbl
+bs
+833267949
+===fun abs returned 3,4641020674===fun abs returned 3,464102Calling builtin method shoot with params {sSearching EPS in 
+od shoot with params { }
+===fun abs returned 4,70318549019234
+sSearching EPS in 
+od shoot with params { }
+Evaluating i ++pre  from block cbl
+rams { }
+===fun abs returned 4,70318549019234
+
+---End Vars of blocksSearching EPS in cbsSearching EPS in cbl
+t abs ----
+
+sSearching i in cbl
+
+t abs ----
+===Exiting fun abs
+
+
+sSearching EPS in otblsSearching EPS in otbsSearching i in cblEvaluating res  from blo---Exiting whilecycle
+o---Exiting whilecycle-=-While loop 1
+Evaluating i 10 <  fromEvaluating  from block 
+lock cbEvaluating  from block 
+lock cbl
+===fun abs returned 5,4885833267949
+sSearching i in cbl
+ -  from block 
+===fun abs returned 5,488Evaluating reqAng myAng -  from block 
+Evaluating i 0 =  from block otbl
+Calling builtin method turn with parasSearching EPS in 
+Assigned 0 of type System.Int32 to i o==For iter 1
+ in 
+Assigned 0 of type System.Int32 to i of type InEvaluating reqAng mysSearching EPS in cbl
+ -  from block 
+ystem.Int32 to i of type Int
+Evaluating i 1Evaluating  from block cbl
+k cbl
+ck 
+Evaluating  from block Evaluating myAng id NinjaParser+CalsSearching i in cbl
+injaParCalling builtin method shoot with params { }
+om block 
+sSearching id in 
+hod shoot with params { }
+om block 
+sSearching EPS in otbl
+-=-While loop 1
+
+ho-=-While loop 1
+
+hod shoot with params { }
+==For iter 0
+Evaluating  from block cbl
+ck cbl
+sSearching i in cblsSearching id in Evaluating reqAng myAng -  fCalling builtin methosSearching i in cbl
+dsSearching id in otbl
+shoot with paramssSearching id in otbl
+shoot with params { }
+Evaluating i ++pre  fEvaluating i 10 <  fromsSearching id in 
+from block cbl
+
+k 
+sSearching id in 
+from block cbl
+
+Calling builtin method turn with pasSearching i in cblsSearching id in cbl
+ turn with params { Int -5,4885833267949 }
+Evaluating reqAng myAng -  from block 
+{ Int -5,4885833267949 }
+sSearching i in cbl
+sSearching i in cbl
+==For iter 2
+n cbl
+nsSearching id in otbl
+ -  from block 
+sSearching id in otblEvaluating myAEvaluating  from block cbl
+ser+CallData =  from block 
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+k cbl
+ser+CallData =  from block 
+sSearching id in 
+
+k sSearching id in 
+
+k cbl
+Calling builtin methoCalling builtin metsSearching id Evaluating  from block cbl
+ with params { }
+Evaluating i ++pre sSearching id in cbl
+sSearching id in otbl
+m bloCalling builtin method shoot with pasSearching i in cbl
+dsSearching id in otbl
+sSearching id in 
+bl
+shoot with params { }
+Evaluating i ++pre  fsSearching i in cbl
+rosSearching i in cblsSearching id in cbl
+om block cbl
+sSearching i in cbl
+sSearching i in cbl
+
+sSearching id in otbl
+ block cbl
+sSearching i in cbl
+sSearching i in cbl
+
+sSearching id in 
+
+==For iter 3
+in 
+
+==For iter 3
+in 
+sSearching id in cbl
+m block cbl
+sSearching i in cbl
+==For iter 2
+n cbl
+
+sSearching id Evaluating  frEvaluating  from block Evaluating  from block cbl
+Calling builtin method shootCalling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+rams { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+rom block cbl
+sSearching i in cbl
+sSearching i in cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+om block cbl
+sSearching i in cbl
+==For iter 4
+n cbl
+==For iter 3
+Evaluating  frEvaluating  from block cbl
+Calling builtin method shootCalling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+rams { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+rom block cbl
+sSearching i in cbl
+sSearching i in cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 5
+n cbl
+Evaluating i 10 <  from block cbl
+sSearching i iEvaluating  from bloc==For iter 4
+om block cbl
+Calling builtiEvaluating  from block cbl
+ with params { }
+Evaluating i ++pre  from bloCalling builtin method shoot with pasSearching i in cbl
+d shoot with params { }
+Evaluating i ++pre  fsSearching i in cbl
+rom block cbl
+sSearching i in cbl
+sSearching i in cbl
+sSearching i in cbl
+om block cbl
+sSearching i in cbl
+Evaluating i 10 <  frEvaluating i 10 <  from block cbl
+==For iter 6
+Evaluating  from block cbl
+n cbl
+==For iter 5
+om block cbl
+Calling builtiEvaluating  from block cbl
+ with params { }
+Evaluating i ++pre  from bloCalling builtin method shoot with pasSearching i in cbl
+d shoot with params { }
+Evaluating i ++pre  fsSearching i in cbl
+rom block cbl
+sSearching i in cbl
+sSearching i in cbl
+sSearching i in cbl
+om block cbl
+sSearching i in cbl
+Evaluating i 10 <  fr==For iter 7
+0 <  from block cbl
+sSearching i iEvaluating  from bloc==For iter 6
+om block cbl
+Calling builtiEvaluating  from block cbl
+ with params { }
+Evaluating i ++pre  from bloCalling builtin method shoot with pasSearching i in cbl
+d shoot with params { }
+Evaluating i ++pre  fsSearching i in cbl
+rom block cbl
+sSearching i in cbl
+sSearching i in cbl
+sSearching i in cbl
+om block cbl
+sSearching i in cbl
+sSearching i in cbl
+==For iter 8
+0 <  from block cbl
+sSearching i iEvaluating  from bloc==For iter 7
+om block cbl
+Calling builtiEvaluating  from block cbl
+ with params { }
+Evaluating i ++pre  from bloCalling builtin method shoot with pasSearching i in cbl
+d shoot with params { }
+Evaluating i ++pre  fsSearching i in cbl
+rom block cbl
+sSearching i in cbl
+Evaluating i 10 <  frsSearching i in cbl
+om block cbl
+sSearching i in cbl
+Evaluating i 10 <  fr==For iter 9
+0 <  from block cbl
+sSearching i iEvaluating  from bloc==For iter 8
+om block cbl
+Calling builtiEvaluating  from block cbl
+ with params { }
+Evaluating i ++pre  from bloCalling builtin method shoot with pasSearching i in cbl
+d shoot with params { }
+Evaluating i ++pre  fsSearching i in cbl
+rom block cbl
+sSearching i in cbl
+Evaluating i 10 <  frsSearching i in cbl
+om block cbl
+sSearching i in cbl
+Evaluating i 10 <  frEvaluating j ++pre  from block cblsSearching i in cbl
+rom block cbl
+sSearching j in cbl
+==For iter 9
+n cbl
+sSearching j iEvaluating  from blocEvaluating  from block cbl
+Calling builtin method shoot with sSearching j in cbl
+d shoot with params { }
+Evaluating i ++pre  f==For iter 2
++pre  from block cbl
+sSearching i iEvaluating j id !=  fsSearching i in cbl
+rom block cbl
+sSearching j in cbl
+sSearching j in cbl
+sSearching id in cbl
+m block cbl
+sSearching i in cbl
+
+sSearching id in otblEvaluating j ++pre  froEvaluating j ++pre  from block cbl
+sSearching j in cbl
+rom block cbl
+sSearching j in cbl
+sSearching j in cbl
+sSearching id in cblEvaluating j 4 <  fromsSearching id in otbl
+block cbl
+sSearching j in cbl
+
+sSearching j in cbl
+Evaluating x j NinjaParser+CallData =  from block 
+sSearching j in 
+jaParser+CallData =  from block 
+==For iter 1
+Evaluating j id !=sSearching j in cbl
+rom block cbl
+sSearching j in cbl
+sSearching j in cbl
+sSearching id in csSearching j in cbl
+
+sSearching id in otblsSearching j in 
+tbl
+Evaluating j id !=sSearching j in cbl
+rom block cbl
+sSearching j in cbl
+sSearching j in cbl
+sSearching id in cbl
+sSearching id in otbl
+Evaluating j ++pre  from block cbl
+sSearching j in cbl
+sSearching j in cbl
+Evaluating j 4 <  from block cbl
+sSearching j in cbl
+==For iter 2
+Evaluating j id !=  from block cbl
+sSearching j in cbl
+sSearching id in cbl
+sSearching id in otbl
+Evaluating j id !=  from block cbl
+sSearching j in cbl
+sSearching id in cbl
+sSearching id in otbl
+Evaluating x j NinjaParser+CallData =  from block 
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+BUiltin func getDirection, param 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+BUiltin func getDirection, param 
+sSearching id in 
+ection, param 
+Calling builtin method getDirection with params { Int id }, ret 2,337787 + of type System.Double
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+Calling builtin method getDirection with params { Int id }, ret 0,766991 + of type System.Double
+Assigned 2,337787 of type System.Double to myAng of type Double
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Assigned 0,766991 of type System.Double to myAng of type Double
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Calling custom method abs with params { Int 3,9085833267949 }
+===Entering fun abs with params { Double val = 3,9085833267949 }
+Method abs contains:
+th params { Double val = 3,9085833267949 }
+Calling custom method abs with params { Int 3,12318549019234 }
+Method abs contains:
+===Entering fun abs with params { Double val = 3,12318549019234 }
+Method abs contains:
+th params { Double val = 3,12318549019234 }
+NinjaParser+ExprClass
+NinjaParser+ExprClassNinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+End of method abs blockNinjaParser+ExprClass
+
+Evaluating res val =  fEnd of method abs block
+m block abs
+End of method abs block
+Evaluating res val =  from block abs
+Evaluating res val =  from block abs
+Assigned 3,9085833267949 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+Evaluating res 0 <  from block abs
+Assigned 3,12318549019234 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+Evaluating res 0 <  from block abs
+Evaluating res 0 <  from block abs
+Evaluating res  from block abs
+---Vars of block met abs ----
+abs
+---Vars of block met abs ----
+Evaluating res  from block abs
+	val is Double with value 3,9085833267949
+	res is Double with value 3,9085833267949
+---Vars of block met abs ----
+	res is Double with value 3,9085833267949
+---End Vars of block met abs ----
+9019234
+	res is Double with value 3,1231854===Exiting fun abs
+value 3,12318549019234
+---End Vars of block---End Vars of block met abs ----
+===Exiting fun abs
+ block abs
+===Exiting fun abs
+===fun abs returned 3,9085833267949
+sSearching EPS in 
+3,9085833267949
+Evaluating res  from block abs
+sSearching EPS in 
+sSearching EPS in cbl
+sSearching EPS in otbl
+===fun abs returned 3,12318549019234
+sSearching EPS in 
+3,12318549019234
+-=-While loop 2
+Evaluating reqAng mysSearching EPS in cbl
+ -  from block 
+sSearching EPS in cbl
+Evaluating reqAng myAng -  from block 
+Evaluating reqAng myAng -  from block 
+sSearching EPS in otbl
+Calling builtin method turn with params { Int -3,9085833267949 }
+-=-While loop 2
+Evaluating reqAng myAng -  from block 
+Evaluating reqAng myAng -  from block 
+Evaluating reqAng myAng -  from block 
+Calling builtin method turn with params { Int -3,12318549019234 }
+Evaluating reqAng myAng -  from block 
+Evaluating reqAng myAng -  from block 
+Evaluating reqAng myAng -  from block 
+Evaluating myAng id NinjaParser+CallData =  from block 
+sSearching id in 
+sSearching id in cbl
+luating myAng id NinjaParser+CallData =  from block 
+sSearching id in 
+l
+sSearching id in otsSearching id in cbl
+
+sSearching id in 
+l
+sSearching id in 
+sSearching id in otbl
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+bl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbsSearching id in cbl
+sSearching id in otblsSearching id in otbl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+BUiltin func getDirection, param 
+sSearching id in 
+sSearching id in cbl
+ltin func getDirection, param 
+sSearching id in 
+l
+sSearching id in otsSearching id in otbl
+sSearching id in cbl
+sSearching id in otbl
+Calling builtin method getDirection with params { Int id }, ret 0,757787 + of type System.Double
+Calling builtin method getDirection with params { Int id }, ret -0,813009 + of type System.Double
+Assigned -0,813009 of type System.Double to myAng of type Double
+Assigned -0,813009 of type System.Double to myAng of type Double
+Assigned 0,757787 of type System.Double to myAng of type Double
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Calling custom method abs with params { Int 1,54318549019234 }
+===Entering fun abs with params { Double val = 1,54318549019234 }
+ling custom method abs with params { Int 2,3285833267949 }
+===Entering fun abs with params { Double val = 2,3285833267949 }
+
+Method abs contains:
+th params { Double val = 2,3285833267949 }
+Method abs contains:
+NinjaParser+ExprClassNinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+Evaluating res val =  fNinjaParser+Condition
+rom block abs
+NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+signed 2,3285833267949 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+Evaluating res 0 <  from Evaluating res 0 <  from block abs
+Evaluating res val =  from block abs
+Evaluating res  from block abs
+---Vars of block met abs ----
+---Vars of block met abs ----
+Assigned 1,54318549019234 of type System.Double to res of type Double
+	val is Double with value 2,3285833267949
+	res is Double with value 2,3285833267949
+Evaluating res 0 <  from block abs
+	res is Double with value 2,3285833267949
+---End Vars of block met abs ----
+===Exiting fun abs
+Evaluating res  from block abs
+-
+Evaluating res 0 <  from block abs
+Evaluating res  from block abs
+Evaluating res  from block abs
+---Vars of block met abs ----
+===fun abs returned 2,3285833267949
+sSearching EPS in 
+2,3285833267949
+	val is Double with value 1,54318549019234
+sSearching EPS in 
+sSearching EPS in cbl
+ue 1,54318549019234
+---End Vars of block met abs ----
+===Exiting fun abs
+Evaluating res  from blsSearching EPS in otbl
+ck abs
+sSearching EPS in otbl
+===fun abs returned 1,54318549019234
+sSearching EPS in 
+1,54318549019234
+-=-While loop 3
+Evaluating reqAng mysSearching EPS in cbl
+ -  from block 
+sSearching EPS in cbl
+sSearching EPS in otbl
+-=-While loop 3
+ otbl
+Evaluating reqAng myAng -  from block 
+-=-While loop 3
+Calling builtin method turn with params { Int -2,3285833267949 }
+Evaluating reqAng myAng -  from block 
+{ Int -2,3285833267949 }
+Evaluating reqAng myAng -  from block 
+Evaluating reqAng myAng -  from block 
+Evaluating reqAng myAng -  from block 
+Evaluating myAng id NinjaParser+CallData =  from block 
+sSearching id in 
+Calling builtin method turn with params { Int -1,54318549019234 }
+Evaluating reqAng myAng -  from block 
+{ Int -1,54318549019234 }
+sSearching id in cbl
+sSearching id in otbl
+ -  from block 
+sSearching id in otbl
+sSearching id in 
+ NinjaParser+CallData =  from block 
+sSearching id in 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+bl
+sSearching id in cbl
+sSearching id in otsSearching id in cbl
+
+sSearching id in 
+l
+sSearching id in otsSearching id in cbl
+
+sSearching id in 
+l
+sSearching id in otsSearching id in cbl
+
+sSearching id in cbl
+sSearching id in otbl
+BUiltin func getDirection, param 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+BUiltin func getDirection, param 
+Calling builtin method getDirection with params { Int id }, ret -0,822213 + of type System.Double
+Calling builtin method getDirection with params { Int id }, ret -0,822213 + of type System.Double
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in otbl
+Assigned -0,822213 of type System.Double to myAng of type Double
+Calling builtin method getDirection with params { Int id }, ret -2,356195 + of type System.Double
+Calling builtin method getDirection with params { Int id }, ret -2,356195 + of type System.Double
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Assigned -2,356195 of type System.Double to myAng of type Double
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Calling custom method abs with params { Int 0,748583326794897 }
+Calling custom method abs with params { Int -5,09807655202366E-07 }
+===Entering fun abs with params { Double val = -5,09807655202366E-07 }
+Entering fun abs with params { Double val = 0,748583326794897 }
+Method abs contains:
+th params { Double val = -5,09807655202366E-07 }
+Method abs contains:
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClassNinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs blockEnd of method abs block
+Evaluating res val =  froEvaluating res val =  from block abs
+Evaluating res val =  from block abs
+Assigned 0,748583326794897 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+Evaluating res 0 <  from block abs
+Assigned -5,09807655202366E-07 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+Evaluating res 0 <  from block abs
+Evaluating res  from block abs
+---Vars of block met abs ----
+Evaluating res 0 <  from block abs
+Evaluating res 0 res - =  from block 
+l is Double with value 0,748583326794897
+	res is Double with value 0,74858332679sSearching res in 
+value 0,748583326794897
+---End Vars of blocksSearching res in 
+sSearching res in 
+sSearching res in 
+sSearching res in 
+ met abs ----
+===Exiting fun abs
+02366E-07 of type System.Double to res of type Double
+Evaluating res  fromEvaluating res  from block abs
+---Vars of block met abs ----
+
+---Vars of block met abs ----
+	val is Double with value -5,09807655202366E-07
+===fun abs returned 0,748583326794897
+sSearching EPS in 
+0,748583326794897
+	res is Double with value 5,09807655202366E-07
+---End Vars of block met abs ----
+===Exiting fun abs
+Evaluating res  fromsSearching EPS in cbl
+sSearching EPS in otbl
+sSearching EPS in otbl
+ck abs
+-=-While loop 4
+===fun abs returned 5,09807655202366E-07
+sSearching EPS in 
+5,09807655202366E-07
+Evaluating reqAng myAng -  from block 
+sSearching EPS in 
+sSearching EPS in cbl
+ -  from block 
+sSearching EPS in cbl
+sSearching EPS in otbl
+---Exiting whilecycle
+
+Calling builtin method turn with params { Int -0,748583326794897 }
+Evaluating reqAng myAngEvaluating  from block 
+  from block 
+Evaluating myAng id NinjaParser+CallData =  from block 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+jaEvaluating i 0 =  from sSearching id in 
+rom block otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+bl
+Assigned 0 of type System.Int32 to i of type Int
+Evaluating i 10 <  sSearching id in cbl
+m block cbl
+sSearching i in cbl
+
+sSearching id in otbl
+sSearching id in otbl==For iter 0
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 1
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 2
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 3
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 4
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 5
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 6
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 7
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 8
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 9
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+Evaluating j ++pre  from block cbl
+sSearching j in cbl
+sSearching j in cbl
+Evaluating j 4 <  from block cbl
+sSearching j in cbl
+==For iter 1
+Evaluating j id !=  from block cbl
+sSearching j in cbl
+sSearching id in cbl
+sSearching id in otbl
+Evaluating j id !=  from block cbl
+sSearching j in cbl
+sSearching id in cbl
+sSearching id in otbl
+Evaluating x j NinjaParser+CallData =  from block 
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+BUiltin func getDirection, param 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+Calling builtin method getDirection with params { Int id }, ret -1,570796 + of type System.Double
+Assigned -1,570796 of type System.Double to myAng of type Double
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Calling custom method abs with params { Int 3,26794896476912E-07 }
+===Entering fun abs with params { Double val = 3,26794896476912E-07 }
+Method abs contains:
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+Evaluating res val =  from block abs
+Assigned 3,26794896476912E-07 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+Evaluating res 0 <  from block abs
+Evaluating res  from block abs
+---Vars of block met abs ----
+	val is Double with value 3,26794896476912E-07
+	res is Double with value 3,26794896476912E-07
+---End Vars of block met abs ----
+===Exiting fun abs
+Evaluating res  from block abs
+===fun abs returned 3,26794896476912E-07
+sSearching EPS in 
+sSearching EPS in cbl
+sSearching EPS in otbl
+---Exiting whilecycle
+Evaluating  from block 
+Evaluating i 0 =  from block otbl
+Assigned 0 of type System.Int32 to i of type Int
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 0
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 1
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 2
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 3
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 4
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 5
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 6
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 7
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 8
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 9
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+Evaluating j ++pre  from block cbl
+sSearching j in cbl
+sSearching j in cbl
+Evaluating j 4 <  from block cbl
+sSearching j in cbl
+==For iter 1
+Evaluating j id !=  from block cbl
+sSearching j in cbl
+sSearching id in cbl
+sSearching id in otbl
+Evaluating j id !=  from block cbl
+sSearching j in cbl
+sSearching id in cbl
+sSearching id in otbl
+Evaluating x j NinjaParser+CallData =  from block 
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+BUiltin func getPositionX, param 
+sSearching j in 
+sSearching j in cbl
+Calling builtin method getPositionX with params { Int j }, ret 100 + of type System.Double
+Assigned 100 of type System.Double to x of type Double
+Evaluating y j NinjaParser+CallData =  from block 
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+BUiltin func getPositionX, param 
+sSearching j in 
+sSearching j in cbl
+Calling builtin method getPositionX with params { Int j }, ret 100 + of type System.Double
+Assigned 100 of type System.Double to x of type Double
+Evaluating y j NinjaParser+CallData =  from block 
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+BUiltin func getPositionY, param 
+sSearching j in 
+sSearching j in cbl
+Calling builtin method getPositionY with params { Int j }, ret 600 + of type System.Double
+Assigned 600 of type System.Double to y of type Double
+Evaluating myAng id NinjaParser+CallData =  from block 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+BUiltin func getPositionY, param 
+sSearching j in 
+sSearching j in cbl
+Calling builtin method getPositionY with params { Int j }, ret 600 + of type System.Double
+Assigned 600 of type System.Double to y of type Double
+Evaluating myAng id NinjaParser+CallData =  from block 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+BUiltin func getDirection, param 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+Calling builtin method getDirection with params { Int id }, ret 0 + of type System.Double
+Assigned 0 of type System.Double to myAng of type Double
+Evaluating reqAng y myy - x myx - atan2 =  from block 
+sSearching myy in 
+sSearching myy in cbl
+sSearching myy in otbl
+sSearching myx in 
+sSearching myx in cbl
+sSearching myx in otbl
+Assigned 1,5707963267949 of type System.Double to reqAng of type Double
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Calling custom method abs with params { Int -1,5707963267949 }
+===Entering fun abs with params { Double val = -1,5707963267949 }
+Method abs contains:
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+Evaluating res val =  from block abs
+Assigned -1,5707963267949 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+Evaluating res 0 <  from block abs
+Evaluating res 0 res - =  from block 
+sSearching res in 
+sSearching res in 
+sSearching res in 
+sSearching res in 
+Assigned 1,5707963267949 of type System.Double to res of type Double
+Evaluating res  from block abs
+---Vars of block met abs ----
+	val is Double with value -1,5707963267949
+	res is Double with value 1,5707963267949
+---End Vars of block met abs ----
+===Exiting fun abs
+Evaluating res  from block abs
+===fun abs returned 1,5707963267949
+sSearching EPS in 
+sSearching EPS in cbl
+sSearching EPS in otbl
+---Entering whilecycle
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+sSearching myAng in 
+sSearching reqAng in 
+Calling custom method abs with params { Int -1,5707963267949 }
+===Entering fun abs with params { Double val = -1,5707963267949 }
+Method abs contains:
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+Evaluating res val =  from block abs
+Assigned -1,5707963267949 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+Evaluating res 0 <  from block abs
+Evaluating res 0 res - =  from block 
+sSearching res in 
+sSearching res in 
+sSearching res in 
+sSearching res in 
+Assigned 1,5707963267949 of type System.Double to res of type Double
+Evaluating res  from block abs
+---Vars of block met abs ----
+	val is Double with value -1,5707963267949
+	res is Double with value 1,5707963267949
+---End Vars of block met abs ----
+===Exiting fun abs
+Evaluating res  from block abs
+===fun abs returned 1,5707963267949
+sSearching EPS in 
+sSearching EPS in cbl
+sSearching EPS in otbl
+-=-While loop 0
+Evaluating reqAng myAng -  from block 
+Evaluating reqAng myAng -  from block 
+Calling builtin method turn with params { Int 1,5707963267949 }
+Evaluating reqAng myAng -  from block 
+Evaluating myAng id NinjaParser+CallData =  from block 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+BUiltin func getDirection, param 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+Calling builtin method getDirection with params { Int id }, ret 3,141593 + of type System.Double
+Assigned 3,141593 of type System.Double to myAng of type Double
+Evaluating reqAng y myy - x myx - atan2 =  from block 
+sSearching myy in 
+sSearching myy in cbl
+sSearching myy in otbl
+sSearching myx in 
+sSearching myx in cbl
+sSearching myx in otbl
+Assigned 2,35619449019234 of type System.Double to reqAng of type Double
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Calling custom method abs with params { Int 0,785398509807655 }
+===Entering fun abs with params { Double val = 0,785398509807655 }
+Method abs contains:
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+Evaluating res val =  from block abs
+Assigned 0,785398509807655 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+Evaluating res 0 <  from block abs
+Evaluating res  from block abs
+---Vars of block met abs ----
+	val is Double with value 0,785398509807655
+	res is Double with value 0,785398509807655
+---End Vars of block met abs ----
+===Exiting fun abs
+Evaluating res  from block abs
+===fun abs returned 0,785398509807655
+sSearching EPS in 
+sSearching EPS in cbl
+sSearching EPS in otbl
+---Entering whilecycle
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+sSearching myAng in 
+sSearching reqAng in 
+Calling custom method abs with params { Int 0,785398509807655 }
+===Entering fun abs with params { Double val = 0,785398509807655 }
+Method abs contains:
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+Evaluating res val =  from block abs
+Assigned 0,785398509807655 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+Evaluating res 0 <  from block abs
+Evaluating res  from block abs
+---Vars of block met abs ----
+	val is Double with value 0,785398509807655
+	res is Double with value 0,785398509807655
+---End Vars of block met abs ----
+===Exiting fun abs
+Evaluating res  from block abs
+===fun abs returned 0,785398509807655
+sSearching EPS in 
+sSearching EPS in cbl
+sSearching EPS in otbl
+-=-While loop 0
+Evaluating reqAng myAng -  from block 
+Evaluating reqAng myAng -  from block 
+Calling builtin method turn with params { Int -0,785398509807655 }
+Evaluating reqAng myAng -  from block 
+Evaluating myAng id NinjaParser+CallData =  from block 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+BUiltin func getDirection, param 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+Calling builtin method getDirection with params { Int id }, ret 1,570796 + of type System.Double
+Assigned 1,570796 of type System.Double to myAng of type Double
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Calling custom method abs with params { Int -3,26794896476912E-07 }
+===Entering fun abs with params { Double val = -3,26794896476912E-07 }
+Method abs contains:
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+Evaluating res val =  from block abs
+Assigned -3,26794896476912E-07 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+Evaluating res 0 <  from block abs
+Evaluating res 0 res - =  from block 
+sSearching res in 
+sSearching res in 
+sSearching res in 
+sSearching res in 
+Assigned 3,26794896476912E-07 of type System.Double to res of type Double
+Evaluating res  from block abs
+---Vars of block met abs ----
+	val is Double with value -3,26794896476912E-07
+	res is Double with value 3,26794896476912E-07
+---End Vars of block met abs ----
+===Exiting fun abs
+Evaluating res  from block abs
+===fun abs returned 3,26794896476912E-07
+sSearching EPS in 
+sSearching EPS in cbl
+sSearching EPS in otbl
+---Exiting whilecycle
+Evaluating  from block 
+Evaluating i 0 =  from block otbl
+Assigned 0 of type System.Int32 to i of type Int
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 0
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 1
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 2
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 3
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 4
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 5
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 6
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+
+rams { }
+rection, param 
+sSearching id in 
+from block cbl
+sSearching i in cblsSearching id in cblsSearching id in cbl
+==For iter 7
+sSearching id in otbl
+==For iter 7
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+thod getDirection with params { Int id }, ret 2,356195 + of type System.Double
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Assigned 2,356195 of type System.Double to myAng of type Double
+Assigned 2,356195 of type System.Double to myAng of type Double
+Evaluating i 10 <  from block cbl
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+sSearching i in cbl
+==For iter 8
+Evaluating  from block cbl
+ method abs with params { Int 5,09807655202366E-07 }
+===Entering fun abs with parCalling builtin method shoot with params { }
+ 5,09807655202366E-07 }
+Method abs contains:
+ shoot with params { }
+Evaluating i ++pre  frNinjaParser+ExprClass
+m block cbl
+sSearching i in cbl
+
+NinjaParser+ExprClasssSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 9
+Evaluating  from block cbl
+Calling builtin method NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+Evaluating res val =  from block abs
+ms { }
+Evaluating i ++pre  from block cbl
+
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Assigned 5,09807655202366E-07 of type System.Double to res of type Double
+Evaluating res 0 <  fEvaluating res 0 <  from block abs
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+Evaluating res 0 <  from block abs
+Evaluating res  from block abs
+bs
+Evaluating j ++pre  from block cbl
+sSearching j in cbl
+block abs
+---Vars of block met sSearching j in cbl
+abs ----
+	val is Double with v	val is Double with value 5,09807655202366E-07
+Evaluating j 4 <  from block cbl
+	res is Double with value 5,09807655202366E-07
+sSearching j in cbl
+==For iter 3
+ with value 5,09807655202366E-07
+---End Vars ofEvaluating j id !=  from block cbl===Exiting fun abs
+from block cbl
+sSearching j in cblEvaluating res  from sSearching id in cbl
+lock abs
+sSearching id in cbl
+sSearching id in otbl
+===fun abs returned 5,09807655202366E-07
+sSearching EPS in 
+5,09807655202366E-07
+Evaluating j id !=  from block cbl
+sSearching j in cblsSearching EPS in cblsSearching id in cbl
+
+sSearching EPS in otblsSearching id in otbl
+
+---Exiting whilecycle
+---Exiting whilecycle
+Evaluating  from block 
+r+CallData =  from block 
+sSearching j in 
+lock 
+Evaluating i 0 =  sSearching j in cbl
+m block otbl
+sSearching j in cbl
+Assigned 0 of type System.Int32 to i of type Int
+Evaluating i 10 <  from block cbl
+i of type Int
+sSearching j in 
+sSearching j in cbl
+om block cbl
+sSearching i in cbl
+sSearching j in 
+l
+sSearching j in 
+sSearching j iEvaluating  from blocEvaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 1
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 2
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 3
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 4
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 5
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 6
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 7
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 8
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 9
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+Evaluating j ++pre  from block cbl
+sSearching j in cbl
+sSearching j in cbl
+Evaluating j 4 <  from block cbl
+sSearching j in cbl
+==For iter 3
+Evaluating j id !=  from block cbl
+sSearching j in cbl
+sSearching id in cbl
+sSearching id in otbl
+Evaluating j id !=  from block cbl
+sSearching j in cbl
+sSearching id in cbl
+sSearching id in otbl
+Evaluating x j NinjaParser+CallData =  from block 
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+BUiltin func getPositionX, param 
+sSearching j in 
+sSearching j in cbl
+Calling builtin method getPositionX with params { Int j }, ret 600 + of type System.Double
+Assigned 600 of type System.Double to x of type Double
+Evaluating y j NinjaParser+CallData =  from block 
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+BUiltin func getPositionY, param 
+sSearching j in 
+sSearching j in cbl
+Calling builtin method getPositionY with params { Int j }, ret 100 + of type System.Double
+Assigned 100 of type System.Double to y of type Double
+Evaluating myAng id NinjaParser+CallData =  from block 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+BUiltin func getPositionX, param 
+sSearching j in 
+sSearching j in cbl
+Calling builtin method getPositionX with params { Int j }, ret 600 + of type System.Double
+Assigned 600 of type System.Double to x of type Double
+Evaluating y j NinjaParser+CallData =  from block 
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+BUiltin func getDirection, param 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+Calling builtin method getDirection with params { Int id }, ret -2,356195 + of type System.Double
+Assigned -2,356195 of type System.Double to myAng of type Double
+Evaluating reqAng y myy - x myx - atan2 =  from block 
+sSearching myy in 
+sSearching myy in cbl
+sSearching myy in otbl
+sSearching myx in 
+sSearching myx in cbl
+sSearching myx in otbl
+Assigned -1,5707963267949 of type System.Double to reqAng of type Double
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Calling custom method abs with params { Int -0,785398673205103 }
+===Entering fun abs with params { Double val = -0,785398673205103 }
+Method abs contains:
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+Evaluating res val =  from block abs
+Assigned -0,785398673205103 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+Evaluating res 0 <  from block abs
+Evaluating res 0 res - =  from block 
+sSearching res in 
+sSearching res in 
+sSearching res in 
+sSearching res in 
+Assigned 0,785398673205103 of type System.Double to res of type Double
+Evaluating res  from block abs
+---Vars of block met abs ----
+	val is Double with value -0,785398673205103
+	res is Double with value 0,785398673205103
+---End Vars of block met abs ----
+===Exiting fun abs
+Evaluating res  from block abs
+===fun abs returned 0,785398673205103
+sSearching EPS in 
+sSearching EPS in cbl
+sSearching EPS in otbl
+---Entering whilecycle
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+sSearching myAng in 
+sSearching reqAng in 
+Calling custom method abs with params { Int -0,785398673205103 }
+===Entering fun abs with params { Double val = -0,785398673205103 }
+Method abs contains:
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+Evaluating res val =  from block abs
+Assigned -0,785398673205103 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+Evaluating res 0 <  from block abs
+Evaluating res 0 res - =  from block 
+sSearching res in 
+sSearching res in 
+sSearching res in 
+sSearching res in 
+Assigned 0,785398673205103 of type System.Double to res of type Double
+Evaluating res  from block abs
+---Vars of block met abs ----
+	val is Double with value -0,785398673205103
+	res is Double with value 0,785398673205103
+---End Vars of block met abs ----
+===Exiting fun abs
+Evaluating res  from block abs
+===fun abs returned 0,785398673205103
+sSearching EPS in 
+sSearching EPS in cbl
+sSearching EPS in otbl
+-=-While loop 0
+Evaluating reqAng myAng -  from block 
+Evaluating reqAng myAng -  from block 
+Calling builtin method turn with params { Int 0,785398673205103 }
+Evaluating reqAng myAng -  from block 
+Evaluating myAng id NinjaParser+CallData =  from block 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+BUiltin func getPositionY, param 
+sSearching j in 
+sSearching j in cbl
+Calling builtin method getPositionY with params { Int j }, ret 100 + of type System.Double
+Assigned 100 of type System.Double to y of type Double
+Evaluating myAng id NinjaParser+CallData =  from block 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+BUiltin func getDirection, param 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+Calling builtin method getDirection with params { Int id }, ret -1,570796 + of type System.Double
+Assigned -1,570796 of type System.Double to myAng of type Double
+Evaluating reqAng y myy - x myx - atan2 =  from block 
+sSearching myy in 
+sSearching myy in cbl
+sSearching myy in otbl
+sSearching myx in 
+sSearching myx in cbl
+sSearching myx in otbl
+Assigned -0,785398163397448 of type System.Double to reqAng of type Double
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Calling custom method abs with params { Int -0,785397836602552 }
+BUiltin func getDirection, param 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+on, param 
+===Entering fun abs with params { Double val = -0,785397836602552 }
+Method abs contains:
+
+Method abs contains:
+NinjaParser+ExprClass
+getDirection with params { Int id }, ret -1,570796 + of type System.Double
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+Assigned -1,570796 of type System.Double to myAng of type Double
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+valuating res val =  from block abs
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Assigned -0,785397836602552 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+Evaluating res 0 <  from block abs
+Calling custom method abs with params { Int 3,26794896476912E-07 }
+===Entering fun abs with params { Do===Entering fun abs with params { Double val = 3,26794896476912E-07 }
+Evaluating res 0 res - =  from block 
+sSearching res in 
+ - =  from block 
+Method abs contains:
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+Evaluating res val =Evaluating res val =  from block abs
+sSearching res in 
+sSearching res in 
+sSearching res in 
+sSearching res in 
+Assigned 3,26794896476912E-07 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+Evaluating res 0 <  from block abs
+Assigned 0,785397836602552 of type System.Double to res of type Double
+Evaluating res  from block abs
+bs
+Evaluating res  from block abs
+---Vars of block met abs ----
+
+---Vars of block met abs ----
+	val is Double with value 3,267	val is Double with value 3,26794896476912E-07
+	val is Double with value -0,785397836602552
+	res is Double with value 3,26794896476912E-07
+---End Vars of block met abs ----
+===Exiting fun abs
+Evaluating res  from block abs
+-
+6476912E-07
+	res is Double with value 0,785397836602552
+---End Vars of block met abs ------End Vars of block met abs ----
+===Exiting fun abs
+Evaluating res  from block abs
+eturned 3,26794896476912E-07
+sSearching EPS in 
+sSearching EPS in cbl
+sSearching EPS in otbl
+---Exiting whilecycle
+Evaluating  from block 
+Evaluating i 0 =  from block otbl
+Evaluating i 0 =  from block otbAssigned 0 of type System.Int32 to i of type Int
+===fun abs returned 0,785397836602552
+sSearching EPS in 
+0,785397836602552
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 0
+n cblsSearching EPSEvaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 1
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 2
+n cbl
+omsSearching EPSEvaluating  from block c---Entering whilecycle
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+sSearching myAng in 
+g - NiCalling builtin methodsSearching reqAng in 
+shoot with params { }
+Evaluating i ++pre  froEvaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+ method abs with params { Int -0,785397836602552 }
+Evaluating i 10 <  from block cbl
+===Entering fun abs with params { Double val = -0,785397836602552 }
+Method abs contains:
+th params { Double val = -0,785397836602552 }
+sSearching i in cbl
+==For iter 3
+tains:
+NinjaParser+ExEvaluating  from block NinjaParser+ExprClass
+cbl
+Calling builtin method NinjaParser+Condition
+shoot with params { }
+Evaluating i ++pre  froNinjaParser+ExprClass
+m block cbl
+sSearching i in cbl
+
+End of method abs blosSearching i in cbl
+ck
+Evaluating res val = Evaluating i 10 <  from block cbl
+s
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 4
+Evaluating  from block cbl
+5397836602552 of type System.Double to res of type Double
+Evaluating res 0 <  from bloCalling builtin method shoot with paCalling builtin method shoot with params { }
+Evaluating res 0 <  from block abs
+Evaluating res 0 res - =  from block 
+luating i ++pre  from block cbl
+sSearching i in cbl
+- =  from block 
+sSearching res in 
+
+sSearching i in cbl
+sSearching i in cblEvaluating i 10 <  from block cbl
+sSearching i in cblsSearching res in 
+
+sSearching res in 
+sSearching resEvaluating  from block cbl
+Calling builtin methCalling builtin method shoot with params { }
+Assigned 0,785397836602552 of type System.Double to res of type Double
+Evaluating res  from block abs
+pe System.Double to res of type Double
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+block abs
+---Vars of block met sSearching i in cbl
+abs ----
+sSearching i in cbl
+	val is Double with value -0,785397836602552
+	res is Double with value 0,785397836602552
+---End Vars of block met abs ----
+===Exiting fun abs
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+om block cbl
+Evaluating res  from block abs
+sSearching i in cbl
+===fun abs returned 0,785397836602552
+sSearching EPS in 
+0,785397836602552
+==For iter 6
+Evaluating  from blosSearching EPS in cbl
+cbl
+Calling builtin method sSearching EPS in otbl
+hoot with params { }
+Evaluating i ++pre  from-=-While loop 0
+e  from block cbl
+sSearching i in cEvaluating reqAng myAsSearching i in cbl
+ng -  from block 
+sSearching i in cbl
+Evaluating reqAng myAng -  from block 
+Evaluating reqAng myAng -  from block 
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+d turn with params { Int 0,785397836602552 }
+Evaluating reqAng myA==For iter 7
+Ang myAng -  from block 
+==For iter 7
+Evaluating myAng id NinjaParser+CallData =  from block 
+sSearching id in 
+ NinjaParser+CallData =  from block 
+Evaluating  from block cbl
+Calling builtin metsSearching id in cbl
+ shoot with params { }
+Evaluating i ++pre  frsSearching id in otbl
+m block cbl
+sSearching i in cbl
+
+sSearching id in 
+
+sSearching i in cblsSearching id in cblEvaluating i 10 <  frosSearching id in otbl
+ block cbl
+sSearching i in cbl
+
+sSearching id in 
+
+==For iter 8
+in 
+sSearching id Evaluating  from blocksSearching id in otbl
+cbl
+Calling builtin method Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 9
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+Evaluating j ++pre  from block cbl
+sSearching j in cbl
+sSearching j in cbl
+Evaluating j 4 <  from block cbl
+sSearching j in cbl
+==For iter 2
+Evaluating j id !=  from block cbl
+sSearching j in cbl
+sSearching id in cbl
+sSearching id in otbl
+Evaluating j id !=  from block cbl
+sSearching j in cbl
+sSearching id in cbl
+sSearching id in otbl
+Evaluating x j NinjaParser+CallData =  from block 
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+BUiltin func getDirection, param 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+Calling builtin method getDirection with params { Int id }, ret -0,785398 + of type System.Double
+Assigned -0,785398 of type System.Double to myAng of type Double
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Calling custom method abs with params { Int 1,63397448238456E-07 }
+===Entering fun abs with params { Double val = 1,63397448238456E-07 }
+Method abs contains:
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+Evaluating res val =  from block abs
+Assigned 1,63397448238456E-07 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+Evaluating res 0 <  from block abs
+Evaluating res  from block abs
+---Vars of block met abs ----
+	val is Double with value 1,63397448238456E-07
+	res is Double with value 1,63397448238456E-07
+---End Vars of block met abs ----
+===Exiting fun abs
+Evaluating res  from block abs
+===fun abs returned 1,63397448238456E-07
+sSearching EPS in 
+sSearching EPS in cbl
+sSearching EPS in otbl
+---Exiting whilecycle
+Evaluating  from block 
+Evaluating i 0 =  from block otbl
+Assigned 0 of type System.Int32 to i of type Int
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 0
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 1
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 2
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 3
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 4
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 5
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 6
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 7
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 8
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 9
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+Evaluating j ++pre  from block cbl
+sSearching j in cbl
+sSearching j in cbl
+Evaluating j 4 <  from block cbl
+sSearching j in cbl
+==For iter 2
+Evaluating j id !=  from block cbl
+sSearching j in cbl
+sSearching id in cbl
+sSearching id in otbl
+Evaluating j id !=  from block cbl
+sSearching j in cbl
+sSearching id in cbl
+sSearching id in otbl
+Evaluating j ++pre  from block cbl
+sSearching j in cbl
+sSearching j in cbl
+Evaluating j 4 <  from block cbl
+sSearching j in cbl
+==For iter 3
+Evaluating j id !=  from block cbl
+sSearching j in cbl
+sSearching id in cbl
+sSearching id in otbl
+Evaluating j id !=  from block cbl
+sSearching j in cbl
+sSearching id in cbl
+sSearching id in otbl
+Evaluating x j NinjaParser+CallData =  from block 
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+BUiltin func getPositionX, param 
+sSearching j in 
+sSearching j in cbl
+Calling builtin method getPositionX with params { Int j }, ret 600 + of type System.Double
+Assigned 600 of type System.Double to x of type Double
+Evaluating y j NinjaParser+CallData =  from block 
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+BUiltin func getPositionX, param 
+sSearching j in 
+sSearching j in cbl
+Calling builtin method getPositionX with params { Int j }, ret 600 + of type System.Double
+Assigned 600 of type System.Double to x of type Double
+Evaluating y j NinjaParser+CallData =  from block 
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+BUiltin func getPositionY, param 
+sSearching j in 
+sSearching j in cbl
+Calling builtin method getPositionY with params { Int j }, ret 600 + of type System.Double
+Assigned 600 of type System.Double to y of type Double
+Evaluating myAng id NinjaParser+CallData =  from block 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+BUiltin func getPositionY, param 
+sSearching j in 
+sSearching j in cbl
+Calling builtin method getPositionY with params { Int j }, ret 600 + of type System.Double
+Assigned 600 of type System.Double to y of type Double
+Evaluating myAng id NinjaParser+CallData =  from block 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+BUiltin func getDirection, param 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+Calling builtin method getDirection with params { Int id }, ret 1,570796 + of type System.Double
+Assigned 1,570796 of type System.Double to myAng of type Double
+Evaluating reqAng y myy - x myx - atan2 =  from block 
+sSearching myy in 
+sSearching myy in cbl
+sSearching myy in otbl
+sSearching myx in 
+sSearching myx in cbl
+sSearching myx in otbl
+Assigned 0,785398163397448 of type System.Double to reqAng of type Double
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Calling custom method abs with params { Int 0,785397836602552 }
+===Entering fun abs with params { Double val = 0,785397836602552 }
+Method abs contains:
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+Evaluating res val =  from block abs
+Assigned 0,785397836602552 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+Evaluating res 0 <  from block abs
+Evaluating res  from block abs
+---Vars of block met abs ----
+	val is Double with value 0,785397836602552
+	res is Double with value 0,785397836602552
+---End Vars of block met abs ----
+===Exiting fun abs
+Evaluating res  from block abs
+===fun abs returned 0,785397836602552
+sSearching EPS in 
+sSearching EPS in cbl
+sSearching EPS in otbl
+---Entering whilecycle
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+sSearching myAng in 
+sSearching reqAng in 
+Calling custom method abs with params { Int 0,785397836602552 }
+===Entering fun abs with params { Double val = 0,785397836602552 }
+Method abs contains:
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+Evaluating res val =  from block abs
+Assigned 0,785397836602552 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+Evaluating res 0 <  from block abs
+Evaluating res  from block abs
+---Vars of block met abs ----
+	val is Double with value 0,785397836602552
+	res is Double with value 0,785397836602552
+---End Vars of block met abs ----
+===Exiting fun abs
+Evaluating res  from block abs
+===fun abs returned 0,785397836602552
+sSearching EPS in 
+sSearching EPS in cbl
+sSearching EPS in otbl
+-=-While loop 0
+Evaluating reqAng myAng -  from block 
+Evaluating reqAng myAng -  from block 
+Calling builtin method turn with params { Int -0,785397836602552 }
+Evaluating reqAng myAng -  from block 
+Evaluating myAng id NinjaParser+CallData =  from block 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+BUiltin func getDirection, param 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+Calling builtin method getDirection with params { Int id }, ret 2,356195 + of type System.Double
+Assigned 2,356195 of type System.Double to myAng of type Double
+Evaluating reqAng y myy - x myx - atan2 =  from block 
+sSearching myy in 
+sSearching myy in cbl
+sSearching myy in otbl
+sSearching myx in 
+sSearching myx in cbl
+sSearching myx in otbl
+Assigned 1,5707963267949 of type System.Double to reqAng of type Double
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Calling custom method abs with params { Int 0,785398673205103 }
+===Entering fun abs with params { Double val = 0,785398673205103 }
+Method abs contains:
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+Evaluating res val =  from block abs
+Assigned 0,785398673205103 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+Evaluating res 0 <  from block abs
+Evaluating res  from block abs
+---Vars of block met abs ----
+	val is Double with value 0,785398673205103
+	res is Double with value 0,785398673205103
+---End Vars of block met abs ----
+===Exiting fun abs
+Evaluating res  from block abs
+===fun abs returned 0,785398673205103
+sSearching EPS in 
+sSearching EPS in cbl
+sSearching EPS in otbl
+---Entering whilecycle
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+sSearching myAng in 
+sSearching reqAng in 
+Calling custom method abs with params { Int 0,785398673205103 }
+===Entering fun abs with params { Double val = 0,785398673205103 }
+Method abs contains:
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+Evaluating res val =  from block abs
+Assigned 0,785398673205103 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+Evaluating res 0 <  from block abs
+Evaluating res  from block abs
+---Vars of block met abs ----
+	val is Double with value 0,785398673205103
+	res is Double with value 0,785398673205103
+---End Vars of block met abs ----
+===Exiting fun abs
+Evaluating res  from block abs
+===fun abs returned 0,785398673205103
+sSearching EPS in 
+sSearching EPS in cbl
+sSearching EPS in otbl
+-=-While loop 0
+Evaluating reqAng myAng -  from block 
+Evaluating reqAng myAng -  from block 
+Calling builtin method turn with params { Int -0,785398673205103 }
+Evaluating reqAng myAng -  from block 
+Evaluating myAng id NinjaParser+CallData =  from block 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+BUiltin func getDirection, param 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+Calling builtin method getDirection with params { Int id }, ret 0,785399 + of type System.Double
+Assigned 0,785399 of type System.Double to myAng of type Double
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Calling custom method abs with params { Int 8,36602551679277E-07 }
+===Entering fun abs with params { Double val = 8,36602551679277E-07 }
+Method abs contains:
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+Evaluating res val =  from block abs
+Assigned 8,36602551679277E-07 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+Evaluating res 0 <  from block abs
+Evaluating res  from block abs
+---Vars of block met abs ----
+	val is Double with value 8,36602551679277E-07
+	res is Double with value 8,36602551679277E-07
+---End Vars of block met abs ----
+===Exiting fun abs
+Evaluating res  from block abs
+===fun abs returned 8,36602551679277E-07
+sSearching EPS in 
+sSearching EPS in cbl
+sSearching EPS in otbl
+---Exiting whilecycle
+Evaluating  from block 
+Evaluating i 0 =  from block otbl
+Assigned 0 of type System.Int32 to i of type Int
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 0
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 1
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 2
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 3
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 4
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 5
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 6
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 7
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 8
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 9
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+Evaluating j ++pre  from block cbl
+sSearching j in cbl
+sSearching j in cbl
+Evaluating j 4 <  from block cbl
+sSearching j in cbl
+---Vars of block met main ----
+BUiltin func getDirection, param 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+Calling builtin method getDirection with params { Int id }, ret 1,570796 + of type System.Double
+Assigned 1,570796 of type System.Double to myAng of type Double
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Calling custom method abs with params { Int -3,26794896476912E-07 }
+===Entering fun abs with params { Double val = -3,26794896476912E-07 }
+Method abs contains:
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+Evaluating res val =  from block abs
+th value 0
+	myx is Double with value 100
+k abs
+	myx is Double with value 100
+Assigned -3,26794896476912E-07 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+pe System.Double to res of type Double
+	myy is Double with value 100
+	EPS is Double with value 1E-06
+s
+	EPS is Double with value 1E-06
+---End Vars of block met main ----
+Evaluating res 0 res - =  from block===Exiting fun main
+===Exiting fun main
+- =  from block 
+sSearching res in 
+sSearching res in 
+sSearching res in 
+sSearching res in 
+Assigned 3,26794896476912E-07 of type System.Double to res of type Double
+Evaluating res  from block abs
+---Vars of block met abs ----
+	val is Double with value -3,26794896476912E-07
+	res is Double with value 3,26794896476912E-07
+---End Vars of block met abs ----
+===Exiting fun abs
+Evaluating res  from block abs
+===fun abs returned 3,26794896476912E-07
+sSearching EPS in 
+sSearching EPS in cbl
+sSearching EPS in otbl
+---Exiting whilecycle
+Evaluating  from block 
+Evaluating i 0 =  from block otbl
+Assigned 0 of type System.Int32 to i of type Int
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 0
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 1
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 2
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 3
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 4
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 5
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 6
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 7
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 8
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 9
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+Evaluating j ++pre  from block cbl
+sSearching j in cbl
+sSearching j in cbl
+Evaluating j 4 <  from block cbl
+sSearching j in cbl
+---Vars of block met main ----
+	id is Int with value 1
+	myx is Double with value 600
+	myy is Double with value 100
+	EPS is Double with value 1E-06
+---End Vars of block met main ----
+===Exiting fun main
+BUiltin func getPositionX, param 
+sSearching j in 
+sSearching j in cbl
+Calling builtin method getPositionX with params { Int j }, ret 100 + of type System.Double
+Assigned 100 of type System.Double to x of type Double
+Evaluating y j NinjaParser+CallData =  from block 
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+BUiltin func getPositionY, param 
+sSearching j in 
+sSearching j in cbl
+Calling builtin method getPositionY with params { Int j }, ret 600 + of type System.Double
+Assigned 600 of type System.Double to y of type Double
+Evaluating myAng id NinjaParser+CallData =  from block 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+BUiltin func getPositionX, param 
+sSearching j in 
+sSearching j in cbl
+Calling builtin method getPositionX with params { Int j }, ret 600 + of type System.Double
+Assigned 600 of type System.Double to x of type Double
+Evaluating y j NinjaParser+CallData =  from block 
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+sSearching j in 
+sSearching j in cbl
+BUiltin func getDirection, param 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+Calling builtin method getDirection with params { Int id }, ret -1,570796 + of type System.Double
+Assigned -1,570796 of type System.Double to myAng of type Double
+Evaluating reqAng y myy - x myx - atan2 =  from block 
+sSearching myy in 
+sSearching myy in cbl
+sSearching myy in otbl
+sSearching myx in 
+sSearching myx in cbl
+sSearching myx in otbl
+Assigned 3,14159265358979 of type System.Double to reqAng of type Double
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Calling custom method abs with params { Int -4,71238865358979 }
+===Entering fun abs with params { Double val = -4,71238865358979 }
+Method abs contains:
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+Evaluating res val =  from block abs
+Assigned -4,71238865358979 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+Evaluating res 0 <  from block abs
+Evaluating res 0 res - =  from block 
+sSearching res in 
+sSearching res in 
+sSearching res in 
+sSearching res in 
+Assigned 4,71238865358979 of type System.Double to res of type Double
+Evaluating res  from block abs
+---Vars of block met abs ----
+	val is Double with value -4,71238865358979
+	res is Double with value 4,71238865358979
+---End Vars of block met abs ----
+===Exiting fun abs
+Evaluating res  from block abs
+===fun abs returned 4,71238865358979
+sSearching EPS in 
+sSearching EPS in cbl
+sSearching EPS in otbl
+---Entering whilecycle
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+sSearching myAng in 
+sSearching reqAng in 
+Calling custom method abs with params { Int -4,71238865358979 }
+===Entering fun abs with params { Double val = -4,71238865358979 }
+Method abs contains:
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+Evaluating res val =  from block abs
+Assigned -4,71238865358979 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+Evaluating res 0 <  from block abs
+Evaluating res 0 res - =  from block 
+sSearching res in 
+sSearching res in 
+sSearching res in 
+sSearching res in 
+Assigned 4,71238865358979 of type System.Double to res of type Double
+Evaluating res  from block abs
+---Vars of block met abs ----
+	val is Double with value -4,71238865358979
+	res is Double with value 4,71238865358979
+---End Vars of block met abs ----
+===Exiting fun abs
+Evaluating res  from block abs
+===fun abs returned 4,71238865358979
+sSearching EPS in 
+sSearching EPS in cbl
+sSearching EPS in otbl
+-=-While loop 0
+Evaluating reqAng myAng -  from block 
+Evaluating reqAng myAng -  from block 
+Calling builtin method turn with params { Int 4,71238865358979 }
+Evaluating reqAng myAng -  from block 
+Evaluating myAng id NinjaParser+CallData =  from block 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+BUiltin func getPositionY, param 
+sSearching j in 
+sSearching j in cbl
+Calling builtin method getPositionY with params { Int j }, ret 600 + of type System.Double
+Assigned 600 of type System.Double to y of type Double
+Evaluating myAng id NinjaParser+CallData =  from block 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+BUiltin func getDirection, param 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+Calling builtin method getDirection with params { Int id }, ret -0,785398 + of type System.Double
+Assigned -0,785398 of type System.Double to myAng of type Double
+Evaluating reqAng y myy - x myx - atan2 =  from block 
+sSearching myy in 
+sSearching myy in cbl
+sSearching myy in otbl
+sSearching myx in 
+sSearching myx in cbl
+sSearching myx in otbl
+Assigned 0 of type System.Double to reqAng of type Double
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Calling custom method abs with params { Int -0,785398 }
+===Entering fun abs with params { Double val = -0,785398 }
+Method abs contains:
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+Evaluating res val =  from block abs
+Assigned -0,785398 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+Evaluating res 0 <  from block abs
+Evaluating res 0 res - =  from block 
+sSearching res in 
+sSearching res in 
+sSearching res in 
+sSearching res in 
+Assigned 0,785398 of type System.Double to res of type Double
+Evaluating res  from block abs
+---Vars of block met abs ----
+	val is Double with value -0,785398
+	res is Double with value 0,785398
+---End Vars of block met abs ----
+===Exiting fun abs
+Evaluating res  from block abs
+===fun abs returned 0,785398
+sSearching EPS in 
+sSearching EPS in cbl
+sSearching EPS in otbl
+---Entering whilecycle
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+sSearching myAng in 
+sSearching reqAng in 
+BUiltin func getDirection, param 
+Calling custom method abs with params { Int -0,785398 }
+===Entering fun abs with params { Double val = -0,785398 }
+arching id in 
+sSearching id in cbl
+th params { Double val = -0,785398 }
+Method abs contains:
+sSearching id in otbl
+sSearching id in otblNinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+Evaluating res val =  from block abs
+ method getDirection with params { Int id }, ret 0,009204 + of type System.Double
+Evaluating res val =  from block abs
+Assigned 0,009204 of type System.Double to myAng of type Double
+Assigned 0,009204 of type System.Double to myAng of type Double
+Assigned -0,785398 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+r+CallData EPS >  from block 
+Evaluating res 0 <  from block abs
+Evaluating res 0 <  from block abs
+Evaluating res 0 res - =  from block 
+ling custom method abs with params { Int -3,13238865358979 }
+Evaluating res 0 res - =  from block 
+sSearching res in 
+with params { Double val = -3,13238865358979 }
+Method abs contains:Method abs contains:
+NinjaParser+ExprClassSearching res in 
+s
+NinjaParser+ExprClassSearching res in 
+s
+NinjaParser+ConditioNinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+signed 0,785398 of type System.Double to res of type Double
+Evaluating res  from blocEvaluating res val =  from block---Vars of block met abs ----
+k abs
+---Vars of block met abs ----
+	val is Double with value -0,785398
+	res is Double with value 0,785398
+
+Assigned -3,13238865358979 of type System.Double to res of type Double
+	res is Double with value 0,785398
+Evaluating res 0 <  from block abs
+---End Vars of block met abs ----
+Evaluating res 0 <  from block abs
+Evaluating res 0 res - =  from block 
+Exiting fun abs
+Evaluating res  from block abs
+lock 
+sSearching res in 
+ block abs
+sSearching res in 
+===fun abs returned 0,785398
+sSearching EPS in 
+0,785398
+sSearching res in 
+sSearching res in 
+sSearching res in 
+sSearching res in 
+sSearching EPS in cbl
+sSearching EPS in otbl
+-=-While loop 0
+ otbl
+ssigned 3,13238865358979 of type System.Double to res of type Double
+Evaluating res  fEvaluating reqAng myAng -  from ---Vars of block met abs ----
+ block 
+---Vars of block met abs ----
+Evaluating reqAng myAng -  from block 
+Evaluating reqAng myAng -  from block 
+	val is Double with value -3,13238865358979
+Calling builtin method turn with params { Int 0,785398 }
+Evaluating reqAng myAng -  from block 
+{ Int 0,785398 }
+	res is Double with value 3,13238865358979
+---End Vars of block met abs ----
+===Exiting fun abs
+Evaluating res  from block abs
+Evaluating res  from block abs
+-
+ck 
+===fun abs returned 3,13238865358979
+sSearching EPS in 
+sSearching EPS in cbl
+luating myAng id NinjaParser+CallData =  from block 
+sSearching id in 
+bl
+sSearching EPS in otbl
+-=-While loop 1
+ osSearching id in Evaluating reqAng myAnsSearching id in otbl
+ -  from block 
+Evaluating reqAng myAngsSearching id in 
+yAng -  from block 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+alling builtin method turn with params { Int 3,13238865358979 }
+Evaluating reqAng myAng -  from block 
+Evaluating myAng id NinsSearching id in 
+ NinjaParser+CallData =  from block 
+sSearching id in 
+sSearching id in cbsSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+blsSearching id in otsSearching id in cbl
+
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+BUiltin func getDirection, param 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+Calling builtin method getDirection with params { Int id }, ret 0 + of type System.Double
+Assigned 0 of type System.Double to myAng of type Double
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Calling custom method abs with params { Int 0 }
+===Entering fun abs with params { Double val = 0 }
+Method abs contains:
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+Evaluating res val =  from block abs
+Assigned 0 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+Evaluating res 0 <  from block abs
+Evaluating res  from block abs
+---Vars of block met abs ----
+	val is Double with value 0
+	res is Double with value 0
+---End Vars of block met abs ----
+===Exiting fun abs
+Evaluating res  from block abs
+===fun abs returned 0
+sSearching EPS in 
+sSearching EPS in cbl
+sSearching EPS in otbl
+---Exiting whilecycle
+Evaluating  from block 
+Evaluating i 0 =  from block otbl
+Assigned 0 of type System.Int32 to i of type Int
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 0
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 1
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+BUiltin func getDirection, param 
+sSearching id in 
+ection, param 
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 2
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre sSearching id in cbl
+sSearching id in otbl
+Calling builtin method getDirection sSearching i in cbl
+d getDirection with params { Int id }, ret 1,589204 + of type System.Double
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+204 of type System.Double to myAng of type Double
+Evaluating i 10 <  from block cbl
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+sSearching i in cbl
+==For iter 3
+Evaluating  from block cbl
+ method abs with params { Int -1,55238865358979 }
+===Entering fun abs with parCalling builtin method shoot with params { }
+ -1,55238865358979 }
+Method abs contains:
+ shoot with params { }
+Evaluating i ++pre  frNinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+Evaluating res val =  from block abs
+Evaluating res val =  from block absAssigned -1,55238865358979 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+ystem.Double to res of type Double
+sSearching i in cbl
+sSearching i in cbl
+rom block abs
+sSearching i in cbl
+Evaluating res 0 <  from block abs
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+om block cbl
+Evaluating res 0 res - =  from block 
+sSearching res in 
+sSearching res in 
+
+==For iter 4
+ in 
+sSearching resEvaluating  from blosSearching res in 
+ck cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 5
+n cbl==For iter 5
+Assigned 1,55238865358979 of type System.Double to res of type Double
+Evaluating res  from block aCalling builtin method shoot wit---Vars of block met abs ----
+	val is Double with value -1,55238865358979
+
+Evaluating i ++pre  from block cbl
+5358979
+	res is Double with value 1,55238865sSearching i in cbl
+alue 1,55238865358979
+---End Vars of block met abs ----
+===Exiting fun abs
+Evaluating res  from sSearching i in cbl
+Evaluating i 10 <  from block cbEvaluating i 10 <  from block cbl
+sSearching i in cbl
+,55238865358979
+sSearching EPS in 
+
+==For iter 6
+ in 
+sSearching EPS in cbl
+sSearching EPS in otbl
+-=-While loop 2
+Evaluating reqAng myAng -  from block 
+Evaluating reqEvaluating  from block cbl
+rom block 
+Calling builtin method turn Calling builtin method shoot with params { }
+1,55238865358979 }
+Evaluating reqAng myAng -  from block 
+ { }
+Evaluating i ++pre  from block cbl
+k 
+Evaluating i ++pre  from block cbl
+Evaluating myAng id NinjaParser+CallData =  from block 
+sSearching id in 
+ NinjaParser+CallData =  from block 
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cblsSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+bl==For iter 7
+in 
+sSearching id in cbl
+sSearching id in otbl
+sSearching id in 
+sSearching id Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  frosSearching id in otbl
+sSearching id in otbl
+ block cbl
+sSearching i in cbl
+==For iter 8
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 9
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+Evaluating j ++pre  from block cbl
+sSearching j in cbl
+sSearching j in cbl
+Evaluating j 4 <  from block cbl
+sSearching j in cbl
+---Vars of block met main ----
+	id is Int with value 2
+	myx is Double with value 100
+	myy is Double with value 600
+	EPS is Double with value 1E-06
+---End Vars of block met main ----
+===Exiting fun main
+BUiltin func getDirection, param 
+sSearching id in 
+sSearching id in cbl
+sSearching id in otbl
+Calling builtin method getDirection with params { Int id }, ret 3,141593 + of type System.Double
+Assigned 3,141593 of type System.Double to myAng of type Double
+Evaluating myAng reqAng - NinjaParser+CallData EPS >  from block 
+Calling custom method abs with params { Int 3,46410206741865E-07 }
+===Entering fun abs with params { Double val = 3,46410206741865E-07 }
+Method abs contains:
+NinjaParser+ExprClass
+NinjaParser+ExprClass
+NinjaParser+Condition
+NinjaParser+ExprClass
+End of method abs block
+Evaluating res val =  from block abs
+Assigned 3,46410206741865E-07 of type System.Double to res of type Double
+Evaluating res 0 <  from block abs
+Evaluating res 0 <  from block abs
+Evaluating res  from block abs
+---Vars of block met abs ----
+	val is Double with value 3,46410206741865E-07
+	res is Double with value 3,46410206741865E-07
+---End Vars of block met abs ----
+===Exiting fun abs
+Evaluating res  from block abs
+===fun abs returned 3,46410206741865E-07
+sSearching EPS in 
+sSearching EPS in cbl
+sSearching EPS in otbl
+---Exiting whilecycle
+Evaluating  from block 
+Evaluating i 0 =  from block otbl
+Assigned 0 of type System.Int32 to i of type Int
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 0
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 1
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 2
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 3
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 4
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 5
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 6
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 7
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 8
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+==For iter 9
+Evaluating  from block cbl
+Calling builtin method shoot with params { }
+Evaluating i ++pre  from block cbl
+sSearching i in cbl
+sSearching i in cbl
+Evaluating i 10 <  from block cbl
+sSearching i in cbl
+Evaluating j ++pre  from block cbl
+sSearching j in cbl
+sSearching j in cbl
+Evaluating j 4 <  from block cbl
+sSearching j in cbl
+==For iter 3
+Evaluating j id !=  from block cbl
+sSearching j in cbl
+sSearching id in cbl
+sSearching id in otbl
+Evaluating j id !=  from block cbl
+sSearching j in cbl
+sSearching id in cbl
+sSearching id in otbl
+Evaluating j ++pre  from block cbl
+sSearching j in cbl
+sSearching j in cbl
+Evaluating j 4 <  from block cbl
+sSearching j in cbl
+---Vars of block met main ----
+	id is Int with value 3
+	myx is Double with value 600
+	myy is Double with value 600
+	EPS is Double with value 1E-06
+---End Vars of block met main ----
+===Exiting fun main
