@@ -251,7 +251,7 @@ INT_PTR CALLBACK FileSelectProc(HWND hDlg,
 
 		case IDC_BUTTON1:
 		{
-			WCHAR *codeFile = OpenFileDlg(hDlg);
+			WCHAR *codeFile = OpenFileDlg(mainWnd);
 			if (codeFile == NULL)
 				break;
 			SetWindowText((HWND)lParam, codeFile);
@@ -261,7 +261,7 @@ INT_PTR CALLBACK FileSelectProc(HWND hDlg,
 
 		case IDC_BUTTON2:
 		{
-			WCHAR *codeFile = OpenFileDlg(hDlg);
+			WCHAR *codeFile = OpenFileDlg(mainWnd);
 			if (codeFile == NULL)
 				break;
 			SetWindowText((HWND)lParam, codeFile);
@@ -271,7 +271,7 @@ INT_PTR CALLBACK FileSelectProc(HWND hDlg,
 
 		case IDC_BUTTON3:
 		{
-			WCHAR *codeFile = OpenFileDlg(hDlg);
+			WCHAR *codeFile = OpenFileDlg(mainWnd);
 			if (codeFile == NULL)
 				break;
 			SetWindowText((HWND)lParam, codeFile);
@@ -281,7 +281,7 @@ INT_PTR CALLBACK FileSelectProc(HWND hDlg,
 
 		case IDC_BUTTON4:
 		{
-			WCHAR *codeFile = OpenFileDlg(hDlg);
+			WCHAR *codeFile = OpenFileDlg(mainWnd);
 			if (codeFile == NULL)
 				break;
 			SetWindowText((HWND)lParam, codeFile);
@@ -330,13 +330,13 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 		GetWindowInfo(hWnd, &info);
 		MoveWindow(infoWnd, 700, 0, client.right - 700, client.bottom, true);
 		MoveWindow(chatWnd, 0, 400, client.right, client.bottom - 400, true);
-		WCHAR name1[] = L"C:/LatinName/empty.npr",
+		/*WCHAR name1[] = L"C:/LatinName/empty.npr",
 			name2[] = L"C:/LatinName/Find1.npr";
 		players[0].interpreter.SetCode(name2);
 		players[1].interpreter.SetCode(name2);
 		players[2].interpreter.SetCode(name2);
-		players[3].interpreter.SetCode(name2);
-		//DialogBox(hInst, MAKEINTRESOURCE(IDD_FSDIALOG), hWnd, FileSelectProc);
+		players[3].interpreter.SetCode(name2);*/
+		DialogBox(hInst, MAKEINTRESOURCE(IDD_FSDIALOG), hWnd, FileSelectProc);
 		if (abortLaunch)
 		{
 			SendMessage(hWnd, WM_CLOSE, NULL, NULL);
