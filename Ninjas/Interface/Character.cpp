@@ -86,13 +86,16 @@ void Character::Move(double distance)
 void Character::TakeDamage(int damage, int byId)
 {
 	if (isActive)
-		health -= damage;
-	if (health <= 0)
 	{
-		isActive = false;
-		WCHAR text[1024];
-		wsprintf(text, L"%s был убит игроком %s", name, players[byId].name);
-		PrintMessage(text);
+		health -= damage;
+		if (health <= 0)
+		{
+			health = 0;
+			isActive = false;
+			WCHAR text[1024];
+			wsprintf(text, L"%s был убит игроком %s", name, players[byId].name);
+			PrintMessage(text);
+		}
 	}
 }
 
