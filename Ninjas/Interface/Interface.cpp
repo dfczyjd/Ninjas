@@ -121,7 +121,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 		return 1;
 	}
 
-	ShowWindow(mainWnd, nCmdShow);
+	ShowWindow(mainWnd, SW_SHOWMAXIMIZED);
 	UpdateWindow(mainWnd);
 
 	ShowWindow(infoWnd, nCmdShow);
