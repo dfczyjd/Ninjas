@@ -110,12 +110,6 @@ options {
         {
         	parser.curBlock = this;
         	Debug($"===Entering fun {name} with params {ParamListToString(paramList)}");
-			Debug($"Method {name} contains:");
-            foreach (var sm in operations)
-            {
-                Debug(sm.ToString());
-            }
-            Debug($"End of method {name} block");
             foreach(var sm in operations)
             {
             	if(sm.GetType().IsSubclassOf(typeof(OperationClass)))
@@ -239,7 +233,6 @@ options {
 	                	name = method.paramList[i].name,
 						type = method.paramList[i].type
 	               	};
-	                Debug($"Addung to {method.name}");
 	           		method.varTable.Add(varData.name, varData);
 	           	}
 	    		FindVar(method.paramList[i].name, method).value = r;
@@ -320,6 +313,15 @@ options {
 			operations[lastInd] = res;
 			return res;
 		}
+		
+		public ExprClass createExpressionClass(){
+			operations.Add(new OperationClass());
+			int lastInd = operations.Count - 1;
+        	var res = new ExprClass(operations[lastInd]);
+			res.parser = parser;
+			operations[lastInd] = res;
+			return res;
+		}
 	}
 	
 	public class CallData : OperationClass
@@ -344,100 +346,99 @@ options {
 				if (parser.metTable.ContainsKey(name) && parser.CheckParams(this, parser.metTable[name]))
 				{		
 					Debug($"Calling custom method {name} with params {ParamListToString(paramList)}");
-                    						parser.metTable[name].Eval();
-                    						if (returnType != ReturnType.Void && parser.metTable[name].returnType != ReturnType.Void)
-                    						{
-                    							var ret = parser.metTable[name].returnValue.Eval();
-                    							if (!CheckType(ret.GetType(), parser.metTable[name].returnType)){
-                    								throw new Exception($"Actual return is {ret.GetType()}, expected declared return type {parser.metTable[name].returnType}");
-                    							}
-                    							parser.curBlock = parent;
-                    							Debug($"===fun {name} returned {ret}");
-                    							return ret;	
-                    						}
-                    						if (returnType != parser.metTable[name].returnType)
-                    							Error("Method declaration and call have different return types");
-                    						parser.curBlock = parent;
-                    						return null;
+					parser.metTable[name].Eval();
+					if (returnType != ReturnType.Void && parser.metTable[name].returnType != ReturnType.Void)
+					{
+						var ret = parser.metTable[name].returnValue.Eval();
+						if (!CheckType(ret.GetType(), parser.metTable[name].returnType)){
+							throw new Exception($"Actual return is {ret.GetType()}, expected declared return type {parser.metTable[name].returnType}");
+						}
+						parser.curBlock = parent;
+						Debug($"===fun {name} returned {ret}");
+						return ret;	
+					}
+					if (returnType != parser.metTable[name].returnType)
+						Error("Method declaration and call have different return types");
+					parser.curBlock = parent;
+					return null;
 				}
 			}
 			else
 			{
 				if (parser.metTable.ContainsKey(name))
-                					{
-                						if (parser.CheckParams(this, parser.metTable[name]))
-                						{
+				{
+					if (parser.CheckParams(this, parser.metTable[name]))
+					{
 #if !NOGUI
-	                						parser.Sleep();
+						parser.Sleep();
 #endif
-                							dynamic ret = 0;
-											Debug($"BUiltin func {name}, param ");
-	                                        int reqid = -1;
-	                                        if (name != "getSelfId")
-	                                        {
-		                                    	dynamic param = paramList[0].value;
-		                                        if (param.GetType() == typeof(string))
-		                                        {
-			                                    	reqid = parser.FindVar(param).value;
-		                                        }
-		                                        else
-		                                        {
-			                                        reqid = param;
-		                                        }
-	                                        }
-                							switch (name)
-                							{
-                								case "getSelfId":
-                									ret = parser.id;
-                									break;
-                
-                								case "getHealth":
-                									ret = parser.health[reqid];
-                									break;
-                
-                								case "getPositionX":
-                									ret = parser.xPos[reqid];
-                									break;
-                
-                								case "getPositionY":
-                									ret = parser.yPos[reqid];
-                									break;
-                
-                								case "getDirection":
-                									ret = parser.dirs[reqid];
-                									break;
-                							}
-                							Debug($"Calling builtin method {name} with params {ParamListToString(paramList)}, ret {ret} + of type " + ret.GetType());
-                							Main.Log("Func " + name + " for player #" + reqid + " returning " + ret);
-                							return parser.metTable[name].returnValue = ret;
-                						}
-                					}
-                					else
-                					{
-                						Debug($"Calling builtin method {name} with params {ParamListToString(paramList)}");
-                						Command nw;
-                						switch (name)
-                						{
-                							case "move":
-                								nw = new Command(1, paramList[0].value.Eval());
-                								break;
-                							case "turn":
-                								nw = new Command(2, paramList[0].value.Eval());
-                								break;
-                							case "hit":
-                								nw = new Command(3);
-                								break;
-                							case "shoot":
-                								nw = new Command(4);
-                								break;
-                							default:
-                								Error($"Unknown builtin method {name}");
-                								return null;
-                						}
-                						#if !NOGUI
-										parser.owner.commands.Enqueue(nw);
-                                        #endif
-                					}
+						dynamic ret = 0;
+						int reqid = -1;
+						if (name != "getSelfId")
+						{
+							dynamic param = paramList[0].value;
+							if (param.GetType() == typeof(string))
+							{
+								reqid = parser.FindVar(param).value;
+							}
+							else
+							{
+								reqid = param;
+							}
+						}
+						switch (name)
+						{
+							case "getSelfId":
+								ret = parser.id;
+								break;
+
+							case "getHealth":
+								ret = parser.health[reqid];
+								break;
+
+							case "getPositionX":
+								ret = parser.xPos[reqid];
+								break;
+
+							case "getPositionY":
+								ret = parser.yPos[reqid];
+								break;
+
+							case "getDirection":
+								ret = parser.dirs[reqid];
+								break;
+						}
+						Debug($"Calling builtin method {name} with params {ParamListToString(paramList)}, ret {ret} + of type " + ret.GetType());
+						Main.Log("Func " + name + " for player #" + reqid + " returning " + ret);
+						return parser.metTable[name].returnValue = ret;
+					}
+				}
+				else
+				{
+					Debug($"Calling builtin method {name} with params {ParamListToString(paramList)}");
+					Command nw;
+					switch (name)
+					{
+						case "move":
+							nw = new Command(1, paramList[0].value.Eval());
+							break;
+						case "turn":
+							nw = new Command(2, paramList[0].value.Eval());
+							break;
+						case "hit":
+							nw = new Command(3);
+							break;
+						case "shoot":
+							nw = new Command(4);
+							break;
+						default:
+							Error($"Unknown builtin method {name}");
+							return null;
+					}
+					#if !NOGUI
+					parser.owner.commands.Enqueue(nw);
+					#endif
+				}
 			}
 			return null;
 		}
@@ -451,7 +452,6 @@ options {
 			return rBlock;
 		}
 		set{
-			Debug($"new block {value.name}");
 			rBlock = value;
 		}
 	}
@@ -589,7 +589,7 @@ options {
 			{
 				s += v.value + " ";
 			}
-			Debug($"Evaluating {s} from block {parser.curBlock.name}");
+			//Debug($"Evaluating {s} from block {parser.curBlock.name}");
 			List<ExprStackObject> stack = new List<ExprStackObject>();
 			foreach (var elem in exprStack)
 			{
@@ -829,7 +829,7 @@ options {
                     									data.value = (double)rightval;
                     								else
                     									Error("Can't convert \"" + rightval + "\" to " + data.type);	
-													Debug("Assigned " + rightVal + " of type " + rightVal.GetType() + " to " + left.value + " of type " + data.type);
+													//Debug("Assigned " + rightVal + " of type " + rightVal.GetType() + " to " + left.value + " of type " + data.type);
                     								stack.Add(new ExprStackObject(data.value, parser));
                     							}
                     							catch (KeyNotFoundException e)
@@ -1075,7 +1075,7 @@ options {
 		Block par = curBlock;
 		while (!par.varTable.ContainsKey(name) && !isParam(par, name))
 		{
-			Debug($"sSearching {name} in {par.name}");
+			//Debug($"sSearching {name} in {par.name}");
 			par = par.Parent;
 			if (par == null)
 			{
@@ -1154,7 +1154,6 @@ options {
         	int i = 0;
         	while(cond.Eval())
 			{
-				Debug($"-=-While loop {i++}");
 				cycleBlock.Eval();
             }
             Debug("---Exiting whilecycle");
@@ -1163,27 +1162,29 @@ options {
         }
         
         public While(NinjaParser parser) : base(parser)
-        			{
-        			}
+		{
+		}
     }
     
     public class Do_while:Cycles
     {
 		public override dynamic Eval()
         {
+        	Debug("===Entering do_while");
 			do
 			{
 				parser.curBlock = cycleBlock;
 				cycleBlock.Eval();
 			}
 			while(cond.Eval());
+			Debug("===Exiting do_while");
 			parser.curBlock = parser.curBlock.Parent;
 			return null;
 		}
 		
 		public Do_while(NinjaParser parser) : base(parser)
-        			{
-        			}
+		{
+		}
 	}
     
     public class For:Cycles
@@ -1196,29 +1197,29 @@ options {
         public override dynamic Eval()
         {
         	parser.curBlock = oneTimeBlock;
+        	Debug("===Entering for");
         	first?.Eval();
         	int t = 0;
         	parser.curBlock = cycleBlock;
             while(cond.Eval())
             {
             	parser.curBlock = cycleBlock;
-            	Debug($"==For iter {t++}");
             	cycleBlock.Eval();
-            	Debug($"==For iter2 {t}");
             	parser.curBlock = cycleBlock;
             	last?.Eval();
             	parser.curBlock = cycleBlock; 
             }
+            Debug("===Exiting for");
             parser.curBlock = oneTimeBlock.Parent;
     		return null;
         }
         
         public For(NinjaParser parser) : base(parser)
-        	        {
-        	        	oneTimeBlock = new Block(parser);
-        	        	oneTimeBlock.name = "otbl";
-        	        	cycleBlock.name = "cbl";
-        	        }
+		{
+			oneTimeBlock = new Block(parser);
+			oneTimeBlock.name = "otbl";
+			cycleBlock.name = "cbl";
+		}
     }    
     
     public class Condition:Cycles 
@@ -1433,11 +1434,11 @@ m_fun_signature returns [string funName]: FUN_KEYWORD meaningfulType ID {
 	curBlock = newMet;
 } LPAREN params[$ID.text] RPAREN;
 
-code : (operation[curBlock.createOperationClass()])*;
+code : (operation)*;
 
-main_code : (operation[curBlock.createOperationClass()])*;
+main_code : (operation)*;
 
-operation[OperationClass oper] : call[curBlock.ToExpr(), true] | custom_call[curBlock.ToExpr(), true] | declare[curBlock.ToExpr()] | ariphExprEx[curBlock.ToExpr()] | boolExprEx[curBlock.ToExpr()]
+operation : call[curBlock.createExpressionClass(), true] | custom_call[curBlock.createExpressionClass(), true] | declare[curBlock.createExpressionClass()] | ariphExprEx[curBlock.createExpressionClass()] | boolExprEx[curBlock.createExpressionClass()]
 			| myif[null]|myif_short[null]|mywhile[null]|mydo_while[null]|myfor[null];
 
 method_return[OperationClass oper] returns [string type, dynamic value]: RETURN_KEYWORD val_or_id[curBlock.ToExpr()] {
@@ -1649,7 +1650,7 @@ myif[ExprClass oper]:
      {
      	ifer.cond=$boolExprEx.res;
      }
-    (operation[curBlock.createOperationClass()])* 
+    (operation)* 
     CBRACE
      ELSE 
       OBRACE
@@ -1657,7 +1658,7 @@ myif[ExprClass oper]:
       	ifer.elseIfBlock.Parent = curBlock.Parent;
       	curBlock = ifer.elseIfBlock;
       } 
-    (operation[curBlock.createOperationClass()])*
+    (operation)*
     CBRACE
     {
         curBlock = curBlock.Parent;
@@ -1684,7 +1685,7 @@ myif_short[ExprClass oper]: {
          	
          	
     }
-    (operation[curBlock.createOperationClass()])* 
+    (operation)* 
     CBRACE
     {
         curBlock = curBlock.Parent;
@@ -1708,7 +1709,7 @@ While whiler = new While(this)
      {
      	whiler.cond=$boolExprEx.res;
      }
-     (operation[curBlock.createOperationClass()])*
+     (operation)*
      CBRACE 
      {
         curBlock = curBlock.Parent;
@@ -1725,7 +1726,7 @@ mydo_while[ExprClass oper]: DO
                	doer.cycleBlock.Parent = curBlock;
                	curBlock = doer.cycleBlock;
           }
-            (operation[curBlock.createOperationClass()])* 
+            (operation)* 
           CBRACE
           WHILE LPAREN boolExprEx[bExpr] RPAREN 
           {
@@ -1790,7 +1791,7 @@ myfor[ExprClass oper]: {
 			  	forer.last = (_localctx.l == null) ? null : $l.res;
 				curBlock = forer.cycleBlock;       	
         }
-        (operation[curBlock.createOperationClass()])*
+        (operation)*
         CBRACE
         { 
         	curBlock = forer.oneTimeBlock.Parent;

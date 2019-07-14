@@ -215,12 +215,6 @@ public partial class NinjaParser : Parser {
 	        {
 	        	parser.curBlock = this;
 	        	Debug($"===Entering fun {name} with params {ParamListToString(paramList)}");
-				Debug($"Method {name} contains:");
-	            foreach (var sm in operations)
-	            {
-	                Debug(sm.ToString());
-	            }
-	            Debug($"End of method {name} block");
 	            foreach(var sm in operations)
 	            {
 	            	if(sm.GetType().IsSubclassOf(typeof(OperationClass)))
@@ -344,7 +338,6 @@ public partial class NinjaParser : Parser {
 		                	name = method.paramList[i].name,
 							type = method.paramList[i].type
 		               	};
-		                Debug($"Addung to {method.name}");
 		           		method.varTable.Add(varData.name, varData);
 		           	}
 		    		FindVar(method.paramList[i].name, method).value = r;
@@ -425,6 +418,15 @@ public partial class NinjaParser : Parser {
 				operations[lastInd] = res;
 				return res;
 			}
+			
+			public ExprClass createExpressionClass(){
+				operations.Add(new OperationClass());
+				int lastInd = operations.Count - 1;
+	        	var res = new ExprClass(operations[lastInd]);
+				res.parser = parser;
+				operations[lastInd] = res;
+				return res;
+			}
 		}
 		
 		public class CallData : OperationClass
@@ -449,100 +451,99 @@ public partial class NinjaParser : Parser {
 					if (parser.metTable.ContainsKey(name) && parser.CheckParams(this, parser.metTable[name]))
 					{		
 						Debug($"Calling custom method {name} with params {ParamListToString(paramList)}");
-	                    						parser.metTable[name].Eval();
-	                    						if (returnType != ReturnType.Void && parser.metTable[name].returnType != ReturnType.Void)
-	                    						{
-	                    							var ret = parser.metTable[name].returnValue.Eval();
-	                    							if (!CheckType(ret.GetType(), parser.metTable[name].returnType)){
-	                    								throw new Exception($"Actual return is {ret.GetType()}, expected declared return type {parser.metTable[name].returnType}");
-	                    							}
-	                    							parser.curBlock = parent;
-	                    							Debug($"===fun {name} returned {ret}");
-	                    							return ret;	
-	                    						}
-	                    						if (returnType != parser.metTable[name].returnType)
-	                    							Error("Method declaration and call have different return types");
-	                    						parser.curBlock = parent;
-	                    						return null;
+						parser.metTable[name].Eval();
+						if (returnType != ReturnType.Void && parser.metTable[name].returnType != ReturnType.Void)
+						{
+							var ret = parser.metTable[name].returnValue.Eval();
+							if (!CheckType(ret.GetType(), parser.metTable[name].returnType)){
+								throw new Exception($"Actual return is {ret.GetType()}, expected declared return type {parser.metTable[name].returnType}");
+							}
+							parser.curBlock = parent;
+							Debug($"===fun {name} returned {ret}");
+							return ret;	
+						}
+						if (returnType != parser.metTable[name].returnType)
+							Error("Method declaration and call have different return types");
+						parser.curBlock = parent;
+						return null;
 					}
 				}
 				else
 				{
 					if (parser.metTable.ContainsKey(name))
-	                					{
-	                						if (parser.CheckParams(this, parser.metTable[name]))
-	                						{
+					{
+						if (parser.CheckParams(this, parser.metTable[name]))
+						{
 	#if !NOGUI
-		                						parser.Sleep();
+							parser.Sleep();
 	#endif
-	                							dynamic ret = 0;
-												Debug($"BUiltin func {name}, param ");
-		                                        int reqid = -1;
-		                                        if (name != "getSelfId")
-		                                        {
-			                                    	dynamic param = paramList[0].value;
-			                                        if (param.GetType() == typeof(string))
-			                                        {
-				                                    	reqid = parser.FindVar(param).value;
-			                                        }
-			                                        else
-			                                        {
-				                                        reqid = param;
-			                                        }
-		                                        }
-	                							switch (name)
-	                							{
-	                								case "getSelfId":
-	                									ret = parser.id;
-	                									break;
-	                
-	                								case "getHealth":
-	                									ret = parser.health[reqid];
-	                									break;
-	                
-	                								case "getPositionX":
-	                									ret = parser.xPos[reqid];
-	                									break;
-	                
-	                								case "getPositionY":
-	                									ret = parser.yPos[reqid];
-	                									break;
-	                
-	                								case "getDirection":
-	                									ret = parser.dirs[reqid];
-	                									break;
-	                							}
-	                							Debug($"Calling builtin method {name} with params {ParamListToString(paramList)}, ret {ret} + of type " + ret.GetType());
-	                							Main.Log("Func " + name + " for player #" + reqid + " returning " + ret);
-	                							return parser.metTable[name].returnValue = ret;
-	                						}
-	                					}
-	                					else
-	                					{
-	                						Debug($"Calling builtin method {name} with params {ParamListToString(paramList)}");
-	                						Command nw;
-	                						switch (name)
-	                						{
-	                							case "move":
-	                								nw = new Command(1, paramList[0].value.Eval());
-	                								break;
-	                							case "turn":
-	                								nw = new Command(2, paramList[0].value.Eval());
-	                								break;
-	                							case "hit":
-	                								nw = new Command(3);
-	                								break;
-	                							case "shoot":
-	                								nw = new Command(4);
-	                								break;
-	                							default:
-	                								Error($"Unknown builtin method {name}");
-	                								return null;
-	                						}
-	                						#if !NOGUI
-											parser.owner.commands.Enqueue(nw);
-	                                        #endif
-	                					}
+							dynamic ret = 0;
+							int reqid = -1;
+							if (name != "getSelfId")
+							{
+								dynamic param = paramList[0].value;
+								if (param.GetType() == typeof(string))
+								{
+									reqid = parser.FindVar(param).value;
+								}
+								else
+								{
+									reqid = param;
+								}
+							}
+							switch (name)
+							{
+								case "getSelfId":
+									ret = parser.id;
+									break;
+
+								case "getHealth":
+									ret = parser.health[reqid];
+									break;
+
+								case "getPositionX":
+									ret = parser.xPos[reqid];
+									break;
+
+								case "getPositionY":
+									ret = parser.yPos[reqid];
+									break;
+
+								case "getDirection":
+									ret = parser.dirs[reqid];
+									break;
+							}
+							Debug($"Calling builtin method {name} with params {ParamListToString(paramList)}, ret {ret} + of type " + ret.GetType());
+							Main.Log("Func " + name + " for player #" + reqid + " returning " + ret);
+							return parser.metTable[name].returnValue = ret;
+						}
+					}
+					else
+					{
+						Debug($"Calling builtin method {name} with params {ParamListToString(paramList)}");
+						Command nw;
+						switch (name)
+						{
+							case "move":
+								nw = new Command(1, paramList[0].value.Eval());
+								break;
+							case "turn":
+								nw = new Command(2, paramList[0].value.Eval());
+								break;
+							case "hit":
+								nw = new Command(3);
+								break;
+							case "shoot":
+								nw = new Command(4);
+								break;
+							default:
+								Error($"Unknown builtin method {name}");
+								return null;
+						}
+						#if !NOGUI
+						parser.owner.commands.Enqueue(nw);
+						#endif
+					}
 				}
 				return null;
 			}
@@ -556,7 +557,6 @@ public partial class NinjaParser : Parser {
 				return rBlock;
 			}
 			set{
-				Debug($"new block {value.name}");
 				rBlock = value;
 			}
 		}
@@ -583,7 +583,7 @@ public partial class NinjaParser : Parser {
 			public virtual dynamic Eval()
 			{
 				Error("OperationClass class is abstract");
-                return null;
+				return null;
 			}
 		}
 	    
@@ -694,7 +694,7 @@ public partial class NinjaParser : Parser {
 				{
 					s += v.value + " ";
 				}
-				Debug($"Evaluating {s} from block {parser.curBlock.name}");
+				//Debug($"Evaluating {s} from block {parser.curBlock.name}");
 				List<ExprStackObject> stack = new List<ExprStackObject>();
 				foreach (var elem in exprStack)
 				{
@@ -934,7 +934,7 @@ public partial class NinjaParser : Parser {
 	                    									data.value = (double)rightval;
 	                    								else
 	                    									Error("Can't convert \"" + rightval + "\" to " + data.type);	
-														Debug("Assigned " + rightVal + " of type " + rightVal.GetType() + " to " + left.value + " of type " + data.type);
+														//Debug("Assigned " + rightVal + " of type " + rightVal.GetType() + " to " + left.value + " of type " + data.type);
 	                    								stack.Add(new ExprStackObject(data.value, parser));
 	                    							}
 	                    							catch (KeyNotFoundException e)
@@ -1180,7 +1180,7 @@ public partial class NinjaParser : Parser {
 			Block par = curBlock;
 			while (!par.varTable.ContainsKey(name) && !isParam(par, name))
 			{
-				Debug($"sSearching {name} in {par.name}");
+				//Debug($"sSearching {name} in {par.name}");
 				par = par.Parent;
 				if (par == null)
 				{
@@ -1254,13 +1254,11 @@ public partial class NinjaParser : Parser {
 		{
 			public override dynamic Eval()
 	        {
-                
 	        	parser.curBlock = cycleBlock;
 	        	Debug("---Entering whilecycle");
 	        	int i = 0;
 	        	while(cond.Eval())
 				{
-					Debug($"-=-While loop {i++}");
 					cycleBlock.Eval();
 	            }
 	            Debug("---Exiting whilecycle");
@@ -1269,30 +1267,29 @@ public partial class NinjaParser : Parser {
 	        }
 	        
 	        public While(NinjaParser parser) : base(parser)
-	        			{
-	        			}
+			{
+			}
 	    }
 	    
 	    public class Do_while:Cycles
 	    {
 			public override dynamic Eval()
 	        {
-            Debug("Do_while operations:");
-            foreach (var elem in cycleBlock.operations)
-                Debug(elem.ToString());
+	        	Debug("===Entering do_while");
 				do
 				{
 					parser.curBlock = cycleBlock;
 					cycleBlock.Eval();
 				}
 				while(cond.Eval());
+				Debug("===Exiting do_while");
 				parser.curBlock = parser.curBlock.Parent;
 				return null;
 			}
 			
 			public Do_while(NinjaParser parser) : base(parser)
-	        			{
-	        			}
+			{
+			}
 		}
 	    
 	    public class For:Cycles
@@ -1305,29 +1302,29 @@ public partial class NinjaParser : Parser {
 	        public override dynamic Eval()
 	        {
 	        	parser.curBlock = oneTimeBlock;
+	        	Debug("===Entering for");
 	        	first?.Eval();
 	        	int t = 0;
 	        	parser.curBlock = cycleBlock;
 	            while(cond.Eval())
 	            {
 	            	parser.curBlock = cycleBlock;
-	            	Debug($"==For iter {t++}");
 	            	cycleBlock.Eval();
-	            	Debug($"==For iter2 {t}");
 	            	parser.curBlock = cycleBlock;
 	            	last?.Eval();
 	            	parser.curBlock = cycleBlock; 
 	            }
+	            Debug("===Exiting for");
 	            parser.curBlock = oneTimeBlock.Parent;
 	    		return null;
 	        }
 	        
 	        public For(NinjaParser parser) : base(parser)
-	        	        {
-	        	        	oneTimeBlock = new Block(parser);
-	        	        	oneTimeBlock.name = "otbl";
-	        	        	cycleBlock.name = "cbl";
-	        	        }
+			{
+				oneTimeBlock = new Block(parser);
+				oneTimeBlock.name = "otbl";
+				cycleBlock.name = "cbl";
+			}
 	    }    
 	    
 	    public class Condition:Cycles 
@@ -2007,7 +2004,7 @@ public partial class NinjaParser : Parser {
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2) | (1L << T__3) | (1L << T__4) | (1L << T__5) | (1L << T__6) | (1L << T__7) | (1L << T__8) | (1L << INTKEY) | (1L << DOUBLEKEY) | (1L << BOOLKEY) | (1L << WHILE) | (1L << FOR) | (1L << DO) | (1L << IF) | (1L << SIN) | (1L << COS) | (1L << TAN) | (1L << ASIN) | (1L << ACOS) | (1L << ATAN) | (1L << ATAN2) | (1L << INC) | (1L << DEC) | (1L << NOT) | (1L << BOOL) | (1L << DOUBLE) | (1L << INT) | (1L << LPAREN))) != 0) || _la==ID) {
 				{
 				{
-				State = 140; operation(curBlock.createOperationClass());
+				State = 140; operation();
 				}
 				}
 				State = 145;
@@ -2063,7 +2060,7 @@ public partial class NinjaParser : Parser {
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2) | (1L << T__3) | (1L << T__4) | (1L << T__5) | (1L << T__6) | (1L << T__7) | (1L << T__8) | (1L << INTKEY) | (1L << DOUBLEKEY) | (1L << BOOLKEY) | (1L << WHILE) | (1L << FOR) | (1L << DO) | (1L << IF) | (1L << SIN) | (1L << COS) | (1L << TAN) | (1L << ASIN) | (1L << ACOS) | (1L << ATAN) | (1L << ATAN2) | (1L << INC) | (1L << DEC) | (1L << NOT) | (1L << BOOL) | (1L << DOUBLE) | (1L << INT) | (1L << LPAREN))) != 0) || _la==ID) {
 				{
 				{
-				State = 146; operation(curBlock.createOperationClass());
+				State = 146; operation();
 				}
 				}
 				State = 151;
@@ -2084,7 +2081,6 @@ public partial class NinjaParser : Parser {
 	}
 
 	public partial class OperationContext : ParserRuleContext {
-		public OperationClass oper;
 		public CallContext call() {
 			return GetRuleContext<CallContext>(0);
 		}
@@ -2115,11 +2111,9 @@ public partial class NinjaParser : Parser {
 		public MyforContext myfor() {
 			return GetRuleContext<MyforContext>(0);
 		}
-		public OperationContext(ParserRuleContext parent, int invokingState) : base(parent, invokingState) { }
-		public OperationContext(ParserRuleContext parent, int invokingState, OperationClass oper)
+		public OperationContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
-			this.oper = oper;
 		}
 		public override int RuleIndex { get { return RULE_operation; } }
 		public override void EnterRule(IParseTreeListener listener) {
@@ -2133,8 +2127,8 @@ public partial class NinjaParser : Parser {
 	}
 
 	[RuleVersion(0)]
-	public OperationContext operation(OperationClass oper) {
-		OperationContext _localctx = new OperationContext(Context, State, oper);
+	public OperationContext operation() {
+		OperationContext _localctx = new OperationContext(Context, State);
 		EnterRule(_localctx, 20, RULE_operation);
 		try {
 			State = 162;
@@ -2143,31 +2137,31 @@ public partial class NinjaParser : Parser {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 152; call(curBlock.ToExpr(), true);
+				State = 152; call(curBlock.createExpressionClass(), true);
 				}
 				break;
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 153; custom_call(curBlock.ToExpr(), true);
+				State = 153; custom_call(curBlock.createExpressionClass(), true);
 				}
 				break;
 			case 3:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 154; declare(curBlock.ToExpr());
+				State = 154; declare(curBlock.createExpressionClass());
 				}
 				break;
 			case 4:
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 155; ariphExprEx(curBlock.ToExpr());
+				State = 155; ariphExprEx(curBlock.createExpressionClass());
 				}
 				break;
 			case 5:
 				EnterOuterAlt(_localctx, 5);
 				{
-				State = 156; boolExprEx(curBlock.ToExpr());
+				State = 156; boolExprEx(curBlock.createExpressionClass());
 				}
 				break;
 			case 6:
@@ -3174,7 +3168,7 @@ public partial class NinjaParser : Parser {
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2) | (1L << T__3) | (1L << T__4) | (1L << T__5) | (1L << T__6) | (1L << T__7) | (1L << T__8) | (1L << INTKEY) | (1L << DOUBLEKEY) | (1L << BOOLKEY) | (1L << WHILE) | (1L << FOR) | (1L << DO) | (1L << IF) | (1L << SIN) | (1L << COS) | (1L << TAN) | (1L << ASIN) | (1L << ACOS) | (1L << ATAN) | (1L << ATAN2) | (1L << INC) | (1L << DEC) | (1L << NOT) | (1L << BOOL) | (1L << DOUBLE) | (1L << INT) | (1L << LPAREN))) != 0) || _la==ID) {
 				{
 				{
-				State = 255; operation(curBlock.createOperationClass());
+				State = 255; operation();
 				}
 				}
 				State = 260;
@@ -3194,7 +3188,7 @@ public partial class NinjaParser : Parser {
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2) | (1L << T__3) | (1L << T__4) | (1L << T__5) | (1L << T__6) | (1L << T__7) | (1L << T__8) | (1L << INTKEY) | (1L << DOUBLEKEY) | (1L << BOOLKEY) | (1L << WHILE) | (1L << FOR) | (1L << DO) | (1L << IF) | (1L << SIN) | (1L << COS) | (1L << TAN) | (1L << ASIN) | (1L << ACOS) | (1L << ATAN) | (1L << ATAN2) | (1L << INC) | (1L << DEC) | (1L << NOT) | (1L << BOOL) | (1L << DOUBLE) | (1L << INT) | (1L << LPAREN))) != 0) || _la==ID) {
 				{
 				{
-				State = 265; operation(curBlock.createOperationClass());
+				State = 265; operation();
 				}
 				}
 				State = 270;
@@ -3291,7 +3285,7 @@ public partial class NinjaParser : Parser {
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2) | (1L << T__3) | (1L << T__4) | (1L << T__5) | (1L << T__6) | (1L << T__7) | (1L << T__8) | (1L << INTKEY) | (1L << DOUBLEKEY) | (1L << BOOLKEY) | (1L << WHILE) | (1L << FOR) | (1L << DO) | (1L << IF) | (1L << SIN) | (1L << COS) | (1L << TAN) | (1L << ASIN) | (1L << ACOS) | (1L << ATAN) | (1L << ATAN2) | (1L << INC) | (1L << DEC) | (1L << NOT) | (1L << BOOL) | (1L << DOUBLE) | (1L << INT) | (1L << LPAREN))) != 0) || _la==ID) {
 				{
 				{
-				State = 281; operation(curBlock.createOperationClass());
+				State = 281; operation();
 				}
 				}
 				State = 286;
@@ -3385,7 +3379,7 @@ public partial class NinjaParser : Parser {
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2) | (1L << T__3) | (1L << T__4) | (1L << T__5) | (1L << T__6) | (1L << T__7) | (1L << T__8) | (1L << INTKEY) | (1L << DOUBLEKEY) | (1L << BOOLKEY) | (1L << WHILE) | (1L << FOR) | (1L << DO) | (1L << IF) | (1L << SIN) | (1L << COS) | (1L << TAN) | (1L << ASIN) | (1L << ACOS) | (1L << ATAN) | (1L << ATAN2) | (1L << INC) | (1L << DEC) | (1L << NOT) | (1L << BOOL) | (1L << DOUBLE) | (1L << INT) | (1L << LPAREN))) != 0) || _la==ID) {
 				{
 				{
-				State = 297; operation(curBlock.createOperationClass());
+				State = 297; operation();
 				}
 				}
 				State = 302;
@@ -3469,7 +3463,7 @@ public partial class NinjaParser : Parser {
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2) | (1L << T__3) | (1L << T__4) | (1L << T__5) | (1L << T__6) | (1L << T__7) | (1L << T__8) | (1L << INTKEY) | (1L << DOUBLEKEY) | (1L << BOOLKEY) | (1L << WHILE) | (1L << FOR) | (1L << DO) | (1L << IF) | (1L << SIN) | (1L << COS) | (1L << TAN) | (1L << ASIN) | (1L << ACOS) | (1L << ATAN) | (1L << ATAN2) | (1L << INC) | (1L << DEC) | (1L << NOT) | (1L << BOOL) | (1L << DOUBLE) | (1L << INT) | (1L << LPAREN))) != 0) || _la==ID) {
 				{
 				{
-				State = 309; operation(curBlock.createOperationClass());
+				State = 309; operation();
 				}
 				}
 				State = 314;
@@ -3673,7 +3667,7 @@ public partial class NinjaParser : Parser {
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2) | (1L << T__3) | (1L << T__4) | (1L << T__5) | (1L << T__6) | (1L << T__7) | (1L << T__8) | (1L << INTKEY) | (1L << DOUBLEKEY) | (1L << BOOLKEY) | (1L << WHILE) | (1L << FOR) | (1L << DO) | (1L << IF) | (1L << SIN) | (1L << COS) | (1L << TAN) | (1L << ASIN) | (1L << ACOS) | (1L << ATAN) | (1L << ATAN2) | (1L << INC) | (1L << DEC) | (1L << NOT) | (1L << BOOL) | (1L << DOUBLE) | (1L << INT) | (1L << LPAREN))) != 0) || _la==ID) {
 				{
 				{
-				State = 347; operation(curBlock.createOperationClass());
+				State = 347; operation();
 				}
 				}
 				State = 352;
