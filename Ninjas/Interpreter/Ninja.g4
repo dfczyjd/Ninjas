@@ -1883,7 +1883,7 @@ ariphOperand[ExprClass oper]:
 ariphTerm[ExprClass oper]:
             ariphOperand[$oper]
             
-           (muldiv=(POW|MUL|DIV|MOD) ariphOperand[$oper])*
+           (muldiv=(POW|MUL|DIV|MOD) ariphOperand[$oper]
             {
 				if ($muldiv.text != null)
 				{
@@ -1894,13 +1894,13 @@ ariphTerm[ExprClass oper]:
 						parser = this
 					 });
 				}
-            };
+            })*;
 ariphExpr[ExprClass oper]:
             ariphTerm[$oper]
             {
                 
             }
-			(addsub=(ADD|SUB) ariphTerm[$oper])*
+			(addsub=(ADD|SUB) ariphTerm[$oper]
             {
 				if ($addsub.text != null)
 				{
@@ -1912,7 +1912,7 @@ ariphExpr[ExprClass oper]:
 					 });
 					 
 				}
-            };
+            })*;
 ariphExprEx[ExprClass oper] returns [ExprClass res]:
             ariphExpr[$oper]
             {

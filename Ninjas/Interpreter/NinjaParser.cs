@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from Ninja.g4 by ANTLR 4.7.2
+// Generated from ..\..\..\Interpreter\Ninja.g4 by ANTLR 4.7.2
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -542,8 +542,8 @@ public partial class NinjaParser : Parser {
 						}
 						#if !NOGUI
 						parser.owner.commands.Enqueue(nw);
-                        if (parser.owner.commands.Count > 100)
-                            parser.Sleep();
+						if (parser.owner.commands.Count > 100)
+							parser.Sleep();
 						#endif
 					}
 				}
@@ -696,7 +696,7 @@ public partial class NinjaParser : Parser {
 				{
 					s += v.value + " ";
 				}
-				Debug($"Evaluating {s} from block {parser.curBlock.name}");
+				//Debug($"Evaluating {s} from block {parser.curBlock.name}");
 				List<ExprStackObject> stack = new List<ExprStackObject>();
 				foreach (var elem in exprStack)
 				{
@@ -3976,7 +3976,7 @@ public partial class NinjaParser : Parser {
 			EnterOuterAlt(_localctx, 1);
 			{
 			State = 389; ariphOperand(_localctx.oper);
-			State = 394;
+			State = 396;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << MUL) | (1L << DIV) | (1L << MOD) | (1L << POW))) != 0)) {
@@ -3993,23 +3993,23 @@ public partial class NinjaParser : Parser {
 				    Consume();
 				}
 				State = 391; ariphOperand(_localctx.oper);
+
+								if ((_localctx.muldiv!=null?_localctx.muldiv.Text:null) != null)
+								{
+									_localctx.oper.Push(new ExprStackObject()
+									 {
+										type = ObjType.Operation,
+										value = (_localctx.muldiv!=null?_localctx.muldiv.Text:null),
+										parser = this
+									 });
+								}
+				            
 				}
 				}
-				State = 396;
+				State = 398;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
-
-							if ((_localctx.muldiv!=null?_localctx.muldiv.Text:null) != null)
-							{
-								_localctx.oper.Push(new ExprStackObject()
-								 {
-									type = ObjType.Operation,
-									value = (_localctx.muldiv!=null?_localctx.muldiv.Text:null),
-									parser = this
-								 });
-							}
-			            
 			}
 		}
 		catch (RecognitionException re) {
@@ -4070,7 +4070,7 @@ public partial class NinjaParser : Parser {
 
 			                
 			            
-			State = 405;
+			State = 407;
 			ErrorHandler.Sync(this);
 			_alt = Interpreter.AdaptivePredict(TokenStream,25,Context);
 			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER ) {
@@ -4088,25 +4088,25 @@ public partial class NinjaParser : Parser {
 					    Consume();
 					}
 					State = 402; ariphTerm(_localctx.oper);
+
+									if ((_localctx.addsub!=null?_localctx.addsub.Text:null) != null)
+									{
+										_localctx.oper.Push(new ExprStackObject()
+										 {
+											type = ObjType.Operation,
+											value = (_localctx.addsub!=null?_localctx.addsub.Text:null),
+											parser = this
+										 });
+										 
+									}
+					            
 					}
 					} 
 				}
-				State = 407;
+				State = 409;
 				ErrorHandler.Sync(this);
 				_alt = Interpreter.AdaptivePredict(TokenStream,25,Context);
 			}
-
-							if ((_localctx.addsub!=null?_localctx.addsub.Text:null) != null)
-							{
-								_localctx.oper.Push(new ExprStackObject()
-								 {
-									type = ObjType.Operation,
-									value = (_localctx.addsub!=null?_localctx.addsub.Text:null),
-									parser = this
-								 });
-								 
-							}
-			            
 			}
 		}
 		catch (RecognitionException re) {
@@ -5015,10 +5015,10 @@ public partial class NinjaParser : Parser {
 		'\x3', '\x1E', '\x3', '\x1E', '\x3', '\x1E', '\x3', '\x1E', '\x3', '\x1E', 
 		'\x3', '\x1E', '\x3', '\x1E', '\x3', '\x1E', '\x3', '\x1E', '\x3', '\x1E', 
 		'\x3', '\x1E', '\x3', '\x1E', '\x5', '\x1E', '\x186', '\n', '\x1E', '\x3', 
-		'\x1F', '\x3', '\x1F', '\x3', '\x1F', '\a', '\x1F', '\x18B', '\n', '\x1F', 
-		'\f', '\x1F', '\xE', '\x1F', '\x18E', '\v', '\x1F', '\x3', '\x1F', '\x3', 
-		'\x1F', '\x3', ' ', '\x3', ' ', '\x3', ' ', '\x3', ' ', '\a', ' ', '\x196', 
-		'\n', ' ', '\f', ' ', '\xE', ' ', '\x199', '\v', ' ', '\x3', ' ', '\x3', 
+		'\x1F', '\x3', '\x1F', '\x3', '\x1F', '\x3', '\x1F', '\x3', '\x1F', '\a', 
+		'\x1F', '\x18D', '\n', '\x1F', '\f', '\x1F', '\xE', '\x1F', '\x190', '\v', 
+		'\x1F', '\x3', ' ', '\x3', ' ', '\x3', ' ', '\x3', ' ', '\x3', ' ', '\x3', 
+		' ', '\a', ' ', '\x198', '\n', ' ', '\f', ' ', '\xE', ' ', '\x19B', '\v', 
 		' ', '\x3', '!', '\x3', '!', '\x3', '!', '\x3', '!', '\x3', '!', '\x3', 
 		'!', '\x3', '!', '\x3', '!', '\x5', '!', '\x1A5', '\n', '!', '\x3', '\"', 
 		'\x3', '\"', '\x3', '\"', '\x3', '\"', '\x3', '\"', '\x3', '\"', '\x3', 
@@ -5278,20 +5278,20 @@ public partial class NinjaParser : Parser {
 		'\x2', '\x185', '\x178', '\x3', '\x2', '\x2', '\x2', '\x185', '\x179', 
 		'\x3', '\x2', '\x2', '\x2', '\x185', '\x17D', '\x3', '\x2', '\x2', '\x2', 
 		'\x185', '\x181', '\x3', '\x2', '\x2', '\x2', '\x186', ';', '\x3', '\x2', 
-		'\x2', '\x2', '\x187', '\x18C', '\x5', ':', '\x1E', '\x2', '\x188', '\x189', 
-		'\t', '\x5', '\x2', '\x2', '\x189', '\x18B', '\x5', ':', '\x1E', '\x2', 
-		'\x18A', '\x188', '\x3', '\x2', '\x2', '\x2', '\x18B', '\x18E', '\x3', 
-		'\x2', '\x2', '\x2', '\x18C', '\x18A', '\x3', '\x2', '\x2', '\x2', '\x18C', 
-		'\x18D', '\x3', '\x2', '\x2', '\x2', '\x18D', '\x18F', '\x3', '\x2', '\x2', 
-		'\x2', '\x18E', '\x18C', '\x3', '\x2', '\x2', '\x2', '\x18F', '\x190', 
-		'\b', '\x1F', '\x1', '\x2', '\x190', '=', '\x3', '\x2', '\x2', '\x2', 
-		'\x191', '\x192', '\x5', '<', '\x1F', '\x2', '\x192', '\x197', '\b', ' ', 
-		'\x1', '\x2', '\x193', '\x194', '\t', '\x6', '\x2', '\x2', '\x194', '\x196', 
-		'\x5', '<', '\x1F', '\x2', '\x195', '\x193', '\x3', '\x2', '\x2', '\x2', 
-		'\x196', '\x199', '\x3', '\x2', '\x2', '\x2', '\x197', '\x195', '\x3', 
-		'\x2', '\x2', '\x2', '\x197', '\x198', '\x3', '\x2', '\x2', '\x2', '\x198', 
-		'\x19A', '\x3', '\x2', '\x2', '\x2', '\x199', '\x197', '\x3', '\x2', '\x2', 
-		'\x2', '\x19A', '\x19B', '\b', ' ', '\x1', '\x2', '\x19B', '?', '\x3', 
+		'\x2', '\x2', '\x187', '\x18E', '\x5', ':', '\x1E', '\x2', '\x188', '\x189', 
+		'\t', '\x5', '\x2', '\x2', '\x189', '\x18A', '\x5', ':', '\x1E', '\x2', 
+		'\x18A', '\x18B', '\b', '\x1F', '\x1', '\x2', '\x18B', '\x18D', '\x3', 
+		'\x2', '\x2', '\x2', '\x18C', '\x188', '\x3', '\x2', '\x2', '\x2', '\x18D', 
+		'\x190', '\x3', '\x2', '\x2', '\x2', '\x18E', '\x18C', '\x3', '\x2', '\x2', 
+		'\x2', '\x18E', '\x18F', '\x3', '\x2', '\x2', '\x2', '\x18F', '=', '\x3', 
+		'\x2', '\x2', '\x2', '\x190', '\x18E', '\x3', '\x2', '\x2', '\x2', '\x191', 
+		'\x192', '\x5', '<', '\x1F', '\x2', '\x192', '\x199', '\b', ' ', '\x1', 
+		'\x2', '\x193', '\x194', '\t', '\x6', '\x2', '\x2', '\x194', '\x195', 
+		'\x5', '<', '\x1F', '\x2', '\x195', '\x196', '\b', ' ', '\x1', '\x2', 
+		'\x196', '\x198', '\x3', '\x2', '\x2', '\x2', '\x197', '\x193', '\x3', 
+		'\x2', '\x2', '\x2', '\x198', '\x19B', '\x3', '\x2', '\x2', '\x2', '\x199', 
+		'\x197', '\x3', '\x2', '\x2', '\x2', '\x199', '\x19A', '\x3', '\x2', '\x2', 
+		'\x2', '\x19A', '?', '\x3', '\x2', '\x2', '\x2', '\x19B', '\x199', '\x3', 
 		'\x2', '\x2', '\x2', '\x19C', '\x19D', '\x5', '>', ' ', '\x2', '\x19D', 
 		'\x19E', '\b', '!', '\x1', '\x2', '\x19E', '\x1A5', '\x3', '\x2', '\x2', 
 		'\x2', '\x19F', '\x1A0', '\x5', 'J', '&', '\x2', '\x1A0', '\x1A1', '\t', 
@@ -5362,7 +5362,7 @@ public partial class NinjaParser : Parser {
 		'\v', '\x2', '\x2', '\x1FE', 'Q', '\x3', '\x2', '\x2', '\x2', '$', 'U', 
 		'\\', 'p', '\x91', '\x97', '\xA4', '\xAF', '\xB2', '\xC2', '\xCE', '\xDC', 
 		'\xED', '\xF0', '\xF8', '\x104', '\x10E', '\x11E', '\x12E', '\x13A', '\x14E', 
-		'\x153', '\x158', '\x160', '\x185', '\x18C', '\x197', '\x1A4', '\x1BB', 
+		'\x153', '\x158', '\x160', '\x185', '\x18E', '\x199', '\x1A4', '\x1BB', 
 		'\x1C3', '\x1CD', '\x1D4', '\x1DD', '\x1E6', '\x1EA',
 	};
 
