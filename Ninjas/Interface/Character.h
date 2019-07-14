@@ -35,7 +35,7 @@ struct Character
 
 	void Turn(double angle);
 	void Move(double distance);
-	void TakeDamage(int damage);
+	void TakeDamage(int damage, int byId);
 	Point GetSwordEnd();
 	double MaxMovement(const Point &other, double maxDist);
 };

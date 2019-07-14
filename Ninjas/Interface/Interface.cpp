@@ -149,7 +149,7 @@ void CALLBACK OnSwing(HWND hWnd, UINT arg1, UINT arg2, DWORD dw)
 			continue;
 		if (players[i].position.Dist(swordEnd) < Character::R)
 		{
-			players[i].TakeDamage(100);
+			players[i].TakeDamage(100, ind);
 			if (!players[i].isActive)
 				players[i].Invalidate(hWnd);
 			break;
@@ -414,7 +414,7 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 							continue;
 						if (players[k].position.Dist(shot.position) < Character::R)
 						{
-							players[k].TakeDamage(10);
+							players[k].TakeDamage(10, i);
 							if  (!players[k].isActive || !players[k].hasProgram)
 								players[k].Invalidate(hWnd);
 							shot.isActive = false;

@@ -83,7 +83,7 @@ void Character::Move(double distance)
 		position.y = mapHeight - R;
 }
 
-void Character::TakeDamage(int damage)
+void Character::TakeDamage(int damage, int byId)
 {
 	if (isActive)
 		health -= damage;
@@ -91,7 +91,7 @@ void Character::TakeDamage(int damage)
 	{
 		isActive = false;
 		WCHAR text[1024];
-		wsprintf(text, L"%s был убит", name);
+		wsprintf(text, L"%s был убит игроком %s", name, players[byId].name);
 		PrintMessage(text);
 		int k = 0;
 		int id = 0;
