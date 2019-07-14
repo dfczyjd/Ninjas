@@ -7,7 +7,7 @@
 Character::Character(WCHAR *name, int id, double x, double y, COLORREF color, double dir) : color(color), name(name)
 {
 	direction = dir;
-	health = 100;
+	health = 0;
 	swordShift = M_PI_4;
 	isSwinging = false;
 	isActive = false;
@@ -93,18 +93,6 @@ void Character::TakeDamage(int damage, int byId)
 		WCHAR text[1024];
 		wsprintf(text, L"%s был убит игроком %s", name, players[byId].name);
 		PrintMessage(text);
-		int k = 0;
-		int id = 0;
-		for (int i = 0; i < PLAYER_COUNT; ++i){
-			if(players[i].health > 0){
-        		k++;
-        		id = i;
-        	}	
-        }
-        if(k == 1){
-        	wsprintf(text, L"В живых остался лишь %s! Бой завершён", players[id].name);
-        	PrintMessage(text);
-        }
 	}
 }
 

@@ -13,6 +13,8 @@ RECT updateRect;
 int mapWidth, mapHeight;
 bool abortLaunch = false;
 vector<WCHAR *> chatMess;
+bool FightEnded = false;
+bool CanExecCommands = true;
 
 LRESULT CALLBACK	WndProc(HWND, UINT, WPARAM, LPARAM);
 LRESULT CALLBACK	InfoWndProc(HWND, UINT, WPARAM, LPARAM);
@@ -258,6 +260,7 @@ INT_PTR CALLBACK FileSelectProc(HWND hDlg,
 			players[0].interpreter.SetCode(codeFile);
 			players[0].isActive = true;
 			players[0].hasProgram = true;
+			players[0].health = 100;
 			break;
 		}
 
@@ -270,6 +273,7 @@ INT_PTR CALLBACK FileSelectProc(HWND hDlg,
 			players[1].interpreter.SetCode(codeFile);
 			players[1].isActive = true;
 			players[1].hasProgram = true;
+			players[1].health = 100;
 			break;
 		}
 
@@ -282,6 +286,7 @@ INT_PTR CALLBACK FileSelectProc(HWND hDlg,
 			players[2].interpreter.SetCode(codeFile);
 			players[2].isActive = true;
 			players[2].hasProgram = true;
+			players[2].health = 100;
 			break;
 		}
 
@@ -294,6 +299,7 @@ INT_PTR CALLBACK FileSelectProc(HWND hDlg,
 			players[3].interpreter.SetCode(codeFile);
 			players[3].isActive = true;
 			players[3].hasProgram = true;
+			players[3].health = 100;
 			break;
 		}
 		}
@@ -364,39 +370,51 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 		{
 		case COMMAND_TIMER:
 		{
+			int activeShots = 0;
+			int activePlayers = 0;
+			int activeId = 0;
 			for (int i = 0; i < PLAYER_COUNT; ++i)
 			{
 				if (players[i].isActive)
 				{
+					activePlayers++;
+					activeId = i;
 					Command next = players[i].interpreter.NextCommand();
 					switch (next.type)
 					{
 					case Command::Move:
 					{
-						double res = next.param;
-						for (int j = 0; j < PLAYER_COUNT; ++j)
-						{
-							if (i == j || !players[j].isActive)
-								continue;
-							double maxMove = players[i].MaxMovement(players[j].position, res);
-							res = min(maxMove, res);
+						if(CanExecCommands){
+							double res = next.param;
+							for (int j = 0; j < PLAYER_COUNT; ++j)
+							{
+								if (i == j || !players[j].isActive)
+									continue;
+								double maxMove = players[i].MaxMovement(players[j].position, res);
+								res = min(maxMove, res);
+							}
+							players[i].Move(res);
 						}
-						players[i].Move(res);
 						break;
 					}
 
 					case Command::Turn:
-						players[i].Turn(next.param);
+						if(CanExecCommands){
+							players[i].Turn(next.param);
+						}
 						break;
 
 					case Command::Swing:
-						players[i].isSwinging = true;
-						SetTimer(hWnd, SWING_TIMER + i, 10, (TIMERPROC)OnSwing);
+						if(CanExecCommands){
+							players[i].isSwinging = true;
+							SetTimer(hWnd, SWING_TIMER + i, 10, (TIMERPROC)OnSwing);
+						}
 						break;
 
 					case Command::Shoot:
-						players[i].shots.push_back(Projectile(players[i].position.x, players[i].position.y,
-							players[i].direction, players[i].color));
+						if(CanExecCommands)
+							players[i].shots.push_back(Projectile(players[i].position.x, players[i].position.y,
+								players[i].direction, players[i].color));
 						break;
 					}
 					players[i].Invalidate(hWnd);
@@ -406,12 +424,16 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 					Projectile &shot = players[i].shots[j];
 					if (!shot.isActive)
 						continue;
+					activeShots++;
+//					if (players[i].isActive)
+//						activePlayers++;	
 					shot.Invalidate(hWnd);
 					shot.Move();
 					for (int k = 0; k < PLAYER_COUNT; ++k)
 					{
 						if (k == i || !players[k].isActive || !players[k].hasProgram)
 							continue;
+							
 						if (players[k].position.Dist(shot.position) < Character::R)
 						{
 							players[k].TakeDamage(10, i);
@@ -424,6 +446,24 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 					shot.Invalidate(hWnd);
 				}
 				players[i].interpreter.SendUpdate();
+			}
+			WCHAR text[1024];
+			if (activePlayers < 2 && !FightEnded){
+				if(activePlayers == 0){
+           			wsprintf(text, L"Бой завершён! Никто не победил");
+					PrintMessage(text);
+					FightEnded = true;
+					CanExecCommands = false;
+				} else if (activeShots == 0) {
+					wsprintf(text, L"Бой завершён! %s победил", players[activeId].name);
+                	PrintMessage(text);
+                	FightEnded = true;
+				} else {
+					CanExecCommands = false;
+				}
+			} else {
+				wsprintf(text, L"Active shots : %d", activeShots);
+            	//PrintMessage(text);
 			}
 			break;
 		}
