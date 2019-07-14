@@ -1,9 +1,0 @@
-fun void test(int var)
-{
-	int a = var
-}
-
-fun void main()
-{
-	test(2 + 3)
-}

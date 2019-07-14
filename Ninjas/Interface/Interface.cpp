@@ -586,11 +586,12 @@ LRESULT CALLBACK ChatWndProc(HWND hWnd,
 	{
 		hdc = BeginPaint(hWnd, &ps);
 		SetBkMode(hdc, TRANSPARENT);
-		int lastMess = min(chatLength, chatMess.size());
-		for (int i = 0; i < lastMess; ++i)
+		int sz = chatMess.size();
+		int lastMess = min(chatLength, sz);
+		for (int i = sz - lastMess; i < sz; ++i)
 		{
-			int len = wsprintf(text, L"%s", chatMess[lastMess - i - 1]);
-			TextOut(hdc, 20, (i + 1) * 20, text, len);
+			int len = wsprintf(text, L"%s", chatMess[i]);
+			TextOut(hdc, 20, (sz - i) * 20, text, len);
 		}
 		EndPaint(hWnd, &ps);
 		break;
