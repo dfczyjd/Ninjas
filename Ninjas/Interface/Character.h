@@ -6,6 +6,8 @@
 #include "Interpreter.h"
 #include "Point.h"
 
+
+
 using namespace std;
 
 struct Character
@@ -17,7 +19,7 @@ struct Character
 	HBRUSH mainBrush, blackBrush;
 	HPEN mainPen, blackPen;
 	COLORREF color;
-	bool isSwinging, isActive;
+	bool isSwinging, isActive, hasProgram;
 	Interpreter interpreter;
 	int health;
 	vector<Projectile> shots;

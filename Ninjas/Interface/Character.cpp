@@ -10,8 +10,9 @@ Character::Character(WCHAR *name, int id, double x, double y, COLORREF color, do
 	health = 100;
 	swordShift = M_PI_4;
 	isSwinging = false;
-	isActive = true;
-
+	isActive = false;
+	hasProgram = false;
+	
 	interpreter = Interpreter(id);
 	position = Point(x, y);
 	mainBrush = CreateSolidBrush(color);
@@ -84,13 +85,26 @@ void Character::Move(double distance)
 
 void Character::TakeDamage(int damage)
 {
-	health -= damage;
+	if (isActive)
+		health -= damage;
 	if (health <= 0)
 	{
 		isActive = false;
 		WCHAR text[1024];
 		wsprintf(text, L"%s был убит", name);
 		PrintMessage(text);
+		int k = 0;
+		int id = 0;
+		for (int i = 0; i < PLAYER_COUNT; ++i){
+			if(players[i].health > 0){
+        		k++;
+        		id = i;
+        	}	
+        }
+        if(k == 1){
+        	wsprintf(text, L"В живых остался лишь %s! Бой завершён", players[id].name);
+        	PrintMessage(text);
+        }
 	}
 }
 

@@ -256,6 +256,8 @@ INT_PTR CALLBACK FileSelectProc(HWND hDlg,
 				break;
 			SetWindowText((HWND)lParam, codeFile);
 			players[0].interpreter.SetCode(codeFile);
+			players[0].isActive = true;
+			players[0].hasProgram = true;
 			break;
 		}
 
@@ -266,6 +268,8 @@ INT_PTR CALLBACK FileSelectProc(HWND hDlg,
 				break;
 			SetWindowText((HWND)lParam, codeFile);
 			players[1].interpreter.SetCode(codeFile);
+			players[1].isActive = true;
+			players[1].hasProgram = true;
 			break;
 		}
 
@@ -276,6 +280,8 @@ INT_PTR CALLBACK FileSelectProc(HWND hDlg,
 				break;
 			SetWindowText((HWND)lParam, codeFile);
 			players[2].interpreter.SetCode(codeFile);
+			players[2].isActive = true;
+			players[2].hasProgram = true;
 			break;
 		}
 
@@ -286,6 +292,8 @@ INT_PTR CALLBACK FileSelectProc(HWND hDlg,
 				break;
 			SetWindowText((HWND)lParam, codeFile);
 			players[3].interpreter.SetCode(codeFile);
+			players[3].isActive = true;
+			players[3].hasProgram = true;
 			break;
 		}
 		}
@@ -402,12 +410,12 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 					shot.Move();
 					for (int k = 0; k < PLAYER_COUNT; ++k)
 					{
-						if (k == i || !players[k].isActive)
+						if (k == i || !players[k].isActive || !players[k].hasProgram)
 							continue;
 						if (players[k].position.Dist(shot.position) < Character::R)
 						{
 							players[k].TakeDamage(10);
-							if (!players[k].isActive)
+							if  (!players[k].isActive || !players[k].hasProgram)
 								players[k].Invalidate(hWnd);
 							shot.isActive = false;
 							break;
@@ -429,7 +437,7 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 		hdc = BeginPaint(hWnd, &ps);
 		for (int i = 0; i < PLAYER_COUNT; ++i)
 		{
-			if (players[i].isActive)
+			if (players[i].isActive && players[i].hasProgram)
 				players[i].Draw(hdc);
 			for (int j = 0; j < players[i].shots.size(); ++j)
 				players[i].shots[j].Draw(hdc);
@@ -476,10 +484,14 @@ LRESULT CALLBACK InfoWndProc(HWND hWnd,
 	{
 		hdc = BeginPaint(hWnd, &ps);
 		SetBkMode(hdc, TRANSPARENT);
+		int k = 0;
 		for (int i = 0; i < PLAYER_COUNT; ++i)
 		{
-			int cnt = wsprintf(text, L"%s: %d/100", players[i].name, players[i].health);
-			TextOut(hdc, 100, 50 * (i + 1), text, cnt);
+			if(players[i].hasProgram){
+				int cnt = wsprintf(text, L"%s: %d/100", players[i].name, players[i].health);
+				TextOut(hdc, 100, 50 * (k + 1), text, cnt);
+				k++;
+			}
 		}
 		EndPaint(hWnd, &ps);
 		break;
