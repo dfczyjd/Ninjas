@@ -1386,11 +1386,11 @@ public partial class NinjaParser : Parser {
 	    	public Block elseIfBlock;
 	    	private bool full;
 	        
-	        	        public Condition(NinjaParser parser, bool f) : base(parser)
-	        	        {
-	        		        elseIfBlock = new Block(parser);
-	        		        full = f;
-	        	        }
+			public Condition(NinjaParser parser, bool f) : base(parser)
+			{
+				elseIfBlock = new Block(parser);
+				full = f;
+			}
 	        	        
 	        public override dynamic Eval()
 	        {
@@ -3198,7 +3198,7 @@ public partial class NinjaParser : Parser {
 				ExprClass bExpr = new ExprClass(new OperationClass(this));
 				bExpr.parser = this;
 				
-				Condition ifer = new Condition(this, false)
+				Condition ifer = new Condition(this, true)
 				{
 					
 					parser = this
