@@ -437,6 +437,8 @@ options {
 					}
 					#if !NOGUI
 					parser.owner.commands.Enqueue(nw);
+					if (parser.owner.commands.Count > 100)
+						parser.Sleep();
 					#endif
 				}
 			}
@@ -810,6 +812,14 @@ options {
                     								Error(rightVal + " can't be decremented");
                     							stack.Add(new ExprStackObject(rightVal, parser));
                     							--parser.FindVar(right.value).value;
+                    							break;
+												
+											case "-un":
+                    							right = Pop(stack);
+                    							rightVal = right.Calc();
+                    							if (!isCompatible(0.0, rightVal))
+                    								Error(rightVal + " is not a number");
+                    							stack.Add(new ExprStackObject(-rightVal, parser));
                     							break;
                     							
                     						case "=":
@@ -1835,7 +1845,16 @@ ariphOperand[ExprClass oper]:
              			value = $call.callData,
 						parser = this
              		});
-                }	
+                }
+			 | SUB ariphOperand[$oper]
+				{
+					$oper.Push(new ExprStackObject()
+             		{
+             			type = ObjType.Operation,
+             			value = "-un",
+						parser = this
+             		});
+				}
              | ariphID[$oper]
                {
 

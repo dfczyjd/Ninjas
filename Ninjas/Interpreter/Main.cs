@@ -192,6 +192,13 @@ public class RealInterpreter
             var ms = new MemoryStream(Encoding.UTF8.GetBytes(input));
             var lexer = new NinjaLexer(new AntlrInputStream(ms));
             var tokens = new CommonTokenStream(lexer);
+            IList<IToken> tokenList = tokens.GetTokens();
+            Main.Log("Lexems of the program:");
+            Main.Log(tokenList.Count + " lexems");
+            foreach (var elem in tokenList)
+            {
+                Main.Log("Lexem: " + elem.Text);
+            }
             parser = new NinjaParser(tokens);
             parser.owner = this;
             parser.id = id;
