@@ -1,531 +1,195 @@
-[14.07.2019 16:30:34] Interpreter #0 got file D:\Coding\C#\Interpreter\ProgramExamples\3.txt
-[14.07.2019 16:30:34] Lexems of the program:
-[14.07.2019 16:30:34] 0 lexems
-[14.07.2019 16:30:37] Interpreter #1 got file D:\Coding\C#\Interpreter\ProgramExamples\3.txt
-[14.07.2019 16:30:37] Lexems of the program:
-[14.07.2019 16:30:37] 0 lexems
-[14.07.2019 16:30:38] Interpreter #2 got file D:\Coding\C#\Interpreter\ProgramExamples\3.txt
-[14.07.2019 16:30:38] Lexems of the program:
-[14.07.2019 16:30:38] 0 lexems
-[14.07.2019 16:30:41] Interpreter #3 got file D:\Coding\C#\Interpreter\ProgramExamples\3.txt
-[14.07.2019 16:30:41] Lexems of the program:
-[14.07.2019 16:30:41] 0 lexems
-[14.07.2019 16:30:42] interpreter #0 executing 0 0
-[14.07.2019 16:30:42] #0 entered pause
-[14.07.2019 16:30:42] #2 entered pause
-[14.07.2019 16:30:42] #3 entered pause
-[14.07.2019 16:30:42] #1 entered pause
-[14.07.2019 16:30:42] interpreter #0 executing 0 0
-[14.07.2019 16:30:42] interpreter #0 executing 0 0
-[14.07.2019 16:30:42] #0 left pause
-[14.07.2019 16:30:42] #1 left pause
-[14.07.2019 16:30:42] #2 left pause
-[14.07.2019 16:30:42] #3 left pause
-[14.07.2019 16:30:42] Func getSelfId for player #-1 returning 2
-[14.07.2019 16:30:42] Func getSelfId for player #-1 returning 3
-[14.07.2019 16:30:42] Func getSelfId for player #-1 returning 0
-[14.07.2019 16:30:42] Func getSelfId for player #-1 returning 1
-[14.07.2019 16:30:42] #0 entered pause
-[14.07.2019 16:30:42] #1 entered pause
-[14.07.2019 16:30:42] interpreter #0 executing 2 -0,785398163397448
-[14.07.2019 16:30:42] interpreter #0 executing 0 0
-[14.07.2019 16:30:42] #0 left pause
-[14.07.2019 16:30:42] #1 left pause
-[14.07.2019 16:30:42] Func getPositionX for player #0 returning 100
-[14.07.2019 16:30:42] Func getPositionX for player #0 returning 100
-[14.07.2019 16:30:42] #1 entered pause
-[14.07.2019 16:30:42] #0 entered pause
-[14.07.2019 16:30:42] #0 left pause
-executing 0 0
-0 returning 100
-r\ProgramExamples\3.[14.07.2019 16:30:42] #0 left pause
-executing 0 0
-0 returning 100
-r\ProgramExamples\3.[14.07.2019 16:30:42] Func getPositionY for player #0 returning 100
-[14.07.2019 16:30:42] #1 left pause
-[14.07.2019 16:30:42] #1 left pause
-[14.07.2019 16:30:42] #0 entered pause
-[14.07.2019 16:30:42] Func getPositionY for player #0 returning 100
-[14.07.2019 16:30:42] #1 entered pause
-[14.07.2019 16:30:43] interpreter #0 executing 0 0
-[14.07.2019 16:30:43] interpreter #0 executing 0 0
-[14.07.2019 16:30:43] #0 left pause
-[14.07.2019 16:30:43] Func getPositionX for player #1 returning 600
-[14.07.2019 16:30:43] #1 left pause
+[14.07.2019 18:55:03] Interpreter #0 got file D:\Coding\C#\Interpreter\ProgramExamples\nnj.npr
+[14.07.2019 18:55:03] Lexems of the program:
+[14.07.2019 18:55:03] 0 lexems
+[14.07.2019 18:55:05] Interpreter #1 got file D:\Coding\C#\Interpreter\ProgramExamples\nnj.npr
+[14.07.2019 18:55:05] Lexems of the program:
+[14.07.2019 18:55:05] 0 lexems
+[14.07.2019 18:55:08] Interpreter #2 got file D:\Coding\C#\Interpreter\ProgramExamples\nnj.npr
+[14.07.2019 18:55:08] Lexems of the program:
+[14.07.2019 18:55:08] 0 lexems
+[14.07.2019 18:55:11] Interpreter #3 got file D:\Coding\C#\Interpreter\ProgramExamples\nnj.npr
+[14.07.2019 18:55:11] Lexems of the program:
+[14.07.2019 18:55:11] 0 lexems
+[14.07.2019 18:55:12] interpreter #0 executing 0 0
+[14.07.2019 18:55:12] interpreter #0 executing 0 0
+[14.07.2019 18:55:12] #2 entered pause
+[14.07.2019 18:55:12] #0 entered pause
+[14.07.2019 18:55:12] #3 entered pause
+[14.07.2019 18:55:12] #1 entered pause
+[14.07.2019 18:55:12] interpreter #0 executing 0 0
+[14.07.2019 18:55:12] interpreter #0 executing 0 0
+[14.07.2019 18:55:12] #0 left pause
+[14.07.2019 18:55:12] #1 left pause
+[14.07.2019 18:55:12] #2 left pause
+[14.07.2019 18:55:12] #3 left pause
+[14.07.2019 18:55:12] Func getSelfId for player #-1 returning 0
+[14.07.2019 18:55:12] Func getSelfId for player #-1 returning 1
+[14.07.2019 18:55:12] Func getSelfId for player #-1 returning 3
+[14.07.2019 18:55:12] Func getSelfId for player #-1 returning 2
+[14.07.2019 18:55:12] #1 entered pause
+[14.07.2019 18:55:12] #3 entered pause
+[14.07.2019 18:55:12] #0 entered pause
+[14.07.2019 18:55:12] #2 entered pause
+[14.07.2019 18:55:12] interpreter #0 executing 0 0
+[14.07.2019 18:55:12] interpreter #0 executing 0 0
+[14.07.2019 18:55:12] #0 left pause
+[14.07.2019 18:55:12] #1 left pause
+[14.07.2019 18:55:12] #2 left pause
+[14.07.2019 18:55:12] #3 left pause
+[14.07.2019 18:55:12] Func getHealth for player #0 returning 100
+[14.07.2019 18:55:12] Func getHealth for player #3 returning 100
+[14.07.2019 18:55:12] Func getHealth for player #2 returning 100
+[14.07.2019 18:55:12] Func getHealth for player #2 returning 100
+[14.07.2019 18:55:12] Func getHealth for player #1 returning 100
+[14.07.2019 18:55:12] #2 entered pause
+[14.07.2019 18:55:12] #1 entered pause
+[14.07.2019 18:55:12] #0 entered pause
+[14.07.2019 18:55:12] #3 entered pause
+[14.07.2019 18:55:12] interpreter #0 executing 1 40
+[14.07.2019 18:55:12] interpreter #0 executing 0 0
+[14.07.2019 18:55:12] interpreter #0 executing 0 0
+[14.07.2019 18:55:12] #0 left pause
+[14.07.2019 18:55:12] #1 left pause
+[14.07.2019 18:55:12] #2 left pause
+[14.07.2019 18:55:12] #3 left pause
+[14.07.2019 18:55:12] Func getPositionX for player #0 returning 107,071068
+[14.07.2019 18:55:12] Func getPositionX for player #0 returning 107,071068
+[14.07.2019 18:55:12] Func getPositionX for player #0 returning 107,071068
+[14.07.2019 18:55:12] Func getPositionX for player #0 returning 107,071068
+[14.07.2019 18:55:12] #0 entered pause
+[14.07.2019 18:55:12] #3 entered pause
+[14.07.2019 18:55:12] #2 entered pause
+[14.07.2019 18:55:12] #1 entered pause
+[14.07.2019 18:55:13] #0 left pause
+[14.07.2019 18:55:13] Func getPositionY for player #0 returning 107,071068
+[14.07.2019 18:55:13] #0 entered pause
+[14.07.2019 18:55:13] interpreter #0 executing 0 0
+[14.07.2019 18:55:13] #1 left pause
+[14.07.2019 18:55:13] Func getPositionY for player #0 returning 107,071068
+[14.07.2019 18:55:13] #2 left pause
+[14.07.2019 18:55:13] #2 left pause
+[14.07.2019 18:55:13] #1 entered pause
+[14.07.2019 18:55:13] Func getPositionY for player #0 returning 107,071068
+[14.07.2019 18:55:13] #2 entered pause
+[14.07.2019 18:55:13] #3 left pause
+[14.07.2019 18:55:13] Func getPositionY for player #0 returning 107,071068
+[14.07.2019 18:55:13] #3 entered pause
+[14.07.2019 18:55:13] interpreter #0 executing 0 0
+[14.07.2019 18:55:13] #0 left pause
+[14.07.2019 18:55:13] Func getPositionX for player #0 returning 107,071068
+[14.07.2019 18:55:13] #1 left pause
+[14.07.2019 18:55:13] #0 entered pause
+[14.07.2019 18:55:13] #2 left pause
 e
-for player #1 returning 600
-r\Progra[14.07.2019 16:30:43] #1 left pause
-e
-for player #1 returning 600
-r\Progra[14.07.2019 16:30:43] Func getPositionX for player #1 returning 600
-[14.07.2019 16:30:43] #1 entered pause
-[14.07.2019 16:30:43] #0 left pause
-executing 0 0
-[14.07.2019 16:30:43] #0 left pause
-executing 0 0
-[14.07.2019 16:30:43] Func getPositionY for player #1 returning 100
-[14.07.2019 16:30:43] #1 left pause
-[14.07.2019 16:30:43] Func getPositionY for player #1 returning 100
-[14.07.2019 16:30:43] #0 entered pause
-[14.07.2019 16:30:43] #1 entered pause
-[14.07.2019 16:30:43] interpreter #0 executing 1 30
-[14.07.2019 16:30:43] #0 left pause
-executing 0 0
-
- returning 100
-r\ProgramExamples\3.[14.07.2019 16:30:43] #0 left pause
-executing 0 0
-
- returning 100
-r\ProgramExamples\3.[14.07.2019 16:30:43] Func getPositionX for player #0 returning 110
-[14.07.2019 16:30:43] #1 left pause
-[14.07.2019 16:30:43] #1 left pause
-[14.07.2019 16:30:43] #0 entered pause
-[14.07.2019 16:30:43] Func getPositionX for player #0 returning 110
-[14.07.2019 16:30:43] #1 entered pause
-[14.07.2019 16:30:43] interpreter e
-executing 0 0
-0 returning 110
-r\ProgramExamples\3.[14.07.2019 16:30:43] interpreter e
-executing 0 0
-0 returning 110
-r\ProgramExamples\3.[14.07.2019 16:30:43] Func getPositionY for player #0 returning 100
-[14.07.2019 16:30:43] #0 entered pause
-[14.07.2019 16:30:43] #0 entered pause
-[14.07.2019 16:30:43] #1 left pause
-[14.07.2019 16:30:43] Func getPositionY for player #0 returning 100
-[14.07.2019 16:30:43] #1 entered pause
-[14.07.2019 16:30:43] #0 left pause
-[14.07.2019 16:30:43] Func getPositionX for player #1 returning 590
-[14.07.2019 16:30:43] #0 entered pause
-[14.07.2019 16:30:43] #0 entered pause
-for player #1 returning 590
-use
-[14.07.2019 16:30:43] interpreter #0 executing 0 0
-[14.07.2019 16:30:43] #1 left pause
-[14.07.2019 16:30:43] Func getPositionX for player #1 returning 590
-[14.07.2019 16:30:43] #1 entered pause
-[14.07.2019 16:30:43] interpreter e
-executing 0 0
-1 returning 590
-r #0 executing 0 0
-[14.07.2019 16:30:43] interpreter e
-executing 0 0
-1 returning 590
-r #0 executing 0 0
-[14.07.2019 16:30:43] Func getPositionY for player #1 returning 100
-[14.07.2019 16:30:43] #1 left pause
-[14.07.2019 16:30:43] Func getPositionY for player #1 returning 100
-[14.07.2019 16:30:43] #0 entered pause
-[14.07.2019 16:30:43] #1 entered pause
-[14.07.2019 16:30:43] interpreter #0 executing 1 30
-[14.07.2019 16:30:43] interpreter #0 executing 0 0
-[14.07.2019 16:30:43] #0 left pause
-[14.07.2019 16:30:43] interpreter #0 executing 0 0
-[14.07.2019 16:30:43] #0 left pause
-[14.07.2019 16:30:43] #1 left pause
-[14.07.2019 16:30:43] #1 left pause
-[14.07.2019 16:30:43] Func getPositionX for player #0 returning 120
-[14.07.2019 16:30:43] Func getPositionX for player #0 returning 120
-[14.07.2019 16:30:43] #1 entered pause
-[14.07.2019 16:30:43] #0 entered pause
-[14.07.2019 16:30:44] #0 left pause
-[14.07.2019 16:30:44] interpreter #0 executing 0 0
-[14.07.2019 16:30:44] #0 left pause
-[14.07.2019 16:30:44] Func getPositionY for player #0 returning 100
-[14.07.2019 16:30:44] #1 left pause
-[14.07.2019 16:30:44] #1 left pause
-[14.07.2019 16:30:44] #0 entered pause
-[14.07.2019 16:30:44] Func getPositionY for player #0 returning 100
-[14.07.2019 16:30:44] #1 entered pause
-[14.07.2019 16:30:44] interpreter #0 executing 0 0
-[14.07.2019 16:30:44] interpreter #0 executing 0 0
-[14.07.2019 16:30:44] #0 left pause
-[14.07.2019 16:30:44] Func getPositionX for player #1 returning 580
-[14.07.2019 16:30:44] #1 left pause
-e
-for player #1 returning 580
-:43] #0 [14.07.2019 16:30:44] #1 left pause
-e
-for player #1 returning 580
-:43] #0 [14.07.2019 16:30:44] Func getPositionX for player #1 returning 580
-[14.07.2019 16:30:44] #1 entered pause
-[14.07.2019 16:30:44] interpreter #0 executing 0 0
-[14.07.2019 16:30:44] #0 left pause
-[14.07.2019 16:30:44] interpreter #0 executing 0 0
-[14.07.2019 16:30:44] #0 left pause
-[14.07.2019 16:30:44] Func getPositionY for player #1 returning 100
-[14.07.2019 16:30:44] #1 left pause
-[14.07.2019 16:30:44] Func getPositionY for player #1 returning 100
-[14.07.2019 16:30:44] #0 entered pause
-[14.07.2019 16:30:44] #1 entered pause
-[14.07.2019 16:30:44] interpreter #0 executing 1 30
-[14.07.2019 16:30:44] #0 left pause
-executing 0 0
-[14.07.2019 16:30:44] #0 left pause
-executing 0 0
-[14.07.2019 16:30:44] Func getPositionX for player #0 returning 130
-[14.07.2019 16:30:44] #0 entered pause
-[14.07.2019 16:30:44] #1 left pause
-[14.07.2019 16:30:44] Func getPositionX for player #0 returning 130
-[14.07.2019 16:30:44] #1 entered pause
-[14.07.2019 16:30:44] #0 left par e
-executing 0 0
-[14.07.2019 16:30:44] #0 left par e
-executing 0 0
-[14.07.2019 16:30:44] Func getPositionY for player #0 returning 100
-[14.07.2019 16:30:44] #0 entered pause
-[14.07.2019 16:30:44] #1 left pause
-[14.07.2019 16:30:44] Func getPositionY for player #0 returning 100
-[14.07.2019 16:30:44] #1 entered pause
-[14.07.2019 16:30:44] interpreter #0 executing 0 0
-[14.07.2019 16:30:44] #0 left pause
-[14.07.2019 16:30:44] Func getPositionX for player #1 returning 570
-[14.07.2019 16:30:44] #0 entered pause
-[14.07.2019 16:30:44] #1 left pause
-[14.07.2019 16:30:44] Func getPositionX for player #1 returning 570
-[14.07.2019 16:30:44] #1 entered pause
-[14.07.2019 16:30:44] interpreter #0 executing 0 0
-[14.07.2019 16:30:44] interpreter #0 executing 0 0
-[14.07.2019 16:30:44] Func getPositionY for player #1 returning 100
-[14.07.2019 16:30:44] #1 left pause
-[14.07.2019 16:30:44] Func getPositionY for player #1 returning 100
-[14.07.2019 16:30:44] #0 entered pause
-[14.07.2019 16:30:44] #1 entered pause
-[14.07.2019 16:30:44] interpreter #0 executing 1 30
-[14.07.2019 16:30:45] interpreter e
-executing 0 0
-
- returning 100
-:44] #0 left pause
-[14.07.2019 16:30:45] interpreter e
-executing 0 0
-
- returning 100
-:44] #0 left pause
-[14.07.2019 16:30:45] Func getPositionX for player #0 returning 140
-[14.07.2019 16:30:45] #0 entered pause
-[14.07.2019 16:30:45] #1 left pause
-[14.07.2019 16:30:45] Func getPositionX for player #0 returning 140
-[14.07.2019 16:30:45] #1 entered pause
-[14.07.2019 16:30:45] #0 left pause
-[14.07.2019 16:30:45] interpreter #0 executing 0 0
-[14.07.2019 16:30:45] #0 left pause
-[14.07.2019 16:30:45] Func getPositionY for player #0 returning 100
-[14.07.2019 16:30:45] #0 entered pause
-[14.07.2019 16:30:45] #0 entered pause
-[14.07.2019 16:30:45] #1 left pause
-[14.07.2019 16:30:45] Func getPositionY for player #0 returning 100
-[14.07.2019 16:30:45] #1 entered pause
-[14.07.2019 16:30:45] interpreter #0 executing 0 0
-0 returning 100
-:44] #0 left pause
-[14.07.2019 16:30:45] interpreter #0 executing 0 0
-0 returning 100
-:44] #0 left pause
-[14.07.2019 16:30:45] Func getPositionX for player #1 returning 560
-[14.07.2019 16:30:45] #1 left pause
-[14.07.2019 16:30:45] #1 left pause
-[14.07.2019 16:30:45] #0 entered pause
-[14.07.2019 16:30:45] #1 left pause
-[14.07.2019 16:30:45] #1 left pause
-[14.07.2019 16:30:45] #0 entered pause
-[14.07.2019 16:30:45] Func getPositionX for player #1 returning 560
-[14.07.2019 16:30:45] #1 entered pause
-[14.07.2019 16:30:45] interpreter #0 executing 0 0
-1 returning 560
- pause
-left pause
-[14.07.2019 16:30:45] interpreter #0 executing 0 0
-1 returning 560
- pause
-left pause
-[14.07.2019 16:30:45] Func getPositionY for player #1 returning 100
-[14.07.2019 16:30:45] #1 left pause
-[14.07.2019 16:30:45] Func getPositionY for player #1 returning 100
-[14.07.2019 16:30:45] #0 entered pause
-[14.07.2019 16:30:45] #1 entered pause
-[14.07.2019 16:30:45] interpreter #0 executing 1 30
-[14.07.2019 16:30:45] interpreter #0 executing 0 0
-[14.07.2019 16:30:45] interpreter #0 executing 0 0
-[14.07.2019 16:30:45] #0 left pause
-[14.07.2019 16:30:45] Func getPositionX for player #0 returning 150
-[14.07.2019 16:30:45] #1 left pause
-[14.07.2019 16:30:45] #0 entered pause
-[14.07.2019 16:30:45] Func getPositionX for player #0 returning 150
-[14.07.2019 16:30:45] #1 entered pause
-[14.07.2019 16:30:45] interpreter #0 executing 0 0
-[14.07.2019 16:30:45] #0 left pause
-[14.07.2019 16:30:45] #1 left pause
-[14.07.2019 16:30:45] #1 left pause
-[14.07.2019 16:30:45] Func getPositionY for player #0 returning 100
-[14.07.2019 16:30:45] Func getPositionY for player #0 returning 100
-[14.07.2019 16:30:45] #1 entered pause
-[14.07.2019 16:30:45] #1 entered pause
-[14.07.2019 16:30:45] #0 entered pause
-[14.07.2019 16:30:45] interpreter #0 executing 0 0
-[14.07.2019 16:30:45] #0 left pause
-[14.07.2019 16:30:45] Func getPositionX for player #1 returning 550
-[14.07.2019 16:30:45] #0 entered pause
-[14.07.2019 16:30:45] #1 left pause
-[14.07.2019 16:30:45] Func getPositionX for player #1 returning 550
-[14.07.2019 16:30:45] #1 entered pause
-[14.07.2019 16:30:45] interpreteuse
-executing 0 0
-1 returning 550
- pause
-left pause
-[14.07.2019 16:30:45] interpreteuse
-executing 0 0
-1 returning 550
- pause
-left pause
-[14.07.2019 16:30:45] Func getPositionY for player #1 returning 100
-[14.07.2019 16:30:45] #1 left pause
-[14.07.2019 16:30:45] Func getPositionY for player #1 returning 100
-[14.07.2019 16:30:45] #0 entered pause
-[14.07.2019 16:30:45] #1 entered pause
-[14.07.2019 16:30:46] interpreter #0 executing 1 30
-[14.07.2019 16:30:46] interpreter #0
-executing 0 0
-
- returning 100
- pause
-left pause
-[14.07.2019 16:30:46] interpreter #0
-executing 0 0
-
- returning 100
- pause
-left pause
-[14.07.2019 16:30:46] Func getPositionX for player #0 returning 160
-[14.07.2019 16:30:46] #0 entered pause
-[14.07.2019 16:30:46] #0 entered pause
-[14.07.2019 16:30:46] #0 entered pause
-[14.07.2019 16:30:46] #1 left pause
-[14.07.2019 16:30:46] Func getPositionX for player #0 returning 160
-[14.07.2019 16:30:46] #1 entered pause
-[14.07.2019 16:30:46] interpreter #0 executing 0 0
-0 returning 160
- pause
-left pause
-[14.07.2019 16:30:46] interpreter #0 [14.07.2019 16:30:46] Func getPositionY for player #0 returning 100
-[14.07.2019 16:30:46] #1 left pause
-[14.07.2019 16:30:46] #0 entered pause
-[14.07.2019 16:30:46] Func getPositionY for player #0 returning 100
-[14.07.2019 16:30:46] #1 entered pause
-[14.07.2019 16:30:46] #0 left pause
-[14.07.2019 16:30:46] interpreter #0 executing 0 0
-[14.07.2019 16:30:46] #0 left pause
-[14.07.2019 16:30:46] Func getPositionX for player #1 returning 540
-[14.07.2019 16:30:46] #1 left pause
-[14.07.2019 16:30:46] #1 left pause
-[14.07.2019 16:30:46] #0 entered pause
-[14.07.2019 16:30:46] Func getPositionX for player #1 returning 540
-[14.07.2019 16:30:46] #1 entered pause
-[14.07.2019 16:30:46] interpreter #0 executing 0 0
-[14.07.2019 16:30:46] interpreter #0 executing 0 0
-[14.07.2019 16:30:46] #0 left pause
-[14.07.2019 16:30:46] Func getPositionY for player #1 returning 100
-[14.07.2019 16:30:46] #1 left pause
-[14.07.2019 16:30:46] Func getPositionY for player #1 returning 100
-[14.07.2019 16:30:46] #0 entered pause
-[14.07.2019 16:30:46] #1 entered pause
-[14.07.2019 16:30:46] interpreter #0 executing 1 30
-[14.07.2019 16:30:46] #0 left pause
-[14.07.2019 16:30:46] #0 left pause
-[14.07.2019 16:30:46] Func getPositionX for player #0 returning 170
-[14.07.2019 16:30:46] #1 left pause
-[14.07.2019 16:30:46] #1 left pause
-[14.07.2019 16:30:46] #0 entered pause
-[14.07.2019 16:30:46] Func getPositionX for player #0 returning 170
-[14.07.2019 16:30:46] #1 entered pause
-[14.07.2019 16:30:46] in left pause
-executing 0 0
-0 returning 170
- pause
-left pause
-[14.07.2019 16:30:46] in left pause
-executing 0 0
-0 returning 170
- pause
-left pause
-[14.07.2019 16:30:46] Func getPositionY for player #0 returning 100
-[14.07.2019 16:30:46] #0 entered pause
-[14.07.2019 16:30:46] #1 left pause
-[14.07.2019 16:30:46] Func getPositionY for player #0 returning 100
-[14.07.2019 16:30:46] #1 entered pause
-[14.07.2019 16:30:46] interpreter #0 executing 0 0
-[14.07.2019 16:30:46] interpreter #0 executing 0 0
-[14.07.2019 16:30:46] #0 left pause
-[14.07.2019 16:30:46] Func getPositionX for player #1 returning 530
-[14.07.2019 16:30:46] #0 entered pause
-[14.07.2019 16:30:46] #0 entered pause
-[14.07.2019 16:30:46] #1 left pause
-[14.07.2019 16:30:46] Func getPositionX for player #1 returning 530
-[14.07.2019 16:30:46] #1 entered pause
-[14.07.2019 16:30:47] interpreter #0 executing 0 0
-[14.07.2019 16:30:47] interpreter #0 executing 0 0
-[14.07.2019 16:30:47] #0 left pause
-[14.07.2019 16:30:47] Func getPositionY for player #1 returning 100
-[14.07.2019 16:30:47] #1 left pause
-[14.07.2019 16:30:47] Func getPositionY for player #1 returning 100
-[14.07.2019 16:30:47] #0 entered pause
-[14.07.2019 16:30:47] #1 entered pause
-[14.07.2019 16:30:47] interpreter #0 executing 1 30
-[14.07.2019 16:30:47] interpreter #0 executing 0 0
-[14.07.2019 16:30:47] interpreter #0 executing 0 0
-[14.07.2019 16:30:47] #0 left pause
-[14.07.2019 16:30:47] Func getPositionX for player #0 returning 180
-[14.07.2019 16:30:47] #1 left pause
-[14.07.2019 16:30:47] #1 left pause
-[14.07.2019 16:30:47] #0 entered pause
-[14.07.2019 16:30:47] Func getPositionX for player #0 returning 180
-[14.07.2019 16:30:47] #1 entered pause
-[14.07.2019 16:30:47] interpreter #0 executing 0 0
-[14.07.2019 16:30:47] interpreter #0 executing 0 0
-[14.07.2019 16:30:47] #0 left pause
-[14.07.2019 16:30:47] Func getPositionY for player #0 returning 100
-[14.07.2019 16:30:47] #1 left pause
-e
-for player #0 returning 100
- pause
-[14.07.2019 16:30:47] #1 left pause
-e
-for player #0 returning 100
- pause
-[14.07.2019 16:30:47] Func getPositionY for player #0 returning 100
-[14.07.2019 16:30:47] #1 entered pause
-[14.07.2019 16:30:47] #0 left pause
-executing 0 0
-0 returning 100
- pause
-left pause
-[14.07.2019 16:30:47] #0 left pause
-executing 0 0
-0 returning 100
- pause
-left pause
-[14.07.2019 16:30:47] Func getPositionX for player #1 returning 520
-[14.07.2019 16:30:47] #0 entered pause
-[14.07.2019 16:30:47] #1 left pause
-[14.07.2019 16:30:47] Func getPositionX for player #1 returning 520
-[14.07.2019 16:30:47] #1 entered pause
-[14.07.2019 16:30:47] interpreter #0 executing 0 0
-[14.07.2019 16:30:47] interpreter #0 executing 0 0
-[14.07.2019 16:30:47] Func getPositionY for player #1 returning 100
-[14.07.2019 16:30:47] #1 left pause
-[14.07.2019 16:30:47] Func getPositionY for player #1 returning 100
-[14.07.2019 16:30:47] #0 entered pause
-[14.07.2019 16:30:47] #1 entered pause
-[14.07.2019 16:30:47] interpreter #0 executing 1 30
-[14.07.2019 16:30:47] interpreter #0
-executing 0 0
-
- returning 100
- pause
-left pause
-[14.07.2019 16:30:47] interpreter #0
-executing 0 0
-
- returning 100
- pause
-left pause
-[14.07.2019 16:30:47] Func getPositionX for player #0 returning 190
-[14.07.2019 16:30:47] #0 entered pause
-[14.07.2019 16:30:47] #1 left pause
-[14.07.2019 16:30:47] Func getPositionX for player #0 returning 190
-[14.07.2019 16:30:47] #1 entered pause
-[14.07.2019 16:30:47] interpreter #0 executing 0 0
-[14.07.2019 16:30:47] interpreter #0 executing 0 0
-[14.07.2019 16:30:47] #0 left pause
-[14.07.2019 16:30:47] Func getPositionY for player #0 returning 100
-[14.07.2019 16:30:47] #1 left pause
-e
-for player #0 returning 100
- pause
-[14.07.2019 16:30:47] #1 left pause
-e
-for player #0 returning 100
- pause
-[14.07.2019 16:30:47] Func getPositionY for player #0 returning 100
-[14.07.2019 16:30:47] #1 entered pause
-[14.07.2019 16:30:47] interpreter #0 [14.07.2019 16:30:47] interpreter #0 executing 0 0
-[14.07.2019 16:30:47] interpreter #0 [14.07.2019 16:30:47] interpreter #0 executing 0 0
-[14.07.2019 16:30:47] Func getPositionX for player #1 returning 510
-[14.07.2019 16:30:47] #0 entered pause
-[14.07.2019 16:30:47] #0 entered pause
-[14.07.2019 16:30:47] #1 left pause
-[14.07.2019 16:30:47] Func getPositionX for player #1 returning 510
-[14.07.2019 16:30:47] #1 entered pause
-[14.07.2019 16:30:48] interpreter e
-executing 0 0
-1 returning 510
- pause
-left pause
-[14.07.2019 16:30:48] interpreter e
-executing 0 0
-1 returning 510
- pause
-left pause
-[14.07.2019 16:30:48] Func getPositionY for player #1 returning 100
-[14.07.2019 16:30:48] #1 left pause
-[14.07.2019 16:30:48] Func getPositionY for player #1 returning 100
-[14.07.2019 16:30:48] #0 entered pause
-[14.07.2019 16:30:48] #1 entered pause
-[14.07.2019 16:30:48] interpreter #0 executing 1 30
-[14.07.2019 16:30:48] #0 left pause
-executing 0 0
-
- returning 100
- pause
-left pause
-[14.07.2019 16:30:48] #0 left pause
-executing 0 0
-
- returning 100
- pause
-left pause
-[14.07.2019 16:30:48] Func getPositionX for player #0 returning 200
-[14.07.2019 16:30:48] #1 left pause
-[14.07.2019 16:30:48] #1 left pause
-[14.07.2019 16:30:48] #0 entered pause
-[14.07.2019 16:30:48] Func getPositionX for player #0 returning 200
-[14.07.2019 16:30:48] #1 entered pause
-[14.07.2019 16:30:48] interpreter #0 executing 0 0
-[14.07.2019 16:30:48] interpreter #0 executing 0 0
-[14.07.2019 16:30:48] #0 left pause
-[14.07.2019 16:30:48] Func getPositionY for player #0 returning 100
-[14.07.2019 16:30:48] Func getPositionY for player #0 returning 100
-[14.07.2019 16:30:48] #1 left pause
-[14.07.2019 16:30:48] Func getPositionY for player #0 returning 100
-[14.07.2019 16:30:48] #1 entered pause
-[14.07.2019 16:30:48] #0 entered pause
-[14.07.2019 16:30:48] interpreter #0 executing 0 0
-[14.07.2019 16:30:48] interpreter #0 executing 0 0
-[14.07.2019 16:30:48] #0 left pause
-[14.07.2019 16:30:48] Func getPositionX for player #1 returning 500
-[14.07.2019 16:30:48] #0 entered pause
-[14.07.2019 16:30:48] #0 entered pause
-[14.07.2019 16:30:48] #1 left pause
-[14.07.2019 16:30:48] Func getPositionX for player #1 returning 500
-[14.07.2019 16:30:48] #1 entered pause
-[14.07.2019 16:30:48] interpreter #0 executing 0 0
-[14.07.2019 16:30:48] #0 left pause
-[14.07.2019 16:30:48] interpreter #0 executing 0 0
-[14.07.2019 16:30:48] Func getPositionY for player #1 returning 100
-[14.07.2019 16:30:48] #1 left pause
-[14.07.2019 16:30:48] Func getPositionY for player #1 returning 100
-[14.07.2019 16:30:48] #0 entered pause
-[14.07.2019 16:30:48] #1 entered pause
-[14.07.2019 16:30:48] interpreter #0 executing 1 30
-[14.07.2019 16:30:48] #0 left pause
-executing 0 0
-[14.07.2019 16:30:48] #0 left pause
-executing 0 0
-[14.07.2019 16:30:48] #0 left pause
-[14.07.2019 16:30:48] Func getPositionX for player #0 returning 210
-[14.07.2019 16:30:48] #0 entered pause
-[14.07.2019 16:30:48] #1 left pause
-[14.07.2019 16:30:48] Func getPositionX for player #0 returning 210
-[14.07.2019 16:30:48] #1 entered pause
+[14.07.2019 18:55:13] Func getPositionX for player #1 returning 592,928932
+[14.07.2019 18:55:13] #2 left pause
+[14.07.2019 18:55:13] #1 entered pause
+[14.07.2019 18:55:13] #1 entered pause
+[14.07.2019 18:55:13] #3 left pause
+nX for player #2 returning 107,071068
+[14.07.2019 18:55:13] #1 entered pause
+[14.07.2019 18:55:13] #3 left pause
+nX for player #2 returning 107,071068
+[14.07.2019 18:55:13] #2 entered pause
+[14.07.2019 18:55:13] Func getPositionX for player #3 returning 592,928932
+[14.07.2019 18:55:13] #3 entered pause
+[14.07.2019 18:55:13] interpreter #0 executing 0 0
+[14.07.2019 18:55:13] #0 left pause
+[14.07.2019 18:55:13] interpreter #0 executing 0 0
+[14.07.2019 18:55:13] #0 left pause
+[14.07.2019 18:55:13] Func getPositionY for player #0 returning 107,071068
+[14.07.2019 18:55:13] #1 left pause
+[14.07.2019 18:55:13] Func getPositionY for player #1 returning 107,071068
+[14.07.2019 18:55:13] #2 left pause
+[14.07.2019 18:55:13] Func getPositionY for player #2 returning 592,928932
+[14.07.2019 18:55:13] #3 left pause
+[14.07.2019 18:55:13] Func getPositionY for player #3 returning 592,928932
+[14.07.2019 18:55:13] Error in    в CallSite.Target(Closure , CallSite , Object )
+   в System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   в NinjaParser.ExprClass.Eval()
+   в NinjaParser.Condition.Eval()
+   в NinjaParser.Block.Eval()
+   в NinjaParser.For.Eval()
+   в NinjaParser.Block.Eval()
+   в NinjaParser.While.Eval()
+   в NinjaParser.MethodData.Eval()
+   в RealInterpreter.Run(): Не удается неявно преобразовать тип "int" в "bool"
+[14.07.2019 18:55:13] Error in    в CallSite.Target(Closure , CallSite , Object )
+   в System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   в NinjaParser.ExprClass.Eval()
+   в NinjaParser.Condition.Eval()
+   в NinjaParser.Block.Eval()
+   в NinjaParser.For.Eval()
+   в NinjaParser.Block.Eval()
+   в NinjaParser.While.Eval()
+   в NinjaParser.MethodData.Eval()
+   в RealInterpreter.Run(): Не удается неявно преобразовать тип "int" в "bool"
+[14.07.2019 18:55:13] Error in    в CallSite.Target(Closure , CallSite , Object )
+   в System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   в NinjaParser.ExprClass.Eval()
+   в NinjaParser.Condition.Eval()
+   в NinjaParser.Block.Eval()
+   в NinjaParser.For.Eval()
+   в NinjaParser.Block.Eval()
+   в NinjaParser.While.Eval()
+   в NinjaParser.MethodData.Eval()
+   в RealInterpreter.Run(): Не удается неявно преобразовать тип "int" в "bool"
+[14.07.2019 18:55:13] Error in    в CallSite.Target(Closure , CallSite , Object )
+   в System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   в NinjaParser.ExprClass.Eval()
+   в NinjaParser.Condition.Eval()
+   в NinjaParser.Block.Eval()
+   в NinjaParser.For.Eval()
+   в NinjaParser.Block.Eval()
+   в NinjaParser.While.Eval()
+   в NinjaParser.MethodData.Eval()
+   в RealInterpreter.Run(): Не удается неявно преобразовать тип "int" в "bool"
+[14.07.2019 18:55:13] Error in    в CallSite.Target(Closure , CallSite , Object )
+   в System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   в NinjaParser.ExprClass.Eval()
+   в NinjaParser.Condition.Eval()
+   в NinjaParser.Block.Eval()
+   в NinjaParser.For.Eval()
+   в NinjaParser.Block.Eval()
+   в NinjaParser.While.Eval()
+   в NinjaParser.MethodData.Eval()
+   в RealInterpreter.Run(): Не удается неявно преобразовать тип "int" в "bool"
+[14.07.2019 18:55:13] Error in    в CallSite.Target(Closure , CallSite , Object )
+   в System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   в NinjaParser.ExprClass.Eval()
+   в NinjaParser.Condition.Eval()
+   в NinjaParser.Block.Eval()
+   в NinjaParser.For.Eval()
+   в NinjaParser.Block.Eval()
+   в NinjaParser.While.Eval()
+   в NinjaParser.MethodData.Eval()
+   в RealInterpreter.Run(): Не удается неявно преобразовать тип "int" в "bool"
+[14.07.2019 18:55:13] interpreter #0 executing 0 0
+[14.07.2019 18:55:13] interpreter #0 executing 0 0
+[14.07.2019 18:55:13] interpreter #0 executing 0 0
+[14.07.2019 18:55:13] interpreter #0 executing 0 0
+[14.07.2019 18:55:13] interpreter #0 executing 0 0
+[14.07.2019 18:55:13] interpreter #0 executing 0 0
+[14.07.2019 18:55:14] interpreter #0 executing 0 0
+[14.07.2019 18:55:14] interpreter #0 executing 0 0
+[14.07.2019 18:55:14] interpreter #0 executing 0 0
+[14.07.2019 18:55:14] interpreter #0 executing 0 0
+[14.07.2019 18:55:14] interpreter #0 executing 0 0
+[14.07.2019 18:55:14] interpreter #0 executing 0 0
+[14.07.2019 18:55:14] interpreter #0 executing 0 0
+[14.07.2019 18:55:14] interpreter #0 executing 0 0
+[14.07.2019 18:55:14] interpreter #0 executing 0 0
+[14.07.2019 18:55:15] interpreter #0 executing 0 0
+[14.07.2019 18:55:15] interpreter #0 executing 0 0
+[14.07.2019 18:55:15] interpreter #0 executing 0 0
+[14.07.2019 18:55:15] interpreter #0 executing 0 0
+[14.07.2019 18:55:15] interpreter #0 executing 0 0
+[14.07.2019 18:55:15] interpreter #0 executing 0 0
+[14.07.2019 18:55:15] interpreter #0 executing 0 0
+[14.07.2019 18:55:15] interpreter #0 executing 0 0
+[14.07.2019 18:55:15] interpreter #0 executing 0 0
+[14.07.2019 18:55:16] interpreter #0 executing 0 0
+[14.07.2019 18:55:16] interpreter #0 executing 0 0
+[14.07.2019 18:55:16] interpreter #0 executing 0 0
+[14.07.2019 18:55:16] interpreter #0 executing 0 0
+[14.07.2019 18:55:16] interpreter #0 executing 0 0

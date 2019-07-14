@@ -103,8 +103,8 @@ options {
 		public dynamic returnValue;
 		
 		public MethodData(NinjaParser parser) : base(parser)
-        	        {
-        	        }
+		{
+		}
 		
 		public override void Eval()
         {
@@ -1172,7 +1172,7 @@ options {
 		Block par = block;
 		while (!par.varTable.ContainsKey(name) && !isParam(par, name))
 		{
-			Debug($"Searching {name} in {par.name}");
+			//Debug($"Searching {name} in {par.name}");
 			par = par.Parent;
 			if (par == null)
 			{
@@ -1288,6 +1288,7 @@ options {
         	        
         public override dynamic Eval()
         {
+        	Debug("Entering condition");
         	if(cond.Eval())
             {
             	parser.curBlock = cycleBlock;
@@ -1295,9 +1296,12 @@ options {
             }
             else if (full)
             {
+            	Debug("Entering condition else block");
             	parser.curBlock = elseIfBlock;
 				elseIfBlock.Eval();
             }
+            
+            Debug("Exiting condition");
             parser.curBlock = cycleBlock.Parent;
     		return null;
         }
@@ -1535,7 +1539,7 @@ builtin_func_state returns [ReturnType returnType] : 	'getSelfId' {$returnType =
 														'getDirection' {$returnType = ReturnType.Double;}|
 														'getHealth' {$returnType = ReturnType.Int;};
 
-builtin_func_p : 'move'|'turn' ;
+builtin_func_p : 'move'|'turn'|'turnAbsolute' ;
 
 builtin_func_e : 'hit'|'shoot' ;  
 
@@ -2009,6 +2013,15 @@ boolOperand[ExprClass oper]:
 			}
             | LPAREN boolExprEx[$oper] RPAREN;
 boolExpr[ExprClass oper]:
+left=boolOperand[$oper] andor=(AND|OR) right=boolExpr[$oper]
+           {
+				$oper.Push(new ExprStackObject()
+				{
+					type = ObjType.Operation,
+					value = $andor.text,
+						parser = this
+				});
+           } |
            boolOperand[$oper] (comp=(EQUAL|NOTEQUAL) boolExpr[$oper]
 			{
 				$oper.Push(new ExprStackObject()
@@ -2018,15 +2031,11 @@ boolExpr[ExprClass oper]:
 					parser = this
 				}); 
 		  })*
-         | left=boolOperand[$oper] andor=(AND|OR) right=boolExpr[$oper]
-           {
-				$oper.Push(new ExprStackObject()
-				{
-					type = ObjType.Operation,
-					value = $andor.text,
-						parser = this
-				});
-           };
+         
+           ;
+           
+           
+           
 boolExprEx[ExprClass oper] returns [ExprClass res]:
            boolExpr[$oper]
 		   {

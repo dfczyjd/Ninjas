@@ -148,7 +148,7 @@ void CALLBACK OnSwing(HWND hWnd, UINT arg1, UINT arg2, DWORD dw)
 	Point swordEnd = players[ind].GetSwordEnd();
 	for (int i = 0; i < PLAYER_COUNT; ++i)
 	{
-		if (i == ind || !players[i].isActive)
+		if (i == ind || !players[i].isActive || !players[i].hasProgram)
 			continue;
 		if (players[i].position.Dist(swordEnd) < Character::R)
 		{
@@ -460,6 +460,12 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 			}
 			WCHAR text[1024];
 		
+			
+			
+			if (activePlayers != activePlayersCount){
+				wsprintf(text, L"Active shots : %d, old Active Players %d, new %d", activeShots, activePlayersCount, activePlayers);
+                PrintMessage(text);
+			}
 			activePlayersCount = activePlayers;
 			if (activePlayers < 2 && !FightEnded){
 				if(activePlayers == 0){
@@ -477,7 +483,7 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 					CanExecCommands = false;
 				}
 			} else {
-				wsprintf(text, L"Active shots : %d", activeShots);
+				wsprintf(text, L"Active shots : %d, Active Players %d", activeShots, activePlayersCount);
             	//PrintMessage(text);
 			}
 			break;
