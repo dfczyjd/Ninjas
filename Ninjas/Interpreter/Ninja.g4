@@ -2009,7 +2009,15 @@ boolOperand[ExprClass oper]:
 			}
             | LPAREN boolExprEx[$oper] RPAREN;
 boolExpr[ExprClass oper]:
-           boolOperand[$oper]
+           boolOperand[$oper] (comp=(EQUAL|NOTEQUAL) boolExpr[$oper]
+			{
+				$oper.Push(new ExprStackObject()
+				{
+					type = ObjType.Operation,
+					value = $comp.text,
+					parser = this
+				}); 
+		  })*
          | left=boolOperand[$oper] andor=(AND|OR) right=boolExpr[$oper]
            {
 				$oper.Push(new ExprStackObject()
