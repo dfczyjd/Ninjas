@@ -207,7 +207,7 @@ public class RealInterpreter
         catch (Exception exc)
         {
             Main.Log("Error in " + exc.StackTrace + ": " + exc.Message);
-            messages.Enqueue(Main.FormMessage(ninjaName + "'s program aborted due to error"));
+            messages.Enqueue(Main.FormMessage("Программа ниндзя " + ninjaName + " завершилась с ошибкой."));
         }
     }
     
@@ -218,13 +218,13 @@ public class RealInterpreter
             if (parser != null)
             {
                 parser.metTable["main"].Eval();
-                messages.Enqueue(Main.FormMessage(ninjaName + "'s program finished"));
+                messages.Enqueue(Main.FormMessage("Программа ниндзя " + ninjaName + " завершила выполнение."));
             }
         }
         catch (Exception exc)
         {
             Main.Log("Error in " + exc.StackTrace + ": " + exc.Message);
-            messages.Enqueue(Main.FormMessage(ninjaName + "'s program aborted due to error"));
+            messages.Enqueue(Main.FormMessage("Программа ниндзя " + ninjaName + " завершилась с ошибкой."));
         }
     }
 
@@ -238,7 +238,7 @@ public class RealInterpreter
         catch (Exception exc)
         {
             Main.Log("Error in " + exc.StackTrace + ": " + exc.Message);
-            messages.Enqueue(Main.FormMessage(ninjaName + "'s program aborted due to error"));
+            messages.Enqueue(Main.FormMessage("Программа ниндзя " + ninjaName + " завершилась с ошибкой."));
         }
     }
 
@@ -251,7 +251,7 @@ public class RealInterpreter
         catch (Exception exc)
         {
             Main.Log("Error in " + exc.StackTrace + ": " + exc.Message);
-            messages.Enqueue(Main.FormMessage(ninjaName + "'s program aborted due to error"));
+            messages.Enqueue(Main.FormMessage("Программа ниндзя " + ninjaName + " завершилась с ошибкой."));
         }
     }
 }

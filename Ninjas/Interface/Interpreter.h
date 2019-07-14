@@ -16,6 +16,7 @@ struct Command
 
 typedef void(__cdecl *FuncVoid_Int)(int id);
 typedef void(__cdecl *FuncVoid_IntStr)(int id, char *name);
+typedef void(__cdecl *FuncVoid_IntWstr)(int id, WCHAR *name);
 typedef int(__cdecl *FuncInt_Int)(int id);
 typedef char*(__cdecl *FuncStr_Int)(int id);
 typedef char*(__cdecl *FuncStr_Void)();

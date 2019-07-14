@@ -29,7 +29,7 @@ void PrintMessage(const WCHAR *message, bool fromInterface)
 		len = wsprintf(text, L"[System]: %s", message);
 	else
 		len = wsprintf(text, L"%s", message);
-	chatMess.push_back(new WCHAR[139]);
+	chatMess.push_back(new WCHAR[1024]);
 	wcscpy(chatMess.back(), text);
 }
 

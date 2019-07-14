@@ -1,5 +1,34 @@
-﻿  Interface.cpp
+﻿  stdafx.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppCommon.targets(314,5): warning MSB8015: все исходные файлы устарели — принудительно повторяется сборка всех исходных файлов, так как содержимое "C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Ninjas\Ninjas\Interface\Debug\Interface.tlog\CL.command.1.tlog" недопустимо.
+  Character.cpp
+c:\users\василий\documents\дз вышка\1 практика\ninjas\ninjas\interface\character.cpp(48): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+c:\users\василий\documents\дз вышка\1 практика\ninjas\ninjas\interface\character.cpp(50): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+c:\users\василий\documents\дз вышка\1 практика\ninjas\ninjas\interface\character.cpp(49): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+c:\users\василий\documents\дз вышка\1 практика\ninjas\ninjas\interface\character.cpp(51): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+c:\users\василий\documents\дз вышка\1 практика\ninjas\ninjas\interface\character.cpp(59): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+c:\users\василий\documents\дз вышка\1 практика\ninjas\ninjas\interface\character.cpp(58): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+c:\users\василий\documents\дз вышка\1 практика\ninjas\ninjas\interface\character.cpp(57): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+c:\users\василий\documents\дз вышка\1 практика\ninjas\ninjas\interface\character.cpp(56): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+c:\users\василий\documents\дз вышка\1 практика\ninjas\ninjas\interface\character.cpp(63): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+c:\users\василий\documents\дз вышка\1 практика\ninjas\ninjas\interface\character.cpp(62): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+c:\users\василий\documents\дз вышка\1 практика\ninjas\ninjas\interface\character.cpp(61): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+c:\users\василий\documents\дз вышка\1 практика\ninjas\ninjas\interface\character.cpp(60): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+c:\users\василий\documents\дз вышка\1 практика\ninjas\ninjas\interface\character.cpp(120): warning C4244: =: преобразование "double" в "LONG", возможна потеря данных
+c:\users\василий\documents\дз вышка\1 практика\ninjas\ninjas\interface\character.cpp(121): warning C4244: =: преобразование "double" в "LONG", возможна потеря данных
+c:\users\василий\documents\дз вышка\1 практика\ninjas\ninjas\interface\character.cpp(122): warning C4244: =: преобразование "double" в "LONG", возможна потеря данных
+c:\users\василий\documents\дз вышка\1 практика\ninjas\ninjas\interface\character.cpp(123): warning C4244: =: преобразование "double" в "LONG", возможна потеря данных
+  Interpreter.cpp
+  Interface.cpp
 c:\users\василий\documents\дз вышка\1 практика\ninjas\ninjas\interface\interface.cpp(433): warning C4018: <: несоответствие типов со знаком и без знака
 c:\users\василий\documents\дз вышка\1 практика\ninjas\ninjas\interface\interface.cpp(497): warning C4018: <: несоответствие типов со знаком и без знака
+  Point.cpp
+  Projectile.cpp
+c:\users\василий\documents\дз вышка\1 практика\ninjas\ninjas\interface\projectile.cpp(24): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+c:\users\василий\documents\дз вышка\1 практика\ninjas\ninjas\interface\projectile.cpp(47): warning C4244: =: преобразование "double" в "LONG", возможна потеря данных
+c:\users\василий\documents\дз вышка\1 практика\ninjas\ninjas\interface\projectile.cpp(48): warning C4244: =: преобразование "double" в "LONG", возможна потеря данных
+c:\users\василий\documents\дз вышка\1 практика\ninjas\ninjas\interface\projectile.cpp(49): warning C4244: =: преобразование "double" в "LONG", возможна потеря данных
+c:\users\василий\documents\дз вышка\1 практика\ninjas\ninjas\interface\projectile.cpp(50): warning C4244: =: преобразование "double" в "LONG", возможна потеря данных
+  Создание кода...
+  LINK : не найден или не выполнена сборка C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Ninjas\Ninjas\Debug\Interface.exe при последней инкрементной компоновке; выполняется полная компоновка
   Interface.vcxproj -> C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Ninjas\Ninjas\Debug\Interface.exe
   Скопировано файлов:         1.

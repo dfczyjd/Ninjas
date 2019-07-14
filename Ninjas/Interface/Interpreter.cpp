@@ -77,10 +77,10 @@ Command Interpreter::NextCommand()
 void Interpreter::SetCode(WCHAR *codepath)
 {
 	int length = wcslen(codepath);
-	char *codepath2 = new char[length + 1];
-	for (int i = 0; i <= length; ++i)
-		codepath2[i] = (char)codepath[i];
-	Init(id,  codepath2);
+	char *codepath2 = new char[length * 2 + 1];
+	BOOL flag = false;
+	WideCharToMultiByte(CP_ACP, WC_NO_BEST_FIT_CHARS, codepath, -1, codepath2, length * 2 + 1, NULL, &flag);
+	Init(id, codepath2);
 	delete codepath2;
 }
 
@@ -98,14 +98,18 @@ void Interpreter::RunMeth(int id)
 
 void Interpreter::SetNames()
 {
-	char name1[] = "Red",
-		name2[] = "Blue",
-		name3[] = "Green",
-		name4[] = "Yellow";
-	SetName(0, name1);
-	SetName(1, name2);
-	SetName(2, name3);
-	SetName(3, name4);
+	char names[PLAYER_COUNT][128];
+	BOOL flag = false;
+	int len, error;
+	for (int i = 0; i < PLAYER_COUNT; ++i)
+	{
+		len = WideCharToMultiByte(CP_ACP, WC_NO_BEST_FIT_CHARS, players[i].name, -1, names[i], 128, NULL, &flag);
+		error = GetLastError();
+	}
+	SetName(0, names[0]);
+	SetName(1, names[1]);
+	SetName(2, names[2]);
+	SetName(3, names[3]);
 }
 
 void Interpreter::UpdateMessages()
@@ -117,8 +121,8 @@ void Interpreter::UpdateMessages()
 		if (length == 0)
 			break;
 		WCHAR res[1024];
-		for (int i = 0; i <= length; ++i)
-			res[i] = mess[i];
+		int ress = MultiByteToWideChar(CP_ACP, 0, mess, -1, res, 1024);
+		int error = GetLastError();
 		PrintMessage(res, false);
 	}
 }
