@@ -623,15 +623,15 @@ public partial class NinjaParser : Parser {
 			
 			public dynamic Calc()
 			{
-	            				if (type == ObjType.Number)
-	            					return value;
-	            				if (type == ObjType.Var)
-	            				{
-	            					return parser.FindVar(value).value;
-	            				}
-	            
-	            				Error("\"" + value + "\" is an operation");
-	            				return null;
+				if (type == ObjType.Number)
+					return value;
+				if (type == ObjType.Var)
+				{
+					return parser.FindVar(value).value;
+				}
+
+				Error("\"" + value + "\" is an operation");
+				return null;
 			}
 			
 			public new Type GetType()
@@ -886,7 +886,7 @@ public partial class NinjaParser : Parser {
 	                    							rightVal = right.Calc();
 	                    							if (!isCompatible(0, rightVal))
 	                    								Error(rightVal + " can't be incremented");
-	                    							++parser.FindVar(right.value).value;
+	                    							rightVal = ++parser.FindVar(right.value).value;
 	                    							stack.Add(new ExprStackObject(rightVal, parser));
 	                    							break;
 	                    							
@@ -904,7 +904,7 @@ public partial class NinjaParser : Parser {
 	                    							rightVal = right.Calc();
 	                    							if (!isCompatible(0, rightVal))
 	                    								Error(rightVal + " can't be decremented");
-	                    							--parser.FindVar(right.value).value;
+	                    							rightVal = --parser.FindVar(right.value).value;
 	                    							stack.Add(new ExprStackObject(rightVal, parser));
 	                    							break;
 	                    							
@@ -1156,20 +1156,20 @@ public partial class NinjaParser : Parser {
 	            {
 	            	var res = stack[0];
 	            	try
-	                	                {
-	                		                res.Calc();
-	                	                }
-	                	                catch (Exception e)
-	                	                {
-	                		                return null;
-	                	                }
+					{
+						res.Calc();
+					}
+					catch (Exception e)
+					{
+						return null;
+					}
 	            	if (res.value is string ss && parser.FindVar(ss) != null)
 					{
 	            		value = parser.FindVar(ss).value;
-	            		return parser.FindVar(ss).value;
+	            		return value;
 	            	}
 	            	value = res.value;
-	            	return res.value;	
+	            	return value;	
 	            }
 	            return null;
 			}
