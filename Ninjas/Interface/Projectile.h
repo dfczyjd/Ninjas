@@ -6,7 +6,7 @@ using namespace std;
 
 struct Projectile
 {
-	const int SPEED = 7;
+	const int SPEED = 10;
 
 	Point position;
 	double direction;

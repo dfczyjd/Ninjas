@@ -442,13 +442,13 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 					shot.Move();
 					for (int k = 0; k < PLAYER_COUNT; ++k)
 					{
-						if (k == i || !players[k].isActive || !players[k].hasProgram)
+						if (k == i || !players[k].isActive)
 							continue;
 							
 						if (players[k].position.Dist(shot.position) < Character::R)
 						{
 							players[k].TakeDamage(10, i);
-							if  (!players[k].isActive || !players[k].hasProgram)
+							if  (!players[k].isActive)
 								players[k].Invalidate(hWnd);
 							shot.isActive = false;
 							break;
@@ -467,10 +467,12 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 					PrintMessage(text);
 					FightEnded = true;
 					CanExecCommands = false;
+					InvalidateRect(chatWnd, 0, true);
 				} else if (activeShots == 0) {
 					wsprintf(text, L"Бой завершён! %s победил", players[activeId].name);
                 	PrintMessage(text);
                 	FightEnded = true;
+					InvalidateRect(chatWnd, 0, true);
 				} else {
 					CanExecCommands = false;
 				}

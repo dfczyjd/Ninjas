@@ -1,5 +1,975 @@
 ===Entering fun main with params { }
+===Entering fun main with params { }
+Calling builtin method getSelfId with params { }, ret 0 + of type System.Int32
+Calling builtin method getSelfId with params { }, ret 0 + of type System.Int32
+Calling builtin method getSelfId with params { }, ret 1 + of type System.Int32
+Calling builtin method turn with params { Int 0,785398163397448 }
+Calling builtin method turn with params { Int -0,785398163397448 }
+---Entering whilecycle
+---Entering whilecycle
+---Entering whilecycle
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+Calling builtin method getPositionX with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionX with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 600 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 600 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+---Vars of block met DistanceBetween ----
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+	otherId is Int with value 1
+	id is Int with value 0
+	otherId is Int with value 1
+	x1 is Double with value 100
+	y1 is Double with value 100
+	x2 is Double with value 600
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+	x1 is Double with value 100
+	y1 is Double with value 100
+	x2 is Double with value 600
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+===fun DistanceBetween returned 500
+===fun DistanceBetween returned 500
+Calling builtin method move with params { Int 30 }
+Calling builtin method move with params { Int 30 }
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+Calling builtin method getPositionX with params { Int id }, ret 110 + of type System.Double
+Calling builtin method getPositionX with params { Int id }, ret 110 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 590 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 590 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+	otherId is Int with value 1
+	x1 is Double with value 110
+	y1 is Double with value 100
+	x2 is Double with value 590
+	y2 is Double with value 100
+---Vars of block met DistanceBetween ----
+	y2 is Double with value 100
+---End Vars of block met 	otherId is Int with value 1
+nceBetween ----
+===Exiting fun DistanceBetween
+===Exiting fun DistanceBetween	x1 is Double with value 110
+	y1 is Double with value 100
+	x2 is Double with value 590
+===fun DistanceBetween returned 480
+	x2 is Double with value 590
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+===Exiting fun DistanceBetween
+eBetween ----
+ethod move with params { Int 30 }
+===fun DistanceBetween returned 480
+Calling builtin method move with params { Int 30 }
+Calling builtin method move with params { Int 30 }
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+ng fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+Calling builtin method getPositionX with params { Int id }, ret 120 + of type System.Double
+Calling builtin method getPositionX with params { Int id }, ret 120 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 580 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 580 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+	otherId is Int with value 1
+	x1 is Double with value 120
+	y1 is Double with value 100
+	x2 is Double with value 580
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+===fun DistanceBetween returned 460
+Calling builtin method move with params { Int 30 }
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+	otherId is Int with value 1
+ng custom method DistanceBetween with params { Int 1, Int 0 }
+	otherId is Int with value 1
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+	x1 is Double with value 120
+	y1 is Double with value 100
+	x2 is Double with value 580
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+===fun DistanceBetween returned 460
+Calling builtin method move with params { Int 30 }
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+Calling builtin method getPositionX with params { Int id }, ret 130 + of type System.Double
+Calling builtin method getPositionX with params { Int id }, ret 130 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 570 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 570 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+	otherId is Int with value 1
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+	x1 is Double with value 130
+	y1 is Double with value 100
+	x2 is Double with value 570
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+===Exiting fun DistanceBetween
+eBetween ----
+met DistanceBetween ----
+	id is Int with value 0
+	otherId is Int with value 1
+n DistanceBetween returned 440
+	otherId is Int with value 1
+	x1 is Double with value 130
+Calling builtin method move with params { Int 30 }
+Calling builtin method move with params { Int 30 }
+	y1 is Double with value 100
+	x2 is Double with value 570
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+ms { Int 1, Int 0 }
+---End Vars of block met DistanceBetween ----
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+===Exiting fun DistanceBetween
+===fun DistanceBetween returned 440
+Calling builtin method move with params { Int 30 }
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+Calling builtin method getPositionX with params { Int id }, ret 140 + of type System.Double
+Calling builtin method getPositionX with params { Int id }, ret 140 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 560 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 560 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+	otherId is Int with value 1
+	x1 is Double with value 140
+	y1 is Double with value 100
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+	y1 is Double with value 100
+	x2 is Double with value 560
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+===fun DistanceBetween returned 420
+	otherId is Int with value 1
+	x1 is Double with value 140
+	y1 is Double with value 100
+d 420
+Calling builtin method move wiCalling builtin method move with params { Int 30 }
+	x2 is Double with value 560
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+===fun DistanceBetween returned 420
+Calling builtin method move with params { Int 30 }
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+Calling builtin method getPositionX with params { Int id }, ret 150 + of type System.Double
+Calling builtin method getPositionX with params { Int id }, ret 150 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 550 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 550 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+	otherId is Int with value 1
+ng builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+---Vars of block met DistanceB---Vars of block met DistanceBetween ----
+	id is Int with value 0
+	otherId is Int with value 1
+	x1 is Double with value 150
+	x1 is Double with value 150
+	x1 is Double with value 150
+	y1 is Double with value 100
+	x2 is Double with value 550
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+===Exiting fun DistanceBetween
+eBetween ----
+h value 100
+	x2 is Double with value 550
+===fun DistanceBetween returned 400
+===fun DistanceBetween returned 400
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+eBetween ----
+Calling builtin method move with params { Int 30 }
+===Exiting fun DistanceBetween
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+===fun DistanceBetween returned 400
+Calling builtin method move with params { Int 30 }
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+Calling builtin method getPositionX with params { Int id }, ret 160 + of type System.Double
+Calling builtin method getPositionX with params { Int id }, ret 160 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 540 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 540 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+---Vars of block met DistanceBetween ----
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+	id is Int with value 0
+	otherId is Int with value 1
+	x1 is Double with value 160
+	y1 is Double with value 100
+	x2 is Double with value 540
+	y2 is Double with value 100
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+100
+---End Vars of block met 	otherId is Int with value 1
+nceBetween ----
+===Exiting fun DistanceBetween	x1 is Double with value 160
+	y1 is Double with value 100
+	x2 is Double with value 540
+
+	x2 is Double with value 540
+===fun DistanceBetween returned 380
+===fun DistanceBetween returned 380
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+Calling builtin method move with params { Int 30 }
+===fun DistanceBetween returned 380
+===fun DistanceBetween returned 380
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+Calling builtin method move with params { Int 30 }
+Calling builtin method move with params { Int 30 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+Calling builtin method getPositionX with params { Int id }, ret 170 + of type System.Double
+Calling builtin method getPositionX with params { Int id }, ret 170 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 530 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 530 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+	otherId is Int with value 1
+	x1 is Double with value 170
+	y1 is Double with value 100
+	x2 is Double with value 530
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+	x2 is Double with value 530
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+	otherId is Int with value 1
+	x1 is Double with value 170
+===fun DistanceBetween returned 360
+	x1 is Double with value 170
+	y1 is Double with value 100
+	x2 is Double with value 530
+Calling builtin method move with params { Int 30 }
+	x2 is Double with value 530
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+===fun DistanceBetween returned 360
+===fun DistanceBetween returned 360
+een ----
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+Calling builtin method move with params { Int 30 }
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+Calling builtin method getPositionX with params { Int id }, ret 180 + of type System.Double
+Calling builtin method getPositionX with params { Int id }, ret 180 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 520 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 520 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+---Vars of block met DistanceBetween ----
+---Vars of block met DistanceBetween ----
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+	id is Int with value 0
+	otherId is Int with value 1
+	x1 is Double with value 180
+	y1 is Double with value 100
+	x2 is Double with value 520
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+===Exiting fun DistanceBetween
+eBetween ----
+met DistanceBetween ----
+	id is Int with value 0
+===fun DistanceBetween returned 340
+===fun DistanceBetween returned 340
+	otherId is Int with value 1
+	x1 is Double with value 180
+	y1 is Double with value 100
+Calling builtin method move with params { Int 30 }
+	y1 is Double with value 100
+	x2 is Double with value 520
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+===Exiting fun DistanceBetween
+eBetween ----
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+===fun DistanceBetween returned 340
+Calling builtin method move with params { Int 30 }
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+Calling builtin method getPositionX with params { Int id }, ret 190 + of type System.Double
+Calling builtin method getPositionX with params { Int id }, ret 190 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 510 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 510 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+---Vars of block met DistanceBetween ----
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+	id is Int with value 0
+	otherId is Int with value 1
+	x1 is Double with value 190
+	y1 is Double with value 100
+	x2 is Double with value 510
+	y2 is Double with value 100
+---Vars of block met DistanceBetween ----
+	y2 is Double with value 100
+---End Vars of block met 	otherId is Int with value 1
+nceBetween ----
+===Exiting fun DistanceBetween	x1 is Double with value 190
+	y1 is Double with value 100
+
+	y1 is Double with value 100
+	x2 is Double with value 510
+===fun DistanceBetween returned 320
+===fun DistanceBetween returned 320
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+eBetween ----
+Calling builtin method move with params { Int 30 }
+===Exiting fun DistanceBetween
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+===fun DistanceBetween returned 320
+Calling builtin method move with params { Int 30 }
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+Calling builtin method getPositionX with params { Int id }, ret 200 + of type System.Double
+Calling builtin method getPositionX with params { Int id }, ret 200 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 500 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 500 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+	otherId is Int with value 1
+	x1 is Double with value 200
+	y1 is Double with value 100
+	x2 is Double with value 500
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+===fun DistanceBetween returned 300
+Calling builtin method move with params { Int 30 }
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+is Int with value 1
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+	x1 is Double with value 200
+	y1 is Double with value 100
+	x2 is Double with value 500
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+===fun DistanceBetween returned 300
+Calling builtin method move with params { Int 30 }
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+Calling builtin method getPositionX with params { Int id }, ret 210 + of type System.Double
+Calling builtin method getPositionX with params { Int id }, ret 210 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 490 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 490 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+	otherId is Int with value 1
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+	x1 is Double with value 210
+	y1 is Double with value 100
+	x2 is Double with value 490
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+===Exiting fun DistanceBetween
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+===fun DistanceBetween returned 280
+	id is Int with value 0
+	otherId is Int with value 1
+	x1 is Double with value 210
+Calling builtin method move with params { Int 30 }
+	x1 is Double with value 210
+	y1 is Double with value 100
+	x2 is Double with value 490
+	y2 is Double with value 100
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+	y2 is Double with value 10wee---End Vars of block met DistanceBetween ----
+nt id = 0, Int otherId = 1 }
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+===fun DistanceBetween returned 280
+Calling builtin method move with params { Int 30 }
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+Calling builtin method getPositionX with params { Int id }, ret 220 + of type System.Double
+Calling builtin method getPositionX with params { Int id }, ret 220 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 480 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 480 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+	otherId is Int with value 1
+	x1 is Double with value 220
+	y1 is Double with value 100
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+	y1 is Double with value 100
+	x2 is Double with value 480
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+	otherId is Int with value 1
+	x1 is Double with value 220
+===fun DistanceBetween returned 260
+	x1 is Double with value 220
+Calling builtin method move with params { Int 30 }
+	y1 is Double with value 100
+	x2 is Double with value 480
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+eBetween ----
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween ===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+===fun DistanceBetween returned 260
+Calling builtin method move with params { Int 30 }
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+Calling builtin method getPositionX with params { Int id }, ret 230 + of type System.Double
+Calling builtin method getPositionX with params { Int id }, ret 230 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 470 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 470 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+	otherId is Int with value 1
+	x1 is Double with value 230
+	y1 is Double with value 100
+	x2 is Double with value 470
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+eBetween ----
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+tween
+	id is Int with value 0
+	otherId is Int with value 1
+	x1 is Double with value 230
+	y1 is Double with value 100
+===fun DistanceBetween returned 240
+	y1 is Double with value 100
+	x2 is Double with value 470
+	y2 is Double with value 100
+Calling builtin method move with params { Int 30 }
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+===fun DistanceBetween returned 240
+Calling builtin method move with params { Int 30 }
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+Calling builtin method getPositionX with params { Int id }, ret 240 + of type System.Double
+Calling builtin method getPositionX with params { Int id }, ret 240 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 460 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 460 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+	otherId is Int with value 1
+	x1 is Double with value 240
+	y1 is Double with value 100
+	x2 is Double with value 460
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+===fun DistanceBetween returned 220
+Calling builtin method move with params { Int 30 }
+---Vars of block met DistanceBetween ----
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+t with value 0
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+	otherId is Int with value 1
+	x1 is Double with value 240
+	y1 is Double with value 100
+	x2 is Double with value 460
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+===fun DistanceBetween returned 220
+Calling builtin method move with params { Int 30 }
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+Calling builtin method getPositionX with params { Int id }, ret 250 + of type System.Double
+Calling builtin method getPositionX with params { Int id }, ret 250 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 450 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 450 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+	otherId is Int with value 1
+	x1 is Double with value 250
+	y1 is Double with value 100
+	x2 is Double with value 450
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+ethod getPositionY with params { Int otherId }, ret 100 + of type System.Double
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+===fun DistanceBetween returned 200
+===fun DistanceBetween returned 200
+---Vars of block met DistanceBetween ----
+Calling builtin method move with params { Int 30 }
+	id is Int with value 0
+	otherId is Int with value 1
+	x1 is Double with value 250
+	y1 is Double with value 100
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetwee	x2 is Double with value 450
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+nt id = 0, Int otherId = 1 }
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+===fun DistanceBetween returned 200
+Calling builtin method move with params { Int 30 }
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+Calling builtin method getPositionX with params { Int id }, ret 260 + of type System.Double
+Calling builtin method getPositionX with params { Int id }, ret 260 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 440 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 440 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+	otherId is Int with value 1
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+	x1 is Double with value 260
+	y1 is Double with value 100
+	x2 is Double with value 440
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+anceBetween ----
+	y2 is Double with value 100
+---End Vars of block met ---End Vars of block met DistanceBetween ----
+	otherId is Int with value 1
+	x1 is Double with value 260
+===Exiting fun DistanceBetween
+	x1 is Double with value 260
+	y1 is Double with value 100
+===fun DistanceBetween returned 180
+===fun DistanceBetween returned 180
+	x2 is Double with value 440
+Calling builtin method move with params { Int 30 }
+Calling builtin method move with params { Int 30 }
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+===fun DistanceBetween returned 180
+Calling builtin method move with params { Int 30 }
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+Calling builtin method getPositionX with params { Int id }, ret 270 + of type System.Double
+Calling builtin method getPositionX with params { Int id }, ret 270 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 430 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 430 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+	otherId is Int with value 1
+	x1 is Double with value 270
+	y1 is Double with value 100
+	x2 is Double with value 430
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+===fun DistanceBetween returned 160
+Calling builtin method move with params { Int 30 }
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+is Int with value 1
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+	x1 is Double with value 270
+	y1 is Double with value 100
+	x2 is Double with value 430
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+===fun DistanceBetween returned 160
+Calling builtin method move with params { Int 30 }
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+Calling builtin method getPositionX with params { Int id }, ret 280 + of type System.Double
+Calling builtin method getPositionX with params { Int id }, ret 280 + of type System.Double
+Calling builtin method getPositionX with params { Int id }, ret 280 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 420 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 420 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+	otherId is Int with value 1
+	x1 is Double with value 280
+	y1 is Double with value 100
+	x2 is Double with value 420
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+===fun DistanceBetween returned 140
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+Calling builtin method move with params { Int 30 }
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+anceBetween ----
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+	id is Int with value 0
+	otherId is Int with value 1
+	x1 is Double with value 280
+	y1 is Double with value 100
+	x2 is Double with value 420
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+===fun DistanceBetween returned 140
+Calling builtin method move with params { Int 30 }
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+Calling builtin method getPositionX with params { Int id }, ret 290 + of type System.Double
+Calling builtin method getPositionX with params { Int id }, ret 290 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 410 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 410 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+	otherId is Int with value 1
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+	x1 is Double with value 290
+	y1 is Double with value 100
+	x2 is Double with value 410
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+===Exiting fun DistanceBetween
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+	id is Int with value 0
+===fun Dista	id is Int with value 0
+===fun Dista	otherId is Int with value 1
+Calling builtin method move with params { Int 30 }
+	x1 is Double with value 290
+	y1 is Double with value 100
+	x2 is Double with value 410
+	y2 is Double with value 100
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetwee---End Vars of block met DistanceBetween ----
+nt id = 0, Int otherId = 1 }
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+===fun DistanceBetween returned 120
+Calling builtin method move with params { Int 30 }
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+Calling builtin method getPositionX with params { Int id }, ret 300 + of type System.Double
+Calling builtin method getPositionX with params { Int id }, ret 300 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 400 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 400 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+	otherId is Int with value 1
+	x1 is Double with value 300
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+	x1 is Double with value 300
+	y1 is Double with value 100
+	x2 is Double with value 400
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+	otherId is Int with value 1
+n DistanceBetween returned 100
+	otherId is Int with value 1
+	x1 is Double with value 300
+	y1 is Double with value 100
+Calling builtin method move with params { Int 30 }
+	y1 is Double with value 100
+	x2 is Double with value 400
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+===Exiting fun DistanceBetween
+eBetween ----
+thod DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+===fun DistanceBetween returned 100
+Calling builtin method move with params { Int 30 }
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+Calling builtin method getPositionX with params { Int id }, ret 310 + of type System.Double
+Calling builtin method getPositionX with params { Int id }, ret 310 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 390 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 390 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+	otherId is Int with value 1
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+	x1 is Double with value 310
+	y1 is Double with value 100
+	x2 is Double with value 390
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+===Exiting fun DistanceBetween
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+===fun DistanceBetween returned 80
+===fun DistanceBetween returned 80
+	otherId is Int with value 1
+	x1 is Double with value 310
+	y1 is Double with value 100
+Calling builtin method move with params { Int 30 }
+	y1 is Double with value 100
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+uble with value 390
+	y2 is Double with value 100
+n with params { Int id = 0, Int otherId = 1 }
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+===fun DistanceBetween returned 80
+Calling builtin method move with params { Int 30 }
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+Calling builtin method getPositionX with params { Int id }, ret 320 + of type System.Double
+Calling builtin method getPositionX with params { Int id }, ret 320 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 380 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 380 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+	otherId is Int with value 1
+	x1 is Double with value 320
+	y1 is Double with value 100
+	x2 is Double with value 380
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+===fun DistanceBetween returned 60
+Calling builtin method move with params { Int 30 }
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+	otherId is Int with value 1
+	x1 is Double with value 320
+	y1 is Double with value 100
+	x2 is Double with value 380
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+===fun DistanceBetween returned 60
+Calling builtin method move with params { Int 30 }
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+Calling builtin method getPositionX with params { Int id }, ret 330 + of type System.Double
+Calling builtin method getPositionX with params { Int id }, ret 330 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 370 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 370 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+	otherId is Int with value 1
+	x1 is Double with value 330
+	y1 is Double with value 100
+---Vars of block met DistanceBetween ----
+	y1 is Double with value 100
+	id is Int with value 0
+	id is Int with value 0
+	x2 i	y2 is Double with value 100
+	otherId is Int with value 1
+	y2 is Double with value 100
+---End Vars of block met Dista	y1 is Double with value 100
+nceBetween ----
+===Exiting fun DistanceBetween===Exiting fun DistanceBetween
+	x2 is Double with value 370
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+===fun DistanceBetween returned 40
+===fun DistanceBetween returned 40
+Calling builtin method move with params { Int 30 }
+Calling builtin method move with params { Int 30 }
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+Calling custom method DistanceBetween with params { Int 1, Int 0 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 1 }
+Calling builtin method getPositionX with params { Int id }, ret 340 + of type System.Double
+Calling builtin method getPositionX with params { Int id }, ret 340 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 360 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 360 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+	otherId is Int with value 1
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+	x1 is Double with value 340
+	y1 is Double with value 100
+	x2 is Double with value 360
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+===Exiting fun DistanceBetween
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+	otherId is Int with value 1
+===fun DistanceBetween returned 20
+---Exiting whilecycle
+Calling builtin method hit with params { }
 ---Vars of block met main ----
-	res is Bool with value False
+	id is Int with value 0
+---End Vars of block met main ----
+ms { }
+ouble with value 340
+	y1 is Double with value 100
+	x2 is Double with value 360
+----
+===Exiting fun main
+lue 360
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+===Exiting fun Distan===fun DistanceBetween returned 20
+---Exiting whilecycle
+Calling builtin method hit with params { }
+---Vars of block met main ----
+	id is Int with value 1
 ---End Vars of block met main ----
 ===Exiting fun main
