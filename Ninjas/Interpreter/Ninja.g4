@@ -991,7 +991,50 @@ options {
                     								Error("Variable " + left.value + " does not exist in current context5");
                     							}
                     							break;
-
+											
+											case "&&=":
+                    							right = Pop(stack);
+                    							left = Pop(stack);
+                    							try
+                    							{
+                    								rightVal = right.Calc();
+                    								if (!isCompatible(left, rightVal, true))
+                    									Error("Can't assign " + rightVal + " to " + left.value);
+                    								dynamic rightval = rightVal;
+                    								VarData data = parser.FindVar(left.value);
+                    								if (data.value.GetType() == rightval.GetType())
+                    									data.value = data.value && rightval;
+                    								else
+                    									Error("Can't convert \"" + rightval + "\" to " + data.type);
+                    								stack.Add(new ExprStackObject(data.value, parser));
+                    							}
+                    							catch (KeyNotFoundException)
+                    							{
+                    								Error("Variable " + left.value + " does not exist in current context5");
+                    							}
+                    							break;
+											
+											case "||=":
+                    							right = Pop(stack);
+                    							left = Pop(stack);
+                    							try
+                    							{
+                    								rightVal = right.Calc();
+                    								if (!isCompatible(left, rightVal, true))
+                    									Error("Can't assign " + rightVal + " to " + left.value);
+                    								dynamic rightval = rightVal;
+                    								VarData data = parser.FindVar(left.value);
+                    								if (data.value.GetType() == rightval.GetType())
+                    									data.value = data.value || rightval;
+                    								else
+                    									Error("Can't convert \"" + rightval + "\" to " + data.type);
+                    								stack.Add(new ExprStackObject(data.value, parser));
+                    							}
+                    							catch (KeyNotFoundException)
+                    							{
+                    								Error("Variable " + left.value + " does not exist in current context5");
+                    							}
+                    							break;
                     							
                     						case "sin":
                     							right = Pop(stack);
@@ -1981,12 +2024,12 @@ boolExprEx[ExprClass oper] returns [ExprClass res]:
 		   {
 				$res = $oper;
 		   }
-         | left=ariphID[$oper] ASSIGN right=boolExprEx[$oper]
+         | left=ariphID[$oper] assigns=(ASSIGN|ORASSIGN|ANDASSIGN) right=boolExprEx[$oper]
            {
 				$oper.Push(new ExprStackObject()
 				{
 					type = ObjType.Operation,
-					value = "=",
+					value = $assigns.text,
 						parser = this
 				});
 				$res = $oper;
@@ -2138,6 +2181,8 @@ MODASSIGN   : '%=' ;
 POWASSIGN   : '**=' ;
 AND       : '&&' ;
 OR        : '||' ;
+ANDASSIGN : '&&=' ;
+ORASSIGN  : '||=' ;
 NOT		  : '!' ;
 LESS      : '<' ;
 GREATER   : '>' ;

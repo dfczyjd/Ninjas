@@ -1,6 +1,5 @@
 ===Entering fun main with params { }
-===Entering fun main with params { }
-Evaluating speed <missing ID> --pre =  from block main
-Evaluating speed <missing ID> --pre =  from block main
-ERROR: Variable <missing ID> doesn't exist in current context!
-ERROR: Variable <missing ID> doesn't exist in current context!
+---Vars of block met main ----
+	res is Bool with value False
+---End Vars of block met main ----
+===Exiting fun main

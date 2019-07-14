@@ -1,45 +1,17 @@
-[14.07.2019 15:01:25] Interpreter #0 got file C:\LatinName\test.npr
-[14.07.2019 15:01:25] Lexems of the program:
-[14.07.2019 15:01:25] 0 lexems
-[14.07.2019 15:01:27] Interpreter #1 got file C:\LatinName\test.npr
-[14.07.2019 15:01:27] Lexems of the program:
-[14.07.2019 15:01:27] 0 lexems
-[14.07.2019 15:01:28] interpreter #0 executing 0 0
-[14.07.2019 15:01:28] Error in    в CallSite.Target(Closure , CallSite , Object )
-   в System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
-   в NinjaParser.ExprStackObject.Calc()
-   в NinjaParser.ExprClass.Eval()
-   в NinjaParser.MethodData.Eval()
-   в RealInterpreter.Run(): Не удается выполнить привязки исполняющей среды по нулевой ссылке
-[14.07.2019 15:01:28] Error in    в CallSite.Target(Closure , CallSite , Object )
-   в System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
-   в NinjaParser.ExprStackObject.Calc()
-   в NinjaParser.ExprClass.Eval()
-   в NinjaParser.MethodData.Eval()
-   в RealInterpreter.Run(): Не удается выполнить привязки исполняющей среды по нулевой ссылке
-[14.07.2019 15:01:28] interpreter #0 executing 0 0
-[14.07.2019 15:01:28] interpreter #0 executing 0 0
-[14.07.2019 15:01:28] interpreter #0 executing 0 0
-[14.07.2019 15:01:28] interpreter #0 executing 0 0
-[14.07.2019 15:01:29] interpreter #0 executing 0 0
-[14.07.2019 15:01:29] interpreter #0 executing 0 0
-[14.07.2019 15:01:29] interpreter #0 executing 0 0
-[14.07.2019 15:01:29] interpreter #0 executing 0 0
-[14.07.2019 15:01:29] interpreter #0 executing 0 0
-[14.07.2019 15:01:29] interpreter #0 executing 0 0
-[14.07.2019 15:01:29] interpreter #0 executing 0 0
-[14.07.2019 15:01:29] interpreter #0 executing 0 0
-[14.07.2019 15:01:29] interpreter #0 executing 0 0
-[14.07.2019 15:01:30] interpreter #0 executing 0 0
-[14.07.2019 15:01:30] interpreter #0 executing 0 0
-[14.07.2019 15:01:30] interpreter #0 executing 0 0
-[14.07.2019 15:01:30] interpreter #0 executing 0 0
-[14.07.2019 15:01:30] interpreter #0 executing 0 0
-[14.07.2019 15:01:30] interpreter #0 executing 0 0
-[14.07.2019 15:01:30] interpreter #0 executing 0 0
-[14.07.2019 15:01:30] interpreter #0 executing 0 0
-[14.07.2019 15:01:30] interpreter #0 executing 0 0
-[14.07.2019 15:01:30] interpreter #0 executing 0 0
-[14.07.2019 15:01:31] interpreter #0 executing 0 0
-[14.07.2019 15:01:31] interpreter #0 executing 0 0
-[14.07.2019 15:01:31] interpreter #0 executing 0 0
+[14.07.2019 15:31:41] Interpreter #0 got file C:\LatinName\test.npr
+[14.07.2019 15:31:41] Lexems of the program:
+[14.07.2019 15:31:42] 0 lexems
+[14.07.2019 15:31:42] interpreter #0 executing 0 0
+[14.07.2019 15:31:42] interpreter #0 executing 0 0
+[14.07.2019 15:31:43] interpreter #0 executing 0 0
+[14.07.2019 15:31:43] interpreter #0 executing 0 0
+[14.07.2019 15:31:43] interpreter #0 executing 0 0
+[14.07.2019 15:31:43] interpreter #0 executing 0 0
+[14.07.2019 15:31:43] interpreter #0 executing 0 0
+[14.07.2019 15:31:43] interpreter #0 executing 0 0
+[14.07.2019 15:31:43] interpreter #0 executing 0 0
+[14.07.2019 15:31:43] interpreter #0 executing 0 0
+[14.07.2019 15:31:43] interpreter #0 executing 0 0
+[14.07.2019 15:31:44] interpreter #0 executing 0 0
+[14.07.2019 15:31:44] interpreter #0 executing 0 0
+[14.07.2019 15:31:44] interpreter #0 executing 0 0
