@@ -11,6 +11,7 @@ HINSTANCE hInst;
 Character *players;
 RECT updateRect;
 int mapWidth, mapHeight;
+int activePlayersCount = 0;
 bool abortLaunch = false;
 vector<WCHAR *> chatMess;
 bool FightEnded = false;
@@ -258,6 +259,8 @@ INT_PTR CALLBACK FileSelectProc(HWND hDlg,
 				break;
 			SetWindowText((HWND)lParam, codeFile);
 			players[0].interpreter.SetCode(codeFile);
+			if (!players[0].isActive)
+				activePlayersCount++;
 			players[0].isActive = true;
 			players[0].hasProgram = true;
 			players[0].health = 100;
@@ -271,6 +274,8 @@ INT_PTR CALLBACK FileSelectProc(HWND hDlg,
 				break;
 			SetWindowText((HWND)lParam, codeFile);
 			players[1].interpreter.SetCode(codeFile);
+			if (!players[1].isActive)
+				activePlayersCount++;
 			players[1].isActive = true;
 			players[1].hasProgram = true;
 			players[1].health = 100;
@@ -284,6 +289,8 @@ INT_PTR CALLBACK FileSelectProc(HWND hDlg,
 				break;
 			SetWindowText((HWND)lParam, codeFile);
 			players[2].interpreter.SetCode(codeFile);
+			if (!players[2].isActive)
+				activePlayersCount++;
 			players[2].isActive = true;
 			players[2].hasProgram = true;
 			players[2].health = 100;
@@ -297,9 +304,11 @@ INT_PTR CALLBACK FileSelectProc(HWND hDlg,
 				break;
 			SetWindowText((HWND)lParam, codeFile);
 			players[3].interpreter.SetCode(codeFile);
+			if (!players[3].isActive)
+				activePlayersCount++;
 			players[3].isActive = true;
 			players[3].hasProgram = true;
-			players[3].health = 100;
+			players[3].health = 100;	
 			break;
 		}
 		}
@@ -371,6 +380,8 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 		case COMMAND_TIMER:
 		{
 			int activeShots = 0;
+			if (activePlayersCount < 2)
+				CanExecCommands = false;
 			int activePlayers = 0;
 			int activeId = 0;
 			for (int i = 0; i < PLAYER_COUNT; ++i)
@@ -448,6 +459,8 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 				players[i].interpreter.SendUpdate();
 			}
 			WCHAR text[1024];
+		
+			activePlayersCount = activePlayers;
 			if (activePlayers < 2 && !FightEnded){
 				if(activePlayers == 0){
            			wsprintf(text, L"Бой завершён! Никто не победил");
