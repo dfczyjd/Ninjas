@@ -1,146 +1,112 @@
-[14.07.2019 20:37:36] Interpreter #0 got file C:\LatinName\Progs\empty.npr
-[14.07.2019 20:37:36] Lexems of the program:
-[14.07.2019 20:37:36] 0 lexems
-[14.07.2019 20:37:40] Interpreter #3 got file C:\LatinName\test.npr
-[14.07.2019 20:37:40] Lexems of the program:
-[14.07.2019 20:37:40] 0 lexems
-[14.07.2019 20:37:40] interpreter #0 executing 0 0
-[14.07.2019 20:37:40] #3 entered pause
-[14.07.2019 20:37:40] interpreter #0 executing 0 0
-[14.07.2019 20:37:41] interpreter #0 executing 0 0
-[14.07.2019 20:37:41] interpreter #0 executing 0 0
-[14.07.2019 20:37:41] interpreter #0 executing 0 0
-[14.07.2019 20:37:41] interpreter #0 executing 0 0
-[14.07.2019 20:37:41] interpreter #0 executing 0 0
-[14.07.2019 20:37:41] interpreter #0 executing 0 0
-[14.07.2019 20:37:41] interpreter #0 executing 0 0
-[14.07.2019 20:37:41] interpreter #0 executing 0 0
-[14.07.2019 20:37:41] interpreter #0 executing 0 0
-[14.07.2019 20:37:42] interpreter #0 executing 0 0
-[14.07.2019 20:37:42] interpreter #0 executing 0 0
-[14.07.2019 20:37:42] interpreter #0 executing 0 0
-[14.07.2019 20:37:42] interpreter #0 executing 0 0
-[14.07.2019 20:37:42] interpreter #0 executing 0 0
-[14.07.2019 20:37:42] interpreter #0 executing 0 0
-[14.07.2019 20:37:42] interpreter #0 executing 0 0
-[14.07.2019 20:37:42] interpreter #0 executing 0 0
-[14.07.2019 20:37:42] interpreter #0 executing 0 0
-[14.07.2019 20:37:43] interpreter #0 executing 0 0
-[14.07.2019 20:37:43] interpreter #0 executing 0 0
-[14.07.2019 20:37:43] interpreter #0 executing 0 0
-[14.07.2019 20:37:43] interpreter #0 executing 0 0
-[14.07.2019 20:37:43] interpreter #0 executing 0 0
-[14.07.2019 20:37:43] interpreter #0 executing 0 0
-[14.07.2019 20:37:43] interpreter #0 executing 0 0
-[14.07.2019 20:37:43] interpreter #0 executing 0 0
-[14.07.2019 20:37:43] interpreter #0 executing 0 0
-[14.07.2019 20:37:44] interpreter #0 executing 0 0
-[14.07.2019 20:37:44] interpreter #0 executing 0 0
-[14.07.2019 20:37:44] interpreter #0 executing 0 0
-[14.07.2019 20:37:44] interpreter #0 executing 0 0
-[14.07.2019 20:37:44] interpreter #0 executing 0 0
-[14.07.2019 20:37:44] interpreter #0 executing 0 0
-[14.07.2019 20:37:44] interpreter #0 executing 0 0
-[14.07.2019 20:37:44] interpreter #0 executing 0 0
-[14.07.2019 20:37:44] interpreter #0 executing 0 0
-[14.07.2019 20:37:44] interpreter #0 executing 0 0
-[14.07.2019 20:37:45] interpreter #0 executing 0 0
-[14.07.2019 20:37:45] interpreter #0 executing 0 0
-[14.07.2019 20:37:45] interpreter #0 executing 0 0
-[14.07.2019 20:37:45] interpreter #0 executing 0 0
-[14.07.2019 20:37:45] interpreter #0 executing 0 0
-[14.07.2019 20:37:45] interpreter #0 executing 0 0
-[14.07.2019 20:37:45] interpreter #0 executing 0 0
-[14.07.2019 20:37:45] interpreter #0 executing 0 0
-[14.07.2019 20:37:45] interpreter #0 executing 0 0
-[14.07.2019 20:37:46] interpreter #0 executing 0 0
-[14.07.2019 20:37:46] interpreter #0 executing 0 0
-[14.07.2019 20:37:46] interpreter #0 executing 0 0
-[14.07.2019 20:37:46] interpreter #0 executing 0 0
-[14.07.2019 20:37:46] interpreter #0 executing 0 0
-[14.07.2019 20:37:46] interpreter #0 executing 0 0
-[14.07.2019 20:37:46] interpreter #0 executing 0 0
-[14.07.2019 20:37:46] interpreter #0 executing 0 0
-[14.07.2019 20:37:46] interpreter #0 executing 0 0
-[14.07.2019 20:37:47] interpreter #0 executing 0 0
-[14.07.2019 20:37:47] interpreter #0 executing 0 0
-[14.07.2019 20:37:47] interpreter #0 executing 0 0
-[14.07.2019 20:37:47] interpreter #0 executing 0 0
-[14.07.2019 20:37:47] interpreter #0 executing 0 0
-[14.07.2019 20:37:47] interpreter #0 executing 0 0
-[14.07.2019 20:37:47] interpreter #0 executing 0 0
-[14.07.2019 20:37:47] interpreter #0 executing 0 0
-[14.07.2019 20:37:47] interpreter #0 executing 0 0
-[14.07.2019 20:37:48] interpreter #0 executing 0 0
-[14.07.2019 20:37:48] interpreter #0 executing 0 0
-[14.07.2019 20:37:48] interpreter #0 executing 0 0
-[14.07.2019 20:37:48] interpreter #0 executing 0 0
-[14.07.2019 20:37:48] interpreter #0 executing 0 0
-[14.07.2019 20:37:48] interpreter #0 executing 0 0
-[14.07.2019 20:37:48] interpreter #0 executing 0 0
-[14.07.2019 20:37:48] interpreter #0 executing 0 0
-[14.07.2019 20:37:48] interpreter #0 executing 0 0
-[14.07.2019 20:37:49] interpreter #0 executing 0 0
-[14.07.2019 20:37:49] interpreter #0 executing 0 0
-[14.07.2019 20:37:49] interpreter #0 executing 0 0
-[14.07.2019 20:37:49] interpreter #0 executing 0 0
-[14.07.2019 20:37:49] interpreter #0 executing 0 0
-[14.07.2019 20:37:49] interpreter #0 executing 0 0
-[14.07.2019 20:37:49] interpreter #0 executing 0 0
-[14.07.2019 20:37:49] interpreter #0 executing 0 0
-[14.07.2019 20:37:49] interpreter #0 executing 0 0
-[14.07.2019 20:37:50] interpreter #0 executing 0 0
-[14.07.2019 20:37:50] interpreter #0 executing 0 0
-[14.07.2019 20:37:50] interpreter #0 executing 0 0
-[14.07.2019 20:37:50] interpreter #0 executing 0 0
-[14.07.2019 20:37:50] interpreter #0 executing 0 0
-[14.07.2019 20:37:50] interpreter #0 executing 0 0
-[14.07.2019 20:37:50] interpreter #0 executing 0 0
-[14.07.2019 20:37:50] interpreter #0 executing 0 0
-[14.07.2019 20:37:50] interpreter #0 executing 0 0
-[14.07.2019 20:37:50] interpreter #0 executing 0 0
-[14.07.2019 20:37:51] interpreter #0 executing 0 0
-[14.07.2019 20:37:51] interpreter #0 executing 0 0
-[14.07.2019 20:37:51] interpreter #0 executing 0 0
-[14.07.2019 20:37:51] interpreter #0 executing 0 0
-[14.07.2019 20:37:51] interpreter #0 executing 0 0
-[14.07.2019 20:37:51] interpreter #0 executing 0 0
-[14.07.2019 20:37:51] interpreter #0 executing 0 0
-[14.07.2019 20:37:51] interpreter #0 executing 0 0
-[14.07.2019 20:37:51] interpreter #0 executing 0 0
-[14.07.2019 20:37:51] #3 left pause
-[14.07.2019 20:37:52] interpreter #0 executing 0 0
-[14.07.2019 20:37:52] interpreter #0 executing 0 0
-[14.07.2019 20:37:52] interpreter #0 executing 0 0
-[14.07.2019 20:37:52] interpreter #0 executing 0 0
-[14.07.2019 20:37:52] interpreter #0 executing 0 0
-[14.07.2019 20:37:52] interpreter #0 executing 0 0
-[14.07.2019 20:37:52] interpreter #0 executing 0 0
-[14.07.2019 20:37:52] interpreter #0 executing 0 0
-[14.07.2019 20:37:52] interpreter #0 executing 0 0
-[14.07.2019 20:37:53] interpreter #0 executing 0 0
-[14.07.2019 20:37:53] interpreter #0 executing 0 0
-[14.07.2019 20:37:53] interpreter #0 executing 0 0
-[14.07.2019 20:37:53] interpreter #0 executing 0 0
-[14.07.2019 20:37:53] interpreter #0 executing 0 0
-[14.07.2019 20:37:53] interpreter #0 executing 0 0
-[14.07.2019 20:37:53] interpreter #0 executing 0 0
-[14.07.2019 20:37:53] interpreter #0 executing 0 0
-[14.07.2019 20:37:53] interpreter #0 executing 0 0
-[14.07.2019 20:37:54] interpreter #0 executing 0 0
-[14.07.2019 20:37:54] interpreter #0 executing 0 0
-[14.07.2019 20:37:54] interpreter #0 executing 0 0
-[14.07.2019 20:37:54] interpreter #0 executing 0 0
-[14.07.2019 20:37:54] interpreter #0 executing 0 0
-[14.07.2019 20:37:54] interpreter #0 executing 0 0
-[14.07.2019 20:37:54] interpreter #0 executing 0 0
-[14.07.2019 20:37:54] interpreter #0 executing 0 0
-[14.07.2019 20:37:54] interpreter #0 executing 0 0
-[14.07.2019 20:37:55] interpreter #0 executing 0 0
-[14.07.2019 20:37:55] interpreter #0 executing 0 0
-[14.07.2019 20:37:55] interpreter #0 executing 0 0
-[14.07.2019 20:37:55] interpreter #0 executing 0 0
-[14.07.2019 20:37:55] interpreter #0 executing 0 0
-[14.07.2019 20:37:55] interpreter #0 executing 0 0
-[14.07.2019 20:37:55] interpreter #0 executing 0 0
-[14.07.2019 20:37:55] interpreter #0 executing 0 0
+[15.07.2019 15:25:55] Interpreter #0 got file C:\LatinName\down.npr
+[15.07.2019 15:25:55] Lexems of the program:
+[15.07.2019 15:25:56] 0 lexems
+[15.07.2019 15:25:57] interpreter #0 executing 0 0
+[15.07.2019 15:25:57] #0 entered pause
+[15.07.2019 15:25:57] interpreter #0 executing 0 0
+[15.07.2019 15:25:57] interpreter #0 executing 0 0
+[15.07.2019 15:25:57] #0 left pause
+[15.07.2019 15:25:57] Func getSelfId for player #-1 returning 0
+[15.07.2019 15:25:57] #0 entered pause
+[15.07.2019 15:25:57] interpreter #0 executing 1 40
+[15.07.2019 15:25:57] #0 left pause
+[15.07.2019 15:25:57] interpreter #0 executing 0 0
+[15.07.2019 15:25:57] #0 left pause
+[15.07.2019 15:25:57] Func getPositionX for player #0 returning 100
+[15.07.2019 15:25:57] #0 entered pause
+[15.07.2019 15:25:57] interpreter #0 executing 0 0
+[15.07.2019 15:25:57] interpreter #0 executing 0 0
+[15.07.2019 15:25:57] Func getPositionY for player #0 returning 100
+[15.07.2019 15:25:57] #0 entered pause
+[15.07.2019 15:25:57] interpreter #0 executing 0 0
+[15.07.2019 15:25:57] interpreter #0 executing 0 0
+[15.07.2019 15:25:57] interpreter #0 executing 0 0
+[15.07.2019 15:25:57] #0 left pause
+[15.07.2019 15:25:57] Func getPositionX for player #0 returning 100
+[15.07.2019 15:25:57] #0 entered pause
+[15.07.2019 15:25:57] interpreter #0 executing 0 0
+[15.07.2019 15:25:57] interpreter #0 executing 0 0
+[15.07.2019 15:25:57] Func getPositionY for player #0 returning 100
+[15.07.2019 15:25:57] #0 entered pause
+[15.07.2019 15:25:57] interpreter #0 executing 0 0
+0 returning 100
+:57] #0 left pause
+[15.07.2019 15:25:57] interpreter #0 executing 0 0
+0 returning 100
+:57] #0 left pause
+[15.07.2019 15:25:57] Func getPositionX for player #1 returning 600
+[15.07.2019 15:25:57] #0 entered pause
+[15.07.2019 15:25:57] interpreter #0 executing 0 0
+[15.07.2019 15:25:57] #0 left pause
+[15.07.2019 15:25:57] Func getPositionY for player #1 returning 100
+[15.07.2019 15:25:57] #0 entered pause
+[15.07.2019 15:25:57] interpreter #0 executing 0 0
+[15.07.2019 15:25:57] #0 left pause
+[15.07.2019 15:25:57] Func getPositionX for player #0 returning 100
+[15.07.2019 15:25:57] #0 entered pause
+[15.07.2019 15:25:58] interpreter #0 executing 0 0
+[15.07.2019 15:25:58] #0 left pause
+[15.07.2019 15:25:58] Func getPositionY for player #0 returning 100
+[15.07.2019 15:25:58] #0 entered pause
+[15.07.2019 15:25:58] interpreter #0 executing 4 0
+[15.07.2019 15:25:58] interpreter #0 executing 0 0
+[15.07.2019 15:25:58] interpreter #0 executing 0 0
+[15.07.2019 15:25:58] #0 left pause
+[15.07.2019 15:25:58] Func getPositionX for player #2 returning 100
+[15.07.2019 15:25:58] #0 entered pause
+[15.07.2019 15:25:58] #0 left pause
+executing 0 0
+2 returning 100
+:57] #0 left pause
+[15.07.2019 15:25:58] #0 left pause
+executing 0 0
+2 returning 100
+:57] #0 left pause
+[15.07.2019 15:25:58] Func getPositionY for player #2 returning 600
+[15.07.2019 15:25:58] #0 entered pause
+[15.07.2019 15:25:58] interpreter #0 executing 0 0
+[15.07.2019 15:25:58] interpreter #0 executing 0 0
+[15.07.2019 15:25:58] interpreter #0 [15.07.2019 15:25:58] Func getPositionX for player #0 returning 100
+[15.07.2019 15:25:58] #0 entered pause
+[15.07.2019 15:25:58] interpreter #0 executing 0 0
+[15.07.2019 15:25:58] #0 left pause
+[15.07.2019 15:25:58] Func getPositionY for player #0 returning 100
+[15.07.2019 15:25:58] #0 entered pause
+[15.07.2019 15:25:58] interpreter #0 executing 4 0
+[15.07.2019 15:25:58] #0 left pause
+executing 0 0
+0 returning 100
+:58] #0 left pause
+[15.07.2019 15:25:58] #0 left pause
+executing 0 0
+0 returning 100
+:58] #0 left pause
+[15.07.2019 15:25:58] Func getPositionX for player #3 returning 600
+[15.07.2019 15:25:58] #0 entered pause
+[15.07.2019 15:25:58] interpreter #0 executing 0 0
+[15.07.2019 15:25:58] interpreter #0 executing 0 0
+[15.07.2019 15:25:58] #0 left pause
+[15.07.2019 15:25:58] Func getPositionY for player #3 returning 600
+[15.07.2019 15:25:58] #0 entered pause
+[15.07.2019 15:25:59] interpreter #0 executing 0 0
+[15.07.2019 15:25:59] interpreter #0 executing 0 0
+[15.07.2019 15:25:59] #0 left pause
+[15.07.2019 15:25:59] Func getPositionX for player #0 returning 100
+[15.07.2019 15:25:59] #0 entered pause
+[15.07.2019 15:25:59] #0 left pause
+executing 0 0
+0 returning 100
+:58] #0 left pause
+[15.07.2019 15:25:59] #0 left pause
+executing 0 0
+0 returning 100
+:58] #0 left pause
+[15.07.2019 15:25:59] Func getPositionY for player #0 returning 100
+[15.07.2019 15:25:59] #0 entered pause
+[15.07.2019 15:25:59] interpreter #0 executing 4 0
+[15.07.2019 15:25:59] interpreter #0 executing 1 40
+[15.07.2019 15:25:59] interpreter #0 executing 0 0
+[15.07.2019 15:25:59] interpreter #0 executing 0 0
+[15.07.2019 15:25:59] #0 left pause
+[15.07.2019 15:25:59] Func getPositionX for player #0 returning 100
+[15.07.2019 15:25:59] #0 entered pause

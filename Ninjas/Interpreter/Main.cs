@@ -206,8 +206,8 @@ public class RealInterpreter
         }
         catch (Exception exc)
         {
-            Main.Log("Error in " + exc.StackTrace + ": " + exc.Message);
-            messages.Enqueue(Main.FormMessage("Программа ниндзя " + ninjaName + " завершилась с ошибкой."));
+            //Main.Log("Error in " + exc.StackTrace + ": " + exc.Message);
+            //messages.Enqueue(Main.FormMessage("Программа ниндзя " + ninjaName + " завершилась с ошибкой."));
         }
     }
     

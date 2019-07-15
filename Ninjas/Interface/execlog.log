@@ -1,211 +1,87 @@
 ===Entering fun main with params { }
----Vars of block met main ----
----End Vars of block met main ----
-===Exiting fun main
-===Entering fun main with params { }
-Calling builtin method shoot with params { }
+Calling builtin method getSelfId with params { }, ret 0 + of type System.Int32
+---Entering whilecycle
+Calling builtin method move with params { Int 40 }
 ===Entering for
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
-Calling builtin method move with params { Int 10 }
-Calling builtin method hit with params { }
+Entering condition
+Calling custom method DistanceBetween with params { Int id, Int i }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 0 }
+Calling builtin method getPositionX with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+---Vars of block met DistanceBetween ----
+	id is Int with value 0
+	otherId is Int with value 0
+	x1 is Double with value 100
+	y1 is Double with value 100
+	x2 is Double with value 100
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+===fun DistanceBetween returned 0
+Exiting condition
+Entering condition
+Calling custom method DistanceBetween with params { Int id, Int i }
+===Entering fun DistanceBetween with params { Int id = 1, Int otherId = 0 }
+Calling builtin method getPositionX with params { Int id }, ret 600 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+---Vars of block met DistanceBetween ----
+	id is Int with value 1
+	otherId is Int with value 0
+	x1 is Double with value 600
+	y1 is Double with value 100
+	x2 is Double with value 100
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+===fun DistanceBetween returned 500
+Calling builtin method shoot with params { }
+Exiting condition
+Entering condition
+Calling custom method DistanceBetween with params { Int id, Int i }
+===Entering fun DistanceBetween with params { Int id = 2, Int otherId = 0 }
+Calling builtin method getPositionX with params { Int id }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 600 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+---Vars of block met DistanceBetween ----
+	id is Int with value 2
+	otherId is Int with value 0
+	x1 is Double with value 100
+	y1 is Double with value 600
+	x2 is Double with value 100
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+===fun DistanceBetween returned 500
+Calling builtin method shoot with params { }
+Exiting condition
+Entering condition
+Calling custom method DistanceBetween with params { Int id, Int i }
+===Entering fun DistanceBetween with params { Int id = 3, Int otherId = 0 }
+Calling builtin method getPositionX with params { Int id }, ret 600 + of type System.Double
+Calling builtin method getPositionY with params { Int id }, ret 600 + of type System.Double
+Calling builtin method getPositionX with params { Int otherId }, ret 100 + of type System.Double
+Calling builtin method getPositionY with params { Int otherId }, ret 100 + of type System.Double
+---Vars of block met DistanceBetween ----
+	id is Int with value 3
+	otherId is Int with value 0
+	x1 is Double with value 600
+	y1 is Double with value 600
+	x2 is Double with value 100
+	y2 is Double with value 100
+---End Vars of block met DistanceBetween ----
+===Exiting fun DistanceBetween
+===fun DistanceBetween returned 707,106781186548
+Calling builtin method shoot with params { }
+Exiting condition
 ===Exiting for
----Vars of block met main ----
----End Vars of block met main ----
-===Exiting fun main
+Calling builtin method move with params { Int 40 }
+===Entering for
+Entering condition
+Calling custom method DistanceBetween with params { Int id, Int i }
+===Entering fun DistanceBetween with params { Int id = 0, Int otherId = 0 }
+Calling builtin method getPositionX with params { Int id }, ret 100 + of type System.Double

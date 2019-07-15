@@ -68,6 +68,11 @@ void Character::Draw(HDC hdc)
 void Character::Turn(double angle)
 {
 	direction += angle;
+	double EPS = 1e-7;
+	while (direction - M_PI > EPS)
+		direction -= 2 * M_PI;
+	while (-M_PI - direction >= -EPS)
+		direction += 2 * M_PI;
 }
 
 void Character::Move(double distance)

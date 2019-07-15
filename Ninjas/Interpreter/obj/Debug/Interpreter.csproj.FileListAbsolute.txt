@@ -39,4 +39,3 @@ D:\Coding\C#\Inter\Ninjas\Ninjas\Interpreter\bin\Debug\Antlr4.Runtime.Standard.x
 D:\Coding\C#\Inter\Ninjas\Ninjas\Interpreter\bin\Debug\Conari.pdb
 D:\Coding\C#\Inter\Ninjas\Ninjas\Interpreter\bin\Debug\Conari.xml
 D:\Coding\C#\Inter\Ninjas\Ninjas\Interpreter\obj\Debug\Interpreter.csproj.CopyComplete
-C:\Users\Василий\Documents\ДЗ Вышка\1 Практика\Ninjas\Ninjas\Interpreter\obj\Debug\Interpreter.csprojAssemblyReference.cache
