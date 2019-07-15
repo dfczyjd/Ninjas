@@ -2980,8 +2980,13 @@ public partial class NinjaParser : Parser {
 				}
 				
 				string methodName = currentMet;
-				if (independent)
-			    	curBlock.operations.Add(data);
+				if (independent) 
+			        _localctx.oper.Push(new ExprStackObject()
+			        {
+						type = ObjType.Function,
+						value = data,
+						parser = this
+					});
 				_localctx.callData =  data;
 
 			}

@@ -1656,8 +1656,13 @@ custom_call[ExprClass oper, bool independent] returns [string funName, CallData 
 	}
 	
 	string methodName = currentMet;
-	if (independent)
-    	curBlock.operations.Add(data);
+	if (independent) 
+        $oper.Push(new ExprStackObject()
+        {
+			type = ObjType.Function,
+			value = data,
+			parser = this
+		});
 	$callData = data;
 };
 
