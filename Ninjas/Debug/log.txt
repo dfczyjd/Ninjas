@@ -1,367 +1,683 @@
-[15.07.2019 15:13:09] Interpreter #0 got file D:\Coding\C#\Interpreter\ProgramExamples\nnj.npr
-[15.07.2019 15:13:09] Lexems of the program:
-[15.07.2019 15:13:09] 0 lexems
-[15.07.2019 15:13:11] Interpreter #1 got file D:\Coding\C#\Interpreter\ProgramExamples\nnj.npr
-[15.07.2019 15:13:11] Lexems of the program:
-[15.07.2019 15:13:11] 0 lexems
-[15.07.2019 15:13:13] Interpreter #2 got file D:\Coding\C#\Interpreter\ProgramExamples\nnj.npr
-[15.07.2019 15:13:13] Lexems of the program:
-[15.07.2019 15:13:13] 0 lexems
-[15.07.2019 15:13:15] Interpreter #3 got file D:\Coding\C#\Interpreter\ProgramExamples\nnj.npr
-[15.07.2019 15:13:15] Lexems of the program:
-[15.07.2019 15:13:15] 0 lexems
-[15.07.2019 15:13:17] Interpreter #2 got file D:\Coding\C#\Interpreter\ProgramExamples\nnj.npr
-[15.07.2019 15:13:17] Lexems of the program:
-[15.07.2019 15:13:17] 0 lexems
-[15.07.2019 15:13:19] Interpreter #1 got file D:\Coding\C#\Interpreter\ProgramExamples\nnj.npr
-[15.07.2019 15:13:19] Lexems of the program:
-[15.07.2019 15:13:19] 0 lexems
-[15.07.2019 15:13:20] interpreter #0 executing 0 0
-[15.07.2019 15:13:20] interpreter #0 executing 0 0
-[15.07.2019 15:13:20] #0 entered pause
-[15.07.2019 15:13:20] #0 entered pause
-[15.07.2019 15:13:20] #1 entered pause
-[15.07.2019 15:13:20] #0 entered pause
-[15.07.2019 15:13:20] #1 entered pause
-[15.07.2019 15:13:20] #2 entered pause
-[15.07.2019 15:13:20] #3 entered pause
-[15.07.2019 15:13:20] #0 left pause
-executing 0 0
-[15.07.2019 15:13:20] #0 left pause
-executing 0 0
-[15.07.2019 15:13:20] #1 left pause
-[15.07.2019 15:13:20] #2 left pause
-[15.07.2019 15:13:20] #3 left pause
-[15.07.2019 15:13:20] Func getSelfId for player #-1 returning 0
-[15.07.2019 15:13:20] Func getSelfId for player #-1 returning 2
-[15.07.2019 15:13:20] Func getSelfId for player #-1 returning 3
-[15.07.2019 15:13:20] Func getSelfId for player #-1 returning 1
-[15.07.2019 15:13:20] #2 entered pause
-[15.07.2019 15:13:20] #3 entered pause
-[15.07.2019 15:13:20] #1 entered pause
-[15.07.2019 15:13:20] #0 entered pause
-[15.07.2019 15:13:20] interpreter #0 executing 2 -0,785398163397448
-[15.07.2019 15:13:20] interpreter #0 executing 4 0
-[15.07.2019 15:13:20] interpreter #0 executing 2 1,5707963267949
-[15.07.2019 15:13:21] interpreter #0 executing 1 10
-[15.07.2019 15:13:21] interpreter #0 executing 1 10
-[15.07.2019 15:13:21] interpreter #0 executing 2 -1,5707963267949
-[15.07.2019 15:13:21] #0 left pause
-executing 0 0
-[15.07.2019 15:13:21] #0 left pause
-executing 0 0
-[15.07.2019 15:13:21] Func getPositionX for player #0 returning 100
-[15.07.2019 15:13:21] #0 entered pause
-[15.07.2019 15:13:21] #0 left pause
-executing 0 0
-0 returning 100
-r\ProgramExamples\nn[15.07.2019 15:13:21] #0 left pause
-executing 0 0
-0 returning 100
-r\ProgramExamples\nn[15.07.2019 15:13:21] Func getPositionY for player #0 returning 120
-[15.07.2019 15:13:21] #0 entered pause
-[15.07.2019 15:13:21] interpreter #0 executing 0 0
-[15.07.2019 15:13:21] #0 left pause
-[15.07.2019 15:13:21] Func getPositionX for player #1 returning 530
-[15.07.2019 15:13:21] #0 entered pause
-[15.07.2019 15:13:21] interpreter e
-executing 0 0
-1 returning 530
-r\ProgramExamples\nn[15.07.2019 15:13:21] interpreter e
-executing 0 0
-1 returning 530
-r\ProgramExamples\nn[15.07.2019 15:13:21] Func getPositionY for player #1 returning 100
-[15.07.2019 15:13:21] #0 entered pause
-[15.07.2019 15:13:21] interpreter #0 executing 1 10
-[15.07.2019 15:13:21] #0 left pause
-[15.07.2019 15:13:21] #0 left pause
-[15.07.2019 15:13:21] #0 left pause
-[15.07.2019 15:13:21] Func getPositionX for player #0 returning 110
-[15.07.2019 15:13:21] #0 entered pause
-[15.07.2019 15:13:22] interpreter #0 executing 0 0
-[15.07.2019 15:13:22] interpreter #0 executing 0 0
-[15.07.2019 15:13:22] #0 left pause
-[15.07.2019 15:13:22] Func getPositionY for player #0 returning 120
-[15.07.2019 15:13:22] #0 entered pause
-[15.07.2019 15:13:22] #0 left pause
-executing 0 0
-0 returning 120
-r\ProgramExamples\nn[15.07.2019 15:13:22] Func getPositionX for player #1 returning 480
-r\ProgramExamples\nn[15.07.2019 15:13:22] Func getPositionX for player #1 returning 480
-[15.07.2019 15:13:22] #0 entered pause
-[15.07.2019 15:13:22] #0 left pause
-executing 0 0
-1 returning 480
-r\ProgramExamples\nn[15.07.2019 15:13:22] #0 left pause
-executing 0 0
-1 returning 480
-r\ProgramExamples\nn[15.07.2019 15:13:22] Func getPositionY for player #1 returning 100
-[15.07.2019 15:13:22] #0 entered pause
-[15.07.2019 15:13:22] interpreter #0 executing 1 10
-[15.07.2019 15:13:22] interpreteuse
-executing 0 0
-
- returning 100
-r\ProgramExamples\nn[15.07.2019 15:13:22] interpreteuse
-executing 0 0
-
- returning 100
-r\ProgramExamples\nn[15.07.2019 15:13:22] Func getPositionX for player #0 returning 120
-[15.07.2019 15:13:22] #0 entered pause
-[15.07.2019 15:13:22] interpreter #0
-executing 0 0
-0 returning 120
-r\ProgramExamples\nn[15.07.2019 15:13:22] interpreter #0
-executing 0 0
-0 returning 120
-r\ProgramExamples\nn[15.07.2019 15:13:22] Func getPositionY for player #0 returning 120
-[15.07.2019 15:13:22] #0 entered pause
-[15.07.2019 15:13:22] interpreter #0 executing 0 0
-0 returning 120
-r\ProgramExamples\nn[15.07.2019 15:13:22] interpreter #0 executing 0 0
-0 returning 120
-r\ProgramExamples\nn[15.07.2019 15:13:22] Func getPositionX for player #1 returning 430
-[15.07.2019 15:13:22] #0 entered pause
-[15.07.2019 15:13:22] interpreter #0 executing 0 0
-[15.07.2019 15:13:22] #0 left pause
-[15.07.2019 15:13:22] Func getPositionY for player #1 returning 100
-[15.07.2019 15:13:22] #0 entered pause
-[15.07.2019 15:13:22] interpreter #0 executing 1 10
-[15.07.2019 15:13:23] interpreter e
-executing 0 0
-
- returning 100
-r\ProgramExamples\nn[15.07.2019 15:13:23] interpreter e
-executing 0 0
-
- returning 100
-r\ProgramExamples\nn[15.07.2019 15:13:23] Func getPositionX for player #0 returning 130
-[15.07.2019 15:13:23] #0 entered pause
-[15.07.2019 15:13:23] interpreter #0 executing 0 0
-[15.07.2019 15:13:23] #0 left pause
-[15.07.2019 15:13:23] interpreter #0 executing 0 0
-[15.07.2019 15:13:23] #0 left pause
-[15.07.2019 15:13:23] Func getPositionY for player #0 returning 120
-[15.07.2019 15:13:23] #0 entered pause
-[15.07.2019 15:13:23] #0 left par e
-[15.07.2019 15:13:23] #0 left par e
-[15.07.2019 15:13:23] Func getPositionX for player #1 returning 380
-[15.07.2019 15:13:23] #0 entered pause
-[15.07.2019 15:13:23] interpreter #0 executing 0 0
-[15.07.2019 15:13:23] #0 left pause
-[15.07.2019 15:13:23] Func getPositionY for player #1 returning 100
-[15.07.2019 15:13:23] #0 entered pause
-[15.07.2019 15:13:23] interpreter #0 executing 1 10
-[15.07.2019 15:13:23] #0 left pause
-executing 0 0
-[15.07.2019 15:13:23] #0 left pause
-[15.07.2019 15:13:23] Func getPositionX for player #0 returning 140
-[15.07.2019 15:13:23] #0 entered pause
-[15.07.2019 15:13:23] interpreter e
-executing 0 0
-0 returning 140
-:23] #0 left pause
-[15.07.2019 15:13:23] interpreter e
-executing 0 0
-0 returning 140
-:23] #0 left pause
-[15.07.2019 15:13:23] Func getPositionY for player #0 returning 120
-[15.07.2019 15:13:23] #0 entered pause
-[15.07.2019 15:13:23] interpreter #0
-executing 0 0
-0 returning 120
-:23] #0 left pause
-[15.07.2019 15:13:23] interpreter #0
-executing 0 0
-0 returning 120
-:23] #0 left pause
-[15.07.2019 15:13:23] Func getPositionX for player #1 returning 330
-[15.07.2019 15:13:23] #0 entered pause
-[15.07.2019 15:13:23] interpreter #0 executing 0 0
-[15.07.2019 15:13:23] #0 left pause
-[15.07.2019 15:13:23] interpreter #0 executing 0 0
-[15.07.2019 15:13:23] Func getPositionY for player #1 returning 100
-[15.07.2019 15:13:23] #0 entered pause
-[15.07.2019 15:13:24] interpreter #0 executing 1 10
-[15.07.2019 15:13:24] interpreter #0 executing 0 0
-[15.07.2019 15:13:24] #0 left pause
-[15.07.2019 15:13:24] Func getPositionX for player #0 returning 150
-[15.07.2019 15:13:24] #0 entered pause
-[15.07.2019 15:13:24] interpreter #0 executing 0 0
-[15.07.2019 15:13:24] #0 left pause
-[15.07.2019 15:13:24] Func getPositionY for player #0 returning 120
-[15.07.2019 15:13:24] #0 entered pause
-[15.07.2019 15:13:24] interpreter #0 executing 0 0
-[15.07.2019 15:13:24] interpreter #0 executing 0 0
-[15.07.2019 15:13:24] #0 left pause
-[15.07.2019 15:13:24] Func getPositionX for player #1 returning 280
-[15.07.2019 15:13:24] #0 entered pause
-[15.07.2019 15:13:24] #0 left par e
-executing 0 0
-1 returning 280
-:23] #0 left pause
-[15.07.2019 15:13:24] #0 left par e
-executing 0 0
-1 returning 280
-:23] #0 left pause
-[15.07.2019 15:13:24] Func getPositionY for player #1 returning 100
-[15.07.2019 15:13:24] #0 entered pause
-[15.07.2019 15:13:24] interpreter #0 executing 1 10
-[15.07.2019 15:13:24] interpreter #0 executing 0 0
-
- returning 100
-:23] #0 left pause
-[15.07.2019 15:13:24] interpreter #0 executing 0 0
-
- returning 100
-:23] #0 left pause
-[15.07.2019 15:13:24] Func getPositionX for player #0 returning 160
-[15.07.2019 15:13:24] #0 entered pause
-[15.07.2019 15:13:24] in left pause
-executing 0 0
-0 returning 160
-:23] #0 left pause
-[15.07.2019 15:13:24] in left pause
-executing 0 0
-0 returning 160
-:23] #0 left pause
-[15.07.2019 15:13:24] Func getPositionY for player #0 returning 120
-[15.07.2019 15:13:24] #0 entered pause
-[15.07.2019 15:13:24] interpreter #0 executing 0 0
-[15.07.2019 15:13:24] interpreter #0 executing 0 0
-[15.07.2019 15:13:24] #0 left pause
-[15.07.2019 15:13:24] Func getPositionX for player #1 returning 230
-[15.07.2019 15:13:24] #0 entered pause
-[15.07.2019 15:13:25] interpreteuse
-executing 0 0
-1 returning 230
-:23] #0 left pause
-[15.07.2019 15:13:25] interpreteuse
-executing 0 0
-1 returning 230
-:23] #0 left pause
-[15.07.2019 15:13:25] Func getPositionY for player #1 returning 100
-[15.07.2019 15:13:25] #0 entered pause
-[15.07.2019 15:13:25] interpreter #0 executing 1 10
-[15.07.2019 15:13:25] interpreter e
-executing 0 0
-
- returning 100
-:23] #0 left pause
-[15.07.2019 15:13:25] interpreter e
-executing 0 0
-
- returning 100
-:23] #0 left pause
-[15.07.2019 15:13:25] Func getPositionX for player #0 returning 170
-[15.07.2019 15:13:25] #0 entered pause
-[15.07.2019 15:13:25] #0 left pause
-executing 0 0
-[15.07.2019 15:13:25] #0 left pause
-executing 0 0
-0 returning 170
-:23] #0 left pause
-[15.07.2019 15:13:25] Func getPositionY for player #0 returning 120
-[15.07.2019 15:13:25] #0 entered pause
-[15.07.2019 15:13:25] interpreter #0 executing 0 0
-[15.07.2019 15:13:25] #0 left pause
-[15.07.2019 15:13:25] Func getPositionX for player #1 returning 180
-[15.07.2019 15:13:25] #0 entered pause
-[15.07.2019 15:13:25] #0 left pause
-executing 0 0
-[15.07.2019 15:13:25] #0 left pause
-executing 0 0
-1 returning 180
-:23] #0 left pause
-[15.07.2019 15:13:25] Func getPositionY for player #1 returning 100
-[15.07.2019 15:13:25] interpreter #0 executing 2 -1,5707963267949
-[15.07.2019 15:13:25] interpreter #0 executing 3 0
-[15.07.2019 15:13:25] interpreter #0 executing 0 0
-[15.07.2019 15:13:25] interpreter #0 executing 0 0
-[15.07.2019 15:13:26] interpreter #0 executing 0 0
-[15.07.2019 15:13:26] interpreter #0 executing 0 0
-[15.07.2019 15:13:26] interpreter #0 executing 0 0
-[15.07.2019 15:13:26] interpreter #0 executing 0 0
-[15.07.2019 15:13:26] interpreter #0 executing 0 0
-[15.07.2019 15:13:26] interpreter #0 executing 0 0
-[15.07.2019 15:13:26] interpreter #0 executing 0 0
-[15.07.2019 15:13:26] interpreter #0 executing 0 0
-[15.07.2019 15:13:26] interpreter #0 executing 0 0
-[15.07.2019 15:13:27] interpreter #0 executing 0 0
-[15.07.2019 15:13:27] interpreter #0 executing 0 0
-[15.07.2019 15:13:27] interpreter #0 executing 0 0
-[15.07.2019 15:13:27] interpreter #0 executing 0 0
-[15.07.2019 15:13:27] interpreter #0 executing 0 0
-[15.07.2019 15:13:27] interpreter #0 executing 0 0
-[15.07.2019 15:13:27] interpreter #0 executing 0 0
-[15.07.2019 15:13:27] interpreter #0 executing 0 0
-[15.07.2019 15:13:27] interpreter #0 executing 0 0
-[15.07.2019 15:13:28] interpreter #0 executing 0 0
-[15.07.2019 15:13:28] interpreter #0 executing 0 0
-[15.07.2019 15:13:28] interpreter #0 executing 0 0
-[15.07.2019 15:13:28] interpreter #0 executing 0 0
-[15.07.2019 15:13:28] interpreter #0 executing 0 0
-[15.07.2019 15:13:28] interpreter #0 executing 0 0
-[15.07.2019 15:13:28] interpreter #0 executing 0 0
-[15.07.2019 15:13:28] interpreter #0 executing 0 0
-[15.07.2019 15:13:28] interpreter #0 executing 0 0
-[15.07.2019 15:13:29] interpreter #0 executing 0 0
-[15.07.2019 15:13:29] interpreter #0 executing 0 0
-[15.07.2019 15:13:29] interpreter #0 executing 0 0
-[15.07.2019 15:13:29] interpreter #0 executing 0 0
-[15.07.2019 15:13:29] interpreter #0 executing 0 0
-[15.07.2019 15:13:29] interpreter #0 executing 0 0
-[15.07.2019 15:13:29] interpreter #0 executing 0 0
-[15.07.2019 15:13:29] interpreter #0 executing 0 0
-[15.07.2019 15:13:29] interpreter #0 executing 0 0
-[15.07.2019 15:13:30] interpreter #0 executing 0 0
-[15.07.2019 15:13:30] interpreter #0 executing 0 0
-[15.07.2019 15:13:30] interpreter #0 executing 0 0
-[15.07.2019 15:13:30] interpreter #0 executing 0 0
-[15.07.2019 15:13:30] interpreter #0 executing 0 0
-[15.07.2019 15:13:30] interpreter #0 executing 0 0
-[15.07.2019 15:13:30] interpreter #0 executing 0 0
-[15.07.2019 15:13:30] interpreter #0 executing 0 0
-[15.07.2019 15:13:30] interpreter #0 executing 0 0
-[15.07.2019 15:13:31] interpreter #0 executing 0 0
-[15.07.2019 15:13:31] interpreter #0 executing 0 0
-[15.07.2019 15:13:31] interpreter #0 executing 0 0
-[15.07.2019 15:13:31] interpreter #0 executing 0 0
-[15.07.2019 15:13:31] interpreter #0 executing 0 0
-[15.07.2019 15:13:31] interpreter #0 executing 0 0
-[15.07.2019 15:13:31] interpreter #0 executing 0 0
-[15.07.2019 15:13:31] interpreter #0 executing 0 0
-[15.07.2019 15:13:31] #1 left pause
-[15.07.2019 15:13:31] #2 left pause
-[15.07.2019 15:13:31] #3 left pause
-[15.07.2019 15:13:31] #2 entered pause
-[15.07.2019 15:13:31] #1 entered pause
-[15.07.2019 15:13:31] #3 entered pause
-[15.07.2019 15:13:31] interpreter #0 executing 0 0
-[15.07.2019 15:13:31] interpreter #0 executing 0 0
-[15.07.2019 15:13:32] interpreter #0 executing 0 0
-[15.07.2019 15:13:32] interpreter #0 executing 0 0
-[15.07.2019 15:13:32] interpreter #0 executing 0 0
-[15.07.2019 15:13:32] interpreter #0 executing 0 0
-[15.07.2019 15:13:32] interpreter #0 executing 0 0
-[15.07.2019 15:13:32] interpreter #0 executing 0 0
-[15.07.2019 15:13:32] interpreter #0 executing 0 0
-[15.07.2019 15:13:32] interpreter #0 executing 0 0
-[15.07.2019 15:13:32] interpreter #0 executing 0 0
-[15.07.2019 15:13:33] interpreter #0 executing 0 0
-[15.07.2019 15:13:33] interpreter #0 executing 0 0
-[15.07.2019 15:13:33] interpreter #0 executing 0 0
-[15.07.2019 15:13:33] interpreter #0 executing 0 0
-[15.07.2019 15:13:33] interpreter #0 executing 0 0
-[15.07.2019 15:13:33] interpreter #0 executing 0 0
-[15.07.2019 15:13:33] interpreter #0 executing 0 0
-[15.07.2019 15:13:33] interpreter #0 executing 0 0
-[15.07.2019 15:13:33] interpreter #0 executing 0 0
-[15.07.2019 15:13:34] interpreter #0 executing 0 0
-[15.07.2019 15:13:34] interpreter #0 executing 0 0
-[15.07.2019 15:13:34] interpreter #0 executing 0 0
-[15.07.2019 15:13:34] interpreter #0 executing 0 0
-[15.07.2019 15:13:34] interpreter #0 executing 0 0
-[15.07.2019 15:13:34] interpreter #0 executing 0 0
-[15.07.2019 15:13:34] interpreter #0 executing 0 0
-[15.07.2019 15:13:34] interpreter #0 executing 0 0
+[15.07.2019 15:48:37] Interpreter #2 got file D:\Coding\C#\Interpreter\ProgramExamples\nnj.npr
+[15.07.2019 15:48:37] Lexems of the program:
+[15.07.2019 15:48:37] 0 lexems
+[15.07.2019 15:48:40] Interpreter #3 got file D:\Coding\C#\Interpreter\ProgramExamples\nnj.npr
+[15.07.2019 15:48:40] Lexems of the program:
+[15.07.2019 15:48:40] 0 lexems
+[15.07.2019 15:48:41] #3 entered pause
+[15.07.2019 15:48:41] #2 entered pause
+[15.07.2019 15:48:41] #2 left pause
+[15.07.2019 15:48:41] #3 left pause
+[15.07.2019 15:48:41] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:41] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:42] #3 entered pause
+[15.07.2019 15:48:42] #2 entered pause
+[15.07.2019 15:48:42] #2 left pause
+[15.07.2019 15:48:42] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:42] #3 left pause
+[15.07.2019 15:48:42] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:42] #2 entered pause
+[15.07.2019 15:48:42] #3 entered pause
+[15.07.2019 15:48:42] #2 left pause
+[15.07.2019 15:48:42] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:42] #3 left pause
+[15.07.2019 15:48:42] #3 left pause
+[15.07.2019 15:48:42] #2 entered pause
+[15.07.2019 15:48:42] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:42] #3 entered pause
+[15.07.2019 15:48:42] #2 left pause
+[15.07.2019 15:48:42] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:42] #2 entered pause
+[15.07.2019 15:48:42] #3 left pause
+[15.07.2019 15:48:42] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:42] #3 entered pause
+[15.07.2019 15:48:42] #2 left pause
+[15.07.2019 15:48:42] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:42] #3 left pause
+[15.07.2019 15:48:42] #3 left pause
+[15.07.2019 15:48:42] #2 entered pause
+[15.07.2019 15:48:42] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:42] #3 entered pause
+[15.07.2019 15:48:42] #2 left pause
+[15.07.2019 15:48:42] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:42] #2 entered pause
+[15.07.2019 15:48:42] #3 left pause
+[15.07.2019 15:48:42] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:42] #3 entered pause
+[15.07.2019 15:48:42] #2 left pause
+[15.07.2019 15:48:42] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:42] #2 entered pause
+[15.07.2019 15:48:42] #3 left pause
+[15.07.2019 15:48:42] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:42] #3 entered pause
+[15.07.2019 15:48:42] #2 left pause
+[15.07.2019 15:48:42] #3 left pause
+[15.07.2019 15:48:42] #3 left pause
+[15.07.2019 15:48:42] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:42] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:42] #2 entered pause
+ player #-1 returning 3
+reter\ProgramEx[15.07.2019 15:48:42] #2 entered pause
+ player #-1 returning 3
+reter\ProgramEx[15.07.2019 15:48:42] #2 entered pause
+ player #-1 returning 3
+reter\ProgramEx[15.07.2019 15:48:42] #2 left pause
+[15.07.2019 15:48:42] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:42] #2 entered pause
+[15.07.2019 15:48:42] #3 left pause
+[15.07.2019 15:48:42] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:42] #3 entered pause
+[15.07.2019 15:48:42] #2 left pause
+[15.07.2019 15:48:42] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:42] #2 entered pause
+[15.07.2019 15:48:42] #3 left pause
+[15.07.2019 15:48:42] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:42] #3 entered pause
+[15.07.2019 15:48:43] #2 left pause
+[15.07.2019 15:48:43] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:43] #2 entered pause
+[15.07.2019 15:48:43] #3 left pause
+[15.07.2019 15:48:43] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:43] #3 entered pause
+[15.07.2019 15:48:43] #2 left pause
+[15.07.2019 15:48:43] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:43] #2 entered pause
+[15.07.2019 15:48:43] #2 entered pause
+[15.07.2019 15:48:43] #3 left pause
+[15.07.2019 15:48:43] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:43] #3 entered pause
+[15.07.2019 15:48:43] #2 left pause
+[15.07.2019 15:48:43] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:43] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:43] #3 left pause
+[15.07.2019 15:48:43] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:43] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:43] #2 entered pause
+[15.07.2019 15:48:43] #3 entered pause
+[15.07.2019 15:48:43] #2 left pause
+[15.07.2019 15:48:43] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:43] #2 entered pause
+[15.07.2019 15:48:43] #3 left pause
+[15.07.2019 15:48:43] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:43] #3 entered pause
+[15.07.2019 15:48:43] #2 left pause
+[15.07.2019 15:48:43] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:43] #3 left pause
+[15.07.2019 15:48:43] #2 entered pause
+[15.07.2019 15:48:43] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:43] #3 entered pause
+[15.07.2019 15:48:43] #2 left pause
+[15.07.2019 15:48:43] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:43] #2 entered pause
+[15.07.2019 15:48:43] #3 left pause
+[15.07.2019 15:48:43] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:43] #3 entered pause
+[15.07.2019 15:48:43] #2 left pause
+[15.07.2019 15:48:43] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:43] #2 entered pause
+[15.07.2019 15:48:43] #3 left pause
+[15.07.2019 15:48:43] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:43] #3 entered pause
+[15.07.2019 15:48:43] #2 left pause
+[15.07.2019 15:48:43] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:43] #2 entered pause
+[15.07.2019 15:48:43] #3 left pause
+[15.07.2019 15:48:43] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:43] #3 entered pause
+[15.07.2019 15:48:43] #2 left pause
+[15.07.2019 15:48:43] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:43] #3 left pause
+[15.07.2019 15:48:43] #3 left pause
+[15.07.2019 15:48:43] #2 entered pause
+[15.07.2019 15:48:43] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:43] #3 entered pause
+[15.07.2019 15:48:44] #2 left pause
+[15.07.2019 15:48:44] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:44] #2 entered pause
+[15.07.2019 15:48:44] #3 left pause
+[15.07.2019 15:48:44] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:44] #3 entered pause
+[15.07.2019 15:48:44] #2 left pause
+[15.07.2019 15:48:44] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:44] #3 left pause
+[15.07.2019 15:48:44] #2 entered pause
+[15.07.2019 15:48:44] #2 entered pause
+[15.07.2019 15:48:44] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:44] #3 entered pause
+[15.07.2019 15:48:44] #2 left pause
+[15.07.2019 15:48:44] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:44] #3 left pause
+[15.07.2019 15:48:44] #3 left pause
+[15.07.2019 15:48:44] #2 entered pause
+[15.07.2019 15:48:44] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:44] #3 entered pause
+[15.07.2019 15:48:44] #2 left pause
+[15.07.2019 15:48:44] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:44] #2 entered pause
+[15.07.2019 15:48:44] #2 entered pause
+[15.07.2019 15:48:44] #3 left pause
+[15.07.2019 15:48:44] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:44] #3 entered pause
+[15.07.2019 15:48:44] #2 left pause
+[15.07.2019 15:48:44] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:44] #2 entered pause
+[15.07.2019 15:48:44] #2 entered pause
+[15.07.2019 15:48:44] #3 left pause
+[15.07.2019 15:48:44] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:44] #3 entered pause
+[15.07.2019 15:48:44] #2 left pause
+[15.07.2019 15:48:44] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:44] #3 left pause
+[15.07.2019 15:48:44] #2 entered pause
+[15.07.2019 15:48:44] #2 entered pause
+[15.07.2019 15:48:44] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:44] #3 entered pause
+[15.07.2019 15:48:44] #2 left pause
+[15.07.2019 15:48:44] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:44] #2 entered pause
+[15.07.2019 15:48:44] #3 left pause
+[15.07.2019 15:48:44] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:44] #3 entered pause
+[15.07.2019 15:48:44] #2 left pause
+[15.07.2019 15:48:44] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:44] #2 entered pause
+[15.07.2019 15:48:44] #3 left pause
+[15.07.2019 15:48:44] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:44] #3 entered pause
+[15.07.2019 15:48:44] #2 left pause
+[15.07.2019 15:48:44] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:44] #2 entered pause
+[15.07.2019 15:48:44] #3 left pause
+[15.07.2019 15:48:44] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:44] #3 entered pause
+[15.07.2019 15:48:45] #2 left pause
+[15.07.2019 15:48:45] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:45] #2 entered pause
+[15.07.2019 15:48:45] #3 left pause
+[15.07.2019 15:48:45] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:45] #3 entered pause
+[15.07.2019 15:48:45] #2 left pause
+[15.07.2019 15:48:45] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:45] #3 left pause
+[15.07.2019 15:48:45] #2 entered pause
+[15.07.2019 15:48:45] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:45] #3 entered pause
+[15.07.2019 15:48:45] #2 left pause
+[15.07.2019 15:48:45] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:45] #2 entered pause
+[15.07.2019 15:48:45] #3 left pause
+[15.07.2019 15:48:45] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:45] #3 entered pause
+[15.07.2019 15:48:45] #2 left pause
+[15.07.2019 15:48:45] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:45] #3 left pause
+[15.07.2019 15:48:45] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:45] #3 entered pause
+[15.07.2019 15:48:45] #2 entered pause
+[15.07.2019 15:48:45] #2 left pause
+[15.07.2019 15:48:45] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:45] #2 entered pause
+[15.07.2019 15:48:45] #3 left pause
+[15.07.2019 15:48:45] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:45] #3 entered pause
+[15.07.2019 15:48:45] #2 left pause
+[15.07.2019 15:48:45] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:45] #2 entered pause
+[15.07.2019 15:48:45] #3 left pause
+[15.07.2019 15:48:45] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:45] #3 entered pause
+[15.07.2019 15:48:45] #2 left pause
+[15.07.2019 15:48:45] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:45] #3 left pause
+[15.07.2019 15:48:45] #2 entered pause
+[15.07.2019 15:48:45] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:45] #3 entered pause
+[15.07.2019 15:48:45] #2 left pause
+[15.07.2019 15:48:45] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:45] #2 entered pause
+[15.07.2019 15:48:45] #3 left pause
+[15.07.2019 15:48:45] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:45] #3 entered pause
+[15.07.2019 15:48:45] #2 left pause
+[15.07.2019 15:48:45] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:45] #2 entered pause
+[15.07.2019 15:48:45] #3 left pause
+[15.07.2019 15:48:45] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:45] #3 entered pause
+[15.07.2019 15:48:46] #2 left pause
+[15.07.2019 15:48:46] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:46] #2 entered pause
+[15.07.2019 15:48:46] #3 left pause
+[15.07.2019 15:48:46] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:46] #3 entered pause
+[15.07.2019 15:48:46] #2 left pause
+[15.07.2019 15:48:46] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:46] #2 entered pause
+[15.07.2019 15:48:46] #3 left pause
+[15.07.2019 15:48:46] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:46] #3 entered pause
+[15.07.2019 15:48:46] #2 left pause
+[15.07.2019 15:48:46] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:46] #2 entered pause
+[15.07.2019 15:48:46] #3 left pause
+[15.07.2019 15:48:46] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:46] #3 entered pause
+[15.07.2019 15:48:46] #2 left pause
+[15.07.2019 15:48:46] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:46] #3 left pause
+[15.07.2019 15:48:46] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:46] #2 entered pause
+[15.07.2019 15:48:46] #3 entered pause
+[15.07.2019 15:48:46] #2 left pause
+[15.07.2019 15:48:46] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:46] #3 left pause
+[15.07.2019 15:48:46] #3 left pause
+[15.07.2019 15:48:46] #2 entered pause
+[15.07.2019 15:48:46] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:46] #3 entered pause
+[15.07.2019 15:48:46] #2 left pause
+[15.07.2019 15:48:46] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:46] #2 entered pause
+[15.07.2019 15:48:46] #3 left pause
+[15.07.2019 15:48:46] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:46] #3 entered pause
+[15.07.2019 15:48:46] #2 left pause
+[15.07.2019 15:48:46] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:46] #3 left pause
+[15.07.2019 15:48:46] #3 left pause
+[15.07.2019 15:48:46] #2 entered pause
+[15.07.2019 15:48:46] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:46] #3 entered pause
+[15.07.2019 15:48:46] #2 left pause
+[15.07.2019 15:48:46] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:46] #2 entered pause
+[15.07.2019 15:48:46] #2 entered pause
+[15.07.2019 15:48:46] #3 left pause
+[15.07.2019 15:48:46] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:46] #3 entered pause
+[15.07.2019 15:48:46] #2 left pause
+[15.07.2019 15:48:46] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:46] #2 entered pause
+[15.07.2019 15:48:46] #3 left pause
+[15.07.2019 15:48:46] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:46] #3 entered pause
+[15.07.2019 15:48:47] #2 left pause
+[15.07.2019 15:48:47] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:47] #3 left pause
+[15.07.2019 15:48:47] #2 entered pause
+[15.07.2019 15:48:47] #2 entered pause
+[15.07.2019 15:48:47] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:47] #3 entered pause
+[15.07.2019 15:48:47] #2 left pause
+[15.07.2019 15:48:47] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:47] #2 entered pause
+[15.07.2019 15:48:47] #3 left pause
+[15.07.2019 15:48:47] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:47] #3 entered pause
+[15.07.2019 15:48:47] #2 left pause
+[15.07.2019 15:48:47] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:47] #2 entered pause
+[15.07.2019 15:48:47] #3 left pause
+[15.07.2019 15:48:47] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:47] #3 entered pause
+[15.07.2019 15:48:47] #2 left pause
+[15.07.2019 15:48:47] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:47] #2 entered pause
+[15.07.2019 15:48:47] #3 left pause
+[15.07.2019 15:48:47] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:47] #3 entered pause
+[15.07.2019 15:48:47] #2 left pause
+[15.07.2019 15:48:47] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:47] #2 entered pause
+[15.07.2019 15:48:47] #3 left pause
+[15.07.2019 15:48:47] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:47] #3 entered pause
+[15.07.2019 15:48:47] #2 left pause
+[15.07.2019 15:48:47] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:47] #2 entered pause
+[15.07.2019 15:48:47] #3 left pause
+[15.07.2019 15:48:47] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:47] #3 entered pause
+[15.07.2019 15:48:47] #2 left pause
+[15.07.2019 15:48:47] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:47] #2 entered pause
+[15.07.2019 15:48:47] #3 left pause
+[15.07.2019 15:48:47] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:47] #3 entered pause
+[15.07.2019 15:48:47] #2 left pause
+[15.07.2019 15:48:47] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:47] #2 entered pause
+[15.07.2019 15:48:47] #3 left pause
+[15.07.2019 15:48:47] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:47] #3 entered pause
+[15.07.2019 15:48:47] #2 left pause
+[15.07.2019 15:48:47] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:47] #2 entered pause
+[15.07.2019 15:48:47] #3 left pause
+[15.07.2019 15:48:47] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:47] #3 entered pause
+[15.07.2019 15:48:48] #2 left pause
+[15.07.2019 15:48:48] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:48] #2 entered pause
+[15.07.2019 15:48:48] #3 left pause
+[15.07.2019 15:48:48] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:48] #3 entered pause
+[15.07.2019 15:48:48] #2 left pause
+[15.07.2019 15:48:48] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:48] #2 entered pause
+[15.07.2019 15:48:48] #3 left pause
+[15.07.2019 15:48:48] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:48] #3 entered pause
+[15.07.2019 15:48:48] #2 left pause
+[15.07.2019 15:48:48] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:48] #3 left pause
+[15.07.2019 15:48:48] #3 left pause
+[15.07.2019 15:48:48] #2 entered pause
+[15.07.2019 15:48:48] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:48] #3 entered pause
+[15.07.2019 15:48:48] #2 left pause
+[15.07.2019 15:48:48] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:48] #3 left pause
+[15.07.2019 15:48:48] #2 entered pause
+[15.07.2019 15:48:48] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:48] #3 entered pause
+[15.07.2019 15:48:48] #2 left pause
+[15.07.2019 15:48:48] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:48] #2 entered pause
+[15.07.2019 15:48:48] #3 left pause
+[15.07.2019 15:48:48] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:48] #3 entered pause
+[15.07.2019 15:48:48] #2 left pause
+[15.07.2019 15:48:48] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:48] #2 entered pause
+[15.07.2019 15:48:48] #2 entered pause
+[15.07.2019 15:48:48] #3 left pause
+[15.07.2019 15:48:48] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:48] #3 entered pause
+[15.07.2019 15:48:48] #2 left pause
+[15.07.2019 15:48:48] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:48] #2 entered pause
+[15.07.2019 15:48:48] #3 left pause
+[15.07.2019 15:48:48] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:48] #3 entered pause
+[15.07.2019 15:48:48] #2 left pause
+[15.07.2019 15:48:48] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:48] #2 entered pause
+[15.07.2019 15:48:48] #2 entered pause
+[15.07.2019 15:48:48] #3 left pause
+[15.07.2019 15:48:48] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:48] #3 entered pause
+[15.07.2019 15:48:48] #2 left pause
+[15.07.2019 15:48:48] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:48] #2 entered pause
+[15.07.2019 15:48:48] #2 entered pause
+[15.07.2019 15:48:48] #3 left pause
+[15.07.2019 15:48:48] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:48] #3 entered pause
+[15.07.2019 15:48:48] #2 left pause
+[15.07.2019 15:48:48] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:48] #2 entered pause
+[15.07.2019 15:48:48] #3 left pause
+[15.07.2019 15:48:48] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:48] #3 entered pause
+[15.07.2019 15:48:49] #2 left pause
+[15.07.2019 15:48:49] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:49] #2 entered pause
+[15.07.2019 15:48:49] #3 left pause
+[15.07.2019 15:48:49] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:49] #3 entered pause
+[15.07.2019 15:48:49] #2 left pause
+[15.07.2019 15:48:49] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:49] #3 left pause
+[15.07.2019 15:48:49] #3 left pause
+[15.07.2019 15:48:49] #2 entered pause
+[15.07.2019 15:48:49] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:49] #3 entered pause
+[15.07.2019 15:48:49] #2 left pause
+[15.07.2019 15:48:49] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:49] #3 left pause
+[15.07.2019 15:48:49] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:49] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:49] #2 entered pause
+[15.07.2019 15:48:49] #3 entered pause
+[15.07.2019 15:48:49] #2 left pause
+[15.07.2019 15:48:49] #3 left pause
+for player #-1 returning 2
+[15.07.2019 15:48:49] #3 left pause
+for player #-1 returning 2
+[15.07.2019 15:48:49] #2 entered pause
+[15.07.2019 15:48:49] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:49] #3 entered pause
+[15.07.2019 15:48:49] #2 left pause
+[15.07.2019 15:48:49] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:49] #2 entered pause
+[15.07.2019 15:48:49] #3 left pause
+[15.07.2019 15:48:49] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:49] #3 entered pause
+[15.07.2019 15:48:49] #2 left pause
+[15.07.2019 15:48:49] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:49] #2 entered pause
+[15.07.2019 15:48:49] #2 entered pause
+[15.07.2019 15:48:49] #3 left pause
+[15.07.2019 15:48:49] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:49] #3 entered pause
+[15.07.2019 15:48:49] #2 left pause
+[15.07.2019 15:48:49] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:49] #3 left pause
+[15.07.2019 15:48:49] #2 entered pause
+[15.07.2019 15:48:49] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:49] #3 entered pause
+[15.07.2019 15:48:49] #2 left pause
+[15.07.2019 15:48:49] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:49] #2 entered pause
+[15.07.2019 15:48:49] #2 entered pause
+[15.07.2019 15:48:49] #3 left pause
+[15.07.2019 15:48:49] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:49] #3 entered pause
+[15.07.2019 15:48:49] #2 left pause
+[15.07.2019 15:48:49] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:49] #2 entered pause
+[15.07.2019 15:48:49] #3 left pause
+[15.07.2019 15:48:49] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:49] #3 entered pause
+[15.07.2019 15:48:50] #2 left pause
+[15.07.2019 15:48:50] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:50] #2 entered pause
+[15.07.2019 15:48:50] #3 left pause
+[15.07.2019 15:48:50] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:50] #3 entered pause
+[15.07.2019 15:48:50] #2 left pause
+[15.07.2019 15:48:50] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:50] #2 entered pause
+[15.07.2019 15:48:50] #2 entered pause
+[15.07.2019 15:48:50] #3 left pause
+[15.07.2019 15:48:50] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:50] #3 entered pause
+[15.07.2019 15:48:50] #2 left pause
+[15.07.2019 15:48:50] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:50] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:50] #3 left pause
+[15.07.2019 15:48:50] #2 entered pause
+[15.07.2019 15:48:50] #2 entered pause
+[15.07.2019 15:48:50] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:50] #3 entered pause
+[15.07.2019 15:48:50] #2 left pause
+[15.07.2019 15:48:50] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:50] #2 entered pause
+[15.07.2019 15:48:50] #3 left pause
+[15.07.2019 15:48:50] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:50] #3 entered pause
+[15.07.2019 15:48:50] #2 left pause
+[15.07.2019 15:48:50] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:50] #2 entered pause
+[15.07.2019 15:48:50] #3 left pause
+[15.07.2019 15:48:50] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:50] #3 entered pause
+[15.07.2019 15:48:50] #2 left pause
+[15.07.2019 15:48:50] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:50] #2 entered pause
+[15.07.2019 15:48:50] #3 left pause
+[15.07.2019 15:48:50] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:50] #3 entered pause
+[15.07.2019 15:48:50] #2 left pause
+[15.07.2019 15:48:50] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:50] #2 entered pause
+[15.07.2019 15:48:50] #2 entered pause
+[15.07.2019 15:48:50] #3 left pause
+[15.07.2019 15:48:50] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:50] #3 entered pause
+[15.07.2019 15:48:50] #2 left pause
+[15.07.2019 15:48:50] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:50] #3 left pause
+[15.07.2019 15:48:50] #2 entered pause
+[15.07.2019 15:48:50] #3 left pause
+[15.07.2019 15:48:50] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:50] #3 entered pause
+[15.07.2019 15:48:50] #2 left pause
+[15.07.2019 15:48:50] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:50] #2 entered pause
+[15.07.2019 15:48:50] #3 left pause
+[15.07.2019 15:48:50] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:50] #3 entered pause
+[15.07.2019 15:48:51] #2 left pause
+[15.07.2019 15:48:51] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:51] #2 entered pause
+[15.07.2019 15:48:51] #3 left pause
+[15.07.2019 15:48:51] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:51] #3 entered pause
+[15.07.2019 15:48:51] #2 left pause
+[15.07.2019 15:48:51] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:51] #2 entered pause
+[15.07.2019 15:48:51] #3 left pause
+[15.07.2019 15:48:51] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:51] #3 entered pause
+[15.07.2019 15:48:51] #2 left pause
+[15.07.2019 15:48:51] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:51] #2 entered pause
+[15.07.2019 15:48:51] #3 left pause
+[15.07.2019 15:48:51] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:51] #3 entered pause
+[15.07.2019 15:48:51] #2 left pause
+[15.07.2019 15:48:51] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:51] #3 left pause
+[15.07.2019 15:48:51] #2 entered pause
+[15.07.2019 15:48:51] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:51] #3 entered pause
+[15.07.2019 15:48:51] #2 left pause
+[15.07.2019 15:48:51] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:51] #3 left pause
+[15.07.2019 15:48:51] #2 entered pause
+ player #-1 returning 3
+[15.07.2019 15:48:51] #2 entered pause
+ player #-1 returning 3
+[15.07.2019 15:48:51] #2 entered pause
+ player #-1 returning 3
+reter\ProgramExamples\nnj.npr
+         [15.07.2019 15:48:51] #3 entered pause
+[15.07.2019 15:48:51] #2 left pause
+[15.07.2019 15:48:51] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:51] #2 entered pause
+[15.07.2019 15:48:51] #3 left pause
+[15.07.2019 15:48:51] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:51] #3 entered pause
+[15.07.2019 15:48:51] #2 left pause
+[15.07.2019 15:48:51] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:51] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:51] #3 left pause
+[15.07.2019 15:48:51] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:51] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:51] #2 entered pause
+[15.07.2019 15:48:51] #3 entered pause
+[15.07.2019 15:48:51] #2 left pause
+[15.07.2019 15:48:51] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:51] #3 left pause
+[15.07.2019 15:48:51] #3 left pause
+[15.07.2019 15:48:51] #2 entered pause
+[15.07.2019 15:48:51] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:51] #3 entered pause
+[15.07.2019 15:48:51] #2 left pause
+[15.07.2019 15:48:51] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:51] #3 left pause
+[15.07.2019 15:48:51] #2 entered pause
+[15.07.2019 15:48:51] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:51] #3 entered pause
+[15.07.2019 15:48:52] #2 left pause
+[15.07.2019 15:48:52] #3 left pause
+[15.07.2019 15:48:52] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:52] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:52] #2 entered pause
+[15.07.2019 15:48:52] #2 entered pause
+ player #-1 returning 2
+[15.07.2019 15:48:52] #3 entered pause
+[15.07.2019 15:48:52] #2 left pause
+[15.07.2019 15:48:52] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:52] #3 left pause
+[15.07.2019 15:48:52] #2 entered pause
+[15.07.2019 15:48:52] #3 left pause
+[15.07.2019 15:48:52] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:52] #3 entered pause
+[15.07.2019 15:48:52] #2 left pause
+[15.07.2019 15:48:52] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:52] #2 entered pause
+[15.07.2019 15:48:52] #2 entered pause
+[15.07.2019 15:48:52] #3 left pause
+[15.07.2019 15:48:52] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:52] #3 entered pause
+[15.07.2019 15:48:52] #2 left pause
+[15.07.2019 15:48:52] #3 left pause
+[15.07.2019 15:48:52] #3 left pause
+[15.07.2019 15:48:52] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:52] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:52] #2 entered pause
+[15.07.2019 15:48:52] #2 entered pause
+[15.07.2019 15:48:52] #3 entered pause
+[15.07.2019 15:48:52] #2 left pause
+[15.07.2019 15:48:52] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:52] #2 entered pause
+[15.07.2019 15:48:52] #3 left pause
+[15.07.2019 15:48:52] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:52] #3 entered pause
+[15.07.2019 15:48:52] #2 left pause
+[15.07.2019 15:48:52] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:52] #2 entered pause
+[15.07.2019 15:48:52] #3 left pause
+[15.07.2019 15:48:52] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:52] #3 entered pause
+[15.07.2019 15:48:52] #2 left pause
+[15.07.2019 15:48:52] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:52] #2 entered pause
+[15.07.2019 15:48:52] #3 left pause
+[15.07.2019 15:48:52] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:52] #3 entered pause
+[15.07.2019 15:48:52] #2 left pause
+[15.07.2019 15:48:52] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:52] #2 entered pause
+[15.07.2019 15:48:52] #3 left pause
+[15.07.2019 15:48:52] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:52] #3 entered pause
+[15.07.2019 15:48:52] #2 left pause
+[15.07.2019 15:48:52] Func getSelfId for player #-1 returning 2
+[15.07.2019 15:48:52] #3 left pause
+[15.07.2019 15:48:52] Func getSelfId for player #-1 returning 3
+[15.07.2019 15:48:53] #2 entered pause
+[15.07.2019 15:48:53] #3 entered pause
+[15.07.2019 15:49:04] #2 left pause
+[15.07.2019 15:49:04] #3 left pause
+[15.07.2019 15:49:04] #2 entered pause
+[15.07.2019 15:49:04] #3 entered pause
+[15.07.2019 15:49:15] #2 left pause
+[15.07.2019 15:49:15] #3 left pause
+[15.07.2019 15:49:15] #2 entered pause
+[15.07.2019 15:49:15] #3 entered pause
+[15.07.2019 15:49:26] #2 left pause
+[15.07.2019 15:49:26] #3 left pause
+[15.07.2019 15:49:26] #2 entered pause
+[15.07.2019 15:49:26] #3 entered pause
+[15.07.2019 15:49:37] #2 left pause
+[15.07.2019 15:49:37] #3 left pause
+[15.07.2019 15:49:37] #2 entered pause
+[15.07.2019 15:49:37] #3 entered pause
+[15.07.2019 15:49:48] #2 left pause
+[15.07.2019 15:49:48] #3 left pause
+[15.07.2019 15:49:48] #2 entered pause
+[15.07.2019 15:49:48] #3 entered pause
