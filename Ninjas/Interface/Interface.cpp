@@ -444,8 +444,8 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 					{
 						if (k == i || !players[k].isActive)
 							continue;
-							
-						if (players[k].position.Dist(shot.position) < Character::R)
+
+						if (players[k].position.Dist(shot.position) < 1.00000000000001 * Character::R)
 						{
 							players[k].TakeDamage(10, i);
 							if  (!players[k].isActive)
