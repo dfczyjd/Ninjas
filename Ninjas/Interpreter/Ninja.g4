@@ -347,6 +347,7 @@ options {
 				{		
 					Debug($"Calling custom method {name} with params {ParamListToString(paramList)}");
 					parser.metTable[name].Eval();
+					returnType = parser.metTable[name].returnType;
 					if (returnType != ReturnType.Void && parser.metTable[name].returnType != ReturnType.Void)
 					{
 						var ret = parser.metTable[name].returnValue.Eval();
@@ -473,9 +474,9 @@ options {
 		}
 		
 		public OperationClass(NinjaParser p)
-        			{
-        				parser = p;
-        			}
+		{
+			parser = p;
+		}
 		
 		public virtual dynamic Eval()
 		{
@@ -622,7 +623,9 @@ options {
 						else 
 							result = elem.value.Eval();
 					}
-					stack.Add(new ExprStackObject(result, parser));
+					if (result != null) {
+						stack.Add(new ExprStackObject(result, parser));
+					}
 				}
 				else
 				{
@@ -1423,7 +1426,7 @@ v_fun_signature returns [string funName]: FUN_KEYWORD VOID ID
 	curBlock = newMet;
 } LPAREN params[$ID.text] RPAREN;
 
-m_function : m_fun_signature OBRACE code method_return[curBlock.createOperationClass()] CBRACE {
+m_function : m_fun_signature OBRACE code method_return CBRACE {
 
 	string methodName = $m_fun_signature.funName;
 	
@@ -1495,12 +1498,25 @@ code : (operation)*;
 
 main_code : (operation)*;
 
-operation : call[curBlock.createExpressionClass(), true] | custom_call[curBlock.createExpressionClass(), true] | declare[curBlock.createExpressionClass()] | ariphExprEx[curBlock.createExpressionClass()] | boolExprEx[curBlock.createExpressionClass()]
-			| myif[null]|myif_short[null]|mywhile[null]|mydo_while[null]|myfor[null];
+operation : call[curBlock.createExpressionClass(), true] | 
+			custom_call[curBlock.createExpressionClass(), true] | 
+			declare[curBlock.createExpressionClass()] | 
+			ariphExprEx[curBlock.createExpressionClass()] | 
+			boolExprEx[curBlock.createExpressionClass()] | 
+			myif |
+			myif_short |
+			mywhile |
+			mydo_while |
+			myfor;
 
-method_return[OperationClass oper] returns [string type, dynamic value]: RETURN_KEYWORD val_or_id[curBlock.ToExpr()] {
-	$type = $val_or_id.type;
-	$value = $val_or_id.value;
+method_return returns [string type, dynamic value]: {
+
+	ExprClass retExpr = new ExprClass(new OperationClass(this));
+	retExpr.parser = this;
+
+} RETURN_KEYWORD return_value[retExpr] {
+	$type = $return_value.type;
+	$value = $return_value.value;
 };
 
 params[string funName] : (var_signature[funName] (COMMA var_signature[funName])*)? ;
@@ -1656,19 +1672,44 @@ custom_call[ExprClass oper, bool independent] returns [string funName, CallData 
 	}
 	
 	string methodName = currentMet;
-	if (independent) 
+	if (independent) {
         $oper.Push(new ExprStackObject()
         {
 			type = ObjType.Function,
 			value = data,
 			parser = this
 		});
+	}	
 	$callData = data;
 };
 
 call_params[ExprClass oper] : (val_or_id[$oper] (COMMA val_or_id[$oper])*)?;
 
-val_or_id[ExprClass oper] returns [string type, dynamic value]: 
+val_or_id[ExprClass oper] returns [string type, dynamic value]:
+			ariphExprEx[$oper]
+			{
+				
+				//if($ariphExprEx.res.isEvaluated)
+                //		$value = $ariphExprEx.res.value;
+                //	else	
+                		$value = $ariphExprEx.res;
+				
+				if ($value.GetType() == typeof(int)) //ariphExprEx.value.GetType() == typeof(int)")
+					$type = "int";
+				else if ($value.GetType() == typeof(double))
+					$type = "double";
+				else if ($value.GetType() == typeof(bool))
+                    $type = "bool";
+                else if ($value.GetType() == typeof(ExprClass))
+                	$type = $value.GetType().ToString();
+			}
+		  | boolExprEx[$oper]
+			{
+				$value = $boolExprEx.res;
+				$type = "bool";
+			};
+
+return_value[ExprClass oper] returns [string type, dynamic value]:
 			ariphExprEx[$oper]
 			{
 				
@@ -1693,7 +1734,7 @@ val_or_id[ExprClass oper] returns [string type, dynamic value]:
 			};
 
 //cyclemetka
-myif[ExprClass oper]:
+myif:
 {
 	ExprClass bExpr = new ExprClass(new OperationClass(this));
 	bExpr.parser = this;
@@ -1726,7 +1767,7 @@ myif[ExprClass oper]:
         curBlock = curBlock.Parent;
      }
    ;
-myif_short[ExprClass oper]: {
+myif_short: {
 
 	ExprClass bExpr = new ExprClass(new OperationClass(this));
 	bExpr.parser = this;
@@ -1753,7 +1794,7 @@ myif_short[ExprClass oper]: {
         curBlock = curBlock.Parent;
     }
    ;
-mywhile[ExprClass oper]: {
+mywhile: {
 ExprClass bExpr = new ExprClass(new OperationClass(this));
 bExpr.parser = this;
 
@@ -1777,7 +1818,7 @@ While whiler = new While(this)
         curBlock = curBlock.Parent;
       }
        ;
-mydo_while[ExprClass oper]: DO 
+mydo_while: DO 
           OBRACE 
           {
           		ExprClass bExpr = new ExprClass(new OperationClass(this));
@@ -1796,7 +1837,7 @@ mydo_while[ExprClass oper]: DO
             	curBlock = curBlock.Parent;
            }
           ;
-myfor[ExprClass oper]: {
+myfor: {
 
 	
 }  FOR LPAREN {

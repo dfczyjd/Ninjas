@@ -266,6 +266,16 @@ public interface INinjaListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitVal_or_id([NotNull] NinjaParser.Val_or_idContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="NinjaParser.return_value"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterReturn_value([NotNull] NinjaParser.Return_valueContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="NinjaParser.return_value"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitReturn_value([NotNull] NinjaParser.Return_valueContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="NinjaParser.myif"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

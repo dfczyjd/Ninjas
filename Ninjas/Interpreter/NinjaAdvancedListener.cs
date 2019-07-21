@@ -364,6 +364,16 @@ namespace Interpreter
             
         }
 
+        public void EnterReturn_value(NinjaParser.Return_valueContext context)
+        {
+	        
+        }
+
+        public void ExitReturn_value(NinjaParser.Return_valueContext context)
+        {
+	        
+        }
+
         public void EnterAriphOperand([NotNull] NinjaParser.AriphOperandContext context)
         {
             

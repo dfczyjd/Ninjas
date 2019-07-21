@@ -436,8 +436,6 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 					if (!shot.isActive)
 						continue;
 					activeShots++;
-//					if (players[i].isActive)
-//						activePlayers++;	
 					shot.Invalidate(hWnd);
 					shot.Move();
 					for (int k = 0; k < PLAYER_COUNT; ++k)
@@ -459,13 +457,6 @@ LRESULT CALLBACK WndProc(HWND hWnd,
 				players[i].interpreter.SendUpdate();
 			}
 			WCHAR text[1024];
-		
-			
-			
-			if (activePlayers != activePlayersCount){
-				wsprintf(text, L"Active shots : %d, old Active Players %d, new %d", activeShots, activePlayersCount, activePlayers);
-                PrintMessage(text);
-			}
 			activePlayersCount = activePlayers;
 			if (activePlayers < 2 && !FightEnded){
 				if(activePlayers == 0){
@@ -480,11 +471,12 @@ LRESULT CALLBACK WndProc(HWND hWnd,
                 	FightEnded = true;
 					InvalidateRect(chatWnd, 0, true);
 				} else {
+					if (CanExecCommands){
+						wsprintf(text, L"Ждём, пока все пули долетят...");
+                    	PrintMessage(text);
+                    }
 					CanExecCommands = false;
 				}
-			} else {
-				wsprintf(text, L"Active shots : %d, Active Players %d", activeShots, activePlayersCount);
-            	//PrintMessage(text);
 			}
 			break;
 		}
