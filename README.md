@@ -1,4 +1,4 @@
-Project "NinjaPretator"
+# Project "NinjaPretator"
 
 NinjaPretator is a simulator of fighting ninjas. Behaviour of participants can be specified in simple NinjaPretator language called NnjScript.
 The simulator engine is written in C#.
