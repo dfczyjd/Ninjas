@@ -1,0 +1,47 @@
+fun double abs(double val)
+{
+	double res = val
+	if (res < 0)
+	{
+		res = 0 - res
+	}
+	return res
+}
+
+fun void main()
+{
+	int id = getSelfId()
+	double EPS = 0.000001
+	for (int j = (id + 1) % 4; j != id; j = (j + 1) % 4)
+	{
+		if (j != id)
+		{
+			double x = getPositionX(j)
+			double y = getPositionY(j)
+			double myx = getPositionX(id)
+			double myy = getPositionY(id)
+			double dist = ((x - myx) ** 2 + (y - myy) ** 2) ** 0.5
+			while (dist > 40 && getHealth(j) > 0)
+			{
+				double myAng = getDirection(id)
+				double reqAng = atan2(y - myy, x - myx)
+				while (abs(myAng - reqAng) > EPS)
+				{
+					turn(reqAng - myAng)
+					myAng = getDirection(id)
+				}
+				move(dist)
+				x = getPositionX(j)
+				y = getPositionY(j)
+				myx = getPositionX(id)
+				myy = getPositionY(id)
+				dist = ((x - myx) ** 2 + (y - myy) ** 2) ** 0.5
+			}
+			hit()
+		}
+		else
+		{
+		
+		}
+	}
+}

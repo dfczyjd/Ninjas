@@ -1,0 +1,48 @@
+fun double Distance(double x1, double y1, double x2, double y2)
+{
+	return (((x1 - x2) ** 2) + ((y1 - y2) ** 2)) ** 0.5
+}
+
+fun double DistanceBetween(int id, int otherId)
+{
+	double x1 = getPositionX(id)
+	double y1 = getPositionY(id)
+	double x2 = getPositionX(otherId)
+	double y2 = getPositionY(otherId)
+	return (((x1 - x2) ** 2) + ((y1 - y2) ** 2)) ** 0.5
+}
+
+fun void main()
+{
+	int id = getSelfId()
+	if (id == 0){
+		turn(-atan(1))
+	}
+	if (id == 1){
+		turn(atan(1))
+	}
+	if (id == 2){
+		turn(-atan(-1))
+	}
+	if (id == 3){
+		turn(atan(-1))
+	}
+	
+	double p = getPositionX(3)
+	double o = getPositionY(3)
+	
+	if (id == 0 || id == 1){
+		while (DistanceBetween(0, 1) > 30){
+			move(30)
+		}
+		hit()
+	} else {
+	 
+	//if (id == 2 || id == 3){
+    	move(10)
+		while (true){
+			shoot()
+			int h = getHealth(id)
+		}
+    } 
+}

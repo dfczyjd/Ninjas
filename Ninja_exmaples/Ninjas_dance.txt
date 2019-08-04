@@ -1,0 +1,83 @@
+fun double Distance(double x1, double y1, double x2, double y2)
+{
+	return (((x1 - x2) ** 2) + ((y1 - y2) ** 2)) ** 0.5
+}
+
+fun void main()
+{
+	int id = getSelfId()
+	int opid = (4 - id) - 1
+	double x1
+	double y1
+	double x2
+	double y2
+	do
+	{
+		move(20)
+		x1 = getPositionX(id)
+		y1 = getPositionY(id)
+		x2 = getPositionX(opid)
+		y2 = getPositionY(opid)
+	} while(Distance(x1, y1, x2, y2) > 400)
+	
+		for(int i=0;i<8;i++)
+		{
+			turn(asin(1))
+			for(int j=0;j<5;j++)
+			{
+				move(10)
+			}
+			hit()
+		}
+		for(int i=0;i<8;i++)
+		{
+			turn(-asin(1))
+			for(int j=0;j<5;j++)
+			{
+				move(10)
+			}
+			hit()
+		}
+		for(int i=0;i<10;i++)
+		{
+			turn(asin(1))
+			move(10)
+			turn(asin(1))
+			move(10)
+			turn(-asin(1))
+			move(10)
+			turn(-asin(1))
+			move(10)
+			
+		}
+		turn(-asin(1)/2)
+		do
+		{
+		move(20)
+		x1 = getPositionX(id)
+		y1 = getPositionY(id)
+		x2 = getPositionX(opid)
+		y2 = getPositionY(opid)
+	} while(Distance(x1, y1, x2, y2) > 50)
+	hit()
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,50 @@
+fun void turnToEnemy(double myx, double myy, double x, double y, int myId, int otherID)
+{
+	double myAng = getDirection(id)
+	double reqAng = atan2(y - myy, x - myx)
+	double trn = calcRealAngle(myAng - reqAng)
+	while (abs(trn) > EPS)
+	{
+		turn(trn)
+		myAng = getDirection(id)
+		trn = calcRealAngle(myAng - reqAng)
+	}
+}
+
+fun double abs(double val)
+{
+	double res = val
+	if (res < 0)
+	{
+		res = 0 - res
+	}
+	return res
+}
+
+fun void main()
+{
+	int id = getSelfId()
+	int enemy = 0
+	double EPS = 0.000001
+	double myx = getPositionX(id)
+	double myy = getPositionY(id)
+	double x = getPositionX(enemy)
+	double y = getPositionY(enemy)
+	double dist = ((x - myx) ** 2 + (y - myy) ** 2) ** 0.5
+	int sign = 1
+	while (dist > 40 && getHealth(enemy) > 0)
+	{
+		turnToEnemy(myx, myy, x, y, id, enemy)
+		shoot()
+		turn(0.5 * sign)
+		sign = -sign
+		move(20)
+		move(20)
+		myx = getPositionX(id)
+		myy = getPositionY(id)
+		x = getPositionX(enemy)
+		y = getPositionY(enemy)
+		dist = ((x - myx) ** 2 + (y - myy) ** 2) ** 0.5
+	}
+	hit()
+}
